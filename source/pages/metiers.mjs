@@ -39,10 +39,11 @@ export default (c) => {
   </div>
   <div class="conteneur brouillon-grille">
     <div class="brouillon-feuille-cadre" data-collant>
-      <div class="brouillon-feuille" data-feuille data-effet="rature" data-grille="typo" aria-hidden="true" data-visuel>
+      <div class="brouillon-feuille" data-feuille data-effet="rature" data-grille="typo manipuler" aria-hidden="true" data-visuel>
         <span class="feuille-num" data-feuille-num>01</span>
         <span class="feuille-nom" data-feuille-nom>${metiers[0].nom}</span>
-        <span class="feuille-jargon"><span data-feuille-jargon>${metiers[0].brouillon}</span><svg class="rature" viewBox="0 0 400 24" preserveAspectRatio="none"><path d="M4 14 C 80 6, 160 20, 240 10 S 360 6, 396 14"/></svg></span>
+        <span class="feuille-jargon" data-rayer><span data-feuille-jargon>${metiers[0].brouillon}</span><svg class="rature" viewBox="0 0 400 24" preserveAspectRatio="none"><path d="M4 14 C 80 6, 160 20, 240 10 S 360 6, 396 14"/></svg></span>
+        <span class="feuille-consigne"><span class="sur-souris">${c.t('metiers.scene.rayer')}</span><span class="sur-tactile">${c.t('metiers.scene.rayerTactile')}</span> <span aria-hidden="true">→</span></span>
         <span class="feuille-clair" data-feuille-clair>${metiers[0].clair}</span>
       </div>
     </div>
@@ -51,10 +52,10 @@ export default (c) => {
         ${c.media({ nom: m.image, alt: m.alt, classe: 'metier-media', sizes: '(max-width: 760px) 100vw, 40vw', attrs: 'data-fx="parallaxe" data-fx-force="8"' })}
         <p class="metier-num" aria-hidden="true">0${i + 1}</p>
         <h3>${m.nom}</h3>
-        <p class="metier-rature"><span class="visuellement-cache">${c.t('metiers.scene.barre')}</span><s>${m.brouillon}</s></p>
+        <p class="metier-rature" data-rayer-ligne><span class="visuellement-cache">${c.t('metiers.scene.barre')}</span><s>${m.brouillon}</s></p>
         <p class="metier-clair">${m.clair}</p>
         <p>${m.texte}</p>
-        ${c.lien('contact', { ancre: 'rendez-vous', params: 'besoin=' + m.cle, classe: 'lien-fleche', texte: c.t('metiers.scene.demander') })}
+        ${c.lien('contact', { ancre: 'rendez-vous', params: 'besoin=' + m.cle, classe: 'lien-fleche', texte: html`${c.t('metiers.scene.demander')}<span class="visuellement-cache"> : ${m.nom}</span>` })}
       </li>`)}
     </ol>
   </div>

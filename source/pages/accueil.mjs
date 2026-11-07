@@ -70,6 +70,7 @@ export default (c) => {
       <p class="roue-consigne masque-ecran-bas">${c.t('accueil.metiers.texte')}</p>
     </div>
     <div class="roue-scene" role="region" aria-roledescription="carrousel" aria-label="${c.s('accueil.metiers.region')}">
+      <span class="roue-fil" aria-hidden="true"></span>
       <ul class="roue-anneau" data-roue data-effet="roue-metiers">
         ${metiers.map((m, i) => html`<li class="roue-carte" style="--i:${i}" data-roue-carte>
           <a href="${c.url('metiers', m.cle)}" data-libelle="${c.libelle('metiers')}">

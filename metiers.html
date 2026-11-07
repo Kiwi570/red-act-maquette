@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" data-v="1" data-curseur>
+<html lang="fr" data-v="2" data-curseur>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -41,14 +41,14 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 })();</script>
 <link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/polices/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/socle.css?v=1">
-<link rel="stylesheet" href="/assets/css/site.css?v=1">
-<link rel="modulepreload" href="/assets/js/site.js?v=1">
-<link rel="modulepreload" href="/assets/js/socle/index.js?v=1">
+<link rel="stylesheet" href="/assets/css/socle.css?v=2">
+<link rel="stylesheet" href="/assets/css/site.css?v=2">
+<link rel="modulepreload" href="/assets/js/site.js?v=2">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=2">
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
-<script type="module" src="/assets/js/site.js?v=1"></script>
+<script type="module" src="/assets/js/site.js?v=2"></script>
 <meta name="theme-color" content="#F4EEE3">
 <link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/assets/images/favicon-192.png" sizes="192x192" type="image/png">
@@ -127,7 +127,7 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
     <div class="tete-metiers-bas">
       <p class="tete-suite masque-ecran-tres-bas" data-anime="gsap">De la rédaction web au conseil en communication, Red-Act mobilise l&#39;ensemble des métiers de la communication, et les réunit autour d&#39;un seul interlocuteur.</p>
       <p class="hero-actions tete-suite" data-anime="gsap">
-        <a href="/contact#rendez-vous" class="bouton" data-libelle="Contact" data-action-principale data-survol="magnetique">Demander un devis</a>
+        <a href="/contact#rendez-vous" class="bouton" data-libelle="Contact" data-action-principale data-survol="magnetique">Prendre rendez-vous</a>
         <span class="hero-info" data-info-cle>Print et digital · Particuliers, entreprises, institutions</span>
       </p>
     </div>
@@ -152,10 +152,11 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
   </div>
   <div class="conteneur brouillon-grille">
     <div class="brouillon-feuille-cadre" data-collant>
-      <div class="brouillon-feuille" data-feuille data-effet="rature" data-grille="typo" aria-hidden="true" data-visuel>
+      <div class="brouillon-feuille" data-feuille data-effet="rature" data-grille="typo manipuler" aria-hidden="true" data-visuel>
         <span class="feuille-num" data-feuille-num>01</span>
         <span class="feuille-nom" data-feuille-nom>Rédacteur web</span>
-        <span class="feuille-jargon"><span data-feuille-jargon>Optimisation sémantique de contenus multicanaux</span><svg class="rature" viewBox="0 0 400 24" preserveAspectRatio="none"><path d="M4 14 C 80 6, 160 20, 240 10 S 360 6, 396 14"/></svg></span>
+        <span class="feuille-jargon" data-rayer><span data-feuille-jargon>Optimisation sémantique de contenus multicanaux</span><svg class="rature" viewBox="0 0 400 24" preserveAspectRatio="none"><path d="M4 14 C 80 6, 160 20, 240 10 S 360 6, 396 14"/></svg></span>
+        <span class="feuille-consigne"><span class="sur-souris">Rayez le jargon</span><span class="sur-tactile">Touchez le jargon pour le rayer</span> <span aria-hidden="true">→</span></span>
         <span class="feuille-clair" data-feuille-clair>Des textes qu&#39;on trouve, et qu&#39;on a envie de lire</span>
       </div>
     </div>
@@ -168,10 +169,10 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 </figure>
         <p class="metier-num" aria-hidden="true">01</p>
         <h3>Rédacteur web</h3>
-        <p class="metier-rature"><span class="visuellement-cache">Jargon barré :</span><s>Optimisation sémantique de contenus multicanaux</s></p>
+        <p class="metier-rature" data-rayer-ligne><span class="visuellement-cache">Jargon barré :</span><s>Optimisation sémantique de contenus multicanaux</s></p>
         <p class="metier-clair">Des textes qu&#39;on trouve, et qu&#39;on a envie de lire</p>
         <p>Écrire ou adapter les contenus de votre site, de votre blog et de vos lettres d&#39;information, pour que votre personnalité, vos produits et votre savoir-faire trouvent leur public en ligne.</p>
-        <a href="/contact?besoin=redacteur-web#rendez-vous" class="lien-fleche" data-libelle="Contact">Demander ce métier</a>
+        <a href="/contact?besoin=redacteur-web#rendez-vous" class="lien-fleche" data-libelle="Contact">Prendre rendez-vous<span class="visuellement-cache"> : Rédacteur web</span></a>
       </li><li class="metier" id="community-manager" data-metier="1" data-metier-nom="Community manager" data-metier-jargon="Activation de communautés à fort engagement" data-metier-clair="Faire parler de vous, et en bien">
         <figure class="media metier-media" data-grok data-fx="parallaxe" data-fx-force="8" style="--cadrage:50% 50%">
   <picture>
@@ -180,10 +181,10 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 </figure>
         <p class="metier-num" aria-hidden="true">02</p>
         <h3>Community manager</h3>
-        <p class="metier-rature"><span class="visuellement-cache">Jargon barré :</span><s>Activation de communautés à fort engagement</s></p>
+        <p class="metier-rature" data-rayer-ligne><span class="visuellement-cache">Jargon barré :</span><s>Activation de communautés à fort engagement</s></p>
         <p class="metier-clair">Faire parler de vous, et en bien</p>
         <p>Construire une stratégie éditoriale, créer et animer des groupes, modérer les échanges : pour gagner du bouche-à-oreille et de la visibilité auprès du grand public comme des passionnés.</p>
-        <a href="/contact?besoin=community-manager#rendez-vous" class="lien-fleche" data-libelle="Contact">Demander ce métier</a>
+        <a href="/contact?besoin=community-manager#rendez-vous" class="lien-fleche" data-libelle="Contact">Prendre rendez-vous<span class="visuellement-cache"> : Community manager</span></a>
       </li><li class="metier" id="concepteur-redacteur" data-metier="2" data-metier-nom="Concepteur-rédacteur" data-metier-jargon="Brand content différenciant à forte valeur ajoutée" data-metier-clair="Le mot juste, à côté de la bonne image">
         <figure class="media metier-media" data-grok data-fx="parallaxe" data-fx-force="8" style="--cadrage:50% 50%">
   <picture>
@@ -192,10 +193,10 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 </figure>
         <p class="metier-num" aria-hidden="true">03</p>
         <h3>Concepteur-rédacteur</h3>
-        <p class="metier-rature"><span class="visuellement-cache">Jargon barré :</span><s>Brand content différenciant à forte valeur ajoutée</s></p>
+        <p class="metier-rature" data-rayer-ligne><span class="visuellement-cache">Jargon barré :</span><s>Brand content différenciant à forte valeur ajoutée</s></p>
         <p class="metier-clair">Le mot juste, à côté de la bonne image</p>
         <p>Adapter vos contenus existants ou créer de nouvelles formules et de nouveaux messages, pensés pour accompagner vos visuels.</p>
-        <a href="/contact?besoin=concepteur-redacteur#rendez-vous" class="lien-fleche" data-libelle="Contact">Demander ce métier</a>
+        <a href="/contact?besoin=concepteur-redacteur#rendez-vous" class="lien-fleche" data-libelle="Contact">Prendre rendez-vous<span class="visuellement-cache"> : Concepteur-rédacteur</span></a>
       </li><li class="metier" id="conseil-formation" data-metier="3" data-metier-nom="Conseil &amp; formation" data-metier-jargon="Accompagnement transversal des parties prenantes" data-metier-clair="Vos équipes prennent la parole">
         <figure class="media metier-media" data-grok data-fx="parallaxe" data-fx-force="8" style="--cadrage:50% 50%">
   <picture>
@@ -204,10 +205,10 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 </figure>
         <p class="metier-num" aria-hidden="true">04</p>
         <h3>Conseil &amp; formation</h3>
-        <p class="metier-rature"><span class="visuellement-cache">Jargon barré :</span><s>Accompagnement transversal des parties prenantes</s></p>
+        <p class="metier-rature" data-rayer-ligne><span class="visuellement-cache">Jargon barré :</span><s>Accompagnement transversal des parties prenantes</s></p>
         <p class="metier-clair">Vos équipes prennent la parole</p>
         <p>Mettre en place ou refondre une campagne de communication, et former vos équipes en interne. Red-Act sert d&#39;interface au sein de votre réseau.</p>
-        <a href="/contact?besoin=conseil-formation#rendez-vous" class="lien-fleche" data-libelle="Contact">Demander ce métier</a>
+        <a href="/contact?besoin=conseil-formation#rendez-vous" class="lien-fleche" data-libelle="Contact">Prendre rendez-vous<span class="visuellement-cache"> : Conseil &amp; formation</span></a>
       </li><li class="metier" id="audit" data-metier="4" data-metier-nom="Audit en communication" data-metier-jargon="Diagnostic 360° de votre écosystème de marque" data-metier-clair="Ce qui marche, et ce qui ne marche plus">
         <figure class="media metier-media" data-grok data-fx="parallaxe" data-fx-force="8" style="--cadrage:50% 50%">
   <picture>
@@ -216,10 +217,10 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 </figure>
         <p class="metier-num" aria-hidden="true">05</p>
         <h3>Audit en communication</h3>
-        <p class="metier-rature"><span class="visuellement-cache">Jargon barré :</span><s>Diagnostic 360° de votre écosystème de marque</s></p>
+        <p class="metier-rature" data-rayer-ligne><span class="visuellement-cache">Jargon barré :</span><s>Diagnostic 360° de votre écosystème de marque</s></p>
         <p class="metier-clair">Ce qui marche, et ce qui ne marche plus</p>
         <p>Un audit sur mesure pour les entreprises, les PME, les artisans et les restaurateurs : vos outils et vos supports actuels répondent-ils encore à vos objectifs ?</p>
-        <a href="/contact?besoin=audit#rendez-vous" class="lien-fleche" data-libelle="Contact">Demander ce métier</a>
+        <a href="/contact?besoin=audit#rendez-vous" class="lien-fleche" data-libelle="Contact">Prendre rendez-vous<span class="visuellement-cache"> : Audit en communication</span></a>
       </li><li class="metier" id="conseil-communication" data-metier="5" data-metier-nom="Conseil en communication" data-metier-jargon="Pilotage stratégique de vos leviers d&#39;influence" data-metier-clair="Être entendu là où ça compte">
         <figure class="media metier-media" data-grok data-fx="parallaxe" data-fx-force="8" style="--cadrage:50% 50%">
   <picture>
@@ -228,10 +229,10 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 </figure>
         <p class="metier-num" aria-hidden="true">06</p>
         <h3>Conseil en communication</h3>
-        <p class="metier-rature"><span class="visuellement-cache">Jargon barré :</span><s>Pilotage stratégique de vos leviers d&#39;influence</s></p>
+        <p class="metier-rature" data-rayer-ligne><span class="visuellement-cache">Jargon barré :</span><s>Pilotage stratégique de vos leviers d&#39;influence</s></p>
         <p class="metier-clair">Être entendu là où ça compte</p>
         <p>Gestion de l&#39;information, détection des risques et des opportunités, stratégies d&#39;influence : un conseil pensé pour les collectivités et les PME.</p>
-        <a href="/contact?besoin=conseil-communication#rendez-vous" class="lien-fleche" data-libelle="Contact">Demander ce métier</a>
+        <a href="/contact?besoin=conseil-communication#rendez-vous" class="lien-fleche" data-libelle="Contact">Prendre rendez-vous<span class="visuellement-cache"> : Conseil en communication</span></a>
       </li>
     </ol>
   </div>

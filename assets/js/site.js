@@ -3,9 +3,9 @@
    Effets du plan : intro (fil qui écrit Red-Act et se noue), filet, roue-metiers, titre-au-fil, titre-souple,
    fil conducteur (module de la bibliothèque), brouillon (Métiers), separation (Spécialités), filet-references,
    noeud-vous (Contact). Chaque effet propre porte data-effet="nom". */
-import { demarrer, boucle, etat, versObjet, quand } from './socle/index.js?v=1';
-import { init as filConducteur } from './modules/fil-conducteur.js?v=1';
-import { initPages } from './pages.js?v=1';
+import { demarrer, boucle, etat, versObjet, quand } from './socle/index.js?v=2';
+import { init as filConducteur } from './modules/fil-conducteur.js?v=2';
+import { initPages } from './pages.js?v=2';
 
 const gsap = window.gsap;
 const ST = () => window.ScrollTrigger;
@@ -378,6 +378,9 @@ demarrer({
     titresSouples();
     titresCousus();
     initPages({ creerFilet, quandPret });
+    /* Contact : le fil qui noue la carte se trace quand la page est prête. */
+    const filCarte = $('.contact-fil');
+    if (filCarte) { if (etat.calme || etat.arrivee === 'retour') filCarte.classList.add('est-trace'); else quandPret(() => filCarte.classList.add('est-trace')); }
     const racine = $('.fil-racine');
     if (racine) quandPret(() => filConducteur(racine, { lissage: 0.4, onde: 8, boucle: 26, regard: 0.6 }));
   },

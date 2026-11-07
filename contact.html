@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" data-v="1" data-curseur>
+<html lang="fr" data-v="2" data-curseur>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -41,14 +41,14 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 })();</script>
 <link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/polices/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/socle.css?v=1">
-<link rel="stylesheet" href="/assets/css/site.css?v=1">
-<link rel="modulepreload" href="/assets/js/site.js?v=1">
-<link rel="modulepreload" href="/assets/js/socle/index.js?v=1">
+<link rel="stylesheet" href="/assets/css/socle.css?v=2">
+<link rel="stylesheet" href="/assets/css/site.css?v=2">
+<link rel="modulepreload" href="/assets/js/site.js?v=2">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=2">
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
-<script type="module" src="/assets/js/site.js?v=1"></script>
+<script type="module" src="/assets/js/site.js?v=2"></script>
 <meta name="theme-color" content="#F4EEE3">
 <link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/assets/images/favicon-192.png" sizes="192x192" type="image/png">
@@ -120,26 +120,25 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 </div>
 <main id="contenu" tabindex="-1">
 <div class="fil-racine" data-grille="fil">
-<section class="tete-contact" id="debut" data-fil="gauche">
-  <div class="conteneur tete-contact-texte">
-    <div>
-      <p class="surtitre tete-suite" data-anime="gsap">Contact</p>
-      <h1 class="titre-souple" data-axe><span class="ligne-masque"><span class="hero-ligne" data-anime="gsap">Faisons connaissance</span></span></h1>
-      <p class="tete-suite masque-ecran-tres-bas" data-anime="gsap">Un besoin en contenus, en community management ou en conseil ? Appelez, écrivez, ou demandez un rendez-vous.</p>
-    </div>
-    <div class="tete-contact-num tete-suite" data-anime="gsap">
-      <a class="numero" href="tel:+33388183544" data-action-principale>03 88 18 35 44</a>
-      <p class="hero-info" data-info-cle>8, rue Anatole France · 67800 Hoenheim</p>
-      <p class="tete-contact-liens"><a href="mailto:contact@red-act.com">contact@red-act.com</a> · <a href="#rendez-vous" data-sans-transition>Demander un rendez-vous</a></p>
-    </div>
-  </div>
-  <div class="bandeau-rue">
-    <figure class="media bandeau-media" data-grok data-fx="parallaxe" data-fx-force="8" style="--cadrage:50% 45%;--cadrage-mobile:50% 50%">
+<section class="tete-contact tete-contact--carte" id="debut" data-fil="gauche">
+  <div class="contact-fond">
+    <figure class="media contact-fond-media" data-grok data-fx="parallaxe" data-fx-force="8" style="--cadrage:40% 45%;--cadrage-mobile:50% 40%">
   <picture><source media="(max-width: 760px) and (orientation: portrait)" srcset="/assets/images/grok/contact-rue-mobile-480.webp 480w, /assets/images/grok/contact-rue-mobile-657.webp 657w" sizes="100vw">
     <img src="/assets/images/grok/contact-rue-1168.webp" srcset="/assets/images/grok/contact-rue-640.webp 640w, /assets/images/grok/contact-rue-960.webp 960w, /assets/images/grok/contact-rue-1168.webp 1168w" sizes="100vw" alt="Rue résidentielle arborée un matin d&#39;automne" width="1168" height="784" fetchpriority="high" loading="eager" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-    <span class="filet-noeud filet-noeud--rue" data-iris-centre="disque" aria-hidden="true"><svg viewBox="0 0 64 64" width="44" height="44"><use href="#noeud"/></svg></span>
+  </div>
+  <svg class="contact-fil" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true" data-effet="fil-carte"><path d="M-10 120 C 180 60 320 170 520 96 S 820 40 1010 110"/></svg>
+  <div class="conteneur contact-scene">
+    <article class="carte-visite" aria-label="Carte de visite de Red-Act" data-effet="carte-nouee">
+      <span class="carte-noeud" data-iris-centre="disque" aria-hidden="true"><svg viewBox="0 0 64 64" width="40" height="40"><use href="#noeud"/></svg></span>
+      <p class="surtitre tete-suite" data-anime="gsap">Contact</p>
+      <h1 class="titre-souple" data-axe><span class="ligne-masque"><span class="hero-ligne" data-anime="gsap">Faisons connaissance</span></span></h1>
+      <p class="tete-suite masque-ecran-bas" data-anime="gsap">Un besoin en contenus, en community management ou en conseil ? Appelez, écrivez, ou demandez un rendez-vous.</p>
+      <p class="tete-suite" data-anime="gsap"><a class="numero" href="tel:+33388183544" data-action-principale>03 88 18 35 44</a></p>
+      <p class="hero-info tete-suite" data-anime="gsap" data-info-cle>8, rue Anatole France · 67800 Hoenheim</p>
+      <p class="tete-contact-liens tete-suite" data-anime="gsap"><a href="mailto:contact@red-act.com">contact@red-act.com</a><a class="lien-fleche" href="#rendez-vous" data-sans-transition>Demander un rendez-vous</a></p>
+    </article>
   </div>
 </section>
 <section class="rdv conteneur" id="rendez-vous" data-fil="droite">

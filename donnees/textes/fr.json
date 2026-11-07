@@ -102,7 +102,7 @@
     "metiers": {
       "surtitre": "Six métiers",
       "titre": "Un seul interlocuteur, six métiers",
-      "texte": "Faites tourner la roue à la main, au clavier ou en faisant défiler.",
+      "texte": "Faites-la tourner à la main, aux flèches ou en faisant défiler.",
       "precedent": "Métier précédent",
       "suivant": "Métier suivant",
       "region": "Roue des six métiers",
@@ -167,7 +167,7 @@
       "titre1": "Six métiers,",
       "titre2": "une seule plume",
       "texte": "De la rédaction web au conseil en communication, Red-Act mobilise l'ensemble des métiers de la communication, et les réunit autour d'un seul interlocuteur.",
-      "action": "Demander un devis",
+      "action": "Prendre rendez-vous",
       "info": "Print et digital · Particuliers, entreprises, institutions",
       "alt": "Brouillons corrigés au crayon rouge sur une table de travail",
       "feuille": "Brouillon : à reprendre"
@@ -176,8 +176,10 @@
       "surtitre": "Du brouillon au texte",
       "titre": "On barre le jargon, on écrit clair",
       "texte": "Faites défiler : chaque métier commence par un brouillon, et finit par une phrase que tout le monde comprend.",
-      "demander": "Demander ce métier",
-      "barre": "Jargon barré :"
+      "demander": "Prendre rendez-vous",
+      "barre": "Jargon barré :",
+      "rayer": "Rayez le jargon",
+      "rayerTactile": "Touchez le jargon pour le rayer"
     },
     "pourqui": {
       "surtitre": "Pour qui",
@@ -204,14 +206,18 @@
       "titre1": "La tribune",
       "titre2": "et la table",
       "texte": "Deux mondes où Red-Act a construit sa pratique : la communication politique et institutionnelle, et la communication touristique et gastronomique.",
-      "action": "Parler de votre projet",
+      "action": "Prendre rendez-vous",
       "info": "Alsace et régions voisines",
       "glisser": "Faites glisser la séparation",
       "curseur": "Part de l'écran donnée à la politique",
       "politique": "Politique & institutionnel",
       "gastronomie": "Tourisme & gastronomie",
       "altPolitique": "Pupitre vide sous un projecteur dans une salle sombre",
-      "altGastronomie": "Mur de grès rose, rebord de fenêtre avec cruche et raisin"
+      "altGastronomie": "Mur de grès rose, rebord de fenêtre avec cruche et raisin",
+      "motTribune": "La tribune",
+      "motTable": "et la table",
+      "voirPolitique": "Politique & institutionnel",
+      "voirTable": "Tourisme & gastronomie"
     },
     "politique": {
       "surtitre": "Communication politique et institutionnelle",
@@ -220,7 +226,7 @@
       "texte2": "Red-Act accompagne les candidats, puis les élus, dans la conception et la gestion de leurs stratégies et de leurs opérations de communication et d'implantation, en s'appuyant sur un réseau de professionnels du graphisme, de la photo et de l'internet.",
       "alt": "Salle du conseil vide, pupitre et bancs de bois",
       "altCampagne": "Permanence de campagne, carte et fils rouges",
-      "action": "Parler de votre campagne"
+      "action": "Prendre rendez-vous"
     },
     "cave": {
       "gauche": "Du chai",
@@ -236,7 +242,7 @@
       "clients": "Ils l'ont confié à Red-Act",
       "alt": "Table dressée dans une auberge boisée, verres à vin vides",
       "altTerrasse": "Terrasse d'auberge face aux vignes",
-      "action": "Parler de votre maison"
+      "action": "Prendre rendez-vous"
     },
     "fin": {
       "titre": "La tribune, la table, ou les deux ?",
@@ -291,7 +297,9 @@
       "action": "Appeler le 03 88 18 35 44",
       "info": "8, rue Anatole France · 67800 Hoenheim",
       "alt": "Rue résidentielle arborée un matin d'automne",
-      "horaires": "Horaires : à compléter"
+      "horaires": "Horaires : à compléter",
+      "carte": "Carte de visite de Red-Act",
+      "rdv": "Demander un rendez-vous"
     },
     "rdv": {
       "surtitre": "Rendez-vous",

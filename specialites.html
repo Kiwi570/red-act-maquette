@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" data-v="1" data-curseur>
+<html lang="fr" data-v="2" data-curseur>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -41,14 +41,14 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 })();</script>
 <link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/polices/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/socle.css?v=1">
-<link rel="stylesheet" href="/assets/css/site.css?v=1">
-<link rel="modulepreload" href="/assets/js/site.js?v=1">
-<link rel="modulepreload" href="/assets/js/socle/index.js?v=1">
+<link rel="stylesheet" href="/assets/css/socle.css?v=2">
+<link rel="stylesheet" href="/assets/css/site.css?v=2">
+<link rel="modulepreload" href="/assets/js/site.js?v=2">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=2">
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
-<script type="module" src="/assets/js/site.js?v=1"></script>
+<script type="module" src="/assets/js/site.js?v=2"></script>
 <meta name="theme-color" content="#F4EEE3">
 <link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/assets/images/favicon-192.png" sizes="192x192" type="image/png">
@@ -120,28 +120,18 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 </div>
 <main id="contenu" tabindex="-1">
 <div class="fil-racine" data-grille="fil">
-<section class="page-tete tete-spe" id="debut" data-fil="gauche">
-  <div class="conteneur tete-spe-texte">
-    <div>
-      <p class="surtitre tete-suite" data-anime="gsap">Nos spécialités</p>
-      <h1 class="titre-souple" data-axe><span class="ligne-masque"><span class="hero-ligne" data-anime="gsap">La tribune</span></span><span class="ligne-masque"><span class="hero-ligne hero-ligne--rouge" data-anime="gsap">et la table</span></span></h1>
-    </div>
-    <div>
-      <p class="tete-suite masque-ecran-bas" data-anime="gsap">Deux mondes où Red-Act a construit sa pratique : la communication politique et institutionnelle, et la communication touristique et gastronomique.</p>
-      <p class="hero-actions tete-suite" data-anime="gsap">
-        <a href="/contact#rendez-vous" class="bouton" data-libelle="Contact" data-action-principale data-survol="magnetique">Parler de votre projet</a>
-        <span class="hero-info" data-info-cle>Alsace et régions voisines</span>
-      </p>
-    </div>
-  </div>
-  <div class="separation" data-separation style="--part:50%">
+<section class="tete-spe tete-spe--plein" id="debut" data-fil="gauche">
+  <div class="separation" data-separation style="--part:50%;--part-n:50">
     <div class="separation-monde separation-monde--table">
       <figure class="media " data-grok style="--cadrage:50% 55%">
   <picture>
     <img src="/assets/images/grok/specialites-ouverture-gastronomie-784.webp" srcset="/assets/images/grok/specialites-ouverture-gastronomie-480.webp 480w, /assets/images/grok/specialites-ouverture-gastronomie-784.webp 784w" sizes="100vw" alt="Mur de grès rose, rebord de fenêtre avec cruche et raisin" width="784" height="1168" fetchpriority="high" loading="eager" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-      <a class="separation-libelle separation-libelle--d" href="#tourisme" data-sans-transition>Tourisme &amp; gastronomie</a>
+      <div class="monde-texte monde-texte--d">
+        <p class="monde-mot" aria-hidden="true">et la table</p>
+        <a class="separation-libelle separation-libelle--d" href="#tourisme" data-sans-transition>Tourisme &amp; gastronomie</a>
+      </div>
     </div>
     <div class="separation-monde separation-monde--tribune" data-separation-gauche data-effet="separation">
       <figure class="media " data-grok style="--cadrage:50% 50%">
@@ -149,13 +139,25 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
     <img src="/assets/images/grok/specialites-ouverture-politique-784.webp" srcset="/assets/images/grok/specialites-ouverture-politique-480.webp 480w, /assets/images/grok/specialites-ouverture-politique-784.webp 784w" sizes="100vw" alt="Pupitre vide sous un projecteur dans une salle sombre" width="784" height="1168" fetchpriority="high" loading="eager" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-      <a class="separation-libelle separation-libelle--g" href="#politique" data-sans-transition>Politique &amp; institutionnel</a>
+      <div class="monde-texte monde-texte--g">
+        <p class="monde-mot" aria-hidden="true">La tribune</p>
+        <a class="separation-libelle separation-libelle--g" href="#politique" data-sans-transition>Politique &amp; institutionnel</a>
+      </div>
     </div>
     <div class="separation-fil" data-separation-fil aria-hidden="true"></div>
     <button type="button" class="separation-poignee" role="slider" aria-label="Part de l&#39;écran donnée à la politique" aria-valuemin="15" aria-valuemax="85" aria-valuenow="50" aria-valuetext="50 %" data-separation-poignee data-iris-centre="disque" data-grille="manipuler">
       <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true"><use href="#noeud"/></svg>
     </button>
     <p class="separation-consigne" aria-hidden="true" data-audit-ignorer>Faites glisser la séparation</p>
+    <div class="spe-carte">
+      <p class="surtitre tete-suite" data-anime="gsap">Nos spécialités</p>
+      <h1 class="titre-souple" data-axe><span class="ligne-masque"><span class="hero-ligne" data-anime="gsap">La tribune</span></span><span class="ligne-masque"><span class="hero-ligne hero-ligne--rouge" data-anime="gsap">et la table</span></span></h1>
+      <p class="tete-suite masque-ecran-bas" data-anime="gsap">Deux mondes où Red-Act a construit sa pratique : la communication politique et institutionnelle, et la communication touristique et gastronomique.</p>
+      <p class="hero-actions tete-suite" data-anime="gsap">
+        <a href="/contact#rendez-vous" class="bouton" data-libelle="Contact" data-action-principale data-survol="magnetique">Prendre rendez-vous</a>
+        <span class="hero-info" data-info-cle>Alsace et régions voisines</span>
+      </p>
+    </div>
   </div>
 </section>
 <section class="politique" id="politique" data-fil="droite">
@@ -165,7 +167,7 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
       <h2 class="politique-titre" data-anime="lettres">Il n&#39;y a plus d&#39;entrée en politique sans entrée en communication</h2>
       <p data-anime>Le domaine politique doit désormais intégrer les outils des technologies de l&#39;information.</p>
       <p data-anime>Red-Act accompagne les candidats, puis les élus, dans la conception et la gestion de leurs stratégies et de leurs opérations de communication et d&#39;implantation, en s&#39;appuyant sur un réseau de professionnels du graphisme, de la photo et de l&#39;internet.</p>
-      <p data-anime><a href="/contact?besoin=politique#rendez-vous" class="bouton" data-libelle="Contact">Parler de votre campagne</a></p>
+      <p data-anime><a href="/contact?besoin=politique#rendez-vous" class="bouton" data-libelle="Contact">Prendre rendez-vous</a></p>
     </div>
     <figure class="media politique-media" data-grok data-fx="parallaxe" style="--cadrage:40% 50%">
   <picture>
@@ -215,7 +217,7 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
       <p data-anime>Un rédacteur spécialisé dans le tourisme en Alsace, la gastronomie et les vins, membre et délégué régional de l&#39;APCIG.</p>
       <h3 data-anime>Ils l&#39;ont confié à Red-Act</h3>
       <ul class="clients" data-anime="cascade"><li>Château de Pommard</li><li>Brasserie Météor</li><li>Domaine des Grands Vins de France</li><li>Wolfberger</li><li>Ruhlmann-Schutz</li><li>Klipfel</li><li>Adam</li><li>Caveau Lorentz Klipfel</li><li>Château de Bissieux</li><li>Verte Vallée</li><li>Hostellerie du Haut Koenigsbourg</li><li>Living Room</li><li>Alsacienne de Gastronomie</li><li>Porcus</li><li>Klein d&#39;Alsace</li><li>Maison Klein</li><li>Ferme Fruitière Rothgerber</li><li>Bretzel Burgard</li><li>Roi Soleil</li><li>Maison Doriath</li><li>1741</li><li>Le Tire Bouchon</li><li>Le Meiselocker</li><li>Au bon vivant</li><li>Le Relais de la Poste</li><li>Christophe Dufossé</li><li>La Citadelle</li><li>Lucien Doriath</li><li>Le Passeport Gourmand</li><li>231 East Street</li></ul>
-      <p data-anime><a href="/contact?besoin=tourisme#rendez-vous" class="bouton" data-libelle="Contact">Parler de votre maison</a></p>
+      <p data-anime><a href="/contact?besoin=tourisme#rendez-vous" class="bouton" data-libelle="Contact">Prendre rendez-vous</a></p>
     </div>
     <figure class="media tourisme-media tourisme-media--2" data-grok data-fx="vitesse" data-fx-force="4" style="--cadrage:50% 55%">
   <picture>

@@ -2,6 +2,38 @@
 
 Chaque version ajoute sa partie en tête de ce fichier, construite en comparant l'archive précédente et la nouvelle, jamais de mémoire.
 
+## v2 — de « pas mal » à « wouahou » (7 novembre 2026)
+
+Construit en comparant l'archive v1 et la v2, fichier par fichier.
+
+**Spécialités : nouvelle ouverture**
+- **L'écran** : il est scindé en plein cadre, sans bandeau de titre au-dessus.
+- **Les deux mondes** : chacun porte son mot en très grand, « La tribune » d'un côté, « et la table » de l'autre, avec son lien.
+- **Le titre** : « La tribune et la table » et le bouton sont posés sur une carte. Cette carte suit la couture quand on fait glisser la séparation.
+
+**Contact : nouvelle ouverture**
+- **La photo** : la rue occupe tout l'écran.
+- **La carte de visite** : elle est posée dessus, avec le numéro en très grand, l'adresse et l'e-mail. Le nœud Red-Act la ferme en haut.
+- **Le mouvement** : un fil rouge la traverse et se trace à l'arrivée. Au défilement, la carte et le fil se décollent légèrement.
+
+**Métiers : la feuille se raye à la main**
+- **Rayer soi-même** : on fait glisser sur la phrase de jargon, à la souris ou au doigt, pour la barrer. La phrase claire s'écrit alors.
+- **Sans geste** : la rature se fait seule après un instant.
+- **Sur téléphone** : toucher la ligne la raye.
+
+**Accueil : roue des métiers**
+- Les cartes sont plus grandes et plus espacées.
+- La carte de face est cerclée de rouge.
+- Un anneau de fil rouge passe sous la roue.
+
+**Verbes d'action** : tous les boutons principaux disent « Prendre rendez-vous ». Avant, on lisait aussi « Demander un devis », « Parler de votre projet », « de votre campagne », « de votre maison ». Le choix du métier ou de la spécialité reste prérempli.
+
+**Téléphone**
+- Les choix du formulaire de rendez-vous passent sur deux colonnes.
+- Le pied de page est plus court.
+
+**Technique** : numéro de version des fichiers passé à `?v=2`.
+
 ## v1 — la base (7 novembre 2026)
 
 **Direction « Red, le réseau »** : papier crème, encre noire et un seul rouge, celui du drapeau du logo. Les titres sont en Fraunces, avec un axe « souple » animé au défilement ; le texte est en Inter Tight. Les deux polices sont hébergées avec le site.

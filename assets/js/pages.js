@@ -3,7 +3,7 @@
    - Spécialités : séparation à faire glisser entre la tribune et la table (separation) ;
    - Références : grand filet de nuit, filtres par secteur gardés dans l'adresse (filet-references) ;
    - Contact : rendez-vous en trois étapes, récapitulatif, envoi qui file jusqu'au filet (noeud-vous). */
-import { etat, boucle } from './socle/index.js?v=1';
+import { etat, boucle } from './socle/index.js?v=2';
 
 const gsap = window.gsap;
 const ST = () => window.ScrollTrigger;
@@ -11,12 +11,22 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
 export function initPages({ creerFilet, quandPret }) {
+  carteNouee();
   carnet();
   feuilleBrouillon();
   sceneBrouillon();
   separation();
   references(creerFilet);
   rendezVous(creerFilet);
+}
+
+/* ---------- Contact : la carte de visite arrive nouée par le fil, puis se décolle légèrement au défilement ---------- */
+function carteNouee() {
+  const carte = $('.carte-visite'), fil = $('.contact-fil');
+  if (!carte) return;
+  if (etat.calme || !ST()) return;
+  ST().create({ trigger: carte.closest('section'), start: 'top top', end: 'bottom top', scrub: 0.4,
+    onUpdate: (s) => { carte.style.setProperty('--decolle', s.progress.toFixed(3)); if (fil) fil.style.setProperty('--decolle', s.progress.toFixed(3)); } });
 }
 
 /* ---------- Références : le Passeport Alsacien s'ouvre en éventail au défilement ---------- */
@@ -38,13 +48,17 @@ function feuilleBrouillon() {
   });
 }
 
-/* ---------- Métiers : à chaque métier lu, la feuille collante barre le jargon au rouge et réécrit clair ---------- */
+/* ---------- Métiers : la feuille collante présente le jargon de chaque métier ; on le raye soi-même
+   (glisser sur la phrase, souris ou doigt), sinon il se raye tout seul après un instant. La phrase claire s'écrit alors. ---------- */
 function sceneBrouillon() {
   const feuille = $('[data-feuille]');
   if (!feuille) return;
   const num = $('[data-feuille-num]', feuille), nom = $('[data-feuille-nom]', feuille), jargon = $('[data-feuille-jargon]', feuille), clair = $('[data-feuille-clair]', feuille);
+  const zone = $('[data-rayer]', feuille), trait = $('.rature path', feuille);
   const items = $$('[data-metier]');
-  let courant = -1;
+  let courant = -1, minuterie = 0, prise = null;
+  const L = 460;
+  const rayer = () => { clearTimeout(minuterie); feuille.classList.remove('est-manuel'); trait.style.removeProperty('stroke-dashoffset'); feuille.classList.add('est-raye'); };
   const montrer = (i, anime = true) => {
     if (i === courant) return;
     courant = i;
@@ -54,18 +68,41 @@ function sceneBrouillon() {
     jargon.textContent = li.dataset.metierJargon;
     clair.textContent = li.dataset.metierClair;
     items.forEach((x, k) => x.classList.toggle('est-courant', k === i));
-    if (!anime || etat.calme) { feuille.classList.add('est-raye'); return; }
-    feuille.classList.remove('est-raye');
-    void feuille.offsetWidth;
-    requestAnimationFrame(() => feuille.classList.add('est-raye'));
+    clearTimeout(minuterie);
+    if (!anime || etat.calme) { rayer(); return; }
+    feuille.classList.remove('est-raye', 'est-manuel');
+    trait.style.removeProperty('stroke-dashoffset');
+    minuterie = setTimeout(rayer, 1600);
   };
+  /* Rayer à la main : la progression suit le pointeur sur la phrase ; aux trois quarts, c'est barré. */
+  const progres = (e) => { const r = zone.getBoundingClientRect(); return Math.max(0, Math.min(1, (e.clientX - r.left) / Math.max(1, r.width))); };
+  zone.addEventListener('pointerdown', (e) => {
+    if (etat.calme || feuille.classList.contains('est-raye')) return;
+    clearTimeout(minuterie);
+    prise = { depart: progres(e) };
+    feuille.classList.add('est-manuel');
+    if (e.pointerType !== 'touch') zone.setPointerCapture(e.pointerId);
+  });
+  zone.addEventListener('pointermove', (e) => {
+    if (!prise) return;
+    const p = Math.max(0, progres(e) - prise.depart * 0.5);
+    trait.style.strokeDashoffset = String(Math.round(L * (1 - p)));
+    if (p > 0.72) { prise = null; rayer(); }
+  });
+  const lacher = () => { if (!prise) return; prise = null; minuterie = setTimeout(rayer, 700); };
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach((ev) => zone.addEventListener(ev, lacher));
+  /* Un simple toucher sur la phrase la raye aussi. */
+  zone.addEventListener('click', () => { if (!feuille.classList.contains('est-raye')) rayer(); });
+
+  /* Sur téléphone, chaque métier porte sa propre rature : jouée à son entrée, ou au toucher. */
+  $$('[data-rayer-ligne]').forEach((p) => p.addEventListener('click', () => p.closest('[data-metier]').classList.add('est-raye')));
+
   montrer(0, false);
   if (etat.calme || !ST()) { items.forEach((li) => li.classList.add('est-raye')); return; }
   feuille.classList.remove('est-raye');
   items.forEach((li, i) => {
     ST().create({ trigger: li, start: 'top 55%', end: 'bottom 55%', onToggle: (s) => { if (s.isActive) montrer(i); } });
-    /* Sur téléphone, chaque métier porte sa propre rature, jouée à son entrée. */
-    ST().create({ trigger: li, start: 'top 75%', once: true, onEnter: () => li.classList.add('est-raye') });
+    ST().create({ trigger: li, start: 'top 60%', once: true, onEnter: () => setTimeout(() => li.classList.add('est-raye'), 900) });
   });
   ST().create({ trigger: feuille, start: 'top 80%', once: true, onEnter: () => { courant = -1; montrer(Math.max(0, items.findIndex((x) => x.classList.contains('est-courant')))); } });
 }
@@ -79,13 +116,14 @@ function separation() {
   const poser = (p) => {
     part = Math.max(15, Math.min(85, p));
     bloc.style.setProperty('--part', part.toFixed(2) + '%');
+    bloc.style.setProperty('--part-n', part.toFixed(2));
     poignee.setAttribute('aria-valuenow', String(Math.round(part)));
     poignee.setAttribute('aria-valuetext', `${Math.round(part)} %`);
   };
   const depuisPointeur = (e) => { const r = bloc.getBoundingClientRect(); poser(((e.clientX - r.left) / r.width) * 100); };
   let x0 = 0, glisse = false;
   bloc.addEventListener('pointerdown', (e) => {
-    if (e.button > 0) return;
+    if (e.button > 0 || e.target.closest('.spe-carte, .monde-texte a')) return;
     prise = true; auto = 1; x0 = e.clientX; glisse = false;
     if (e.pointerType !== 'touch') bloc.setPointerCapture(e.pointerId);
     depuisPointeur(e);

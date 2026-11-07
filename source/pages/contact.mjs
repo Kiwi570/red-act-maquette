@@ -1,4 +1,4 @@
-/* Contact : ouverture compacte (numéro en très grand, bandeau de rue, nœud Red-Act), demande de rendez-vous
+/* Contact : ouverture en carte de visite nouée par le fil rouge, posée sur la rue (numéro en très grand), demande de rendez-vous
    en trois étapes (besoin, profil, coordonnées) avec récapitulatif et petit filet : à l'envoi, la fiche se plie,
    un fil la noue et elle file jusqu'au filet, où elle devient le nœud « Vous » (retour physique de l'action).
    Carte schématique du Grand-Est. */
@@ -19,22 +19,21 @@ export default (c) => {
   return html`
 <div class="fil-racine" data-grille="fil">
 
-<section class="tete-contact" id="debut" data-fil="gauche">
-  <div class="conteneur tete-contact-texte">
-    <div>
+<section class="tete-contact tete-contact--carte" id="debut" data-fil="gauche">
+  <div class="contact-fond">
+    ${c.media({ nom: 'grok/contact-rue', alt: c.s('contact.tete.alt'), cadrage: '40% 45%', cadrageMobile: '50% 40%', priorite: true, classe: 'contact-fond-media', sizes: '100vw', attrs: 'data-fx="parallaxe" data-fx-force="8"' })}
+  </div>
+  <svg class="contact-fil" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true" data-effet="fil-carte"><path d="M-10 120 C 180 60 320 170 520 96 S 820 40 1010 110"/></svg>
+  <div class="conteneur contact-scene">
+    <article class="carte-visite" aria-label="${c.s('contact.tete.carte')}" data-effet="carte-nouee">
+      <span class="carte-noeud" data-iris-centre="disque" aria-hidden="true"><svg viewBox="0 0 64 64" width="40" height="40"><use href="#noeud"/></svg></span>
       <p class="surtitre tete-suite" data-anime="gsap">${c.t('contact.tete.surtitre')}</p>
       <h1 class="titre-souple" data-axe><span class="ligne-masque"><span class="hero-ligne" data-anime="gsap">${c.t('contact.tete.titre')}</span></span></h1>
-      <p class="tete-suite masque-ecran-tres-bas" data-anime="gsap">${c.t('contact.tete.texte')}</p>
-    </div>
-    <div class="tete-contact-num tete-suite" data-anime="gsap">
-      <a class="numero" href="tel:${c.site.contact.telephoneLien}" data-action-principale>${c.site.contact.telephone}</a>
-      <p class="hero-info" data-info-cle>${c.t('contact.tete.info')}</p>
-      <p class="tete-contact-liens"><a href="mailto:${c.site.contact.email}">${c.site.contact.email}</a> · <a href="#rendez-vous" data-sans-transition>${c.t('contact.rdv.titre')}</a></p>
-    </div>
-  </div>
-  <div class="bandeau-rue">
-    ${c.media({ nom: 'grok/contact-rue', alt: c.s('contact.tete.alt'), cadrage: '50% 45%', cadrageMobile: '50% 50%', priorite: true, classe: 'bandeau-media', sizes: '100vw', attrs: 'data-fx="parallaxe" data-fx-force="8"' })}
-    <span class="filet-noeud filet-noeud--rue" data-iris-centre="disque" aria-hidden="true"><svg viewBox="0 0 64 64" width="44" height="44"><use href="#noeud"/></svg></span>
+      <p class="tete-suite masque-ecran-bas" data-anime="gsap">${c.t('contact.tete.texte')}</p>
+      <p class="tete-suite" data-anime="gsap"><a class="numero" href="tel:${c.site.contact.telephoneLien}" data-action-principale>${c.site.contact.telephone}</a></p>
+      <p class="hero-info tete-suite" data-anime="gsap" data-info-cle>${c.t('contact.tete.info')}</p>
+      <p class="tete-contact-liens tete-suite" data-anime="gsap"><a href="mailto:${c.site.contact.email}">${c.site.contact.email}</a><a class="lien-fleche" href="#rendez-vous" data-sans-transition>${c.t('contact.tete.rdv')}</a></p>
+    </article>
   </div>
 </section>
 

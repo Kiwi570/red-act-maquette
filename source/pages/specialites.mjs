@@ -1,4 +1,4 @@
-/* Spécialités : ouverture scindée en deux mondes (la tribune en encre de nuit, la table en grès rose),
+/* Spécialités : écran scindé plein cadre entre deux mondes (la tribune en encre de nuit, la table en grès rose), titre posé sur la couture,
    séparés par un fil rouge à faire glisser ; politique et institutionnel (parcours candidat → mandat tracé au fil) ;
    cave en plein écran ; tourisme et gastronomie (titre écrit au fil, vraies références du secteur). */
 import { html } from '../../outils/gabarit.mjs';
@@ -11,34 +11,36 @@ export default (c) => {
   return html`
 <div class="fil-racine" data-grille="fil">
 
-<section class="page-tete tete-spe" id="debut" data-fil="gauche">
-  <div class="conteneur tete-spe-texte">
-    <div>
-      <p class="surtitre tete-suite" data-anime="gsap">${c.t('specialites.tete.surtitre')}</p>
-      <h1 class="titre-souple" data-axe><span class="ligne-masque"><span class="hero-ligne" data-anime="gsap">${c.t('specialites.tete.titre1')}</span></span><span class="ligne-masque"><span class="hero-ligne hero-ligne--rouge" data-anime="gsap">${c.t('specialites.tete.titre2')}</span></span></h1>
-    </div>
-    <div>
-      <p class="tete-suite masque-ecran-bas" data-anime="gsap">${c.t('specialites.tete.texte')}</p>
-      <p class="hero-actions tete-suite" data-anime="gsap">
-        ${c.lien('contact', { ancre: 'rendez-vous', classe: 'bouton', texte: c.t('specialites.tete.action'), attrs: 'data-action-principale data-survol="magnetique"' })}
-        <span class="hero-info" data-info-cle>${c.t('specialites.tete.info')}</span>
-      </p>
-    </div>
-  </div>
-  <div class="separation" data-separation style="--part:50%">
+<section class="tete-spe tete-spe--plein" id="debut" data-fil="gauche">
+  <div class="separation" data-separation style="--part:50%;--part-n:50">
     <div class="separation-monde separation-monde--table">
       ${c.media({ nom: 'grok/specialites-ouverture-gastronomie', alt: c.s('specialites.tete.altGastronomie'), cadrage: '50% 55%', priorite: true, sizes: '100vw' })}
-      <a class="separation-libelle separation-libelle--d" href="#tourisme" data-sans-transition>${c.t('specialites.tete.gastronomie')}</a>
+      <div class="monde-texte monde-texte--d">
+        <p class="monde-mot" aria-hidden="true">${c.t('specialites.tete.motTable')}</p>
+        <a class="separation-libelle separation-libelle--d" href="#tourisme" data-sans-transition>${c.t('specialites.tete.voirTable')}</a>
+      </div>
     </div>
     <div class="separation-monde separation-monde--tribune" data-separation-gauche data-effet="separation">
       ${c.media({ nom: 'grok/specialites-ouverture-politique', alt: c.s('specialites.tete.altPolitique'), cadrage: '50% 50%', priorite: true, sizes: '100vw' })}
-      <a class="separation-libelle separation-libelle--g" href="#politique" data-sans-transition>${c.t('specialites.tete.politique')}</a>
+      <div class="monde-texte monde-texte--g">
+        <p class="monde-mot" aria-hidden="true">${c.t('specialites.tete.motTribune')}</p>
+        <a class="separation-libelle separation-libelle--g" href="#politique" data-sans-transition>${c.t('specialites.tete.voirPolitique')}</a>
+      </div>
     </div>
     <div class="separation-fil" data-separation-fil aria-hidden="true"></div>
     <button type="button" class="separation-poignee" role="slider" aria-label="${c.s('specialites.tete.curseur')}" aria-valuemin="15" aria-valuemax="85" aria-valuenow="50" aria-valuetext="50 %" data-separation-poignee data-iris-centre="disque" data-grille="manipuler">
       <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true"><use href="#noeud"/></svg>
     </button>
     <p class="separation-consigne" aria-hidden="true" data-audit-ignorer>${c.t('specialites.tete.glisser')}</p>
+    <div class="spe-carte">
+      <p class="surtitre tete-suite" data-anime="gsap">${c.t('specialites.tete.surtitre')}</p>
+      <h1 class="titre-souple" data-axe><span class="ligne-masque"><span class="hero-ligne" data-anime="gsap">${c.t('specialites.tete.titre1')}</span></span><span class="ligne-masque"><span class="hero-ligne hero-ligne--rouge" data-anime="gsap">${c.t('specialites.tete.titre2')}</span></span></h1>
+      <p class="tete-suite masque-ecran-bas" data-anime="gsap">${c.t('specialites.tete.texte')}</p>
+      <p class="hero-actions tete-suite" data-anime="gsap">
+        ${c.lien('contact', { ancre: 'rendez-vous', classe: 'bouton', texte: c.t('specialites.tete.action'), attrs: 'data-action-principale data-survol="magnetique"' })}
+        <span class="hero-info" data-info-cle>${c.t('specialites.tete.info')}</span>
+      </p>
+    </div>
   </div>
 </section>
 

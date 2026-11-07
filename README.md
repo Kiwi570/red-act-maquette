@@ -1,4 +1,4 @@
-# Red-Act — maquette v1
+# Red-Act — maquette v2
 
 Maquette du futur site de Red-Act (conseil en communication, rédaction et community management, Hoenheim près de Strasbourg).
 Direction artistique « Red, le réseau » : red veut dire réseau en espagnol, et le rouge du drapeau du logo devient un fil qui relie tout le site.
@@ -10,10 +10,10 @@ Adresse prévue : https://red-act-maquette.vercel.app
 | Page | Ouverture | Signature |
 |---|---|---|
 | Accueil | Titre à gauche, bureau du rédacteur et bobine de fil rouge à droite | Filet des vraies références à tirer à la main ; intro du fil qui écrit « Red » puis « Act » et se noue ; roue 3D des six métiers ; mots géants ; Alsace en plein écran ; titre « Stéphane Bourhis » écrit au fil |
-| Métiers | Très grand titre, bandeau de brouillons recouvert d'une feuille qui se raye | « Du brouillon au texte » : le jargon est barré au rouge et réécrit clair, métier par métier |
-| Spécialités | Écran scindé entre la tribune (politique) et la table (gastronomie) | Séparation à faire glisser ; parcours candidat → mandat tracé au fil ; cave en plein écran |
+| Métiers | Très grand titre, bandeau de brouillons recouvert d'une feuille qui se raye | « Du brouillon au texte » : on raye soi-même le jargon (ou il se raye seul), la phrase claire s'écrit |
+| Spécialités | Écran scindé plein cadre, « La tribune » et « et la table » en grand, titre sur une carte qui suit la couture | Séparation à faire glisser ; parcours candidat → mandat tracé au fil ; cave en plein écran |
 | Références (page sombre) | Grand filet de nuit avec les 90 noms | Filtres par secteur qui tirent les nœuds (sélection gardée dans l'adresse) ; liste complète lisible |
-| Contact | Numéro de téléphone en très grand, bandeau de rue | Rendez-vous en trois étapes, simulé : la demande se plie, se noue et devient le nœud « Vous » du filet |
+| Contact | Carte de visite nouée par le fil rouge, posée sur la rue, numéro en très grand | Rendez-vous en trois étapes, simulé : la demande se plie, se noue et devient le nœud « Vous » du filet |
 | 404 | « Le fil est coupé » | |
 
 Partout : un fil rouge court dans la marge et fait un nœud à chaque section ; les voiles entre les pages se tissent en lanières ; les grands titres sont « cousus » à leur arrivée. Le mode calme (lien « Réduire les animations » dans le menu et le pied de page) donne une version complète sans mouvement.
@@ -45,13 +45,9 @@ Partout : un fil rouge court dans la marge et fait un nœud à chaque section ; 
 - Aucun élu nommé ; ton neutre sur la communication politique. Images de vin sans étiquette ni personne qui boit (loi Évin).
 - Pages non reprises dans la v1 (possibles en v2) : le blog du rédacteur (8 pages, 6 rubriques), la page « Red-Act en Alsace » en alsacien, la page À propos (reprise en section de l'accueil).
 
-## Pistes pour la v2 (regard neuf)
+## Pistes pour la suite
 
-- Varier davantage les ouvertures (plusieurs suivent « titre à gauche, photo, nœud au centre »).
-- Rendre la scène des Métiers manipulable (feuille qu'on raye soi-même).
 - Remplacer le mur de fiches reliées par un fil rouge (utilisé deux fois, il évoque une enquête) par de vraies photos de Red-Act.
-- Harmoniser les verbes des boutons d'action d'une page à l'autre.
-- Alléger le formulaire sur téléphone (dix choix empilés à la première étape).
 - La phrase alsacienne « Uff Elsassich – Red-Act, ihre neue Partner. » est reprise telle qu'elle figure sur le site actuel : à faire relire par Red-Act.
 
 ## À retirer à la mise en ligne définitive
