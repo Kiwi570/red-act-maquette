@@ -1,0 +1,52 @@
+{
+  "nom": "Red-Act",
+  "adresse": "https://red-act-maquette.vercel.app",
+  "siteActuel": "www.red-act.com",
+  "version": 1,
+  "langues": [
+    "fr"
+  ],
+  "navigation": [
+    "accueil",
+    "metiers",
+    "specialites",
+    "references",
+    "contact"
+  ],
+  "actionEntete": {
+    "page": "contact",
+    "ancre": "rendez-vous"
+  },
+  "couleurs": {
+    "fond": "#F4EEE3",
+    "texte": "#1B1916",
+    "voile": "#1B1916",
+    "ouverture": "#F4EEE3",
+    "menu": "#1B1916",
+    "theme": "#F4EEE3"
+  },
+  "formeVoile": "trame",
+  "contact": {
+    "telephone": "03 88 18 35 44",
+    "telephoneLien": "+33388183544",
+    "email": "contact@red-act.com",
+    "adresse": "8, rue Anatole France, 67800 Hoenheim",
+    "ville": "Hoenheim, près de Strasbourg"
+  },
+  "reseaux": [
+    {
+      "nom": "Facebook",
+      "url": "https://www.facebook.com/RedActalsace"
+    },
+    {
+      "nom": "X (Twitter)",
+      "url": "https://twitter.com/red_act"
+    }
+  ],
+  "polices": [
+    "/assets/polices/fraunces.woff2",
+    "/assets/polices/inter-tight.woff2"
+  ],
+  "imagePartage": "grok/accueil-ouverture-1168.webp",
+  "curseur": true
+}

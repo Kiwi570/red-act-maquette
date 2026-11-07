@@ -1,0 +1,48 @@
+{
+  "publics": [
+    "Particuliers",
+    "Entreprises",
+    "PME et PMI",
+    "Artisans",
+    "Chefs",
+    "Restaurateurs",
+    "Hôteliers",
+    "Institutions",
+    "Acteurs économiques"
+  ],
+  "supports": [
+    "Contenus internet et intranet",
+    "Lettres d'information",
+    "Rédaction pour la presse",
+    "Articles et relations presse",
+    "Réseaux sociaux",
+    "Communication interne et externe"
+  ],
+  "etapesPolitique": [
+    "Candidature",
+    "Campagne",
+    "Élection",
+    "Mandat"
+  ],
+  "domaines": [
+    "Vin",
+    "Gastronomie",
+    "Tourisme",
+    "Art de la table",
+    "Hôtellerie"
+  ],
+  "profils": [
+    "Un particulier",
+    "Une entreprise ou une PME",
+    "Un artisan, un chef, un restaurateur",
+    "Un hôtelier ou un acteur du tourisme",
+    "Une collectivité ou une institution",
+    "Une agence de communication",
+    "Un candidat ou un élu"
+  ],
+  "creneaux": [
+    "Le matin",
+    "L'après-midi",
+    "Peu importe"
+  ]
+}

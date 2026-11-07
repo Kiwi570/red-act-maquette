@@ -1,0 +1,12 @@
+[
+  { "cle": "agences", "nom": "Agences de communication et agences web", "court": "Agences", "note": "Alsace, Lorraine, Paris", "noms": ["ADVISA", "ACTWEB", "2 EXVIA", "LATITUDE", "CLAUDE VICTOR", "PROSPECTIV'", "METRONOME", "EUROPE INTERNET", "DEVITO WALDORFF", "AKALMIE", "PERFORMANCES CONSEIL", "INFRA", "GROUPE GET", "NOVEIS", "RMP", "ANIMAWEB", "WICTORY", "GREENCUBE"] },
+  { "cle": "numerique", "nom": "Entreprises des nouvelles technologies", "court": "Numérique", "noms": ["Diatem", "Swing Mobility", "ABW", "Abekom", "OneMedia", "Cyberworkers", "Kaliasys", "Unitéo", "One Infinite Loop"] },
+  { "cle": "sante", "nom": "Santé et cosmétiques", "court": "Santé", "noms": ["Ventana Medical Systems (Roche Group)", "Création International", "Dermovitalia"] },
+  { "cle": "presse", "nom": "Magazines et journaux", "court": "Presse", "noms": ["Made in Alsace", "Cozy Magazine", "Les Pros s'animent", "L'Express"] },
+  { "cle": "immobilier", "nom": "Opérateurs immobiliers", "court": "Immobilier", "noms": ["Opéra Construction", "Sainte Maxime Immobilier", "Groupe ICADE", "2AImmobilier", "Alsaterre", "Immobilière 3B"] },
+  { "cle": "vins", "nom": "Vins et bière", "court": "Vins", "noms": ["Château de Pommard", "Brasserie Météor", "Domaine des Grands Vins de France", "Wolfberger", "Ruhlmann-Schutz", "Klipfel", "Adam", "Caveau Lorentz Klipfel"] },
+  { "cle": "gastronomie", "nom": "Hôtellerie, restauration et gastronomie", "court": "Gastronomie", "noms": ["Château de Bissieux", "Verte Vallée", "Hostellerie du Haut Koenigsbourg", "Living Room", "Alsacienne de Gastronomie", "Porcus", "Klein d'Alsace", "Maison Klein", "Ferme Fruitière Rothgerber", "Bretzel Burgard", "Roi Soleil", "Maison Doriath", "1741", "Le Tire Bouchon", "Le Meiselocker", "Au bon vivant", "Le Relais de la Poste", "Christophe Dufossé", "La Citadelle", "Lucien Doriath", "Le Passeport Gourmand", "231 East Street"] },
+  { "cle": "luxe", "nom": "Luxe et affaires", "court": "Luxe", "noms": ["AB Corporate Aviation", "MGM"] },
+  { "cle": "industrie", "nom": "Industrie, commerce et services", "court": "Industrie", "noms": ["Heuft France", "Axal déménagements", "Peugeot Strasbourg", "Imprimerie Grai", "Carré Blanc", "Labonal", "Coop Alsace", "GLS Sécurité"] },
+  { "cle": "institutions", "nom": "Institutions et collectivités", "court": "Institutions", "noms": ["Maison de l'Alsace", "Onac des Vosges", "Électricité de Strasbourg", "Adira", "Indibatp", "Caisse des Monuments Nationaux", "Medef", "CC Pfaffenhoffen", "Collectivité européenne d'Alsace", "CC Pays de Brumath"] }
+]

@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="fr" data-v="1" data-curseur>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spécialités de Red-Act : communication politique, tourisme et gastronomie</title>
+<meta name="description" content="Communication politique et institutionnelle, communication touristique et gastronomique : les deux spécialités de Red-Act, en Alsace et dans les régions voisines.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://red-act-maquette.vercel.app/specialites">
+<style>:root{--fond:#F4EEE3;--texte:#1B1916;--voile-fond:#1B1916;--ouverture-fond:#F4EEE3;--menu-fond:#1B1916}:root { --entete-h: 72px; --barres-h: 0px; } html { background: var(--fond); color: var(--texte); scrollbar-gutter: stable; } body { margin: 0; background: var(--fond); } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime] { opacity: 0; } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime].vu { opacity: 1; } [data-voile] { position: fixed; inset: 0; z-index: 900; background: var(--voile-fond); transform: translateY(100%); visibility: hidden; pointer-events: none; } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) [data-voile] { transform: none; visibility: visible; } html.calme [data-voile], html.secours [data-voile] { visibility: hidden !important; } .ouverture-panneau { position: fixed; inset: 0; z-index: 850; display: none; place-content: center; justify-items: center; background: var(--ouverture-fond, var(--voile-fond)); color: var(--fond); text-align: center; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouverture-panneau { display: grid; } html.defilement-bloque, html.defilement-bloque body, html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie), html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) body, html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours), html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) body { overflow: hidden; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) { background-color: var(--ouverture-fond, var(--voile-fond)); } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) { background-color: var(--voile-fond); }</style>
+<script>(function () {
+var d = document.documentElement, ss = null, ls = null;
+try { ss = window.sessionStorage; ls = window.localStorage; } catch (e) {}
+d.classList.add('js');
+var calme = false;
+try { calme = !!ls && ls.getItem('socle:calme') === 'oui'; } catch (e) {}
+if (!calme && window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) calme = true;
+if (calme) d.classList.add('calme');
+var nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+var type = nav ? nav.type : 'navigate';
+var depart = null;
+try { depart = JSON.parse(ss.getItem('socle:depart') || 'null'); ss.removeItem('socle:depart'); } catch (e) {}
+if (depart && !(Date.now() - depart.t < 15000)) depart = null;
+var retourSection = false;
+try { retourSection = !!ss.getItem('socle:calme-retour'); } catch (e) {}
+var mode = type === 'back_forward' || retourSection ? 'retour' : type === 'reload' ? 'intro' : depart ? 'voile' : 'intro';
+d.setAttribute('data-arrivee', mode);
+if (mode === 'voile' && depart.couleur) d.style.setProperty('--voile-fond', depart.couleur);
+if (type === 'reload' && 'scrollRestoration' in history) {
+if (!retourSection) history.scrollRestoration = 'manual';
+}
+try {
+var choisie = ls && ls.getItem('socle:langue');
+var langue = (d.lang || '').slice(0, 2);
+if (choisie && choisie !== langue && type === 'navigate' && !depart) {
+var alt = document.querySelector('link[rel="alternate"][hreflang="' + choisie + '"]');
+if (alt) location.replace(new URL(alt.href).pathname + location.search + location.hash);
+}
+} catch (e) {}
+setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('secours'); }, 2000);
+})();</script>
+<link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/polices/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/socle.css?v=1">
+<link rel="stylesheet" href="/assets/css/site.css?v=1">
+<link rel="modulepreload" href="/assets/js/site.js?v=1">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=1">
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/SplitText.min.js" defer></script>
+<script type="module" src="/assets/js/site.js?v=1"></script>
+<meta name="theme-color" content="#F4EEE3">
+<link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/images/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Red-Act">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Spécialités de Red-Act : communication politique, tourisme et gastronomie">
+<meta property="og:description" content="Communication politique et institutionnelle, communication touristique et gastronomique : les deux spécialités de Red-Act, en Alsace et dans les régions voisines.">
+<meta property="og:url" content="https://red-act-maquette.vercel.app/specialites">
+<meta property="og:image" content="https://red-act-maquette.vercel.app/assets/partage/specialites-fr.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Deux spécialités : la tribune et la table">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Red-Act","slogan":"L'esprit et la lettre","description":"Conseil en communication, rédaction et community management à Strasbourg, en Alsace et dans le Grand-Est, depuis 2004.","url":"https://red-act-maquette.vercel.app/","telephone":"+33388183544","email":"contact@red-act.com","foundingDate":"2004-08","founder":{"@type":"Person","name":"Stéphane Bourhis","jobTitle":"Conseil en communication"},"address":{"@type":"PostalAddress","streetAddress":"8, rue Anatole France","postalCode":"67800","addressLocality":"Hoenheim","addressCountry":"FR"},"areaServed":["Strasbourg","Alsace","Grand-Est"],"sameAs":["https://www.facebook.com/RedActalsace","https://twitter.com/red_act"]}</script>
+</head>
+<body id="haut">
+<div data-voile data-forme="trame" aria-hidden="true"><div class="voile-contenu"><svg class="voile-noeud" viewBox="0 0 64 64" width="56" height="56" aria-hidden="true"><use href="#noeud"/></svg><span data-voile-libelle>Spécialités</span></div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="noeud" viewBox="0 0 64 64"><path d="M8 34 C 18 34 22 18 32 18 C 44 18 46 40 32 42 C 20 44 22 24 34 24 C 44 24 48 34 56 34" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol></defs></svg>
+<div class="ouverture-panneau" data-ouverture aria-hidden="true">
+  <div class="intro-scene">
+  <svg class="intro-mot" viewBox="0 0 640 200" width="640" height="200">
+    <path class="intro-fil-entree" d="M-20 150 C 40 150 60 140 80 128" fill="none"/>
+    <text class="intro-red" x="78" y="140">Red</text>
+    <text class="intro-act" x="372" y="140">Act</text>
+  </svg>
+  <span class="intro-noeud" data-ouverture-objet><svg viewBox="0 0 64 64" width="64" height="64"><use href="#noeud"/></svg></span>
+  </div>
+  <p class="ouverture-ligne">Savoir faire &amp; faire savoir</p>
+</div>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<header data-entete>
+  <div class="entete-rangee">
+    <a class="entete-logo" href="/" data-libelle="Accueil">
+      <img src="/assets/images/logo.png" alt="" width="46" height="40"><span>Red-Act</span>
+    </a>
+    <nav data-nav aria-label="Navigation principale">
+      <ul><li><a href="/metiers" data-libelle="Métiers">Métiers</a></li><li><a href="/specialites" data-libelle="Spécialités" aria-current="page">Spécialités</a></li><li><a href="/references" data-libelle="Références">Références</a></li><li><a href="/contact" data-libelle="Contact">Contact</a></li></ul>
+    </nav>
+    <div class="entete-actions">
+      <a class="bouton" href="/contact#rendez-vous" data-libelle="Contact">Rendez-vous</a>
+      <button type="button" data-menu-bouton aria-controls="menu" aria-expanded="false" data-libelle-ouvrir="Menu" data-libelle-fermer="Fermer"><span data-libelle-bouton>Menu</span></button>
+      <a class="menu-sansjs" href="#menu" data-menu-lien>Menu</a>
+    </div>
+  </div>
+</header>
+<script>/* Avant le premier affichage : rangées de la navigation (même règle que ajusterNav dans assets/js/socle/entete.js)
+   et hauteur réelle de l'en-tête, pour que rien ne saute quand le JavaScript du site prend la main. */
+(function () {
+  var h = document.documentElement, u = document.querySelector('[data-nav] ul'), e = document.querySelector('[data-entete]');
+  if (u) {
+    var deborde = function () { return u.scrollWidth > u.clientWidth + 1; }, c = deborde();
+    if (c && window.matchMedia('(min-width: 900px)').matches) {
+      h.classList.add('nav-deux-rangees'); c = deborde();
+      if (c) { h.classList.add('nav-deux-lignes'); var a = u.querySelector('a'); c = !a || u.getBoundingClientRect().height > a.getBoundingClientRect().height * 2.5; }
+      if (c) h.classList.remove('nav-deux-rangees', 'nav-deux-lignes');
+    }
+    if (c) h.classList.add('nav-compacte');
+  }
+  if (e) h.style.setProperty('--entete-h', Math.round(e.getBoundingClientRect().height) + 'px');
+})();</script>
+<span id="menu-ferme" aria-hidden="true"></span>
+<div id="menu" data-menu role="dialog" aria-modal="true" aria-label="Menu">
+  <p class="menu-sansjs-fermer"><a href="#menu-ferme">Fermer</a></p>
+  <ul><li style="--i:0"><a href="/" class="menu-lien" data-libelle="Accueil">Accueil</a></li><li style="--i:1"><a href="/metiers" class="menu-lien" data-libelle="Métiers">Métiers</a></li><li style="--i:2"><a href="/specialites" class="menu-lien" data-libelle="Spécialités" aria-current="page">Spécialités</a></li><li style="--i:3"><a href="/references" class="menu-lien" data-libelle="Références">Références</a></li><li style="--i:4"><a href="/contact" class="menu-lien" data-libelle="Contact">Contact</a></li></ul>
+  <p><a class="bouton" href="tel:+33388183544">Appeler 03 88 18 35 44</a></p>
+  <p><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></p>
+</div>
+<main id="contenu" tabindex="-1">
+<div class="fil-racine" data-grille="fil">
+<section class="page-tete tete-spe" id="debut" data-fil="gauche">
+  <div class="conteneur tete-spe-texte">
+    <div>
+      <p class="surtitre tete-suite" data-anime="gsap">Nos spécialités</p>
+      <h1 class="titre-souple" data-axe><span class="ligne-masque"><span class="hero-ligne" data-anime="gsap">La tribune</span></span><span class="ligne-masque"><span class="hero-ligne hero-ligne--rouge" data-anime="gsap">et la table</span></span></h1>
+    </div>
+    <div>
+      <p class="tete-suite masque-ecran-bas" data-anime="gsap">Deux mondes où Red-Act a construit sa pratique : la communication politique et institutionnelle, et la communication touristique et gastronomique.</p>
+      <p class="hero-actions tete-suite" data-anime="gsap">
+        <a href="/contact#rendez-vous" class="bouton" data-libelle="Contact" data-action-principale data-survol="magnetique">Parler de votre projet</a>
+        <span class="hero-info" data-info-cle>Alsace et régions voisines</span>
+      </p>
+    </div>
+  </div>
+  <div class="separation" data-separation style="--part:50%">
+    <div class="separation-monde separation-monde--table">
+      <figure class="media " data-grok style="--cadrage:50% 55%">
+  <picture>
+    <img src="/assets/images/grok/specialites-ouverture-gastronomie-784.webp" srcset="/assets/images/grok/specialites-ouverture-gastronomie-480.webp 480w, /assets/images/grok/specialites-ouverture-gastronomie-784.webp 784w" sizes="100vw" alt="Mur de grès rose, rebord de fenêtre avec cruche et raisin" width="784" height="1168" fetchpriority="high" loading="eager" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <a class="separation-libelle separation-libelle--d" href="#tourisme" data-sans-transition>Tourisme &amp; gastronomie</a>
+    </div>
+    <div class="separation-monde separation-monde--tribune" data-separation-gauche data-effet="separation">
+      <figure class="media " data-grok style="--cadrage:50% 50%">
+  <picture>
+    <img src="/assets/images/grok/specialites-ouverture-politique-784.webp" srcset="/assets/images/grok/specialites-ouverture-politique-480.webp 480w, /assets/images/grok/specialites-ouverture-politique-784.webp 784w" sizes="100vw" alt="Pupitre vide sous un projecteur dans une salle sombre" width="784" height="1168" fetchpriority="high" loading="eager" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <a class="separation-libelle separation-libelle--g" href="#politique" data-sans-transition>Politique &amp; institutionnel</a>
+    </div>
+    <div class="separation-fil" data-separation-fil aria-hidden="true"></div>
+    <button type="button" class="separation-poignee" role="slider" aria-label="Part de l&#39;écran donnée à la politique" aria-valuemin="15" aria-valuemax="85" aria-valuenow="50" aria-valuetext="50 %" data-separation-poignee data-iris-centre="disque" data-grille="manipuler">
+      <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true"><use href="#noeud"/></svg>
+    </button>
+    <p class="separation-consigne" aria-hidden="true" data-audit-ignorer>Faites glisser la séparation</p>
+  </div>
+</section>
+<section class="politique" id="politique" data-fil="droite">
+  <div class="conteneur politique-grille">
+    <div>
+      <p class="surtitre" data-anime>Communication politique et institutionnelle</p>
+      <h2 class="politique-titre" data-anime="lettres">Il n&#39;y a plus d&#39;entrée en politique sans entrée en communication</h2>
+      <p data-anime>Le domaine politique doit désormais intégrer les outils des technologies de l&#39;information.</p>
+      <p data-anime>Red-Act accompagne les candidats, puis les élus, dans la conception et la gestion de leurs stratégies et de leurs opérations de communication et d&#39;implantation, en s&#39;appuyant sur un réseau de professionnels du graphisme, de la photo et de l&#39;internet.</p>
+      <p data-anime><a href="/contact?besoin=politique#rendez-vous" class="bouton" data-libelle="Contact">Parler de votre campagne</a></p>
+    </div>
+    <figure class="media politique-media" data-grok data-fx="parallaxe" style="--cadrage:40% 50%">
+  <picture>
+    <img src="/assets/images/grok/specialite-politique-1168.webp" srcset="/assets/images/grok/specialite-politique-640.webp 640w, /assets/images/grok/specialite-politique-960.webp 960w, /assets/images/grok/specialite-politique-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 45vw" alt="Salle du conseil vide, pupitre et bancs de bois" width="1168" height="784" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+  </div>
+  <div class="conteneur parcours">
+    <svg class="parcours-fil" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true" data-fx="trace"><path d="M10 30 C 140 6, 230 54, 340 30 S 560 6, 670 30 S 880 54, 990 30"/></svg>
+    <ol class="parcours-etapes" data-anime="cascade"><li><span class="parcours-noeud" aria-hidden="true"></span><span class="parcours-num">01</span> Candidature</li><li><span class="parcours-noeud" aria-hidden="true"></span><span class="parcours-num">02</span> Campagne</li><li><span class="parcours-noeud" aria-hidden="true"></span><span class="parcours-num">03</span> Élection</li><li><span class="parcours-noeud" aria-hidden="true"></span><span class="parcours-num">04</span> Mandat</li></ol>
+  </div>
+  <div class="conteneur campagne">
+    <figure class="media campagne-media" data-grok data-anime="rideau" style="--cadrage:30% 50%">
+  <picture>
+    <img src="/assets/images/grok/specialites-campagne-1168.webp" srcset="/assets/images/grok/specialites-campagne-640.webp 640w, /assets/images/grok/specialites-campagne-960.webp 960w, /assets/images/grok/specialites-campagne-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 80vw" alt="Permanence de campagne, carte et fils rouges" width="1168" height="784" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+  </div>
+</section>
+<section class="cave" id="cave" data-fx="plein-ecran" data-plein-ecran>
+  <div data-collant>
+    <figure class="media " data-grok style="--cadrage:50% 55%">
+  <picture><source media="(max-width: 760px) and (orientation: portrait)" srcset="/assets/images/grok/specialites-cave-mobile-480.webp 480w, /assets/images/grok/specialites-cave-mobile-657.webp 657w" sizes="100vw">
+    <img src="/assets/images/grok/specialites-cave-1168.webp" srcset="/assets/images/grok/specialites-cave-640.webp 640w, /assets/images/grok/specialites-cave-960.webp 960w, /assets/images/grok/specialites-cave-1168.webp 1168w" sizes="100vw" alt="Cave voûtée aux grands foudres de chêne" width="1168" height="784" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+    <p class="alsace-mot alsace-mot--g alsace-mot--clair" data-fx-ecarte="g" aria-hidden="true">Du chai</p>
+    <p class="alsace-mot alsace-mot--d" data-fx-ecarte="d" aria-hidden="true">à la table</p>
+    <h2 class="visuellement-cache">Du chai à la table</h2>
+    <p class="alsace-legende" data-fx-apres>Vin, gastronomie, tourisme, art de la table, hôtellerie : principalement en Alsace et dans les régions voisines.</p>
+  </div>
+</section>
+<section class="tourisme conteneur" id="tourisme" data-fil="gauche">
+  <div class="tourisme-tete">
+    <p class="surtitre" data-anime>Communication touristique et gastronomique</p>
+    <h2 class="titre-fil" data-titre-fil data-effet="titre-au-fil" data-grille="typo"><span class="visuellement-cache">Donner envie de venir, et de revenir</span><svg class="titre-fil-svg" aria-hidden="true" viewBox="0 0 1400 140" preserveAspectRatio="xMinYMid meet"><text x="4" y="108">Donner envie de venir, et de revenir</text></svg></h2>
+    <ul class="pastilles" data-anime="cascade"><li>Vin</li><li>Gastronomie</li><li>Tourisme</li><li>Art de la table</li><li>Hôtellerie</li></ul>
+  </div>
+  <div class="tourisme-grille">
+    <figure class="media tourisme-media" data-grok data-fx="vitesse" data-fx-force="4" style="--cadrage:55% 55%">
+  <picture>
+    <img src="/assets/images/grok/specialite-tourisme-1168.webp" srcset="/assets/images/grok/specialite-tourisme-640.webp 640w, /assets/images/grok/specialite-tourisme-960.webp 960w, /assets/images/grok/specialite-tourisme-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 45vw" alt="Table dressée dans une auberge boisée, verres à vin vides" width="1168" height="784" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+    <div>
+      <p data-anime>Créée en 2004, Red-Act développe ses solutions pour ces secteurs à l&#39;ère d&#39;internet et des réseaux sociaux : contenus personnalisés, stratégies rédactionnelles et community management.</p>
+      <p data-anime>Un rédacteur spécialisé dans le tourisme en Alsace, la gastronomie et les vins, membre et délégué régional de l&#39;APCIG.</p>
+      <h3 data-anime>Ils l&#39;ont confié à Red-Act</h3>
+      <ul class="clients" data-anime="cascade"><li>Château de Pommard</li><li>Brasserie Météor</li><li>Domaine des Grands Vins de France</li><li>Wolfberger</li><li>Ruhlmann-Schutz</li><li>Klipfel</li><li>Adam</li><li>Caveau Lorentz Klipfel</li><li>Château de Bissieux</li><li>Verte Vallée</li><li>Hostellerie du Haut Koenigsbourg</li><li>Living Room</li><li>Alsacienne de Gastronomie</li><li>Porcus</li><li>Klein d&#39;Alsace</li><li>Maison Klein</li><li>Ferme Fruitière Rothgerber</li><li>Bretzel Burgard</li><li>Roi Soleil</li><li>Maison Doriath</li><li>1741</li><li>Le Tire Bouchon</li><li>Le Meiselocker</li><li>Au bon vivant</li><li>Le Relais de la Poste</li><li>Christophe Dufossé</li><li>La Citadelle</li><li>Lucien Doriath</li><li>Le Passeport Gourmand</li><li>231 East Street</li></ul>
+      <p data-anime><a href="/contact?besoin=tourisme#rendez-vous" class="bouton" data-libelle="Contact">Parler de votre maison</a></p>
+    </div>
+    <figure class="media tourisme-media tourisme-media--2" data-grok data-fx="vitesse" data-fx-force="4" style="--cadrage:50% 55%">
+  <picture>
+    <img src="/assets/images/grok/specialites-hotellerie-1168.webp" srcset="/assets/images/grok/specialites-hotellerie-640.webp 640w, /assets/images/grok/specialites-hotellerie-960.webp 960w, /assets/images/grok/specialites-hotellerie-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 45vw" alt="Terrasse d&#39;auberge face aux vignes" width="1168" height="784" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+  </div>
+</section>
+<section class="fin fin--simple conteneur" id="fin" data-fil="droite">
+  <figure class="media fin-media" data-grok data-fx="zoom" style="--cadrage:55% 55%">
+  <picture>
+    <img src="/assets/images/grok/accueil-rencontre-1168.webp" srcset="/assets/images/grok/accueil-rencontre-640.webp 640w, /assets/images/grok/accueil-rencontre-960.webp 960w, /assets/images/grok/accueil-rencontre-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 40vw" alt="Deux cafés et un carnet sur une table de café" width="1168" height="784" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+  <div>
+    <h2 class="titre-souple" data-axe data-anime="lignes">La tribune, la table, ou les deux ?</h2>
+    <p data-anime>Un premier rendez-vous pour comprendre votre projet.</p>
+    <p class="fin-actions" data-anime><a href="/contact#rendez-vous" class="bouton" data-libelle="Contact" data-survol="magnetique">Prendre rendez-vous</a></p>
+  </div>
+</section>
+</div>
+</main>
+<footer class="pied" id="pied">
+  <div class="conteneur pied-grille">
+    <div>
+      <p class="pied-marque"><img src="/assets/images/logo.png" alt="Red-Act, l'esprit et la lettre" width="92" height="80"></p>
+      <p>8, rue Anatole France, 67800 Hoenheim<br><a href="tel:+33388183544">03 88 18 35 44</a><br><a href="mailto:contact@red-act.com">contact@red-act.com</a></p>
+    </div>
+    <nav aria-label="Sommaire">
+      <p><strong>Sommaire</strong></p>
+      <ul><li><a href="/" data-libelle="Accueil">Accueil</a></li><li><a href="/metiers" data-libelle="Métiers">Métiers</a></li><li><a href="/specialites" data-libelle="Spécialités" aria-current="page">Spécialités</a></li><li><a href="/references" data-libelle="Références">Références</a></li><li><a href="/contact" data-libelle="Contact">Contact</a></li></ul>
+    </nav>
+    <div>
+      <p><strong>Suivre Red-Act</strong></p>
+      <ul><li><a href="https://www.facebook.com/RedActalsace" target="_blank" rel="noopener">Facebook<span class="visuellement-cache"> (nouvel onglet)</span></a></li><li><a href="https://twitter.com/red_act" target="_blank" rel="noopener">X (Twitter)<span class="visuellement-cache"> (nouvel onglet)</span></a></li></ul>
+      <p><strong>Confort de lecture</strong></p>
+      <ul>
+        <li><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></li>
+        <li><a href="#haut" data-sans-transition>Retour en haut</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="conteneur pied-bas"><p>Maquette : les informations marquées « à compléter » seront fournies par Red-Act.</p><p>Mentions légales et politique de confidentialité : à compléter</p><p>© Red-Act · L&#39;esprit et la lettre</p></div>
+</footer>
+<div data-barre-fixe>
+  <a class="bouton bouton--contour" href="tel:+33388183544">Appeler</a>
+  <a class="bouton" href="/contact#rendez-vous" data-libelle="Contact">Rendez-vous</a>
+</div>
+</body>
+</html>

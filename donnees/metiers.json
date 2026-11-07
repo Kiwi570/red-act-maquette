@@ -1,0 +1,20 @@
+[
+  { "cle": "redacteur-web", "nom": "Rédacteur web", "image": "grok/metier-redacteur-web", "alt": "Brouillon imprimé, crayon rouge et ordinateur fermé", "court": "Vos sites, blogs et lettres d'information écrits pour être lus.",
+    "texte": "Écrire ou adapter les contenus de votre site, de votre blog et de vos lettres d'information, pour que votre personnalité, vos produits et votre savoir-faire trouvent leur public en ligne.",
+    "brouillon": "Optimisation sémantique de contenus multicanaux", "clair": "Des textes qu'on trouve, et qu'on a envie de lire" },
+  { "cle": "community-manager", "nom": "Community manager", "image": "grok/metier-community-manager", "alt": "Terrasse de café animée, téléphone posé face contre la table", "court": "Une stratégie éditoriale, des groupes animés, du bouche-à-oreille.",
+    "texte": "Construire une stratégie éditoriale, créer et animer des groupes, modérer les échanges : pour gagner du bouche-à-oreille et de la visibilité auprès du grand public comme des passionnés.",
+    "brouillon": "Activation de communautés à fort engagement", "clair": "Faire parler de vous, et en bien" },
+  { "cle": "concepteur-redacteur", "nom": "Concepteur-rédacteur", "image": "grok/metier-concepteur-redacteur", "alt": "Épreuves de mise en page épinglées au mur, reliées par un fil rouge", "court": "Le mot juste, à côté de la bonne image.",
+    "texte": "Adapter vos contenus existants ou créer de nouvelles formules et de nouveaux messages, pensés pour accompagner vos visuels.",
+    "brouillon": "Brand content différenciant à forte valeur ajoutée", "clair": "Le mot juste, à côté de la bonne image" },
+  { "cle": "conseil-formation", "nom": "Conseil & formation", "image": "grok/metier-conseil-formation", "alt": "Salle de formation prête, chaises en demi-cercle et tableau de papier vierge", "court": "Lancer ou refondre une campagne, former vos équipes.",
+    "texte": "Mettre en place ou refondre une campagne de communication, et former vos équipes en interne. Red-Act sert d'interface au sein de votre réseau.",
+    "brouillon": "Accompagnement transversal des parties prenantes", "clair": "Vos équipes prennent la parole" },
+  { "cle": "audit", "nom": "Audit en communication", "image": "grok/metier-audit", "alt": "Supports de communication étalés et reliés par un fil rouge", "court": "Vos outils répondent-ils encore à vos objectifs ?",
+    "texte": "Un audit sur mesure pour les entreprises, les PME, les artisans et les restaurateurs : vos outils et vos supports actuels répondent-ils encore à vos objectifs ?",
+    "brouillon": "Diagnostic 360° de votre écosystème de marque", "clair": "Ce qui marche, et ce qui ne marche plus" },
+  { "cle": "conseil-communication", "nom": "Conseil en communication", "image": "grok/metier-conseil-communication", "alt": "Table de premier rendez-vous, deux chaises face à face", "court": "Information, risques, opportunités, influence.",
+    "texte": "Gestion de l'information, détection des risques et des opportunités, stratégies d'influence : un conseil pensé pour les collectivités et les PME.",
+    "brouillon": "Pilotage stratégique de vos leviers d'influence", "clair": "Être entendu là où ça compte" }
+]

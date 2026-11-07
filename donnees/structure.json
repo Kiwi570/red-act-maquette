@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Red-Act",
+  "slogan": "L'esprit et la lettre",
+  "description": "Conseil en communication, rédaction et community management à Strasbourg, en Alsace et dans le Grand-Est, depuis 2004.",
+  "url": "https://red-act-maquette.vercel.app/",
+  "telephone": "+33388183544",
+  "email": "contact@red-act.com",
+  "foundingDate": "2004-08",
+  "founder": { "@type": "Person", "name": "Stéphane Bourhis", "jobTitle": "Conseil en communication" },
+  "address": { "@type": "PostalAddress", "streetAddress": "8, rue Anatole France", "postalCode": "67800", "addressLocality": "Hoenheim", "addressCountry": "FR" },
+  "areaServed": ["Strasbourg", "Alsace", "Grand-Est"],
+  "sameAs": ["https://www.facebook.com/RedActalsace", "https://twitter.com/red_act"]
+}

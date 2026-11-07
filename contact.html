@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="fr" data-v="1" data-curseur>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contact et rendez-vous : Red-Act, Hoenheim près de Strasbourg</title>
+<meta name="description" content="Prendre rendez-vous avec Red-Act, demander une documentation : 03 88 18 35 44, 8 rue Anatole France à Hoenheim.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://red-act-maquette.vercel.app/contact">
+<style>:root{--fond:#F4EEE3;--texte:#1B1916;--voile-fond:#1B1916;--ouverture-fond:#F4EEE3;--menu-fond:#1B1916}:root { --entete-h: 72px; --barres-h: 0px; } html { background: var(--fond); color: var(--texte); scrollbar-gutter: stable; } body { margin: 0; background: var(--fond); } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime] { opacity: 0; } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime].vu { opacity: 1; } [data-voile] { position: fixed; inset: 0; z-index: 900; background: var(--voile-fond); transform: translateY(100%); visibility: hidden; pointer-events: none; } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) [data-voile] { transform: none; visibility: visible; } html.calme [data-voile], html.secours [data-voile] { visibility: hidden !important; } .ouverture-panneau { position: fixed; inset: 0; z-index: 850; display: none; place-content: center; justify-items: center; background: var(--ouverture-fond, var(--voile-fond)); color: var(--fond); text-align: center; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouverture-panneau { display: grid; } html.defilement-bloque, html.defilement-bloque body, html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie), html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) body, html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours), html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) body { overflow: hidden; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) { background-color: var(--ouverture-fond, var(--voile-fond)); } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) { background-color: var(--voile-fond); }</style>
+<script>(function () {
+var d = document.documentElement, ss = null, ls = null;
+try { ss = window.sessionStorage; ls = window.localStorage; } catch (e) {}
+d.classList.add('js');
+var calme = false;
+try { calme = !!ls && ls.getItem('socle:calme') === 'oui'; } catch (e) {}
+if (!calme && window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) calme = true;
+if (calme) d.classList.add('calme');
+var nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+var type = nav ? nav.type : 'navigate';
+var depart = null;
+try { depart = JSON.parse(ss.getItem('socle:depart') || 'null'); ss.removeItem('socle:depart'); } catch (e) {}
+if (depart && !(Date.now() - depart.t < 15000)) depart = null;
+var retourSection = false;
+try { retourSection = !!ss.getItem('socle:calme-retour'); } catch (e) {}
+var mode = type === 'back_forward' || retourSection ? 'retour' : type === 'reload' ? 'intro' : depart ? 'voile' : 'intro';
+d.setAttribute('data-arrivee', mode);
+if (mode === 'voile' && depart.couleur) d.style.setProperty('--voile-fond', depart.couleur);
+if (type === 'reload' && 'scrollRestoration' in history) {
+if (!retourSection) history.scrollRestoration = 'manual';
+}
+try {
+var choisie = ls && ls.getItem('socle:langue');
+var langue = (d.lang || '').slice(0, 2);
+if (choisie && choisie !== langue && type === 'navigate' && !depart) {
+var alt = document.querySelector('link[rel="alternate"][hreflang="' + choisie + '"]');
+if (alt) location.replace(new URL(alt.href).pathname + location.search + location.hash);
+}
+} catch (e) {}
+setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('secours'); }, 2000);
+})();</script>
+<link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/polices/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/socle.css?v=1">
+<link rel="stylesheet" href="/assets/css/site.css?v=1">
+<link rel="modulepreload" href="/assets/js/site.js?v=1">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=1">
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/SplitText.min.js" defer></script>
+<script type="module" src="/assets/js/site.js?v=1"></script>
+<meta name="theme-color" content="#F4EEE3">
+<link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/images/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Red-Act">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Contact et rendez-vous : Red-Act, Hoenheim près de Strasbourg">
+<meta property="og:description" content="Prendre rendez-vous avec Red-Act, demander une documentation : 03 88 18 35 44, 8 rue Anatole France à Hoenheim.">
+<meta property="og:url" content="https://red-act-maquette.vercel.app/contact">
+<meta property="og:image" content="https://red-act-maquette.vercel.app/assets/partage/contact-fr.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Contacter Red-Act : enveloppe nouée d&#39;un fil rouge">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Red-Act","slogan":"L'esprit et la lettre","description":"Conseil en communication, rédaction et community management à Strasbourg, en Alsace et dans le Grand-Est, depuis 2004.","url":"https://red-act-maquette.vercel.app/","telephone":"+33388183544","email":"contact@red-act.com","foundingDate":"2004-08","founder":{"@type":"Person","name":"Stéphane Bourhis","jobTitle":"Conseil en communication"},"address":{"@type":"PostalAddress","streetAddress":"8, rue Anatole France","postalCode":"67800","addressLocality":"Hoenheim","addressCountry":"FR"},"areaServed":["Strasbourg","Alsace","Grand-Est"],"sameAs":["https://www.facebook.com/RedActalsace","https://twitter.com/red_act"]}</script>
+</head>
+<body id="haut">
+<div data-voile data-forme="trame" aria-hidden="true"><div class="voile-contenu"><svg class="voile-noeud" viewBox="0 0 64 64" width="56" height="56" aria-hidden="true"><use href="#noeud"/></svg><span data-voile-libelle>Contact</span></div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="noeud" viewBox="0 0 64 64"><path d="M8 34 C 18 34 22 18 32 18 C 44 18 46 40 32 42 C 20 44 22 24 34 24 C 44 24 48 34 56 34" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol></defs></svg>
+<div class="ouverture-panneau" data-ouverture aria-hidden="true">
+  <div class="intro-scene">
+  <svg class="intro-mot" viewBox="0 0 640 200" width="640" height="200">
+    <path class="intro-fil-entree" d="M-20 150 C 40 150 60 140 80 128" fill="none"/>
+    <text class="intro-red" x="78" y="140">Red</text>
+    <text class="intro-act" x="372" y="140">Act</text>
+  </svg>
+  <span class="intro-noeud" data-ouverture-objet><svg viewBox="0 0 64 64" width="64" height="64"><use href="#noeud"/></svg></span>
+  </div>
+  <p class="ouverture-ligne">Savoir faire &amp; faire savoir</p>
+</div>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<header data-entete>
+  <div class="entete-rangee">
+    <a class="entete-logo" href="/" data-libelle="Accueil">
+      <img src="/assets/images/logo.png" alt="" width="46" height="40"><span>Red-Act</span>
+    </a>
+    <nav data-nav aria-label="Navigation principale">
+      <ul><li><a href="/metiers" data-libelle="Métiers">Métiers</a></li><li><a href="/specialites" data-libelle="Spécialités">Spécialités</a></li><li><a href="/references" data-libelle="Références">Références</a></li><li><a href="/contact" data-libelle="Contact" aria-current="page">Contact</a></li></ul>
+    </nav>
+    <div class="entete-actions">
+      <a class="bouton" href="/contact#rendez-vous" data-libelle="Contact">Rendez-vous</a>
+      <button type="button" data-menu-bouton aria-controls="menu" aria-expanded="false" data-libelle-ouvrir="Menu" data-libelle-fermer="Fermer"><span data-libelle-bouton>Menu</span></button>
+      <a class="menu-sansjs" href="#menu" data-menu-lien>Menu</a>
+    </div>
+  </div>
+</header>
+<script>/* Avant le premier affichage : rangées de la navigation (même règle que ajusterNav dans assets/js/socle/entete.js)
+   et hauteur réelle de l'en-tête, pour que rien ne saute quand le JavaScript du site prend la main. */
+(function () {
+  var h = document.documentElement, u = document.querySelector('[data-nav] ul'), e = document.querySelector('[data-entete]');
+  if (u) {
+    var deborde = function () { return u.scrollWidth > u.clientWidth + 1; }, c = deborde();
+    if (c && window.matchMedia('(min-width: 900px)').matches) {
+      h.classList.add('nav-deux-rangees'); c = deborde();
+      if (c) { h.classList.add('nav-deux-lignes'); var a = u.querySelector('a'); c = !a || u.getBoundingClientRect().height > a.getBoundingClientRect().height * 2.5; }
+      if (c) h.classList.remove('nav-deux-rangees', 'nav-deux-lignes');
+    }
+    if (c) h.classList.add('nav-compacte');
+  }
+  if (e) h.style.setProperty('--entete-h', Math.round(e.getBoundingClientRect().height) + 'px');
+})();</script>
+<span id="menu-ferme" aria-hidden="true"></span>
+<div id="menu" data-menu role="dialog" aria-modal="true" aria-label="Menu">
+  <p class="menu-sansjs-fermer"><a href="#menu-ferme">Fermer</a></p>
+  <ul><li style="--i:0"><a href="/" class="menu-lien" data-libelle="Accueil">Accueil</a></li><li style="--i:1"><a href="/metiers" class="menu-lien" data-libelle="Métiers">Métiers</a></li><li style="--i:2"><a href="/specialites" class="menu-lien" data-libelle="Spécialités">Spécialités</a></li><li style="--i:3"><a href="/references" class="menu-lien" data-libelle="Références">Références</a></li><li style="--i:4"><a href="/contact" class="menu-lien" data-libelle="Contact" aria-current="page">Contact</a></li></ul>
+  <p><a class="bouton" href="tel:+33388183544">Appeler 03 88 18 35 44</a></p>
+  <p><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></p>
+</div>
+<main id="contenu" tabindex="-1">
+<div class="fil-racine" data-grille="fil">
+<section class="tete-contact" id="debut" data-fil="gauche">
+  <div class="conteneur tete-contact-texte">
+    <div>
+      <p class="surtitre tete-suite" data-anime="gsap">Contact</p>
+      <h1 class="titre-souple" data-axe><span class="ligne-masque"><span class="hero-ligne" data-anime="gsap">Faisons connaissance</span></span></h1>
+      <p class="tete-suite masque-ecran-tres-bas" data-anime="gsap">Un besoin en contenus, en community management ou en conseil ? Appelez, écrivez, ou demandez un rendez-vous.</p>
+    </div>
+    <div class="tete-contact-num tete-suite" data-anime="gsap">
+      <a class="numero" href="tel:+33388183544" data-action-principale>03 88 18 35 44</a>
+      <p class="hero-info" data-info-cle>8, rue Anatole France · 67800 Hoenheim</p>
+      <p class="tete-contact-liens"><a href="mailto:contact@red-act.com">contact@red-act.com</a> · <a href="#rendez-vous" data-sans-transition>Demander un rendez-vous</a></p>
+    </div>
+  </div>
+  <div class="bandeau-rue">
+    <figure class="media bandeau-media" data-grok data-fx="parallaxe" data-fx-force="8" style="--cadrage:50% 45%;--cadrage-mobile:50% 50%">
+  <picture><source media="(max-width: 760px) and (orientation: portrait)" srcset="/assets/images/grok/contact-rue-mobile-480.webp 480w, /assets/images/grok/contact-rue-mobile-657.webp 657w" sizes="100vw">
+    <img src="/assets/images/grok/contact-rue-1168.webp" srcset="/assets/images/grok/contact-rue-640.webp 640w, /assets/images/grok/contact-rue-960.webp 960w, /assets/images/grok/contact-rue-1168.webp 1168w" sizes="100vw" alt="Rue résidentielle arborée un matin d&#39;automne" width="1168" height="784" fetchpriority="high" loading="eager" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+    <span class="filet-noeud filet-noeud--rue" data-iris-centre="disque" aria-hidden="true"><svg viewBox="0 0 64 64" width="44" height="44"><use href="#noeud"/></svg></span>
+  </div>
+</section>
+<section class="rdv conteneur" id="rendez-vous" data-fil="droite">
+  <div class="rdv-tete">
+    <p class="surtitre" data-anime>Rendez-vous</p>
+    <h2 class="titre-fil" data-titre-fil data-effet="titre-au-fil" data-grille="typo"><span class="visuellement-cache">Demander un rendez-vous</span><svg class="titre-fil-svg" aria-hidden="true" viewBox="0 0 1500 140" preserveAspectRatio="xMinYMid meet"><text x="4" y="108">Demander un rendez-vous</text></svg></h2>
+    <p data-anime>Trois étapes : votre besoin, vous, vos coordonnées. Rien n&#39;est envoyé : c&#39;est une maquette.</p>
+  </div>
+  <div class="rdv-grille">
+    <form class="formulaire" data-formulaire data-etapes action="#" method="post" aria-describedby="rdv-etape">
+      <ol class="etapes-barre" aria-hidden="true">
+        <li data-etape-pastille="1" class="est-active"><span>1</span> Votre besoin</li>
+        <li data-etape-pastille="2"><span>2</span> Vous</li>
+        <li data-etape-pastille="3"><span>3</span> Vos coordonnées</li>
+      </ol>
+      <p class="visuellement-cache" id="rdv-etape" aria-live="polite" data-etape-annonce>Votre besoin</p>
+      <div class="etapes-cadre" data-etapes-cadre>
+        <fieldset class="etape-form" data-etape="1">
+          <legend>De quoi avez-vous besoin ?</legend>
+          <div class="choix-grille"><label class="choix"><input type="radio" name="besoin" value="redacteur-web" required data-recap="Rédacteur web"><span>Rédacteur web</span></label><label class="choix"><input type="radio" name="besoin" value="community-manager" data-recap="Community manager"><span>Community manager</span></label><label class="choix"><input type="radio" name="besoin" value="concepteur-redacteur" data-recap="Concepteur-rédacteur"><span>Concepteur-rédacteur</span></label><label class="choix"><input type="radio" name="besoin" value="conseil-formation" data-recap="Conseil &amp; formation"><span>Conseil &amp; formation</span></label><label class="choix"><input type="radio" name="besoin" value="audit" data-recap="Audit en communication"><span>Audit en communication</span></label><label class="choix"><input type="radio" name="besoin" value="conseil-communication" data-recap="Conseil en communication"><span>Conseil en communication</span></label><label class="choix"><input type="radio" name="besoin" value="politique" data-recap="Communication politique et institutionnelle"><span>Communication politique et institutionnelle</span></label><label class="choix"><input type="radio" name="besoin" value="tourisme" data-recap="Tourisme et gastronomie"><span>Tourisme et gastronomie</span></label><label class="choix"><input type="radio" name="besoin" value="documentation" data-recap="Recevoir une documentation"><span>Recevoir une documentation</span></label><label class="choix"><input type="radio" name="besoin" value="autre" data-recap="Je ne sais pas encore"><span>Je ne sais pas encore</span></label></div>
+          <p class="champ-erreur" data-erreur-etape hidden>Choisissez une réponse pour continuer.</p>
+        </fieldset>
+        <fieldset class="etape-form" data-etape="2" hidden>
+          <legend>Vous êtes…</legend>
+          <div class="choix-grille"><label class="choix"><input type="radio" name="profil" value="Un particulier" required data-recap="Un particulier"><span>Un particulier</span></label><label class="choix"><input type="radio" name="profil" value="Une entreprise ou une PME" data-recap="Une entreprise ou une PME"><span>Une entreprise ou une PME</span></label><label class="choix"><input type="radio" name="profil" value="Un artisan, un chef, un restaurateur" data-recap="Un artisan, un chef, un restaurateur"><span>Un artisan, un chef, un restaurateur</span></label><label class="choix"><input type="radio" name="profil" value="Un hôtelier ou un acteur du tourisme" data-recap="Un hôtelier ou un acteur du tourisme"><span>Un hôtelier ou un acteur du tourisme</span></label><label class="choix"><input type="radio" name="profil" value="Une collectivité ou une institution" data-recap="Une collectivité ou une institution"><span>Une collectivité ou une institution</span></label><label class="choix"><input type="radio" name="profil" value="Une agence de communication" data-recap="Une agence de communication"><span>Une agence de communication</span></label><label class="choix"><input type="radio" name="profil" value="Un candidat ou un élu" data-recap="Un candidat ou un élu"><span>Un candidat ou un élu</span></label></div>
+          <p class="champ-erreur" data-erreur-etape hidden>Choisissez une réponse pour continuer.</p>
+        </fieldset>
+        <fieldset class="etape-form" data-etape="3" hidden>
+          <legend>Vos coordonnées</legend>
+          <div class="champs">
+            <p class="champ"><label for="f-nom">Nom et prénom</label><input id="f-nom" name="nom" autocomplete="name" required data-recap-champ></p>
+            <p class="champ"><label for="f-structure">Entreprise ou structure (facultatif)</label><input id="f-structure" name="structure" autocomplete="organization" data-recap-champ></p>
+            <p class="champ"><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" autocomplete="email" required data-recap-champ></p>
+            <p class="champ"><label for="f-tel">Téléphone</label><input id="f-tel" name="telephone" type="tel" autocomplete="tel" required data-recap-champ></p>
+            <p class="champ champ--large"><label for="f-creneau">Moment préféré pour être rappelé</label><select id="f-creneau" name="creneau"><option>Le matin</option><option>L&#39;après-midi</option><option>Peu importe</option></select></p>
+            <p class="champ champ--large"><label for="f-message">Votre projet en quelques mots (facultatif)</label><textarea id="f-message" name="message" rows="3"></textarea></p>
+          </div>
+          <p class="rgpd">Vos coordonnées servent uniquement à vous rappeler au sujet de votre demande. Politique de confidentialité : à compléter.</p>
+        </fieldset>
+      </div>
+      <div class="formulaire-actions">
+        <button type="button" class="bouton bouton--contour" data-etape-prec hidden>Étape précédente</button>
+        <button type="button" class="bouton" data-etape-suiv>Étape suivante</button>
+        <button type="submit" class="bouton" data-grille="retour" data-envoi hidden>Envoyer la demande</button>
+      </div>
+      <p class="message-envoi" data-message-envoi data-texte="Demande simulée : rien n&#39;a été envoyé. Sur le site définitif, Red-Act reçoit votre demande et vous rappelle." tabindex="-1" hidden></p>
+      <p class="message-noue" data-message-noue hidden>Votre demande est nouée au réseau. <button type="button" class="lien" data-recommencer>Faire une autre demande</button></p>
+    </form>
+    <aside class="recap" data-collant>
+      <h3>Votre demande</h3>
+      <dl class="recap-liste" data-recap-liste><div><dt class="visuellement-cache">Votre besoin</dt><dd>Choisissez un besoin pour commencer.</dd></div></dl>
+      <div class="recap-filet" data-effet="noeud-vous" data-visuel>
+        <canvas class="filet" data-filet="" aria-hidden="true" data-audit-ignorer></canvas>
+        <span class="filet-noeud filet-noeud--petit" aria-hidden="true"><svg viewBox="0 0 64 64" width="30" height="30"><use href="#noeud"/></svg></span>
+      </div>
+    </aside>
+  </div>
+</section>
+<section class="acces" id="acces" data-fil="gauche">
+  <div class="mots-geants mots-geants--acces" data-fx="mots-geants" aria-hidden="true" data-ruban data-visuel data-audit-ignorer>
+    <p data-fx-rangee>Strasbourg · Hoenheim · Alsace · Grand-Est · Strasbourg · Hoenheim · Alsace · Grand-Est · Strasbourg · Hoenheim · Alsace · Grand-Est ·</p>
+  </div>
+  <div class="conteneur acces-grille">
+    <div>
+      <p class="surtitre" data-anime>Accès</p>
+      <h2 class="titre-souple" data-axe data-anime="lignes">À Hoenheim, aux portes de Strasbourg</h2>
+      <p data-anime>Red-Act intervient à Strasbourg, en Alsace et dans tout le Grand-Est.</p>
+      <p data-anime>8, rue Anatole France, 67800 Hoenheim<br><a href="tel:+33388183544">03 88 18 35 44</a><br><a href="mailto:contact@red-act.com">contact@red-act.com</a></p>
+      <p class="mention" data-anime>Horaires : à compléter</p>
+    </div>
+    <figure class="carte" data-visuel>
+      <svg viewBox="0 0 600 520" role="img" aria-label="Carte schématique : Hoenheim au nord de Strasbourg, dans le Grand-Est" data-fx="trace">
+        <path class="carte-region" d="M120 40 L 330 30 L 420 70 L 470 60 L 520 120 L 500 220 L 470 330 L 455 470 L 380 500 L 330 430 L 250 400 L 160 420 L 90 360 L 60 250 L 80 140 Z"/>
+        <path class="carte-rhin" data-fx-trait d="M520 120 C 505 170 495 200 488 240 S 470 330 462 380 S 455 450 455 470"/>
+        <path class="carte-fil" data-fx-trait d="M168 150 C 240 170 300 200 362 214 M 205 228 C 260 230 320 222 362 214 M 362 214 C 380 260 400 300 410 330 M 410 330 C 420 380 430 410 438 430"/>
+        <g class="carte-villes">
+          <circle cx="168" cy="150" r="6"/><text x="150" y="138" text-anchor="end">Metz</text>
+          <circle cx="205" cy="228" r="6"/><text x="190" y="248" text-anchor="end">Nancy</text>
+          <circle cx="410" cy="330" r="6"/><text x="396" y="336" text-anchor="end">Colmar</text>
+          <circle cx="438" cy="430" r="6"/><text x="424" y="436" text-anchor="end">Mulhouse</text>
+          <circle cx="362" cy="214" r="8" class="carte-strasbourg"/><text x="346" y="240" text-anchor="end" class="carte-fort">Strasbourg</text>
+          <circle cx="370" cy="196" r="7" class="carte-hoenheim"/><text x="384" y="186" class="carte-fort carte-rouge">Hoenheim</text>
+          <text x="500" y="300" class="carte-rhin-nom" transform="rotate(80 500 300)">Rhin</text>
+        </g>
+      </svg>
+      <figcaption>Carte schématique, non à l&#39;échelle</figcaption>
+    </figure>
+  </div>
+</section>
+</div>
+</main>
+<footer class="pied" id="pied">
+  <div class="conteneur pied-grille">
+    <div>
+      <p class="pied-marque"><img src="/assets/images/logo.png" alt="Red-Act, l'esprit et la lettre" width="92" height="80"></p>
+      <p>8, rue Anatole France, 67800 Hoenheim<br><a href="tel:+33388183544">03 88 18 35 44</a><br><a href="mailto:contact@red-act.com">contact@red-act.com</a></p>
+    </div>
+    <nav aria-label="Sommaire">
+      <p><strong>Sommaire</strong></p>
+      <ul><li><a href="/" data-libelle="Accueil">Accueil</a></li><li><a href="/metiers" data-libelle="Métiers">Métiers</a></li><li><a href="/specialites" data-libelle="Spécialités">Spécialités</a></li><li><a href="/references" data-libelle="Références">Références</a></li><li><a href="/contact" data-libelle="Contact" aria-current="page">Contact</a></li></ul>
+    </nav>
+    <div>
+      <p><strong>Suivre Red-Act</strong></p>
+      <ul><li><a href="https://www.facebook.com/RedActalsace" target="_blank" rel="noopener">Facebook<span class="visuellement-cache"> (nouvel onglet)</span></a></li><li><a href="https://twitter.com/red_act" target="_blank" rel="noopener">X (Twitter)<span class="visuellement-cache"> (nouvel onglet)</span></a></li></ul>
+      <p><strong>Confort de lecture</strong></p>
+      <ul>
+        <li><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></li>
+        <li><a href="#haut" data-sans-transition>Retour en haut</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="conteneur pied-bas"><p>Maquette : les informations marquées « à compléter » seront fournies par Red-Act.</p><p>Mentions légales et politique de confidentialité : à compléter</p><p>© Red-Act · L&#39;esprit et la lettre</p></div>
+</footer>
+<div data-barre-fixe>
+  <a class="bouton bouton--contour" href="tel:+33388183544">Appeler</a>
+  <a class="bouton" href="/contact#rendez-vous" data-libelle="Contact">Rendez-vous</a>
+</div>
+</body>
+</html>

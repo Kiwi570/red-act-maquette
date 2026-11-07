@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="fr" data-v="1" data-curseur>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Références de Red-Act : 90 clients depuis 2004</title>
+<meta name="description" content="Agences, vignerons, restaurateurs, institutions, industriels : le réseau des clients de Red-Act depuis 2004.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://red-act-maquette.vercel.app/references">
+<style>:root{--fond:#F4EEE3;--texte:#1B1916;--voile-fond:#1B1916;--ouverture-fond:#F4EEE3;--menu-fond:#1B1916}:root { --entete-h: 72px; --barres-h: 0px; } html { background: var(--fond); color: var(--texte); scrollbar-gutter: stable; } body { margin: 0; background: var(--fond); } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime] { opacity: 0; } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime].vu { opacity: 1; } [data-voile] { position: fixed; inset: 0; z-index: 900; background: var(--voile-fond); transform: translateY(100%); visibility: hidden; pointer-events: none; } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) [data-voile] { transform: none; visibility: visible; } html.calme [data-voile], html.secours [data-voile] { visibility: hidden !important; } .ouverture-panneau { position: fixed; inset: 0; z-index: 850; display: none; place-content: center; justify-items: center; background: var(--ouverture-fond, var(--voile-fond)); color: var(--fond); text-align: center; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouverture-panneau { display: grid; } html.defilement-bloque, html.defilement-bloque body, html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie), html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) body, html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours), html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) body { overflow: hidden; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) { background-color: var(--ouverture-fond, var(--voile-fond)); } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) { background-color: var(--voile-fond); }</style>
+<script>(function () {
+var d = document.documentElement, ss = null, ls = null;
+try { ss = window.sessionStorage; ls = window.localStorage; } catch (e) {}
+d.classList.add('js');
+var calme = false;
+try { calme = !!ls && ls.getItem('socle:calme') === 'oui'; } catch (e) {}
+if (!calme && window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) calme = true;
+if (calme) d.classList.add('calme');
+var nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+var type = nav ? nav.type : 'navigate';
+var depart = null;
+try { depart = JSON.parse(ss.getItem('socle:depart') || 'null'); ss.removeItem('socle:depart'); } catch (e) {}
+if (depart && !(Date.now() - depart.t < 15000)) depart = null;
+var retourSection = false;
+try { retourSection = !!ss.getItem('socle:calme-retour'); } catch (e) {}
+var mode = type === 'back_forward' || retourSection ? 'retour' : type === 'reload' ? 'intro' : depart ? 'voile' : 'intro';
+d.setAttribute('data-arrivee', mode);
+if (mode === 'voile' && depart.couleur) d.style.setProperty('--voile-fond', depart.couleur);
+if (type === 'reload' && 'scrollRestoration' in history) {
+if (!retourSection) history.scrollRestoration = 'manual';
+}
+try {
+var choisie = ls && ls.getItem('socle:langue');
+var langue = (d.lang || '').slice(0, 2);
+if (choisie && choisie !== langue && type === 'navigate' && !depart) {
+var alt = document.querySelector('link[rel="alternate"][hreflang="' + choisie + '"]');
+if (alt) location.replace(new URL(alt.href).pathname + location.search + location.hash);
+}
+} catch (e) {}
+setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('secours'); }, 2000);
+})();</script>
+<link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/polices/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/socle.css?v=1">
+<link rel="stylesheet" href="/assets/css/site.css?v=1">
+<link rel="modulepreload" href="/assets/js/site.js?v=1">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=1">
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/SplitText.min.js" defer></script>
+<script type="module" src="/assets/js/site.js?v=1"></script>
+<meta name="theme-color" content="#F4EEE3">
+<link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/images/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Red-Act">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Références de Red-Act : 90 clients depuis 2004">
+<meta property="og:description" content="Agences, vignerons, restaurateurs, institutions, industriels : le réseau des clients de Red-Act depuis 2004.">
+<meta property="og:url" content="https://red-act-maquette.vercel.app/references">
+<meta property="og:image" content="https://red-act-maquette.vercel.app/assets/partage/references-fr.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Le réseau des références de Red-Act, villes reliées par des routes de lumière">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Red-Act","slogan":"L'esprit et la lettre","description":"Conseil en communication, rédaction et community management à Strasbourg, en Alsace et dans le Grand-Est, depuis 2004.","url":"https://red-act-maquette.vercel.app/","telephone":"+33388183544","email":"contact@red-act.com","foundingDate":"2004-08","founder":{"@type":"Person","name":"Stéphane Bourhis","jobTitle":"Conseil en communication"},"address":{"@type":"PostalAddress","streetAddress":"8, rue Anatole France","postalCode":"67800","addressLocality":"Hoenheim","addressCountry":"FR"},"areaServed":["Strasbourg","Alsace","Grand-Est"],"sameAs":["https://www.facebook.com/RedActalsace","https://twitter.com/red_act"]}</script>
+</head>
+<body id="haut">
+<div data-voile data-forme="trame" aria-hidden="true"><div class="voile-contenu"><svg class="voile-noeud" viewBox="0 0 64 64" width="56" height="56" aria-hidden="true"><use href="#noeud"/></svg><span data-voile-libelle>Références</span></div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="noeud" viewBox="0 0 64 64"><path d="M8 34 C 18 34 22 18 32 18 C 44 18 46 40 32 42 C 20 44 22 24 34 24 C 44 24 48 34 56 34" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol></defs></svg>
+<div class="ouverture-panneau" data-ouverture aria-hidden="true">
+  <div class="intro-scene">
+  <svg class="intro-mot" viewBox="0 0 640 200" width="640" height="200">
+    <path class="intro-fil-entree" d="M-20 150 C 40 150 60 140 80 128" fill="none"/>
+    <text class="intro-red" x="78" y="140">Red</text>
+    <text class="intro-act" x="372" y="140">Act</text>
+  </svg>
+  <span class="intro-noeud" data-ouverture-objet><svg viewBox="0 0 64 64" width="64" height="64"><use href="#noeud"/></svg></span>
+  </div>
+  <p class="ouverture-ligne">Savoir faire &amp; faire savoir</p>
+</div>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<header data-entete>
+  <div class="entete-rangee">
+    <a class="entete-logo" href="/" data-libelle="Accueil">
+      <img src="/assets/images/logo.png" alt="" width="46" height="40"><span>Red-Act</span>
+    </a>
+    <nav data-nav aria-label="Navigation principale">
+      <ul><li><a href="/metiers" data-libelle="Métiers">Métiers</a></li><li><a href="/specialites" data-libelle="Spécialités">Spécialités</a></li><li><a href="/references" data-libelle="Références" aria-current="page">Références</a></li><li><a href="/contact" data-libelle="Contact">Contact</a></li></ul>
+    </nav>
+    <div class="entete-actions">
+      <a class="bouton" href="/contact#rendez-vous" data-libelle="Contact">Rendez-vous</a>
+      <button type="button" data-menu-bouton aria-controls="menu" aria-expanded="false" data-libelle-ouvrir="Menu" data-libelle-fermer="Fermer"><span data-libelle-bouton>Menu</span></button>
+      <a class="menu-sansjs" href="#menu" data-menu-lien>Menu</a>
+    </div>
+  </div>
+</header>
+<script>/* Avant le premier affichage : rangées de la navigation (même règle que ajusterNav dans assets/js/socle/entete.js)
+   et hauteur réelle de l'en-tête, pour que rien ne saute quand le JavaScript du site prend la main. */
+(function () {
+  var h = document.documentElement, u = document.querySelector('[data-nav] ul'), e = document.querySelector('[data-entete]');
+  if (u) {
+    var deborde = function () { return u.scrollWidth > u.clientWidth + 1; }, c = deborde();
+    if (c && window.matchMedia('(min-width: 900px)').matches) {
+      h.classList.add('nav-deux-rangees'); c = deborde();
+      if (c) { h.classList.add('nav-deux-lignes'); var a = u.querySelector('a'); c = !a || u.getBoundingClientRect().height > a.getBoundingClientRect().height * 2.5; }
+      if (c) h.classList.remove('nav-deux-rangees', 'nav-deux-lignes');
+    }
+    if (c) h.classList.add('nav-compacte');
+  }
+  if (e) h.style.setProperty('--entete-h', Math.round(e.getBoundingClientRect().height) + 'px');
+})();</script>
+<span id="menu-ferme" aria-hidden="true"></span>
+<div id="menu" data-menu role="dialog" aria-modal="true" aria-label="Menu">
+  <p class="menu-sansjs-fermer"><a href="#menu-ferme">Fermer</a></p>
+  <ul><li style="--i:0"><a href="/" class="menu-lien" data-libelle="Accueil">Accueil</a></li><li style="--i:1"><a href="/metiers" class="menu-lien" data-libelle="Métiers">Métiers</a></li><li style="--i:2"><a href="/specialites" class="menu-lien" data-libelle="Spécialités">Spécialités</a></li><li style="--i:3"><a href="/references" class="menu-lien" data-libelle="Références" aria-current="page">Références</a></li><li style="--i:4"><a href="/contact" class="menu-lien" data-libelle="Contact">Contact</a></li></ul>
+  <p><a class="bouton" href="tel:+33388183544">Appeler 03 88 18 35 44</a></p>
+  <p><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></p>
+</div>
+<main id="contenu" tabindex="-1">
+<div class="fil-racine page-nuit" data-grille="fil">
+<section class="tete-ref" id="debut" data-fil="gauche">
+  <div class="tete-ref-scene" data-grille="manipuler">
+    <figure class="media tete-ref-media" data-grok style="--cadrage:60% 60%;--cadrage-mobile:50% 70%">
+  <picture><source media="(max-width: 760px) and (orientation: portrait)" srcset="/assets/images/grok/references-ouverture-mobile-480.webp 480w, /assets/images/grok/references-ouverture-mobile-657.webp 657w" sizes="100vw">
+    <img src="/assets/images/grok/references-ouverture-1168.webp" srcset="/assets/images/grok/references-ouverture-640.webp 640w, /assets/images/grok/references-ouverture-960.webp 960w, /assets/images/grok/references-ouverture-1168.webp 1168w" sizes="100vw" alt="Vue de nuit d&#39;une plaine, villes reliées par des routes de lumière" width="1168" height="784" fetchpriority="high" loading="eager" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+    <canvas class="filet" data-effet="filet-references" data-souris data-filet="ADVISA~agences|ACTWEB~agences|2 EXVIA~agences|LATITUDE~agences|CLAUDE VICTOR~agences|PROSPECTIV&#39;~agences|METRONOME~agences|EUROPE INTERNET~agences|DEVITO WALDORFF~agences|AKALMIE~agences|PERFORMANCES CONSEIL~agences|INFRA~agences|GROUPE GET~agences|NOVEIS~agences|RMP~agences|ANIMAWEB~agences|WICTORY~agences|GREENCUBE~agences|Diatem~numerique|Swing Mobility~numerique|ABW~numerique|Abekom~numerique|OneMedia~numerique|Cyberworkers~numerique|Kaliasys~numerique|Unitéo~numerique|One Infinite Loop~numerique|Ventana Medical Systems (Roche Group)~sante|Création International~sante|Dermovitalia~sante|Made in Alsace~presse|Cozy Magazine~presse|Les Pros s&#39;animent~presse|L&#39;Express~presse|Opéra Construction~immobilier|Sainte Maxime Immobilier~immobilier|Groupe ICADE~immobilier|2AImmobilier~immobilier|Alsaterre~immobilier|Immobilière 3B~immobilier|Château de Pommard~vins|Brasserie Météor~vins|Domaine des Grands Vins de France~vins|Wolfberger~vins|Ruhlmann-Schutz~vins|Klipfel~vins|Adam~vins|Caveau Lorentz Klipfel~vins|Château de Bissieux~gastronomie|Verte Vallée~gastronomie|Hostellerie du Haut Koenigsbourg~gastronomie|Living Room~gastronomie|Alsacienne de Gastronomie~gastronomie|Porcus~gastronomie|Klein d&#39;Alsace~gastronomie|Maison Klein~gastronomie|Ferme Fruitière Rothgerber~gastronomie|Bretzel Burgard~gastronomie|Roi Soleil~gastronomie|Maison Doriath~gastronomie|1741~gastronomie|Le Tire Bouchon~gastronomie|Le Meiselocker~gastronomie|Au bon vivant~gastronomie|Le Relais de la Poste~gastronomie|Christophe Dufossé~gastronomie|La Citadelle~gastronomie|Lucien Doriath~gastronomie|Le Passeport Gourmand~gastronomie|231 East Street~gastronomie|AB Corporate Aviation~luxe|MGM~luxe|Heuft France~industrie|Axal déménagements~industrie|Peugeot Strasbourg~industrie|Imprimerie Grai~industrie|Carré Blanc~industrie|Labonal~industrie|Coop Alsace~industrie|GLS Sécurité~industrie|Maison de l&#39;Alsace~institutions|Onac des Vosges~institutions|Électricité de Strasbourg~institutions|Adira~institutions|Indibatp~institutions|Caisse des Monuments Nationaux~institutions|Medef~institutions|CC Pfaffenhoffen~institutions|Collectivité européenne d&#39;Alsace~institutions|CC Pays de Brumath~institutions" role="img" aria-label="Filet des 90 références de Red-Act" data-audit-ignorer></canvas>
+    <span class="filet-noeud" data-iris-centre="disque" aria-hidden="true"><svg viewBox="0 0 64 64" width="44" height="44"><use href="#noeud"/></svg></span>
+  </div>
+  <div class="conteneur tete-ref-texte">
+    <p class="surtitre tete-suite" data-anime="gsap">Nos références</p>
+    <h1 class="titre-souple" data-axe><span class="ligne-masque"><span class="hero-ligne" data-anime="gsap">Un réseau</span></span><span class="ligne-masque"><span class="hero-ligne hero-ligne--rouge" data-anime="gsap">de 90 noms</span></span></h1>
+    <p class="tete-suite masque-ecran-bas" data-anime="gsap">Agences, vignerons, restaurateurs, industriels, institutions : ils ont confié leurs mots à Red-Act. Choisissez un secteur, le filet tire ses nœuds vers vous.</p>
+    <p class="hero-actions tete-suite" data-anime="gsap">
+      <a href="/contact#rendez-vous" class="bouton" data-libelle="Contact" data-action-principale data-survol="magnetique">Prendre rendez-vous</a>
+      <span class="hero-info" data-info-cle>10 secteurs, des agences aux institutions</span>
+    </p>
+  </div>
+  <div class="conteneur filtres-cadre">
+    <p class="filtres-titre" id="filtres-titre">Secteurs</p>
+    <ul class="filtres" aria-labelledby="filtres-titre" data-anime="cascade">
+      <li><button type="button" class="filtre" data-filtre="" aria-pressed="true">Tous <span>90</span></button></li>
+      <li><button type="button" class="filtre" data-filtre="agences" aria-pressed="false">Agences <span>18</span></button></li><li><button type="button" class="filtre" data-filtre="numerique" aria-pressed="false">Numérique <span>9</span></button></li><li><button type="button" class="filtre" data-filtre="sante" aria-pressed="false">Santé <span>3</span></button></li><li><button type="button" class="filtre" data-filtre="presse" aria-pressed="false">Presse <span>4</span></button></li><li><button type="button" class="filtre" data-filtre="immobilier" aria-pressed="false">Immobilier <span>6</span></button></li><li><button type="button" class="filtre" data-filtre="vins" aria-pressed="false">Vins <span>8</span></button></li><li><button type="button" class="filtre" data-filtre="gastronomie" aria-pressed="false">Gastronomie <span>22</span></button></li><li><button type="button" class="filtre" data-filtre="luxe" aria-pressed="false">Luxe <span>2</span></button></li><li><button type="button" class="filtre" data-filtre="industrie" aria-pressed="false">Industrie <span>8</span></button></li><li><button type="button" class="filtre" data-filtre="institutions" aria-pressed="false">Institutions <span>10</span></button></li>
+    </ul>
+  </div>
+</section>
+<section class="liste-ref conteneur" id="liste" data-fil="droite">
+  <div class="liste-ref-tete">
+    <div>
+      <h2 class="titre-souple" data-axe data-anime="lignes">Toutes les références, par secteur</h2>
+      <p data-anime>Noms repris tels qu&#39;ils figurent sur le site actuel de Red-Act. Aucun logo n&#39;est reproduit sans l&#39;accord des clients.</p>
+    </div>
+    <svg class="liste-filet" viewBox="0 0 220 140" aria-hidden="true" data-visuel data-fx="trace"><path data-fx-trait d="M20 110 L70 40 L130 70 L190 24 M70 40 L110 120 L130 70 M110 120 L190 96 L190 24 M20 110 L110 120"/><circle cx="20" cy="110" r="6"/><circle cx="70" cy="40" r="6"/><circle cx="130" cy="70" r="7"/><circle cx="190" cy="24" r="6"/><circle cx="110" cy="120" r="6"/><circle cx="190" cy="96" r="6"/></svg>
+  </div>
+  <div class="secteurs" data-anime="cascade" aria-live="polite">
+    <article class="secteur" data-secteur="agences" id="secteur-agences">
+      <h3>Agences de communication et agences web <small>Alsace, Lorraine, Paris</small></h3>
+      <ul><li>ADVISA</li><li>ACTWEB</li><li>2 EXVIA</li><li>LATITUDE</li><li>CLAUDE VICTOR</li><li>PROSPECTIV&#39;</li><li>METRONOME</li><li>EUROPE INTERNET</li><li>DEVITO WALDORFF</li><li>AKALMIE</li><li>PERFORMANCES CONSEIL</li><li>INFRA</li><li>GROUPE GET</li><li>NOVEIS</li><li>RMP</li><li>ANIMAWEB</li><li>WICTORY</li><li>GREENCUBE</li></ul>
+    </article><article class="secteur" data-secteur="numerique" id="secteur-numerique">
+      <h3>Entreprises des nouvelles technologies</h3>
+      <ul><li>Diatem</li><li>Swing Mobility</li><li>ABW</li><li>Abekom</li><li>OneMedia</li><li>Cyberworkers</li><li>Kaliasys</li><li>Unitéo</li><li>One Infinite Loop</li></ul>
+    </article><article class="secteur" data-secteur="sante" id="secteur-sante">
+      <h3>Santé et cosmétiques</h3>
+      <ul><li>Ventana Medical Systems (Roche Group)</li><li>Création International</li><li>Dermovitalia</li></ul>
+    </article><article class="secteur" data-secteur="presse" id="secteur-presse">
+      <h3>Magazines et journaux</h3>
+      <ul><li>Made in Alsace</li><li>Cozy Magazine</li><li>Les Pros s&#39;animent</li><li>L&#39;Express</li></ul>
+    </article><article class="secteur" data-secteur="immobilier" id="secteur-immobilier">
+      <h3>Opérateurs immobiliers</h3>
+      <ul><li>Opéra Construction</li><li>Sainte Maxime Immobilier</li><li>Groupe ICADE</li><li>2AImmobilier</li><li>Alsaterre</li><li>Immobilière 3B</li></ul>
+    </article><article class="secteur" data-secteur="vins" id="secteur-vins">
+      <h3>Vins et bière</h3>
+      <ul><li>Château de Pommard</li><li>Brasserie Météor</li><li>Domaine des Grands Vins de France</li><li>Wolfberger</li><li>Ruhlmann-Schutz</li><li>Klipfel</li><li>Adam</li><li>Caveau Lorentz Klipfel</li></ul>
+    </article><article class="secteur" data-secteur="gastronomie" id="secteur-gastronomie">
+      <h3>Hôtellerie, restauration et gastronomie</h3>
+      <ul><li>Château de Bissieux</li><li>Verte Vallée</li><li>Hostellerie du Haut Koenigsbourg</li><li>Living Room</li><li>Alsacienne de Gastronomie</li><li>Porcus</li><li>Klein d&#39;Alsace</li><li>Maison Klein</li><li>Ferme Fruitière Rothgerber</li><li>Bretzel Burgard</li><li>Roi Soleil</li><li>Maison Doriath</li><li>1741</li><li>Le Tire Bouchon</li><li>Le Meiselocker</li><li>Au bon vivant</li><li>Le Relais de la Poste</li><li>Christophe Dufossé</li><li>La Citadelle</li><li>Lucien Doriath</li><li>Le Passeport Gourmand</li><li>231 East Street</li></ul>
+    </article><article class="secteur" data-secteur="luxe" id="secteur-luxe">
+      <h3>Luxe et affaires</h3>
+      <ul><li>AB Corporate Aviation</li><li>MGM</li></ul>
+    </article><article class="secteur" data-secteur="industrie" id="secteur-industrie">
+      <h3>Industrie, commerce et services</h3>
+      <ul><li>Heuft France</li><li>Axal déménagements</li><li>Peugeot Strasbourg</li><li>Imprimerie Grai</li><li>Carré Blanc</li><li>Labonal</li><li>Coop Alsace</li><li>GLS Sécurité</li></ul>
+    </article><article class="secteur" data-secteur="institutions" id="secteur-institutions">
+      <h3>Institutions et collectivités</h3>
+      <ul><li>Maison de l&#39;Alsace</li><li>Onac des Vosges</li><li>Électricité de Strasbourg</li><li>Adira</li><li>Indibatp</li><li>Caisse des Monuments Nationaux</li><li>Medef</li><li>CC Pfaffenhoffen</li><li>Collectivité européenne d&#39;Alsace</li><li>CC Pays de Brumath</li></ul>
+    </article>
+  </div>
+</section>
+<section class="ruban-ref" id="noms" data-fil="gauche">
+  <div class="mots-geants" data-fx="mots-geants" aria-hidden="true" data-ruban data-visuel data-audit-ignorer>
+    <p data-fx-rangee>Wolfberger · Électricité de Strasbourg · L&#39;Express · Medef · Labonal · Peugeot Strasbourg · Wolfberger · Électricité de Strasbourg · L&#39;Express · Medef · Labonal · Peugeot Strasbourg ·</p>
+    <p data-fx-rangee data-sens="-1" class="mots-geants--creux">Maison de l&#39;Alsace · Brasserie Météor · Groupe ICADE · Carré Blanc · Coop Alsace · Made in Alsace · Maison de l&#39;Alsace · Brasserie Météor · Groupe ICADE · Carré Blanc · Coop Alsace · Made in Alsace ·</p>
+  </div>
+</section>
+<section class="passeport conteneur" id="passeport" data-fil="droite">
+  <div class="passeport-carnet" aria-hidden="true" data-visuel>
+    <span class="carnet-page" style="--i:0"></span><span class="carnet-page" style="--i:1"></span><span class="carnet-page" style="--i:2"></span><span class="carnet-page" style="--i:3"></span><span class="carnet-page" style="--i:4"></span>
+    <span class="carnet-couverture" data-effet="carnet"><svg viewBox="0 0 64 64" width="56" height="56"><use href="#noeud"/></svg><span>Le Passeport Alsacien</span></span>
+  </div>
+  <div>
+    <h2 class="titre-fil" data-titre-fil data-effet="titre-au-fil" data-grille="typo"><span class="visuellement-cache">Le Passeport Alsacien</span><svg class="titre-fil-svg" aria-hidden="true" viewBox="0 0 1300 140" preserveAspectRatio="xMinYMid meet"><text x="4" y="108">Le Passeport Alsacien</text></svg></h2>
+    <p class="passeport-chiffre"><strong class="chiffre">12 000</strong> <span>exemplaires et plus</span></p>
+    <p data-anime>Red-Act a écrit les textes du « Passeport Alsacien », tiré à plus de 12 000 exemplaires.</p>
+  </div>
+</section>
+<section class="autres conteneur" id="et-aussi" data-fil="gauche">
+  <figure class="media autres-media" data-grok data-fx="parallaxe" style="--cadrage:40% 45%">
+  <picture>
+    <img src="/assets/images/grok/references-atelier-1168.webp" srcset="/assets/images/grok/references-atelier-640.webp 640w, /assets/images/grok/references-atelier-960.webp 960w, /assets/images/grok/references-atelier-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 50vw" alt="Mur de fiches vierges reliées par des fils rouges" width="1168" height="784" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+  <div>
+    <h2 class="titre-souple" data-axe data-anime="lignes">Et aussi</h2>
+    <p data-anime>De nombreux opérateurs touristiques alsaciens, et des femmes et des hommes politiques, dont les noms ne sont pas cités.</p>
+    <h3 data-anime>Votre nom sur le filet ?</h3>
+    <p data-anime>Envoyez une demande de rendez-vous : elle se noue au réseau.</p>
+    <p class="fin-actions" data-anime><a href="/contact#rendez-vous" class="bouton" data-libelle="Contact" data-survol="magnetique">Prendre rendez-vous</a></p>
+  </div>
+</section>
+</div>
+</main>
+<footer class="pied" id="pied">
+  <div class="conteneur pied-grille">
+    <div>
+      <p class="pied-marque"><img src="/assets/images/logo.png" alt="Red-Act, l'esprit et la lettre" width="92" height="80"></p>
+      <p>8, rue Anatole France, 67800 Hoenheim<br><a href="tel:+33388183544">03 88 18 35 44</a><br><a href="mailto:contact@red-act.com">contact@red-act.com</a></p>
+    </div>
+    <nav aria-label="Sommaire">
+      <p><strong>Sommaire</strong></p>
+      <ul><li><a href="/" data-libelle="Accueil">Accueil</a></li><li><a href="/metiers" data-libelle="Métiers">Métiers</a></li><li><a href="/specialites" data-libelle="Spécialités">Spécialités</a></li><li><a href="/references" data-libelle="Références" aria-current="page">Références</a></li><li><a href="/contact" data-libelle="Contact">Contact</a></li></ul>
+    </nav>
+    <div>
+      <p><strong>Suivre Red-Act</strong></p>
+      <ul><li><a href="https://www.facebook.com/RedActalsace" target="_blank" rel="noopener">Facebook<span class="visuellement-cache"> (nouvel onglet)</span></a></li><li><a href="https://twitter.com/red_act" target="_blank" rel="noopener">X (Twitter)<span class="visuellement-cache"> (nouvel onglet)</span></a></li></ul>
+      <p><strong>Confort de lecture</strong></p>
+      <ul>
+        <li><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></li>
+        <li><a href="#haut" data-sans-transition>Retour en haut</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="conteneur pied-bas"><p>Maquette : les informations marquées « à compléter » seront fournies par Red-Act.</p><p>Mentions légales et politique de confidentialité : à compléter</p><p>© Red-Act · L&#39;esprit et la lettre</p></div>
+</footer>
+<div data-barre-fixe>
+  <a class="bouton bouton--contour" href="tel:+33388183544">Appeler</a>
+  <a class="bouton" href="/contact#rendez-vous" data-libelle="Contact">Rendez-vous</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "siteActuel": "www.red-act.com",
+  "pagesTypes": [
+    "/",
+    "/metiers",
+    "/specialites",
+    "/references",
+    "/contact"
+  ],
+  "effets": [
+    "filet",
+    "roue-metiers",
+    "titre-au-fil",
+    "titre-souple",
+    "feuille-brouillon",
+    "rature",
+    "separation",
+    "filet-references",
+    "noeud-vous",
+    "carnet"
+  ],
+  "grille": {
+    "dispenses": {}
+  }
+}

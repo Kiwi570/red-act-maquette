@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="fr" data-v="1" data-curseur>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Les six métiers de Red-Act : rédaction web, community management, conseil</title>
+<meta name="description" content="Rédacteur web, community manager, concepteur-rédacteur, conseil et formation, audit, conseil en communication : six métiers, un seul interlocuteur à Strasbourg.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://red-act-maquette.vercel.app/metiers">
+<style>:root{--fond:#F4EEE3;--texte:#1B1916;--voile-fond:#1B1916;--ouverture-fond:#F4EEE3;--menu-fond:#1B1916}:root { --entete-h: 72px; --barres-h: 0px; } html { background: var(--fond); color: var(--texte); scrollbar-gutter: stable; } body { margin: 0; background: var(--fond); } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime] { opacity: 0; } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime].vu { opacity: 1; } [data-voile] { position: fixed; inset: 0; z-index: 900; background: var(--voile-fond); transform: translateY(100%); visibility: hidden; pointer-events: none; } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) [data-voile] { transform: none; visibility: visible; } html.calme [data-voile], html.secours [data-voile] { visibility: hidden !important; } .ouverture-panneau { position: fixed; inset: 0; z-index: 850; display: none; place-content: center; justify-items: center; background: var(--ouverture-fond, var(--voile-fond)); color: var(--fond); text-align: center; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouverture-panneau { display: grid; } html.defilement-bloque, html.defilement-bloque body, html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie), html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) body, html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours), html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) body { overflow: hidden; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) { background-color: var(--ouverture-fond, var(--voile-fond)); } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) { background-color: var(--voile-fond); }</style>
+<script>(function () {
+var d = document.documentElement, ss = null, ls = null;
+try { ss = window.sessionStorage; ls = window.localStorage; } catch (e) {}
+d.classList.add('js');
+var calme = false;
+try { calme = !!ls && ls.getItem('socle:calme') === 'oui'; } catch (e) {}
+if (!calme && window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) calme = true;
+if (calme) d.classList.add('calme');
+var nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+var type = nav ? nav.type : 'navigate';
+var depart = null;
+try { depart = JSON.parse(ss.getItem('socle:depart') || 'null'); ss.removeItem('socle:depart'); } catch (e) {}
+if (depart && !(Date.now() - depart.t < 15000)) depart = null;
+var retourSection = false;
+try { retourSection = !!ss.getItem('socle:calme-retour'); } catch (e) {}
+var mode = type === 'back_forward' || retourSection ? 'retour' : type === 'reload' ? 'intro' : depart ? 'voile' : 'intro';
+d.setAttribute('data-arrivee', mode);
+if (mode === 'voile' && depart.couleur) d.style.setProperty('--voile-fond', depart.couleur);
+if (type === 'reload' && 'scrollRestoration' in history) {
+if (!retourSection) history.scrollRestoration = 'manual';
+}
+try {
+var choisie = ls && ls.getItem('socle:langue');
+var langue = (d.lang || '').slice(0, 2);
+if (choisie && choisie !== langue && type === 'navigate' && !depart) {
+var alt = document.querySelector('link[rel="alternate"][hreflang="' + choisie + '"]');
+if (alt) location.replace(new URL(alt.href).pathname + location.search + location.hash);
+}
+} catch (e) {}
+setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('secours'); }, 2000);
+})();</script>
+<link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/polices/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/socle.css?v=1">
+<link rel="stylesheet" href="/assets/css/site.css?v=1">
+<link rel="modulepreload" href="/assets/js/site.js?v=1">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=1">
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/SplitText.min.js" defer></script>
+<script type="module" src="/assets/js/site.js?v=1"></script>
+<meta name="theme-color" content="#F4EEE3">
+<link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/images/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Red-Act">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Les six métiers de Red-Act : rédaction web, community management, conseil">
+<meta property="og:description" content="Rédacteur web, community manager, concepteur-rédacteur, conseil et formation, audit, conseil en communication : six métiers, un seul interlocuteur à Strasbourg.">
+<meta property="og:url" content="https://red-act-maquette.vercel.app/metiers">
+<meta property="og:image" content="https://red-act-maquette.vercel.app/assets/partage/metiers-fr.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Six métiers, une seule plume : brouillons corrigés au crayon rouge">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Red-Act","slogan":"L'esprit et la lettre","description":"Conseil en communication, rédaction et community management à Strasbourg, en Alsace et dans le Grand-Est, depuis 2004.","url":"https://red-act-maquette.vercel.app/","telephone":"+33388183544","email":"contact@red-act.com","foundingDate":"2004-08","founder":{"@type":"Person","name":"Stéphane Bourhis","jobTitle":"Conseil en communication"},"address":{"@type":"PostalAddress","streetAddress":"8, rue Anatole France","postalCode":"67800","addressLocality":"Hoenheim","addressCountry":"FR"},"areaServed":["Strasbourg","Alsace","Grand-Est"],"sameAs":["https://www.facebook.com/RedActalsace","https://twitter.com/red_act"]}</script>
+</head>
+<body id="haut">
+<div data-voile data-forme="trame" aria-hidden="true"><div class="voile-contenu"><svg class="voile-noeud" viewBox="0 0 64 64" width="56" height="56" aria-hidden="true"><use href="#noeud"/></svg><span data-voile-libelle>Métiers</span></div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="noeud" viewBox="0 0 64 64"><path d="M8 34 C 18 34 22 18 32 18 C 44 18 46 40 32 42 C 20 44 22 24 34 24 C 44 24 48 34 56 34" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol></defs></svg>
+<div class="ouverture-panneau" data-ouverture aria-hidden="true">
+  <div class="intro-scene">
+  <svg class="intro-mot" viewBox="0 0 640 200" width="640" height="200">
+    <path class="intro-fil-entree" d="M-20 150 C 40 150 60 140 80 128" fill="none"/>
+    <text class="intro-red" x="78" y="140">Red</text>
+    <text class="intro-act" x="372" y="140">Act</text>
+  </svg>
+  <span class="intro-noeud" data-ouverture-objet><svg viewBox="0 0 64 64" width="64" height="64"><use href="#noeud"/></svg></span>
+  </div>
+  <p class="ouverture-ligne">Savoir faire &amp; faire savoir</p>
+</div>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<header data-entete>
+  <div class="entete-rangee">
+    <a class="entete-logo" href="/" data-libelle="Accueil">
+      <img src="/assets/images/logo.png" alt="" width="46" height="40"><span>Red-Act</span>
+    </a>
+    <nav data-nav aria-label="Navigation principale">
+      <ul><li><a href="/metiers" data-libelle="Métiers" aria-current="page">Métiers</a></li><li><a href="/specialites" data-libelle="Spécialités">Spécialités</a></li><li><a href="/references" data-libelle="Références">Références</a></li><li><a href="/contact" data-libelle="Contact">Contact</a></li></ul>
+    </nav>
+    <div class="entete-actions">
+      <a class="bouton" href="/contact#rendez-vous" data-libelle="Contact">Rendez-vous</a>
+      <button type="button" data-menu-bouton aria-controls="menu" aria-expanded="false" data-libelle-ouvrir="Menu" data-libelle-fermer="Fermer"><span data-libelle-bouton>Menu</span></button>
+      <a class="menu-sansjs" href="#menu" data-menu-lien>Menu</a>
+    </div>
+  </div>
+</header>
+<script>/* Avant le premier affichage : rangées de la navigation (même règle que ajusterNav dans assets/js/socle/entete.js)
+   et hauteur réelle de l'en-tête, pour que rien ne saute quand le JavaScript du site prend la main. */
+(function () {
+  var h = document.documentElement, u = document.querySelector('[data-nav] ul'), e = document.querySelector('[data-entete]');
+  if (u) {
+    var deborde = function () { return u.scrollWidth > u.clientWidth + 1; }, c = deborde();
+    if (c && window.matchMedia('(min-width: 900px)').matches) {
+      h.classList.add('nav-deux-rangees'); c = deborde();
+      if (c) { h.classList.add('nav-deux-lignes'); var a = u.querySelector('a'); c = !a || u.getBoundingClientRect().height > a.getBoundingClientRect().height * 2.5; }
+      if (c) h.classList.remove('nav-deux-rangees', 'nav-deux-lignes');
+    }
+    if (c) h.classList.add('nav-compacte');
+  }
+  if (e) h.style.setProperty('--entete-h', Math.round(e.getBoundingClientRect().height) + 'px');
+})();</script>
+<span id="menu-ferme" aria-hidden="true"></span>
+<div id="menu" data-menu role="dialog" aria-modal="true" aria-label="Menu">
+  <p class="menu-sansjs-fermer"><a href="#menu-ferme">Fermer</a></p>
+  <ul><li style="--i:0"><a href="/" class="menu-lien" data-libelle="Accueil">Accueil</a></li><li style="--i:1"><a href="/metiers" class="menu-lien" data-libelle="Métiers" aria-current="page">Métiers</a></li><li style="--i:2"><a href="/specialites" class="menu-lien" data-libelle="Spécialités">Spécialités</a></li><li style="--i:3"><a href="/references" class="menu-lien" data-libelle="Références">Références</a></li><li style="--i:4"><a href="/contact" class="menu-lien" data-libelle="Contact">Contact</a></li></ul>
+  <p><a class="bouton" href="tel:+33388183544">Appeler 03 88 18 35 44</a></p>
+  <p><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></p>
+</div>
+<main id="contenu" tabindex="-1">
+<div class="fil-racine" data-grille="fil">
+<section class="page-tete tete-metiers" id="debut" data-fil="gauche">
+  <div class="conteneur tete-metiers-texte">
+    <p class="surtitre tete-suite" data-anime="gsap">Nos métiers</p>
+    <h1 class="tete-geant titre-souple" data-axe><span class="ligne-masque"><span class="hero-ligne" data-anime="gsap">Six métiers,</span></span><span class="ligne-masque"><span class="hero-ligne hero-ligne--rouge" data-anime="gsap">une seule plume</span></span></h1>
+    <div class="tete-metiers-bas">
+      <p class="tete-suite masque-ecran-tres-bas" data-anime="gsap">De la rédaction web au conseil en communication, Red-Act mobilise l&#39;ensemble des métiers de la communication, et les réunit autour d&#39;un seul interlocuteur.</p>
+      <p class="hero-actions tete-suite" data-anime="gsap">
+        <a href="/contact#rendez-vous" class="bouton" data-libelle="Contact" data-action-principale data-survol="magnetique">Demander un devis</a>
+        <span class="hero-info" data-info-cle>Print et digital · Particuliers, entreprises, institutions</span>
+      </p>
+    </div>
+  </div>
+  <div class="bandeau-brouillon" data-iris-centre>
+    <figure class="media bandeau-media" data-grok style="--cadrage:50% 50%;--cadrage-mobile:50% 60%">
+  <picture><source media="(max-width: 760px) and (orientation: portrait)" srcset="/assets/images/grok/metiers-ouverture-mobile-480.webp 480w, /assets/images/grok/metiers-ouverture-mobile-657.webp 657w" sizes="100vw">
+    <img src="/assets/images/grok/metiers-ouverture-1168.webp" srcset="/assets/images/grok/metiers-ouverture-640.webp 640w, /assets/images/grok/metiers-ouverture-960.webp 960w, /assets/images/grok/metiers-ouverture-1168.webp 1168w" sizes="100vw" alt="Brouillons corrigés au crayon rouge sur une table de travail" width="1168" height="784" fetchpriority="high" loading="eager" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+    <div class="feuille" data-effet="feuille-brouillon" aria-hidden="true" data-visuel data-audit-ignorer data-superpose>
+      <span class="feuille-titre">Brouillon : à reprendre</span>
+      <span class="feuille-ligne"><s>Optimisation sémantique de contenus multicanaux</s></span><span class="feuille-ligne"><s>Activation de communautés à fort engagement</s></span><span class="feuille-ligne"><s>Brand content différenciant à forte valeur ajoutée</s></span><span class="feuille-ligne"><s>Accompagnement transversal des parties prenantes</s></span><span class="feuille-ligne"><s>Diagnostic 360° de votre écosystème de marque</s></span><span class="feuille-ligne"><s>Pilotage stratégique de vos leviers d&#39;influence</s></span>
+    </div>
+  </div>
+</section>
+<section class="brouillon" id="scene" data-scene data-grille="scene" data-fil="droite">
+  <div class="conteneur brouillon-tete">
+    <p class="surtitre" data-anime>Du brouillon au texte</p>
+    <h2 class="titre-souple" data-axe data-anime="lettres">On barre le jargon, on écrit clair</h2>
+    <p data-anime>Faites défiler : chaque métier commence par un brouillon, et finit par une phrase que tout le monde comprend.</p>
+  </div>
+  <div class="conteneur brouillon-grille">
+    <div class="brouillon-feuille-cadre" data-collant>
+      <div class="brouillon-feuille" data-feuille data-effet="rature" data-grille="typo" aria-hidden="true" data-visuel>
+        <span class="feuille-num" data-feuille-num>01</span>
+        <span class="feuille-nom" data-feuille-nom>Rédacteur web</span>
+        <span class="feuille-jargon"><span data-feuille-jargon>Optimisation sémantique de contenus multicanaux</span><svg class="rature" viewBox="0 0 400 24" preserveAspectRatio="none"><path d="M4 14 C 80 6, 160 20, 240 10 S 360 6, 396 14"/></svg></span>
+        <span class="feuille-clair" data-feuille-clair>Des textes qu&#39;on trouve, et qu&#39;on a envie de lire</span>
+      </div>
+    </div>
+    <ol class="brouillon-liste">
+      <li class="metier" id="redacteur-web" data-metier="0" data-metier-nom="Rédacteur web" data-metier-jargon="Optimisation sémantique de contenus multicanaux" data-metier-clair="Des textes qu&#39;on trouve, et qu&#39;on a envie de lire">
+        <figure class="media metier-media" data-grok data-fx="parallaxe" data-fx-force="8" style="--cadrage:50% 50%">
+  <picture>
+    <img src="/assets/images/grok/metier-redacteur-web-784.webp" srcset="/assets/images/grok/metier-redacteur-web-480.webp 480w, /assets/images/grok/metier-redacteur-web-784.webp 784w" sizes="(max-width: 760px) 100vw, 40vw" alt="Brouillon imprimé, crayon rouge et ordinateur fermé" width="784" height="1168" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+        <p class="metier-num" aria-hidden="true">01</p>
+        <h3>Rédacteur web</h3>
+        <p class="metier-rature"><span class="visuellement-cache">Jargon barré :</span><s>Optimisation sémantique de contenus multicanaux</s></p>
+        <p class="metier-clair">Des textes qu&#39;on trouve, et qu&#39;on a envie de lire</p>
+        <p>Écrire ou adapter les contenus de votre site, de votre blog et de vos lettres d&#39;information, pour que votre personnalité, vos produits et votre savoir-faire trouvent leur public en ligne.</p>
+        <a href="/contact?besoin=redacteur-web#rendez-vous" class="lien-fleche" data-libelle="Contact">Demander ce métier</a>
+      </li><li class="metier" id="community-manager" data-metier="1" data-metier-nom="Community manager" data-metier-jargon="Activation de communautés à fort engagement" data-metier-clair="Faire parler de vous, et en bien">
+        <figure class="media metier-media" data-grok data-fx="parallaxe" data-fx-force="8" style="--cadrage:50% 50%">
+  <picture>
+    <img src="/assets/images/grok/metier-community-manager-784.webp" srcset="/assets/images/grok/metier-community-manager-480.webp 480w, /assets/images/grok/metier-community-manager-784.webp 784w" sizes="(max-width: 760px) 100vw, 40vw" alt="Terrasse de café animée, téléphone posé face contre la table" width="784" height="1168" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+        <p class="metier-num" aria-hidden="true">02</p>
+        <h3>Community manager</h3>
+        <p class="metier-rature"><span class="visuellement-cache">Jargon barré :</span><s>Activation de communautés à fort engagement</s></p>
+        <p class="metier-clair">Faire parler de vous, et en bien</p>
+        <p>Construire une stratégie éditoriale, créer et animer des groupes, modérer les échanges : pour gagner du bouche-à-oreille et de la visibilité auprès du grand public comme des passionnés.</p>
+        <a href="/contact?besoin=community-manager#rendez-vous" class="lien-fleche" data-libelle="Contact">Demander ce métier</a>
+      </li><li class="metier" id="concepteur-redacteur" data-metier="2" data-metier-nom="Concepteur-rédacteur" data-metier-jargon="Brand content différenciant à forte valeur ajoutée" data-metier-clair="Le mot juste, à côté de la bonne image">
+        <figure class="media metier-media" data-grok data-fx="parallaxe" data-fx-force="8" style="--cadrage:50% 50%">
+  <picture>
+    <img src="/assets/images/grok/metier-concepteur-redacteur-784.webp" srcset="/assets/images/grok/metier-concepteur-redacteur-480.webp 480w, /assets/images/grok/metier-concepteur-redacteur-784.webp 784w" sizes="(max-width: 760px) 100vw, 40vw" alt="Épreuves de mise en page épinglées au mur, reliées par un fil rouge" width="784" height="1168" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+        <p class="metier-num" aria-hidden="true">03</p>
+        <h3>Concepteur-rédacteur</h3>
+        <p class="metier-rature"><span class="visuellement-cache">Jargon barré :</span><s>Brand content différenciant à forte valeur ajoutée</s></p>
+        <p class="metier-clair">Le mot juste, à côté de la bonne image</p>
+        <p>Adapter vos contenus existants ou créer de nouvelles formules et de nouveaux messages, pensés pour accompagner vos visuels.</p>
+        <a href="/contact?besoin=concepteur-redacteur#rendez-vous" class="lien-fleche" data-libelle="Contact">Demander ce métier</a>
+      </li><li class="metier" id="conseil-formation" data-metier="3" data-metier-nom="Conseil &amp; formation" data-metier-jargon="Accompagnement transversal des parties prenantes" data-metier-clair="Vos équipes prennent la parole">
+        <figure class="media metier-media" data-grok data-fx="parallaxe" data-fx-force="8" style="--cadrage:50% 50%">
+  <picture>
+    <img src="/assets/images/grok/metier-conseil-formation-784.webp" srcset="/assets/images/grok/metier-conseil-formation-480.webp 480w, /assets/images/grok/metier-conseil-formation-784.webp 784w" sizes="(max-width: 760px) 100vw, 40vw" alt="Salle de formation prête, chaises en demi-cercle et tableau de papier vierge" width="784" height="1168" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+        <p class="metier-num" aria-hidden="true">04</p>
+        <h3>Conseil &amp; formation</h3>
+        <p class="metier-rature"><span class="visuellement-cache">Jargon barré :</span><s>Accompagnement transversal des parties prenantes</s></p>
+        <p class="metier-clair">Vos équipes prennent la parole</p>
+        <p>Mettre en place ou refondre une campagne de communication, et former vos équipes en interne. Red-Act sert d&#39;interface au sein de votre réseau.</p>
+        <a href="/contact?besoin=conseil-formation#rendez-vous" class="lien-fleche" data-libelle="Contact">Demander ce métier</a>
+      </li><li class="metier" id="audit" data-metier="4" data-metier-nom="Audit en communication" data-metier-jargon="Diagnostic 360° de votre écosystème de marque" data-metier-clair="Ce qui marche, et ce qui ne marche plus">
+        <figure class="media metier-media" data-grok data-fx="parallaxe" data-fx-force="8" style="--cadrage:50% 50%">
+  <picture>
+    <img src="/assets/images/grok/metier-audit-784.webp" srcset="/assets/images/grok/metier-audit-480.webp 480w, /assets/images/grok/metier-audit-784.webp 784w" sizes="(max-width: 760px) 100vw, 40vw" alt="Supports de communication étalés et reliés par un fil rouge" width="784" height="1168" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+        <p class="metier-num" aria-hidden="true">05</p>
+        <h3>Audit en communication</h3>
+        <p class="metier-rature"><span class="visuellement-cache">Jargon barré :</span><s>Diagnostic 360° de votre écosystème de marque</s></p>
+        <p class="metier-clair">Ce qui marche, et ce qui ne marche plus</p>
+        <p>Un audit sur mesure pour les entreprises, les PME, les artisans et les restaurateurs : vos outils et vos supports actuels répondent-ils encore à vos objectifs ?</p>
+        <a href="/contact?besoin=audit#rendez-vous" class="lien-fleche" data-libelle="Contact">Demander ce métier</a>
+      </li><li class="metier" id="conseil-communication" data-metier="5" data-metier-nom="Conseil en communication" data-metier-jargon="Pilotage stratégique de vos leviers d&#39;influence" data-metier-clair="Être entendu là où ça compte">
+        <figure class="media metier-media" data-grok data-fx="parallaxe" data-fx-force="8" style="--cadrage:50% 50%">
+  <picture>
+    <img src="/assets/images/grok/metier-conseil-communication-784.webp" srcset="/assets/images/grok/metier-conseil-communication-480.webp 480w, /assets/images/grok/metier-conseil-communication-784.webp 784w" sizes="(max-width: 760px) 100vw, 40vw" alt="Table de premier rendez-vous, deux chaises face à face" width="784" height="1168" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+        <p class="metier-num" aria-hidden="true">06</p>
+        <h3>Conseil en communication</h3>
+        <p class="metier-rature"><span class="visuellement-cache">Jargon barré :</span><s>Pilotage stratégique de vos leviers d&#39;influence</s></p>
+        <p class="metier-clair">Être entendu là où ça compte</p>
+        <p>Gestion de l&#39;information, détection des risques et des opportunités, stratégies d&#39;influence : un conseil pensé pour les collectivités et les PME.</p>
+        <a href="/contact?besoin=conseil-communication#rendez-vous" class="lien-fleche" data-libelle="Contact">Demander ce métier</a>
+      </li>
+    </ol>
+  </div>
+</section>
+<section class="pourqui" id="pour-qui" data-fil="gauche">
+  <div class="conteneur pourqui-grille">
+    <figure class="media pourqui-media" data-grok data-fx="vitesse" data-fx-force="3" style="--cadrage:45% 55%">
+  <picture>
+    <img src="/assets/images/grok/metiers-pour-qui-1168.webp" srcset="/assets/images/grok/metiers-pour-qui-640.webp 640w, /assets/images/grok/metiers-pour-qui-960.webp 960w, /assets/images/grok/metiers-pour-qui-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 50vw" alt="Rue commerçante d&#39;une petite ville le matin" width="1168" height="784" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+    <div>
+      <p class="surtitre" data-anime>Pour qui</p>
+      <h2 class="titre-souple" data-axe data-anime="lignes">Du particulier à l&#39;institution</h2>
+      <p data-anime>Red-Act travaille pour des particuliers, des entreprises, des PME et PMI, des artisans, des chefs, des restaurateurs et des hôteliers, ainsi que pour des acteurs institutionnels et économiques.</p>
+      <ul class="pastilles" data-anime="cascade"><li>Particuliers</li><li>Entreprises</li><li>PME et PMI</li><li>Artisans</li><li>Chefs</li><li>Restaurateurs</li><li>Hôteliers</li><li>Institutions</li><li>Acteurs économiques</li></ul>
+    </div>
+  </div>
+</section>
+<section class="supports" id="supports" data-fil="droite">
+  <div class="mots-geants mots-geants--fin" data-fx="mots-geants" aria-hidden="true" data-ruban data-visuel data-audit-ignorer>
+    <p data-fx-rangee>Print · Web · Presse · Lettres · Réseaux · Print · Web · Presse · Lettres · Réseaux · Print · Web · Presse · Lettres · Réseaux ·</p>
+  </div>
+  <div class="conteneur supports-grille">
+    <div>
+      <p class="surtitre" data-anime>Du print au digital</p>
+      <h2 class="titre-souple" data-axe data-anime="lignes">Tous vos supports, une même voix</h2>
+      <p data-anime>Red-Act crée l&#39;ensemble de vos contenus rédactionnels, du print à la communication digitale, pour une image et une communauté durables.</p>
+      <ul class="liste-fil" data-anime="cascade"><li>Contenus internet et intranet</li><li>Lettres d&#39;information</li><li>Rédaction pour la presse</li><li>Articles et relations presse</li><li>Réseaux sociaux</li><li>Communication interne et externe</li></ul>
+    </div>
+    <figure class="media supports-media" data-grok data-fx="zoom" style="--cadrage:55% 50%">
+  <picture>
+    <img src="/assets/images/grok/metiers-print-digital-1168.webp" srcset="/assets/images/grok/metiers-print-digital-640.webp 640w, /assets/images/grok/metiers-print-digital-960.webp 960w, /assets/images/grok/metiers-print-digital-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 45vw" alt="Brochures imprimées et téléphone posés côte à côte" width="1168" height="784" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+  </div>
+</section>
+<section class="fin fin--simple conteneur" id="fin" data-fil="gauche">
+  <figure class="media fin-media" data-grok data-anime="rideau" style="--cadrage:50% 60%">
+  <picture>
+    <img src="/assets/images/grok/metier-conseil-communication-784.webp" srcset="/assets/images/grok/metier-conseil-communication-480.webp 480w, /assets/images/grok/metier-conseil-communication-784.webp 784w" sizes="(max-width: 760px) 100vw, 40vw" alt="Table de premier rendez-vous, deux chaises face à face" width="784" height="1168" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+  <div>
+    <h2 class="titre-souple" data-axe data-anime="lignes">Un métier, ou les six ?</h2>
+    <p data-anime>Dites-nous ce que vous cherchez : le formulaire de rendez-vous s&#39;ouvre avec votre choix déjà fait.</p>
+    <p class="fin-actions" data-anime><a href="/contact#rendez-vous" class="bouton" data-libelle="Contact" data-survol="magnetique">Prendre rendez-vous</a></p>
+  </div>
+</section>
+</div>
+</main>
+<footer class="pied" id="pied">
+  <div class="conteneur pied-grille">
+    <div>
+      <p class="pied-marque"><img src="/assets/images/logo.png" alt="Red-Act, l'esprit et la lettre" width="92" height="80"></p>
+      <p>8, rue Anatole France, 67800 Hoenheim<br><a href="tel:+33388183544">03 88 18 35 44</a><br><a href="mailto:contact@red-act.com">contact@red-act.com</a></p>
+    </div>
+    <nav aria-label="Sommaire">
+      <p><strong>Sommaire</strong></p>
+      <ul><li><a href="/" data-libelle="Accueil">Accueil</a></li><li><a href="/metiers" data-libelle="Métiers" aria-current="page">Métiers</a></li><li><a href="/specialites" data-libelle="Spécialités">Spécialités</a></li><li><a href="/references" data-libelle="Références">Références</a></li><li><a href="/contact" data-libelle="Contact">Contact</a></li></ul>
+    </nav>
+    <div>
+      <p><strong>Suivre Red-Act</strong></p>
+      <ul><li><a href="https://www.facebook.com/RedActalsace" target="_blank" rel="noopener">Facebook<span class="visuellement-cache"> (nouvel onglet)</span></a></li><li><a href="https://twitter.com/red_act" target="_blank" rel="noopener">X (Twitter)<span class="visuellement-cache"> (nouvel onglet)</span></a></li></ul>
+      <p><strong>Confort de lecture</strong></p>
+      <ul>
+        <li><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></li>
+        <li><a href="#haut" data-sans-transition>Retour en haut</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="conteneur pied-bas"><p>Maquette : les informations marquées « à compléter » seront fournies par Red-Act.</p><p>Mentions légales et politique de confidentialité : à compléter</p><p>© Red-Act · L&#39;esprit et la lettre</p></div>
+</footer>
+<div data-barre-fixe>
+  <a class="bouton bouton--contour" href="tel:+33388183544">Appeler</a>
+  <a class="bouton" href="/contact#rendez-vous" data-libelle="Contact">Rendez-vous</a>
+</div>
+</body>
+</html>
