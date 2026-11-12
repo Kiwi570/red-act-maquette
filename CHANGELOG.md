@@ -2,6 +2,24 @@
 
 Chaque version ajoute sa partie en tête de ce fichier, construite en comparant l'archive précédente et la nouvelle, jamais de mémoire.
 
+## v5 — épreuves plus grandes et plus lisibles (12 novembre 2026)
+
+Retour de l'utilisateur sur la v4 : les cartes des six métiers étaient un peu petites, et leurs textes beaucoup trop petits.
+
+**Accueil : les six métiers**
+- **Les cartes** sont environ 40 % plus larges, par exemple 245 px au lieu de 175 px sur un écran de 1440 px.
+- **Les textes** sont plus grands (mesures sur un écran de 1440 px) :
+  - le nom du métier passe d'environ 1,3 à 1,6 rem ;
+  - la phrase courte, de 0,85 à 1,1 rem ;
+  - le numéro, de 0,75 à 0,82 rem.
+  - Les cartes voisines sont moins réduites : 93 % de la carte du milieu au lieu de 88 %.
+- **Sur un écran d'ordinateur courant**, cinq cartes se lisent à la fois. Le fil ne glisse que de ce qui dépasse, et les cartes remplissent toujours la largeur. Les six restent côte à côte seulement sur un très grand écran.
+- **Si la hauteur manque**, la phrase courte des cartes se retire d'abord ; leur largeur ne diminue qu'ensuite.
+- **Une carte penchée** qui sortirait de l'écran est cachée, jamais coupée : on tient compte de son encombrement réel.
+- **Sur petit téléphone**, le surtitre, la consigne et le lien « Les six métiers en détail » se retirent pour laisser la place à la carte.
+
+**Technique** : numéro de version des fichiers passé à `?v=5`.
+
 ## v4 — six métiers « épreuves au fil » et filet fluide (12 novembre 2026)
 
 Retours de l'utilisateur sur la v3 en ligne : la section des six métiers devait être plus fluide et plus aérée, et le filet des références « buggait un peu ».

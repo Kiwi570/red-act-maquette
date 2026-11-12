@@ -3,9 +3,9 @@
    Effets du plan : intro (fil qui écrit Red-Act et se noue), filet, roue-metiers, titre-au-fil, titre-souple,
    fil conducteur (module de la bibliothèque), brouillon (Métiers), separation (Spécialités), filet-references,
    noeud-vous (Contact). Chaque effet propre porte data-effet="nom". */
-import { demarrer, boucle, etat, versObjet, quand } from './socle/index.js?v=4';
-import { init as filConducteur } from './modules/fil-conducteur.js?v=4';
-import { initPages } from './pages.js?v=4';
+import { demarrer, boucle, etat, versObjet, quand } from './socle/index.js?v=5';
+import { init as filConducteur } from './modules/fil-conducteur.js?v=5';
+import { initPages } from './pages.js?v=5';
 
 const gsap = window.gsap;
 const ST = () => window.ScrollTrigger;
@@ -297,41 +297,49 @@ function epreuves() {
   const scene = $('.epreuves-scene', sec), cartes = $$('[data-epreuve]', sec), etatEl = $('[data-epreuves-etat]', sec);
   const trait = $('.epreuves-fil-trait', sec), ombre = $('.epreuves-fil-ombre', sec);
   const n = cartes.length, milieu = (n - 1) / 2;
-  let W = 0, H = 0, L = 0, CH = 0, pas = 0, pan = 0, haut = 16, creux = 40, demi = 1, large = true;
+  let W = 0, H = 0, L = 0, CH = 0, pas = 0, pan = 0, haut = 16, creux = 40, demi = 1, large = true, mode = 'tous', maxS = 0;
   let pos = 0, defil = 0, main = 0, vMain = 0, prise = null, courante = -1, tDefil = 0;
   let bal = 0, vBal = 0, yAvant = scrollY;
   const mesurer = () => {
-    scene.style.removeProperty('--ep-l');
+    scene.style.removeProperty('--ep-l'); scene.classList.remove('est-serre');
     W = scene.clientWidth; H = scene.clientHeight;
-    L = cartes[0].offsetWidth; CH = cartes[0].offsetHeight;
+    /* La plus haute des cartes compte (un nom sur deux lignes l'allonge). */
+    const hauteur = () => Math.max(...cartes.map((li) => li.offsetHeight));
+    L = cartes[0].offsetWidth; CH = hauteur();
     /* Les cartes tiennent toujours en hauteur : réduites si la scène est basse (écrans bas, tablettes). */
     const place = H - haut - 46;
-    for (let k = 0; k < 3 && CH > place && place > 80; k++) { scene.style.setProperty('--ep-l', Math.max(132, Math.floor(L * place / CH)) + 'px'); L = cartes[0].offsetWidth; CH = cartes[0].offsetHeight; }
-    /* Les six côte à côte sur grand écran ; ailleurs, le fil glisse d'une carte à l'autre. */
-    large = W >= 1100 && innerHeight >= 640;
-    /* Sur grand écran, les six restent toujours dans l'écran : le fil glisse peu (pan), l'écart entre cartes en tient compte. */
-    pas = large ? Math.min((W - 48 - L) / ((n - 1) * 1.18), L * 1.45) : L * 1.12;
-    pan = large ? pas * 0.18 : pas;
-    /* Sur téléphone (le fil glisse d'une carte à l'autre), l'arc est plus ouvert : les voisines penchent peu. */
-    demi = large ? W / 2 : Math.max(W / 2, pas * 2.4);
-    creux = Math.max(10, Math.min(H - CH * 1.02 - haut - 8, H * 0.14, large ? 70 : 34));
+    /* D'abord retirer la phrase courte des cartes, puis seulement réduire leur largeur. */
+    if (CH > place) { scene.classList.add('est-serre'); CH = hauteur(); }
+    for (let k = 0; k < 3 && CH > place && place > 80; k++) { scene.style.setProperty('--ep-l', Math.max(132, Math.floor(L * place / CH)) + 'px'); L = cartes[0].offsetWidth; CH = hauteur(); }
+    /* Trois façons de suspendre les épreuves, selon la place :
+       « tous » : les six tiennent côte à côte (très grand écran), le fil glisse à peine ;
+       « bande » : ordinateur et tablette, le fil ne glisse que de ce qui dépasse, les cartes remplissent la largeur ;
+       « centre » : téléphone, la carte en cours est au centre. */
+    const pasTous = (W - 48 - L) / ((n - 1) * 1.18);
+    mode = pasTous >= L * 1.1 && innerHeight >= 640 ? 'tous' : W >= L * 2.9 ? 'bande' : 'centre';
+    large = mode !== 'centre';
+    pas = mode === 'tous' ? Math.min(pasTous, L * 1.45) : L * (mode === 'bande' ? 1.14 : 1.12);
+    pan = mode === 'tous' ? pas * 0.18 : pas;
+    maxS = mode === 'bande' ? Math.max(0, ((n - 1) * pas + L) / 2 + 40 - W / 2) : Infinity;
+    demi = mode === 'centre' ? Math.max(W / 2, pas * 2.4) : W / 2;
+    creux = Math.max(10, Math.min(H - CH * 1.02 - haut - 8, H * 0.12, large ? 60 : 34));
   };
   const yFil = (x, c) => { const u = Math.max(-1.6, Math.min(1.6, (x - W / 2) / demi)); return haut + c * (1 - u * u); };
   const poser = () => {
     const c = creux * (1 + bal);
     let face = 0, mieux = 99;
     cartes.forEach((li, i) => {
-      const x = W / 2 + (i - milieu) * pas - (pos - milieu) * pan;
+      const decal = mode === 'bande' ? Math.max(-maxS, Math.min(maxS, (pos - milieu) * pas)) : (pos - milieu) * pan;
+      const x = W / 2 + (i - milieu) * pas - decal;
       const y = yFil(x, c);
       const pente = (-2 * c * ((x - W / 2) / demi)) / demi;
       const d = Math.abs(i - pos);
-      const s = large ? 0.88 + 0.14 * Math.max(0, 1 - d) : 0.9 + 0.1 * Math.max(0, 1 - d);
-      const ang = Math.atan(pente) * 57.3 * (large ? 0.7 : 0.45) + bal * 18 * Math.sin(i * 1.7 + 0.6);
+      const s = large ? 0.93 + 0.09 * Math.max(0, 1 - d) : 0.92 + 0.08 * Math.max(0, 1 - d);
+      const ang = Math.atan(pente) * 57.3 * (large ? 0.6 : 0.45) + bal * 18 * Math.sin(i * 1.7 + 0.6);
       li.style.transform = `translate(${(x - L / 2).toFixed(1)}px, ${y.toFixed(1)}px) rotate(${ang.toFixed(2)}deg) scale(${s.toFixed(3)})`;
       li.style.zIndex = String(10 - Math.round(d));
       /* En glissement, une carte qui déborde de la scène est cachée (jamais coupée). */
-      if (!large) { const demiL = (L * s) / 2 + 6, dehors = x - demiL < 0 || x + demiL > W; if (li.classList.contains('est-dehors') !== dehors) li.classList.toggle('est-dehors', dehors); }
-      else if (li.classList.contains('est-dehors')) li.classList.remove('est-dehors');
+      { const ar = Math.abs(ang) / 57.3, demiL = (L * s / 2) * Math.cos(ar) + CH * s * Math.sin(ar) + 8, dehors = x - demiL < 0 || x + demiL > W; if (li.classList.contains('est-dehors') !== dehors) li.classList.toggle('est-dehors', dehors); }
       if (d < mieux) { mieux = d; face = i; }
     });
     let chemin = '';

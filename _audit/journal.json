@@ -275,7 +275,7 @@
           "etape": "livraison",
           "budget": 5,
           "debut": "2026-11-12T17:29:34+01:00",
-          "fin": "2026-11-12T17:29:34+01:00"
+          "fin": "2026-11-12T17:30:00+01:00"
         }
       ],
       "attentes": [
@@ -301,6 +301,52 @@
       ],
       "grilleDispenses": {},
       "notes": "Retours de l'utilisateur sur la v3 en ligne : section des six métiers à rendre plus fluide et plus aérée (choix : épreuves au fil) ; animation du filet de Références qui bugge (tassement, rebonds, dessin lourd)."
+    },
+    {
+      "version": 5,
+      "skill": "v10.10",
+      "perimetre": [
+        "accueil",
+        "metiers",
+        "specialites",
+        "references",
+        "contact",
+        "404"
+      ],
+      "etapes": [
+        {
+          "etape": "épreuves plus grandes, textes plus lisibles",
+          "budget": 15,
+          "debut": "2026-11-12T17:31:00+01:00",
+          "fin": "2026-11-12T17:40:00+01:00"
+        },
+        {
+          "etape": "audit ciblé de l'accueil (13 tailles) et corrections",
+          "budget": 10,
+          "debut": "2026-11-12T17:40:00+01:00",
+          "fin": "2026-11-12T17:46:26+01:00"
+        },
+        {
+          "etape": "livraison",
+          "budget": 5,
+          "debut": "2026-11-12T17:46:26+01:00",
+          "fin": "2026-11-12T17:46:26+01:00"
+        }
+      ],
+      "attentes": [],
+      "allersRetours": 1,
+      "modules": [],
+      "audit": {
+        "niveau": "complet ciblé sur l'accueil (fichiers, mesures, écran, mouvement, parcours)",
+        "echecsPremierPassage": 2,
+        "relances": 3,
+        "corrections": [
+          "Épreuves coupées en 375×667, 320×568 et 1280×720 : hauteur de la plus haute carte, phrase courte retirée avant de réduire la largeur, encombrement réel d'une carte penchée"
+        ]
+      },
+      "effetsRetires": [],
+      "grilleDispenses": {},
+      "notes": "Retour de l'utilisateur sur la v4 : cartes un peu petites, textes beaucoup trop petits."
     }
   ]
 }
