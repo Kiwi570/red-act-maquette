@@ -3,7 +3,7 @@
    - Spécialités : séparation à faire glisser entre la tribune et la table (separation) ;
    - Références : grand filet de nuit, filtres par secteur gardés dans l'adresse (filet-references) ;
    - Contact : rendez-vous en trois étapes, récapitulatif, envoi qui file jusqu'au filet (noeud-vous). */
-import { etat, boucle } from './socle/index.js?v=2';
+import { etat, boucle } from './socle/index.js?v=3';
 
 const gsap = window.gsap;
 const ST = () => window.ScrollTrigger;
@@ -72,7 +72,7 @@ function sceneBrouillon() {
     if (!anime || etat.calme) { rayer(); return; }
     feuille.classList.remove('est-raye', 'est-manuel');
     trait.style.removeProperty('stroke-dashoffset');
-    minuterie = setTimeout(rayer, 1600);
+    minuterie = setTimeout(rayer, 750);
   };
   /* Rayer à la main : la progression suit le pointeur sur la phrase ; aux trois quarts, c'est barré. */
   const progres = (e) => { const r = zone.getBoundingClientRect(); return Math.max(0, Math.min(1, (e.clientX - r.left) / Math.max(1, r.width))); };
@@ -100,9 +100,12 @@ function sceneBrouillon() {
   montrer(0, false);
   if (etat.calme || !ST()) { items.forEach((li) => li.classList.add('est-raye')); return; }
   feuille.classList.remove('est-raye');
+  /* Le métier change quand son titre passe le milieu de l'écran (l'image qui le précède ne compte pas) :
+     la feuille et la colonne montrent toujours le même métier. */
   items.forEach((li, i) => {
-    ST().create({ trigger: li, start: 'top 55%', end: 'bottom 55%', onToggle: (s) => { if (s.isActive) montrer(i); } });
-    ST().create({ trigger: li, start: 'top 60%', once: true, onEnter: () => setTimeout(() => li.classList.add('est-raye'), 900) });
+    const titre = $('h3', li), suivant = items[i + 1] && $('h3', items[i + 1]);
+    ST().create({ trigger: titre, start: 'top 60%', endTrigger: suivant || li, end: suivant ? 'top 60%' : 'bottom 60%', onToggle: (s) => { if (s.isActive) montrer(i); } });
+    ST().create({ trigger: li, start: 'top 60%', once: true, onEnter: () => setTimeout(() => li.classList.add('est-raye'), 500) });
   });
   ST().create({ trigger: feuille, start: 'top 80%', once: true, onEnter: () => { courant = -1; montrer(Math.max(0, items.findIndex((x) => x.classList.contains('est-courant')))); } });
 }

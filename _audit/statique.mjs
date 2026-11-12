@@ -1,7 +1,7 @@
 /* Contrôles sur les fichiers, sans navigateur : vercel.json, .vercelignore, robots.txt, noindex, images de partage,
    numéro de version ?v=N, liens vers le site actuel, liens externes, textes des langues, pages à jour. */
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
-import { join, relative, extname } from 'node:path';
+import { join, relative, extname, dirname, basename } from 'node:path';
 
 function dims(fichier) {
   const b = readFileSync(fichier);
@@ -32,7 +32,10 @@ export function listerFichiers(racine, filtre, exclus = []) {
   return out;
 }
 
-export const EXCLUS = ['_audit', '_partage', 'source', 'outils', 'node_modules', '.vercel', '.git', 'recu', 'donnees'];
+/* Dossiers jamais audités : ce ne sont pas des pages du site. _suivi/ (planche d'intention, direction, consignes Grok, relevés),
+   _biblio/ (outils copiés de la skill) et assemblages/ (pages de référence des modules) : Lo Componaïro, 10 novembre 2026,
+   138 des 206 échecs du premier audit venaient de la planche d'intention et des assemblages laissés à la racine. */
+export const EXCLUS = ['_audit', '_partage', '_suivi', '_biblio', 'assemblages', 'source', 'outils', 'node_modules', '.vercel', '.git', 'recu', 'donnees'];
 
 export function controlesStatiques(racine, { siteActuel, rapport, versionLivree }) {
   const R = rapport;
@@ -64,7 +67,7 @@ export function controlesStatiques(racine, { siteActuel, rapport, versionLivree 
   if (!existsSync(ignore)) R.echec('.vercelignore', 'absent : _audit/, source/, outils/ et donnees/ seraient mis en ligne (node outils/generer.mjs le recrée)');
   else {
     const lignes = new Set(readFileSync(ignore, 'utf8').split(/\r?\n/).map((l) => l.trim().replace(/^\//, '').replace(/\/$/, '')).filter(Boolean));
-    const manque = ['_audit', 'source', 'outils', 'donnees'].filter((l) => !lignes.has(l));
+    const manque = ['_audit', 'source', 'outils', 'donnees', ...['_suivi', '_biblio', 'assemblages'].filter((d) => existsSync(join(racine, d)))].filter((l) => !lignes.has(l));
     if (manque.length) R.echec('.vercelignore', `ne contient pas ${manque.join(', ')} : ces dossiers seraient mis en ligne (node outils/generer.mjs le complète)`);
     else R.ok('.vercelignore');
   }
@@ -76,7 +79,13 @@ export function controlesStatiques(racine, { siteActuel, rapport, versionLivree 
   R.ok('robots.txt');
 
   /* Pages HTML. */
-  const pages = listerFichiers(racine, (p) => p.endsWith('.html'), EXCLUS);
+  /* Fichiers de travail laissés à la racine (planche d'intention, essais, brouillons) : un seul échec, et ils ne sont pas
+     audités comme des pages (sinon chaque format et chaque mode les compte : 138 échecs sur Lo Componaïro). */
+  const TRAVAIL = /^(intention|planche|essai|test|brouillon|direction|assemblage|apercu|comparaison|esquisses?)[-_.]/i;
+  const tousHtml = listerFichiers(racine, (p) => p.endsWith('.html'), EXCLUS);
+  const travail = tousHtml.filter((f) => dirname(f) === racine && TRAVAIL.test(basename(f)));
+  if (travail.length) R.echec('fichiers de travail à la racine', `${travail.map((f) => basename(f)).join(', ')} : à ranger dans _suivi/ (jamais mis en ligne ni audité)`);
+  const pages = tousHtml.filter((f) => !travail.includes(f));
   const titres = new Map(), descriptions = new Map();
   const versions = new Map();
   const cssJsSansVersion = [];
@@ -86,6 +95,11 @@ export function controlesStatiques(racine, { siteActuel, rapport, versionLivree 
     const meta = (prop) => { const m = h.match(new RegExp(`<meta[^>]+(?:property|name)=["']${prop}["'][^>]*content=["']([^"']*)["']`, 'i')) || h.match(new RegExp(`<meta[^>]+content=["']([^"']*)["'][^>]*(?:property|name)=["']${prop}["']`, 'i')); return m ? m[1] : null; };
     const robots = meta('robots');
     if (!robots || !/noindex/i.test(robots)) R.echec('noindex', `meta robots « noindex, nofollow » absente`, { page: rel });
+    /* « À compléter » visible hors du pied de page : un trou montré au visiteur. Remplacer par une phrase vraie qui oriente,
+       ou retirer l'élément (partie 3 de la skill) ; seules les mentions légales du pied de page le portent. */
+    const visibleHorsPied = h.replace(/<!--[\s\S]*?-->/g, '').replace(/<(script|style|template|noscript|footer)\b[\s\S]*?<\/\1>/gi, '').replace(/<[^>]+>/g, ' ');
+    const trous = (visibleHorsPied.match(/à compléter|a completer|to be completed/gi) || []).length;
+    if (trous) R.regarder('« à compléter » visible', `${trous} fois hors du pied de page : remplacer par une phrase vraie qui oriente le visiteur (« Tarifs selon la saison, donnés à la réservation ») ou retirer l'élément, et le noter dans la fiche du README (sauf sens propre : « dossier à compléter »)`, { page: rel });
     const titre = (h.match(/<title>([^<]*)<\/title>/i) || [])[1];
     if (!titre) R.echec('titre de page', 'absent', { page: rel }); else titres.set(titre, [...(titres.get(titre) || []), rel]);
     const desc = meta('description');
@@ -133,6 +147,9 @@ export function controlesStatiques(racine, { siteActuel, rapport, versionLivree 
   if (existsSync(jsDir)) {
     for (const f of listerFichiers(jsDir, (p) => /\.m?js$/.test(p), ['vendor'])) {
       const src = readFileSync(f, 'utf8');
+      /* clearProps 'all' efface tout l'attribut style, y compris les variables posées dans le HTML (--x, --i) : étiquettes
+         empilées au même endroit en mode calme sur QD2A. Nommer les propriétés à effacer. */
+      if (/clearProps\s*:\s*['"`]all['"`]/.test(src)) R.regarder('clearProps « all »', `${relative(racine, f)} : efface aussi les variables CSS posées dans le HTML ; nommer les propriétés (clearProps: 'transform,opacity')`);
       for (const m of src.matchAll(/(?:import|export)\s[^'"`;]*?from\s*['"](\.{1,2}\/[^'"]+)['"]|import\s*\(\s*['"](\.{1,2}\/[^'"]+)['"]|import\s+['"](\.{1,2}\/[^'"]+)['"]/g)) {
         const spec = m[1] || m[2] || m[3];
         const v = (spec.match(/[?&]v=([^&]+)/) || [])[1];

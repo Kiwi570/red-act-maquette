@@ -27,7 +27,7 @@
   "pages": {
     "accueil": {
       "titre": "Red-Act : conseil en communication, rédaction et community management à Strasbourg",
-      "description": "Red-Act, conseil en communication indépendant fondé à Strasbourg en 2004 : rédaction, community management, conseil et formation, en Alsace et dans le Grand-Est.",
+      "description": "Red-Act, conseil en communication indépendant fondé à Strasbourg en 2004 : rédaction, community management, conseil et formation, à Strasbourg et en Alsace.",
       "nav": "Accueil",
       "partageAlt": "Red-Act, savoir faire et faire savoir : bureau de rédacteur et bobine de fil rouge",
       "accroche": "Savoir faire & faire savoir"
@@ -74,35 +74,28 @@
   },
   "accueil": {
     "hero": {
-      "surtitre": "Conseil en communication · Strasbourg",
+      "surtitre": "Conseil en communication · Hoenheim, Strasbourg",
       "titre1": "Savoir faire",
       "titre2": "& faire savoir",
-      "texte": "Une approche directe et personnalisée de la communication d'influence et des réseaux : rédaction, community management, conseil et formation.",
+      "texte": "Un seul interlocuteur pour six métiers de la communication : rédaction, community management, conseil et formation, avec deux spécialités, la politique et la gastronomie.",
       "action": "Prendre rendez-vous",
-      "info": "Indépendant depuis 2004 · Alsace et Grand-Est",
+      "info": "Indépendant depuis 2004 · Strasbourg et Alsace",
       "alt": "Bureau de rédacteur vu de haut : carnet ouvert, stylo, bobine de fil rouge",
       "filet": "Filet des références de Red-Act, à tirer à la main : {noms}…",
       "consigne": "Attrapez le filet",
       "consigneTactile": "Touchez et tirez le filet",
-      "noeud": "Red-Act"
-    },
-    "nom": {
-      "surtitre": "Le nom",
-      "titre": "Red, le réseau. Act, l'action.",
-      "texte": "« Red » veut dire réseau en espagnol, « act » évoque l'action en anglais. Red-Act met en mouvement l'ensemble des métiers de la communication, de la mission ponctuelle à l'accompagnement au long cours.",
-      "rangee1": "Rédiger · Conseiller · Animer · Former · Auditer ·",
-      "rangee2": "Print · Web · Presse · Réseaux · Influence ·"
-    },
-    "alsace": {
-      "gauche": "Depuis",
-      "droite": "l'Alsace",
-      "alt": "Coteaux de vignes au lever du soleil au-dessus d'un village",
-      "legende": "À vos côtés, depuis l'Alsace : Red-Act intervient à Strasbourg, en Alsace et dans le Grand-Est, et vous écoute avant de proposer."
+      "noeud": "Red-Act",
+      "titre2et": "&",
+      "titre2a": "faire",
+      "titre2b": "savoir",
+      "ou": "ou",
+      "signatureNom": "Stéphane Bourhis",
+      "signatureRole": "votre seul interlocuteur"
     },
     "metiers": {
       "surtitre": "Six métiers",
       "titre": "Un seul interlocuteur, six métiers",
-      "texte": "Faites-la tourner à la main, aux flèches ou en faisant défiler.",
+      "texte": "Faites tourner la roue : à la main, aux flèches ou en faisant défiler.",
       "precedent": "Métier précédent",
       "suivant": "Métier suivant",
       "region": "Roue des six métiers",
@@ -117,23 +110,27 @@
       "politiqueTexte": "Des candidats aux élus : concevoir et conduire la communication et l'implantation, avec un réseau de graphistes, de photographes et de spécialistes du web.",
       "tourismeTitre": "Tourisme et gastronomie",
       "tourismeTexte": "Vin, gastronomie, tourisme, art de la table et hôtellerie : des contenus sur mesure, des stratégies rédactionnelles et du community management.",
-      "voir": "En savoir plus"
+      "voir": "En savoir plus",
+      "altPolitique": "Pupitre éclairé dans une salle de réunion publique",
+      "altTourisme": "Village alsacien dans les vignes au lever du soleil"
     },
     "reseau": {
-      "surtitre": "Le réseau",
+      "surtitre": "Red, le réseau",
       "titre": "Ceux qui ont fait confiance à Red-Act",
       "depuis": "année de création, à Strasbourg",
       "noms": "références nommées",
       "secteurs": "secteurs, des agences aux institutions",
       "passeport": "exemplaires et plus : le « Passeport Alsacien », dont Red-Act a écrit les textes",
       "voir": "Parcourir le réseau",
-      "alt": "Mur de fiches vierges reliées par des fils rouges"
+      "texte": "« Red » veut dire réseau en espagnol, « act » évoque l'action en anglais. Red-Act met en mouvement l'ensemble des métiers de la communication, de la mission ponctuelle à l'accompagnement au long cours.",
+      "secteursTitre": "Dix secteurs, à parcourir",
+      "secteurLien": "Voir les références du secteur {nom}"
     },
     "stephane": {
       "surtitre": "Qui écrit",
       "nom": "Stéphane Bourhis",
       "role": "Conseil en communication, Red-Act",
-      "texte1": "Fondée en août 2004 à Strasbourg, avec le soutien du Conseil régional d'Alsace, l'agence a choisi la communication print et digitale.",
+      "texte1": "Stéphane Bourhis a fondé Red-Act en août 2004 à Strasbourg, avec le soutien du Conseil régional d'Alsace, et a choisi la communication print et digitale.",
       "texte2": "Stéphane Bourhis est chargé de cours à l'Université de Strasbourg, membre et délégué régional de l'APCIG, l'Association professionnelle des chroniqueurs et informateurs de la gastronomie et du vin.",
       "valeurs": "Imagination · Complicité · Professionnalisme",
       "alsacien": "Uff Elsassich – Red-Act, ihre neue Partner.",
@@ -154,11 +151,12 @@
       "alt": "Deux cafés et un carnet sur une table de café"
     },
     "fin": {
-      "titre": "Pour recevoir une documentation, ou pour faire connaissance",
-      "texte": "Prenez rendez-vous, ou laissez vos coordonnées pour recevoir une documentation et parler de votre projet.",
+      "titre": "Faisons savoir ce que vous savez faire",
+      "texte": "Un premier rendez-vous pour comprendre votre projet, ou une documentation pour faire connaissance. Tarifs sur devis, après ce premier échange.",
       "action": "Prendre rendez-vous",
       "documentation": "Demander une documentation",
-      "alt": "Enveloppe nouée d'un fil rouge"
+      "alt": "Enveloppe nouée d'un fil rouge",
+      "appel": "ou appelez le"
     }
   },
   "metiers": {
@@ -196,7 +194,7 @@
     },
     "fin": {
       "titre": "Un métier, ou les six ?",
-      "texte": "Dites-nous ce que vous cherchez : le formulaire de rendez-vous s'ouvre avec votre choix déjà fait.",
+      "texte": "Dites-nous ce que vous cherchez : le formulaire de rendez-vous s'ouvre avec votre choix déjà fait. Tarifs sur devis, après un premier échange.",
       "action": "Prendre rendez-vous"
     }
   },
@@ -207,7 +205,7 @@
       "titre2": "et la table",
       "texte": "Deux mondes où Red-Act a construit sa pratique : la communication politique et institutionnelle, et la communication touristique et gastronomique.",
       "action": "Prendre rendez-vous",
-      "info": "Alsace et régions voisines",
+      "info": "Strasbourg et Alsace",
       "glisser": "Faites glisser la séparation",
       "curseur": "Part de l'écran donnée à la politique",
       "politique": "Politique & institutionnel",
@@ -222,7 +220,7 @@
     "politique": {
       "surtitre": "Communication politique et institutionnelle",
       "titre": "Il n'y a plus d'entrée en politique sans entrée en communication",
-      "texte1": "Le domaine politique doit désormais intégrer les outils des technologies de l'information.",
+      "texte1": "En politique, la communication passe désormais aussi par le numérique et les réseaux.",
       "texte2": "Red-Act accompagne les candidats, puis les élus, dans la conception et la gestion de leurs stratégies et de leurs opérations de communication et d'implantation, en s'appuyant sur un réseau de professionnels du graphisme, de la photo et de l'internet.",
       "alt": "Salle du conseil vide, pupitre et bancs de bois",
       "altCampagne": "Permanence de campagne, carte et fils rouges",
@@ -237,8 +235,8 @@
     "tourisme": {
       "surtitre": "Communication touristique et gastronomique",
       "titre": "Donner envie de venir, et de revenir",
-      "texte1": "Créée en 2004, Red-Act développe ses solutions pour ces secteurs à l'ère d'internet et des réseaux sociaux : contenus personnalisés, stratégies rédactionnelles et community management.",
-      "texte2": "Un rédacteur spécialisé dans le tourisme en Alsace, la gastronomie et les vins, membre et délégué régional de l'APCIG.",
+      "texte1": "Pour ces secteurs, Red-Act crée des contenus sur mesure, des stratégies rédactionnelles et anime les réseaux sociaux.",
+      "texte2": "Stéphane Bourhis est spécialisé dans le tourisme en Alsace, la gastronomie et les vins : il est membre et délégué régional de l'APCIG.",
       "clients": "Ils l'ont confié à Red-Act",
       "alt": "Table dressée dans une auberge boisée, verres à vin vides",
       "altTerrasse": "Terrasse d'auberge face aux vignes",
@@ -246,8 +244,10 @@
     },
     "fin": {
       "titre": "La tribune, la table, ou les deux ?",
-      "texte": "Un premier rendez-vous pour comprendre votre projet.",
-      "action": "Prendre rendez-vous"
+      "texte": "Choisissez votre monde : le formulaire de rendez-vous s'ouvre avec ce choix déjà fait.",
+      "action": "Prendre rendez-vous",
+      "tribune": "La tribune",
+      "table": "La table"
     }
   },
   "references": {
@@ -271,21 +271,14 @@
       "titre": "Toutes les références, par secteur",
       "texte": "Noms repris tels qu'ils figurent sur le site actuel de Red-Act. Aucun logo n'est reproduit sans l'accord des clients."
     },
-    "rangee1": "Wolfberger · Électricité de Strasbourg · L'Express · Medef · Labonal · Peugeot Strasbourg ·",
-    "rangee2": "Maison de l'Alsace · Brasserie Météor · Groupe ICADE · Carré Blanc · Coop Alsace · Made in Alsace ·",
     "passeport": {
       "titre": "Le Passeport Alsacien",
-      "texte": "Red-Act a écrit les textes du « Passeport Alsacien », tiré à plus de 12 000 exemplaires.",
+      "texte": "Red-Act a écrit les textes du « Passeport Alsacien ».",
       "unite": "exemplaires et plus"
     },
-    "autres": {
-      "titre": "Et aussi",
-      "texte": "De nombreux opérateurs touristiques alsaciens, et des femmes et des hommes politiques, dont les noms ne sont pas cités.",
-      "alt": "Mur de fiches vierges reliées par des fils rouges"
-    },
     "fin": {
-      "titre": "Votre nom sur le filet ?",
-      "texte": "Envoyez une demande de rendez-vous : elle se noue au réseau.",
+      "titre": "Votre projet, le prochain nœud ?",
+      "texte": "Un premier rendez-vous pour en parler : Red-Act vous écoute avant de proposer.",
       "action": "Prendre rendez-vous"
     }
   },
@@ -297,16 +290,16 @@
       "action": "Appeler le 03 88 18 35 44",
       "info": "8, rue Anatole France · 67800 Hoenheim",
       "alt": "Rue résidentielle arborée un matin d'automne",
-      "horaires": "Horaires : à compléter",
+      "horaires": "Rendez-vous sur demande, par téléphone ou par e-mail.",
       "carte": "Carte de visite de Red-Act",
       "rdv": "Demander un rendez-vous"
     },
     "rdv": {
       "surtitre": "Rendez-vous",
       "titre": "Demander un rendez-vous",
-      "deroule": "Trois étapes : votre besoin, vous, vos coordonnées. Rien n'est envoyé : c'est une maquette.",
+      "deroule": "Trois étapes : votre besoin, vous, vos coordonnées. Tarifs sur devis, après un premier échange. Rien n'est envoyé : c'est une maquette.",
       "e1": "Votre besoin",
-      "e2": "Vous",
+      "e2": "Vous êtes…",
       "e3": "Vos coordonnées",
       "besoinLegende": "De quoi avez-vous besoin ?",
       "documentation": "Recevoir une documentation",
@@ -339,18 +332,15 @@
     "acces": {
       "surtitre": "Accès",
       "titre": "À Hoenheim, aux portes de Strasbourg",
-      "texte": "Red-Act intervient à Strasbourg, en Alsace et dans tout le Grand-Est.",
-      "carte": "Carte schématique : Hoenheim au nord de Strasbourg, dans le Grand-Est",
+      "texte": "Red-Act intervient à Strasbourg et en Alsace.",
+      "carte": "Carte schématique : Hoenheim au nord de Strasbourg, en Alsace",
       "strasbourg": "Strasbourg",
       "hoenheim": "Hoenheim",
       "colmar": "Colmar",
       "mulhouse": "Mulhouse",
-      "metz": "Metz",
-      "nancy": "Nancy",
       "rhin": "Rhin",
       "illustratif": "Carte schématique, non à l'échelle",
-      "ecrire": "Écrire à contact@red-act.com",
-      "mots": "Strasbourg · Hoenheim · Alsace · Grand-Est ·"
+      "ecrire": "Écrire à contact@red-act.com"
     }
   },
   "introuvable": {

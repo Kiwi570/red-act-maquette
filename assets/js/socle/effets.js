@@ -30,7 +30,7 @@
    Mode calme, secours, retour arrière, retour à la section : rien ne bouge à l'arrivée, tout est dans son état final.
    Sans JavaScript : contenu normal. Aucune lecture de mise en page pendant le défilement : les textes sont découpés
    à l'avance, pendant les temps morts, et rétablis quand le défilement s'arrête. */
-import { html, etat, quand, stockage } from './etat.js?v=2';
+import { html, etat, quand, stockage } from './etat.js?v=3';
 
 const ENTREES = ['lignes', 'mots', 'lettres', 'cascade', 'rideau'];
 const DECOUPES = '[data-anime="lignes"]:not(.vu), [data-anime="mots"]:not(.vu), [data-anime="lettres"]:not(.vu)';
@@ -277,8 +277,19 @@ function pleinEcran(el, gsap) {
   const depart = el.dataset.fxDepart || 'inset(24% 30% 24% 30% round 24px)';
   const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: 'top top', end: 'bottom bottom', scrub: 0.6, invalidateOnRefresh: true } });
   tl.fromTo(cadre, { clipPath: depart }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'power2.inOut', duration: 1 }, 0);
+  /* Les mots s'écartent sans jamais sortir de l'écran (mesuré au chargement et au redimensionnement, sans transformation). */
+  const marge = 16;
+  const ecart = (m) => {
+    const t = m.style.transform; m.style.transform = 'none';
+    const r = m.getBoundingClientRect(); const lw = document.documentElement.clientWidth;
+    m.style.transform = t;
+    if (!r.width) return 0;
+    const g = m.dataset.fxEcarte === 'g';
+    const place = g ? r.left - marge : lw - marge - r.right;
+    return (g ? -1 : 1) * Math.max(0, Math.min(45, (place / r.width) * 100));
+  };
   el.querySelectorAll('[data-fx-ecarte]').forEach((m) => {
-    tl.fromTo(m, { xPercent: 0 }, { xPercent: m.dataset.fxEcarte === 'g' ? -45 : 45, ease: 'power1.in', duration: 1 }, 0);
+    tl.fromTo(m, { xPercent: 0 }, { xPercent: () => ecart(m), ease: 'power1.in', duration: 1 }, 0);
   });
   const apres = el.querySelectorAll('[data-fx-apres]');
   if (apres.length) tl.fromTo(apres, { y: 32, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.25, stagger: 0.04 }, 0.78);
@@ -424,7 +435,7 @@ export function initEffets() {
   try { vitesse([...document.querySelectorAll('[data-fx="vitesse"]')], gsap); } catch (err) { console.error('[effets] vitesse', err); }
   try { survol(gsap); } catch (err) { console.error('[effets] survol', err); }
   if (document.querySelector('[data-fx="onde"]')) {
-    return import('./onde.js?v=2').then((m) => m.initOnde()).catch((err) => console.error('[effets] onde', err));
+    return import('./onde.js?v=3').then((m) => m.initOnde()).catch((err) => console.error('[effets] onde', err));
   }
   return Promise.resolve();
 }

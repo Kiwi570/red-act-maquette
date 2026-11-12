@@ -54,17 +54,10 @@ export default (c) => {
   </div>
 </section>
 
-<section class="ruban-ref" id="noms" data-fil="gauche">
-  <div class="mots-geants" data-fx="mots-geants" aria-hidden="true" data-ruban data-visuel data-audit-ignorer>
-    <p data-fx-rangee>${c.t('references.rangee1')} ${c.t('references.rangee1')}</p>
-    <p data-fx-rangee data-sens="-1" class="mots-geants--creux">${c.t('references.rangee2')} ${c.t('references.rangee2')}</p>
-  </div>
-</section>
-
 <section class="passeport conteneur" id="passeport" data-fil="droite">
   <div class="passeport-carnet" aria-hidden="true" data-visuel>
     ${[0, 1, 2, 3, 4].map((i) => html`<span class="carnet-page" style="--i:${i}"></span>`)}
-    <span class="carnet-couverture" data-effet="carnet"><svg viewBox="0 0 64 64" width="56" height="56"><use href="#noeud"/></svg><span>${c.t('references.passeport.titre')}</span></span>
+    <span class="carnet-couverture" data-effet="carnet"><span>${c.t('references.passeport.titre')}</span></span>
   </div>
   <div>
     <h2 class="titre-fil" data-titre-fil data-effet="titre-au-fil" data-grille="typo"><span class="visuellement-cache">${c.t('references.passeport.titre')}</span><svg class="titre-fil-svg" aria-hidden="true" viewBox="0 0 1300 140" preserveAspectRatio="xMinYMid meet"><text x="4" y="108">${c.s('references.passeport.titre')}</text></svg></h2>
@@ -74,13 +67,13 @@ export default (c) => {
 </section>
 
 <section class="autres conteneur" id="et-aussi" data-fil="gauche">
-  ${c.media({ nom: 'grok/references-atelier', alt: c.s('references.autres.alt'), cadrage: '40% 45%', classe: 'autres-media', sizes: '(max-width: 760px) 100vw, 50vw', attrs: 'data-fx="parallaxe"' })}
+  <div class="autres-noeud" aria-hidden="true" data-visuel>
+    <svg viewBox="0 0 400 260" data-fx="trace"><path data-fx-trait d="M-10 150 C 70 150 110 60 190 70 C 270 80 260 190 200 190 C 140 190 140 110 210 100 C 290 90 330 160 410 150"/></svg>
+  </div>
   <div>
-    <h2 class="titre-souple" data-axe data-anime="lignes">${c.t('references.autres.titre')}</h2>
-    <p data-anime>${c.t('references.autres.texte')}</p>
-    <h3 data-anime>${c.t('references.fin.titre')}</h3>
+    <h2 class="titre-souple" data-axe data-anime="lignes">${c.t('references.fin.titre')}</h2>
     <p data-anime>${c.t('references.fin.texte')}</p>
-    <p class="fin-actions" data-anime>${c.lien('contact', { ancre: 'rendez-vous', classe: 'bouton', texte: c.t('references.fin.action'), attrs: 'data-survol="magnetique"' })}</p>
+    <p class="fin-actions" data-anime>${c.lien('contact', { ancre: 'rendez-vous', classe: 'bouton bouton--clair', texte: c.t('references.fin.action'), attrs: 'data-survol="magnetique"' })}</p>
   </div>
 </section>
 

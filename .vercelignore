@@ -8,5 +8,6 @@ README.md
 CHANGELOG.md
 *.zip
 plan-images.json
-grok-consignes.json
+_suivi
 *.docx
+_biblio

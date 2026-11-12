@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" data-v="2" data-curseur>
+<html lang="fr" data-v="3" data-curseur>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -41,14 +41,14 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 })();</script>
 <link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/polices/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/socle.css?v=2">
-<link rel="stylesheet" href="/assets/css/site.css?v=2">
-<link rel="modulepreload" href="/assets/js/site.js?v=2">
-<link rel="modulepreload" href="/assets/js/socle/index.js?v=2">
+<link rel="stylesheet" href="/assets/css/socle.css?v=3">
+<link rel="stylesheet" href="/assets/css/site.css?v=3">
+<link rel="modulepreload" href="/assets/js/site.js?v=3">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=3">
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
-<script type="module" src="/assets/js/site.js?v=2"></script>
+<script type="module" src="/assets/js/site.js?v=3"></script>
 <meta name="theme-color" content="#F4EEE3">
 <link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/assets/images/favicon-192.png" sizes="192x192" type="image/png">
@@ -116,6 +116,7 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
   <p class="menu-sansjs-fermer"><a href="#menu-ferme">Fermer</a></p>
   <ul><li style="--i:0"><a href="/" class="menu-lien" data-libelle="Accueil">Accueil</a></li><li style="--i:1"><a href="/metiers" class="menu-lien" data-libelle="Métiers">Métiers</a></li><li style="--i:2"><a href="/specialites" class="menu-lien" data-libelle="Spécialités" aria-current="page">Spécialités</a></li><li style="--i:3"><a href="/references" class="menu-lien" data-libelle="Références">Références</a></li><li style="--i:4"><a href="/contact" class="menu-lien" data-libelle="Contact">Contact</a></li></ul>
   <p><a class="bouton" href="tel:+33388183544">Appeler 03 88 18 35 44</a></p>
+  <p class="menu-adresse">8, rue Anatole France, 67800 Hoenheim<br><a href="mailto:contact@red-act.com">contact@red-act.com</a></p>
   <p><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></p>
 </div>
 <main id="contenu" tabindex="-1">
@@ -155,7 +156,7 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
       <p class="tete-suite masque-ecran-bas" data-anime="gsap">Deux mondes où Red-Act a construit sa pratique : la communication politique et institutionnelle, et la communication touristique et gastronomique.</p>
       <p class="hero-actions tete-suite" data-anime="gsap">
         <a href="/contact#rendez-vous" class="bouton" data-libelle="Contact" data-action-principale data-survol="magnetique">Prendre rendez-vous</a>
-        <span class="hero-info" data-info-cle>Alsace et régions voisines</span>
+        <span class="hero-info" data-info-cle>Strasbourg et Alsace</span>
       </p>
     </div>
   </div>
@@ -164,8 +165,8 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
   <div class="conteneur politique-grille">
     <div>
       <p class="surtitre" data-anime>Communication politique et institutionnelle</p>
-      <h2 class="politique-titre" data-anime="lettres">Il n&#39;y a plus d&#39;entrée en politique sans entrée en communication</h2>
-      <p data-anime>Le domaine politique doit désormais intégrer les outils des technologies de l&#39;information.</p>
+      <h2 class="politique-titre" data-anime="lignes">Il n&#39;y a plus d&#39;entrée en politique sans entrée en communication</h2>
+      <p data-anime>En politique, la communication passe désormais aussi par le numérique et les réseaux.</p>
       <p data-anime>Red-Act accompagne les candidats, puis les élus, dans la conception et la gestion de leurs stratégies et de leurs opérations de communication et d&#39;implantation, en s&#39;appuyant sur un réseau de professionnels du graphisme, de la photo et de l&#39;internet.</p>
       <p data-anime><a href="/contact?besoin=politique#rendez-vous" class="bouton" data-libelle="Contact">Prendre rendez-vous</a></p>
     </div>
@@ -178,13 +179,6 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
   <div class="conteneur parcours">
     <svg class="parcours-fil" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true" data-fx="trace"><path d="M10 30 C 140 6, 230 54, 340 30 S 560 6, 670 30 S 880 54, 990 30"/></svg>
     <ol class="parcours-etapes" data-anime="cascade"><li><span class="parcours-noeud" aria-hidden="true"></span><span class="parcours-num">01</span> Candidature</li><li><span class="parcours-noeud" aria-hidden="true"></span><span class="parcours-num">02</span> Campagne</li><li><span class="parcours-noeud" aria-hidden="true"></span><span class="parcours-num">03</span> Élection</li><li><span class="parcours-noeud" aria-hidden="true"></span><span class="parcours-num">04</span> Mandat</li></ol>
-  </div>
-  <div class="conteneur campagne">
-    <figure class="media campagne-media" data-grok data-anime="rideau" style="--cadrage:30% 50%">
-  <picture>
-    <img src="/assets/images/grok/specialites-campagne-1168.webp" srcset="/assets/images/grok/specialites-campagne-640.webp 640w, /assets/images/grok/specialites-campagne-960.webp 960w, /assets/images/grok/specialites-campagne-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 80vw" alt="Permanence de campagne, carte et fils rouges" width="1168" height="784" loading="lazy" decoding="async">
-  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
-</figure>
   </div>
 </section>
 <section class="cave" id="cave" data-fx="plein-ecran" data-plein-ecran>
@@ -213,8 +207,8 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
     <div>
-      <p data-anime>Créée en 2004, Red-Act développe ses solutions pour ces secteurs à l&#39;ère d&#39;internet et des réseaux sociaux : contenus personnalisés, stratégies rédactionnelles et community management.</p>
-      <p data-anime>Un rédacteur spécialisé dans le tourisme en Alsace, la gastronomie et les vins, membre et délégué régional de l&#39;APCIG.</p>
+      <p data-anime>Pour ces secteurs, Red-Act crée des contenus sur mesure, des stratégies rédactionnelles et anime les réseaux sociaux.</p>
+      <p data-anime>Stéphane Bourhis est spécialisé dans le tourisme en Alsace, la gastronomie et les vins : il est membre et délégué régional de l&#39;APCIG.</p>
       <h3 data-anime>Ils l&#39;ont confié à Red-Act</h3>
       <ul class="clients" data-anime="cascade"><li>Château de Pommard</li><li>Brasserie Météor</li><li>Domaine des Grands Vins de France</li><li>Wolfberger</li><li>Ruhlmann-Schutz</li><li>Klipfel</li><li>Adam</li><li>Caveau Lorentz Klipfel</li><li>Château de Bissieux</li><li>Verte Vallée</li><li>Hostellerie du Haut Koenigsbourg</li><li>Living Room</li><li>Alsacienne de Gastronomie</li><li>Porcus</li><li>Klein d&#39;Alsace</li><li>Maison Klein</li><li>Ferme Fruitière Rothgerber</li><li>Bretzel Burgard</li><li>Roi Soleil</li><li>Maison Doriath</li><li>1741</li><li>Le Tire Bouchon</li><li>Le Meiselocker</li><li>Au bon vivant</li><li>Le Relais de la Poste</li><li>Christophe Dufossé</li><li>La Citadelle</li><li>Lucien Doriath</li><li>Le Passeport Gourmand</li><li>231 East Street</li></ul>
       <p data-anime><a href="/contact?besoin=tourisme#rendez-vous" class="bouton" data-libelle="Contact">Prendre rendez-vous</a></p>
@@ -226,16 +220,28 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 </figure>
   </div>
 </section>
-<section class="fin fin--simple conteneur" id="fin" data-fil="droite">
-  <figure class="media fin-media" data-grok data-fx="zoom" style="--cadrage:55% 55%">
+<section class="fin fin--choix conteneur" id="fin" data-fil="droite">
+  <div class="fin-choix-tete">
+    <h2 class="titre-souple" data-axe data-anime="lignes">La tribune, la table, ou les deux ?</h2>
+    <p data-anime>Choisissez votre monde : le formulaire de rendez-vous s&#39;ouvre avec ce choix déjà fait.</p>
+  </div>
+  <div class="fin-choix" data-anime="cascade">
+    <a class="choix-image" href="/contact?besoin=politique#rendez-vous" data-libelle="Contact">
+      <figure class="media choix-image-media" data-grok data-fx="zoom" style="--cadrage:50% 40%">
   <picture>
-    <img src="/assets/images/grok/accueil-rencontre-1168.webp" srcset="/assets/images/grok/accueil-rencontre-640.webp 640w, /assets/images/grok/accueil-rencontre-960.webp 960w, /assets/images/grok/accueil-rencontre-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 40vw" alt="Deux cafés et un carnet sur une table de café" width="1168" height="784" loading="lazy" decoding="async">
+    <img src="/assets/images/grok/specialites-ouverture-politique-784.webp" srcset="/assets/images/grok/specialites-ouverture-politique-480.webp 480w, /assets/images/grok/specialites-ouverture-politique-784.webp 784w" sizes="(max-width: 760px) 100vw, 45vw" alt="" width="784" height="1168" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-  <div>
-    <h2 class="titre-souple" data-axe data-anime="lignes">La tribune, la table, ou les deux ?</h2>
-    <p data-anime>Un premier rendez-vous pour comprendre votre projet.</p>
-    <p class="fin-actions" data-anime><a href="/contact#rendez-vous" class="bouton" data-libelle="Contact" data-survol="magnetique">Prendre rendez-vous</a></p>
+      <span class="choix-image-texte">La tribune <span aria-hidden="true">→</span></span>
+    </a>
+    <a class="choix-image" href="/contact?besoin=tourisme#rendez-vous" data-libelle="Contact">
+      <figure class="media choix-image-media" data-grok data-fx="zoom" style="--cadrage:50% 60%">
+  <picture>
+    <img src="/assets/images/grok/specialites-hotellerie-1168.webp" srcset="/assets/images/grok/specialites-hotellerie-640.webp 640w, /assets/images/grok/specialites-hotellerie-960.webp 960w, /assets/images/grok/specialites-hotellerie-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 45vw" alt="" width="1168" height="784" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <span class="choix-image-texte">La table <span aria-hidden="true">→</span></span>
+    </a>
   </div>
 </section>
 </div>

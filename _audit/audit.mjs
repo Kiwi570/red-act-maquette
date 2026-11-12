@@ -11,10 +11,13 @@
    Audit ciblé (petite correction) : --pages=/,/contact (toutes les étapes sur ces pages seulement)
    et --seulement=fichiers,grille,mesures,films,bords,parcours,ecran,fluidite,mouvement,vitesse,captures,safari.
    À la fin, le script affiche la commande qui relance seulement ce qui a échoué.
-   Résultat : _audit/rapport/rapport.md (+ rapport.json, captures/, films/, comparaisons/). Code de sortie 1 s'il reste un échec.
+   Résultat : chaque passe écrit dans son propre dossier, _audit/passes/<date>-<niveau>/, sans jamais effacer une autre passe
+   (audit en arrière-plan, relance ciblée) ; à la fin, _audit/rapport/ devient la copie de la dernière passe terminée, et son
+   rapport.md liste toutes les passes de la même version (?v=N). Les captures et films ne sont gardés que pour les deux
+   dernières passes. Code de sortie : 1 s'il reste un échec ; 3 si un contrôle requis n'a pas tourné (audit incomplet) ; 0 sinon.
    Le rapport dit aussi ce qui n'a pas pu être lancé : rien n'est passé sous silence. */
 import { createRequire } from 'node:module';
-import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync, readdirSync, cpSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { demarrerServeur } from './serveur.mjs';
@@ -32,8 +35,15 @@ const { chromium, webkit } = playwright;
 const args = Object.fromEntries(process.argv.slice(2).map((a) => { const [k, ...v] = a.replace(/^--/, '').split('='); return [k, v.length ? v.join('=') : true]; }));
 const ici = dirname(fileURLToPath(import.meta.url));
 const racine = resolve(args.racine || join(ici, '..'));
-const sortie = join(ici, 'rapport');
-rmSync(sortie, { recursive: true, force: true });
+/* Une passe = un dossier : deux audits simultanés ou une relance ciblée n'effacent plus les preuves d'une autre passe
+   (audit externe du 10 novembre 2026 ; le regard neuf de l'Hacienda avait perdu ses captures pendant une relance). */
+const vue = join(ici, 'rapport');
+const dossierPasses = join(ici, 'passes');
+const horodatage = new Date().toISOString().replace(/[-:]/g, '').replace('T', '-').slice(0, 15);
+const etiquettePasse = `${args.complet ? 'complet' : args.rapide ? 'rapide' : 'standard'}${args.pages ? '-cible' : ''}${args.seulement ? '-partiel' : ''}`;
+let idPasse = `${horodatage}-${etiquettePasse}`;
+for (let k = 2; existsSync(join(dossierPasses, idPasse)); k++) idPasse = `${horodatage}-${etiquettePasse}-${k}`;
+const sortie = join(dossierPasses, idPasse);
 for (const d of ['captures', 'films', 'comparaisons']) mkdirSync(join(sortie, d), { recursive: true });
 const lireJson = (p) => { try { return JSON.parse(readFileSync(p, 'utf8')); } catch { return null; } };
 const config = lireJson(join(ici, 'config.json')) || {};
@@ -143,10 +153,12 @@ async function attendrePret(page, { delai = 9000, sansJs = false } = {}) {
 /* ---------- Pages ---------- */
 let pagesRel = [];
 let textesEtrangers = {};
+let versionSite = '';
 await tache('fichiers', async () => {
   const s = controlesStatiques(racine, { siteActuel, rapport: R, versionLivree });
   pagesRel = s.pages;
   textesEtrangers = s.textesEtrangers;
+  versionSite = s.version || '';
   if (s.version) R.info(`Numéro de version des fichiers : ?v=${s.version}`);
   /* Journal du projet (_audit/journal.json, modèle journal.exemple.json) : le budget de temps se mesure. */
   const fj = join(ici, 'journal.json');
@@ -167,10 +179,28 @@ await tache('fichiers', async () => {
     }
   }
 });
+/* Beauté des images (donnees/images.json, champ « beaute » recopié du plan par produire.mjs) : les images notées 3 ou moins,
+   ou faibles, sont surveillées sur les pages ; une photo faible affichée en grand est un échec (Jardins de l'Hacienda,
+   11 novembre 2026 : ours en peluche, table floue et chaise en peau de mouton dans les grands emplacements). */
+const imagesNotes = {};
+{
+  const fi = join(racine, 'donnees', 'images.json');
+  const fiche = existsSync(fi) ? lireJson(fi) : null;
+  if (fiche && typeof fiche === 'object') {
+    const sansNote = [];
+    for (const [nom, x] of Object.entries(fiche)) {
+      if (!x || x.role === 'logo' || (x.fichiers || []).every((f) => /\.svg$/i.test(f))) continue;
+      const b = Number(x.beaute);
+      if (!(b >= 1 && b <= 5)) sansNote.push(nom);
+      if ((b >= 1 && b <= 3) || x.faible) imagesNotes[nom] = { b: b >= 1 && b <= 5 ? b : null, f: !!x.faible };
+    }
+    if (sansNote.length && faire('fichiers')) R.regarder('beauté des images', `${sansNote.length} image(s) sans note de beauté dans plan-images.json (« beaute » de 1 à 5, puis produire.mjs) : ${sansNote.slice(0, 8).join(', ')}${sansNote.length > 8 ? '…' : ''}`);
+  }
+}
 /* Étape « fichiers » non demandée (audit ciblé) : la liste des pages est lue quand même, sans rien noter. */
 if (!pagesRel.length && !faire('fichiers')) {
   const muet = { ajouter() {}, echec() {}, regarder() {}, ok() {}, info() {}, nonLance() {} };
-  try { const s = controlesStatiques(racine, { siteActuel, rapport: muet, versionLivree }); pagesRel = s.pages; textesEtrangers = s.textesEtrangers; } catch {}
+  try { const s = controlesStatiques(racine, { siteActuel, rapport: muet, versionLivree }); pagesRel = s.pages; textesEtrangers = s.textesEtrangers; versionSite = s.version || ''; } catch {}
 }
 if (!pagesRel.length) pagesRel = ['index.html'];
 const versUrl = (rel) => '/' + rel.replace(/\\/g, '/').replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '').replace(/\/$/, '');
@@ -257,6 +287,7 @@ async function mesurerUne(p, taille, mode) {
       structure: ['390×844', '1366×768'].includes(taille.nom) && mode !== 'sansWebgl',
       textesEtrangers: mode === 'normal' && ['390×844', '1366×768'].includes(taille.nom) ? (textesEtrangers[langue] || []) : [],
       francais: langue === 'fr' && mode === 'normal' && taille.nom === '1366×768',
+      imagesNotes: mode === 'normal' && ['390×844', '1366×768', '1920×1080'].includes(taille.nom) ? imagesNotes : null,
     });
     noter(res.problemes, p, taille, mode);
     if (mode === 'normal' && ['390×844', '768×1024', '1366×768', '1920×1080'].includes(taille.nom)) {
@@ -1376,7 +1407,12 @@ const parControle = (l) => { const m = new Map(); l.forEach((x) => { if (!m.has(
 const md = [];
 const NOMS_NIVEAU = { rapide: 'audit RAPIDE : ne vaut pas pour une livraison', standard: 'audit standard', complet: 'audit complet' };
 md.push('# Rapport d’audit', '', `Projet : \`${racine.split('/').pop()}\` · ${new Date().toLocaleString('fr-FR')} · ${Math.round((Date.now() - debut) / 60000)} min · ${PAGES.length} page(s) · ${NOMS_NIVEAU[NIVEAU]}${args.pages ? ` ciblé sur ${args.pages}` : ''}${seulement ? ` (étapes : ${seulement.join(', ')})` : ''}`, '');
-md.push('## Résumé', '', `- Échecs : **${echecs.length}**`, `- À regarder : **${aRegarder.length}**`, `- Non lancé : **${R.nonLances.length}**`, `- Contrôles passés : ${[...R.oks.entries()].map(([k, n]) => `${k} (${n})`).join(', ') || 'aucun'}`, '');
+/* Non lancés acceptés : Safari (WebKit absent ici, vérification sur le Mac) et axe-core remplacé par les contrôles intégrés.
+   Tout autre contrôle non lancé rend l'audit INCOMPLET : il ne vaut pas pour une livraison (code 3). */
+const NON_BLOQUANTS = /^(Safari|films dans Safari|axe-core)/;
+const manquants = R.nonLances.filter((x) => !NON_BLOQUANTS.test(x.controle));
+const statutPasse = echecs.length ? 'échecs' : manquants.length ? 'INCOMPLET' : 'complet';
+md.push('## Résumé', '', `- Statut : **${statutPasse === 'complet' ? 'tout a tourné, aucun échec' : statutPasse === 'INCOMPLET' ? `INCOMPLET : ${manquants.length} contrôle(s) requis n’ont pas tourné (voir « Non lancé ») ; ne vaut pas pour une livraison` : `${echecs.length} échec(s)`}**`, `- Passe : \`${idPasse}\`${versionSite ? ` · version ?v=${versionSite}` : ''}`, `- Échecs : **${echecs.length}**`, `- À regarder : **${aRegarder.length}**`, `- Non lancé : **${R.nonLances.length}**`, `- Contrôles passés : ${[...R.oks.entries()].map(([k, n]) => `${k} (${n})`).join(', ') || 'aucun'}`, '');
 /* Grille wouahou : tableau lu en premier par le regard neuf (ce que le script ne juge pas : le goût, la force de l'effet). */
 if (GRILLE.length) {
   const SIGNE = { présent: '✓', absent: '✗', 'à regarder': '⚠', dispensé: '—', 'sans objet': '·' };
@@ -1420,7 +1456,22 @@ if (aRelancer.length) {
   md.push('', '## Relancer seulement ce qui a échoué', '', 'Après correction, si elle ne touche que ces pages (sinon, relancer l’audit standard en entier) :', '', '```', relance, '```', '');
   writeFileSync(join(sortie, 'rapport.md'), md.join('\n'));
 }
-console.log(`\nÉchecs : ${echecs.length} · À regarder : ${aRegarder.length} · Non lancé : ${R.nonLances.length}`);
+/* Fiche de la passe, liste des passes de la même version dans le rapport, puis vue _audit/rapport/ = cette passe. */
+const fichePasse = { id: idPasse, date: new Date().toISOString(), niveau: NIVEAU, pages: args.pages || 'toutes', etapes: seulement || 'toutes', version: versionSite, echecs: echecs.length, aRegarder: aRegarder.length, nonLances: R.nonLances.length, manquants: manquants.length, statut: statutPasse };
+writeFileSync(join(sortie, 'passe.json'), JSON.stringify(fichePasse, null, 1) + '\n');
+const toutesPasses = existsSync(dossierPasses) ? readdirSync(dossierPasses).filter((d) => existsSync(join(dossierPasses, d, 'passe.json'))).sort() : [];
+const memeVersion = toutesPasses.map((d) => lireJson(join(dossierPasses, d, 'passe.json'))).filter((x) => x && x.version === versionSite);
+if (memeVersion.length > 1) {
+  const i = md.indexOf('## Échecs');
+  md.splice(i, 0, `## Passes de cette version (?v=${versionSite || 'non relevée'})`, '', 'Chaque passe garde son rapport dans `_audit/passes/` : une relance ciblée ne fait pas disparaître la preuve d’une passe plus large.', '',
+    '| Passe | Niveau | Pages | Étapes | Échecs | À regarder | Non lancé | Statut |', '|---|---|---|---|---:|---:|---:|---|',
+    ...memeVersion.map((x) => `| ${x.id === idPasse ? `**${x.id}** (celle-ci)` : x.id} | ${x.niveau} | ${x.pages} | ${Array.isArray(x.etapes) ? x.etapes.join(', ') : x.etapes} | ${x.echecs} | ${x.aRegarder} | ${x.nonLances} | ${x.statut} |`), '');
+  writeFileSync(join(sortie, 'rapport.md'), md.join('\n'));
+}
+/* Captures, films et comparaisons : gardés pour les deux dernières passes seulement (le zip reste léger). */
+for (const d of toutesPasses.slice(0, -2)) for (const m of ['captures', 'films', 'comparaisons']) rmSync(join(dossierPasses, d, m), { recursive: true, force: true });
+try { rmSync(vue, { recursive: true, force: true }); cpSync(sortie, vue, { recursive: true }); } catch (e) { console.log(`(vue _audit/rapport/ non mise à jour : ${e.message})`); }
+console.log(`\nÉchecs : ${echecs.length} · À regarder : ${aRegarder.length} · Non lancé : ${R.nonLances.length}${manquants.length ? ` (dont ${manquants.length} requis : audit INCOMPLET)` : ''}`);
 if (relance) console.log(`Relancer seulement ce qui a échoué : ${relance}`);
-console.log(`Rapport : ${join(sortie, 'rapport.md')}`);
-process.exit(echecs.length ? 1 : 0);
+console.log(`Rapport : ${join(vue, 'rapport.md')} (passe ${idPasse})`);
+process.exit(echecs.length ? 1 : manquants.length ? 3 : 0);

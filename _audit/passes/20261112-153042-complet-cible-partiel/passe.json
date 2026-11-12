@@ -1,0 +1,19 @@
+{
+ "id": "20261112-153042-complet-cible-partiel",
+ "date": "2026-11-12T15:32:49.630Z",
+ "niveau": "complet",
+ "pages": "/",
+ "etapes": [
+  "fichiers",
+  "films",
+  "mouvement",
+  "fluidite",
+  "ecran"
+ ],
+ "version": "3",
+ "echecs": 0,
+ "aRegarder": 5,
+ "nonLances": 0,
+ "manquants": 0,
+ "statut": "complet"
+}

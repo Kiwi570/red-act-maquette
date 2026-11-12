@@ -89,7 +89,7 @@ export default (c) => {
 </section>
 
 <section class="fin fin--simple conteneur" id="fin" data-fil="gauche">
-  ${c.media({ nom: 'grok/metier-conseil-communication', alt: 'Table de premier rendez-vous, deux chaises face à face', cadrage: '50% 60%', classe: 'fin-media', sizes: '(max-width: 760px) 100vw, 40vw', attrs: 'data-anime="rideau"' })}
+  ${c.media({ nom: 'grok/accueil-rencontre', alt: c.s('accueil.methode.alt'), cadrage: '55% 55%', classe: 'fin-media', sizes: '(max-width: 760px) 100vw, 40vw', attrs: 'data-anime="rideau"' })}
   <div>
     <h2 class="titre-souple" data-axe data-anime="lignes">${c.t('metiers.fin.titre')}</h2>
     <p data-anime>${c.t('metiers.fin.texte')}</p>

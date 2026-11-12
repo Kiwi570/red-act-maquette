@@ -76,7 +76,7 @@ html.js:not(.calme) .intro-fil-entree { stroke-dasharray: 160; stroke-dashoffset
 .hero { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: stretch; min-height: 100svh; padding-top: var(--entete-h); }
 .hero-texte { align-self: center; padding: clamp(24px, 4vw, 56px) clamp(16px, 3vw, 40px) clamp(24px, 4vw, 56px) calc(var(--gouttiere) + 18px); }
 .hero-titre { font-size: clamp(2.8rem, min(7vw, 11vh), 7.4rem); line-height: 1.04; margin-bottom: .32em; }
-.hero-titre .hero-ligne:last-child { color: var(--rouge); }
+.hero-titre .hero-ligne:last-child { color: var(--texte); }
 .ligne-masque { display: block; overflow: hidden; padding-block: .14em .16em; margin-block: -.07em -.09em; }
 .hero-ligne { display: block; }
 .hero-intro { max-width: 32em; font-size: clamp(1.05rem, 1rem + .3vw, 1.25rem); color: var(--gris); }
@@ -125,7 +125,7 @@ html.js:not(.calme) .intro-fil-entree { stroke-dasharray: 160; stroke-dashoffset
 :is(html.calme, html.secours, html:not(.js)) .alsace .media { aspect-ratio: 16 / 9; width: min(100% - 2 * var(--gouttiere), var(--largeur)); margin-inline: auto; }
 
 /* ---------- Roue 3D des six métiers ---------- */
-html.js:not(.calme):not(.secours) .roue { height: 300svh; }
+html.js:not(.calme):not(.secours) .roue { height: 250svh; }
 .roue-collant { display: flex; flex-direction: column; padding-top: calc(var(--entete-h) + 12px); padding-bottom: calc(16px + var(--barres-h)); }
 html.js:not(.calme):not(.secours) .roue-collant { position: sticky; top: 0; height: 100svh; overflow: hidden; }
 .roue-tete h2 { font-size: clamp(2rem, min(4.6vw, 7vh), 4.2rem); margin-bottom: .2em; }
@@ -165,8 +165,9 @@ html.js:not(.calme):not(.secours) .roue-collant { position: sticky; top: 0; heig
 @media (max-width: 760px) { .specialites-grille { grid-template-columns: 1fr; } .spe--tourisme { margin-top: 0; } }
 
 /* ---------- Le réseau en chiffres ---------- */
-.reseau { padding-block: clamp(72px, 10vw, 140px) 0; background: var(--papier); }
-.reseau-grille { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(24px, 5vw, 72px); align-items: center; padding-bottom: clamp(48px, 7vw, 96px); }
+.reseau { padding-block: clamp(72px, 10vw, 136px); background: var(--nuit); color: var(--nuit-texte); --rouge-texte: var(--rouge-nuit); --gris: #CFC6B8; --ligne: rgb(241 234 221 / .2); --texte: var(--nuit-texte); --fond: var(--nuit); }
+.reseau-grille { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
+@media (max-width: 860px) { .reseau-grille { grid-template-columns: minmax(0, 1fr); } }
 .reseau h2 { font-size: clamp(2rem, 4.4vw, 4rem); }
 .chiffres-liste { list-style: none; margin: 0 0 28px; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 22px 28px; }
 .chiffres-liste li { display: grid; gap: 4px; border-top: 2px solid var(--texte); padding-top: 10px; }
@@ -182,7 +183,7 @@ html.js:not(.calme):not(.secours) .roue-collant { position: sticky; top: 0; heig
 
 /* ---------- Stéphane Bourhis ---------- */
 .stephane { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(24px, 5vw, 72px); align-items: center; padding-block: clamp(72px, 10vw, 140px); }
-.stephane-media { aspect-ratio: 4 / 5; }
+.stephane-media { aspect-ratio: 4 / 3; }
 .titre-fil { margin: 0 0 .2em; }
 .titre-fil-svg { width: 100%; max-width: 760px; height: auto; overflow: visible; }
 .titre-fil-svg text { font-family: var(--police-titres); font-size: 112px; font-weight: 600; font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144; fill: var(--texte); stroke: var(--rouge); stroke-width: 1.6px; paint-order: stroke; }
@@ -193,20 +194,21 @@ html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-titre-fil]:
 .alsacien blockquote { margin: 0; font-family: var(--police-titres); font-size: 1.15rem; }
 .alsacien p { margin: 0; }
 .alsacien figcaption { font-size: .9rem; color: var(--gris); margin-top: 4px; }
-@media (max-width: 760px) { .stephane { grid-template-columns: 1fr; } .stephane-media { aspect-ratio: 1 / 1; order: 2; } }
+@media (max-width: 760px) { .stephane { grid-template-columns: 1fr; } .stephane-media { aspect-ratio: 4 / 3; order: 2; } }
 
 /* ---------- Méthode en quatre nœuds ---------- */
-.methode { padding-block: clamp(72px, 10vw, 140px); background: var(--texte); color: var(--fond); --rouge-texte: var(--rouge-nuit); --gris: #CFC6B8; --ligne: rgb(244 238 227 / .2); }
-.methode-grille { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(24px, 5vw, 80px); align-items: start; }
+.methode { padding-block: clamp(56px, 8vw, 112px); }
+.methode-grille { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(24px, 5vw, 80px); align-items: start; }
+@media (max-width: 760px) { .methode-grille { grid-template-columns: minmax(0, 1fr); } }
 .methode h2 { font-size: clamp(2.2rem, 5vw, 4.4rem); }
 .methode-media { aspect-ratio: 3 / 2; margin-top: 24px; }
-.etapes { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(24px, 4vw, 48px); }
+.etapes { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(24px, 3.4vw, 40px); }
 .etape { position: relative; padding-left: 64px; }
 .etape-noeud { position: absolute; left: 6px; top: 6px; width: 34px; height: 34px; }
-.etape-noeud::before { content: ''; position: absolute; inset: 7px; border-radius: 50%; border: 2px solid var(--rouge); background: var(--texte); }
+.etape-noeud::before { content: ''; position: absolute; inset: 7px; border-radius: 50%; border: 2px solid var(--rouge); background: var(--fond); }
 .etape h3 { font-size: clamp(1.4rem, 1.1rem + 1vw, 2.1rem); margin-bottom: .25em; }
-.etape-num { font-family: var(--police-texte); font-size: .9rem; font-weight: 700; color: var(--rouge-nuit); vertical-align: middle; }
-.etape p { color: #E8E0D2; max-width: 32em; }
+.etape-num { font-family: var(--police-texte); font-size: .9rem; font-weight: 700; color: var(--rouge-texte); vertical-align: middle; }
+.etape p { color: var(--gris); max-width: 32em; }
 @media (max-width: 760px) { .methode-grille { grid-template-columns: 1fr; } }
 
 /* ---------- Fin de page ---------- */
@@ -256,9 +258,10 @@ h2.titre-souple::after { transition: transform 1.1s var(--courbe) .25s; }
 .tete-metiers-bas p:first-child { max-width: 34em; margin: 0; color: var(--gris); }
 .bandeau-brouillon { position: relative; flex: 1 1 auto; min-height: 220px; margin-top: clamp(16px, 3vw, 32px); }
 .bandeau-media { position: absolute; inset: 0; border-radius: 0; }
-.feuille { --retrait: 0; position: absolute; z-index: 2; left: 50%; top: 10%; bottom: 10%; width: min(520px, 80vw); transform: translateX(-50%) rotate(-2deg) translateY(calc(var(--retrait) * -40%)); opacity: calc(1 - var(--retrait) * 1.4); display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 22px 28px; background: #FBF7EF; box-shadow: 0 20px 50px rgb(27 25 22 / .25); background-image: repeating-linear-gradient(180deg, transparent 0 31px, rgb(60 90 160 / .16) 31px 32px); }
+.feuille { --retrait: 0; position: absolute; z-index: 2; left: 50%; top: clamp(14px, 5%, 40px); width: min(620px, 86vw); transform: translateX(-50%) rotate(-2deg) translateY(calc(var(--retrait) * -40%)); opacity: calc(1 - var(--retrait) * 1.4); display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 22px 28px; background: #FBF7EF; box-shadow: 0 20px 50px rgb(27 25 22 / .25); background-image: repeating-linear-gradient(180deg, transparent 0 31px, rgb(60 90 160 / .16) 31px 32px); }
 .feuille-titre { font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--rouge-texte); }
-.feuille-ligne { font-family: var(--police-titres); font-size: clamp(1rem, .9rem + .5vw, 1.3rem); line-height: 1.2; }
+.feuille-ligne { font-family: var(--police-titres); font-size: clamp(.95rem, .85rem + .3vw, 1.12rem); line-height: 1.25; }
+@media (min-width: 761px) { .feuille-ligne { white-space: nowrap; } }
 .feuille-ligne s { text-decoration-color: var(--rouge); text-decoration-thickness: 2px; }
 @media (max-width: 760px) { .tete-metiers-bas { grid-template-columns: 1fr; } .bandeau-brouillon { min-height: 34svh; } .feuille { padding: 14px 18px; } .feuille-ligne:nth-child(n+5) { display: none; } }
 @media (max-height: 500px) and (min-width: 761px) { .tete-geant { font-size: clamp(2rem, 11vh, 3.2rem); } .feuille { display: none; } }
@@ -476,7 +479,7 @@ h2.titre-souple::after { transition: transform 1.1s var(--courbe) .25s; }
 .carte { margin: 0; }
 .carte svg { width: 100%; height: auto; }
 .carte-region { fill: var(--fond); stroke: var(--texte); stroke-width: 1.5; stroke-dasharray: 4 5; }
-.carte-rhin { fill: none; stroke: #6E8FB5; stroke-width: 4; stroke-linecap: round; }
+.carte-rhin { fill: none; stroke: color-mix(in srgb, var(--texte) 35%, var(--fond)); stroke-width: 4; stroke-linecap: round; }
 .carte-fil { fill: none; stroke: var(--rouge); stroke-width: 2.5; stroke-linecap: round; }
 .carte-villes circle { fill: var(--fond); stroke: var(--texte); stroke-width: 2.5; }
 .carte-villes .carte-strasbourg { fill: var(--texte); }
@@ -484,7 +487,7 @@ h2.titre-souple::after { transition: transform 1.1s var(--courbe) .25s; }
 .carte-villes text { font-size: 19px; font-weight: 600; fill: var(--texte); }
 .carte-villes .carte-fort { font-size: 22px; font-weight: 700; }
 .carte-villes .carte-rouge { fill: var(--rouge-texte); }
-.carte-rhin-nom { font-size: 17px; font-style: italic; fill: #3F5F85 !important; }
+.carte-rhin-nom { font-size: 17px; font-style: italic; fill: var(--gris) !important; }
 .carte figcaption { font-size: .88rem; color: var(--gris); }
 @media (max-width: 760px) { .acces-grille { grid-template-columns: 1fr; } }
 
@@ -683,3 +686,83 @@ html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) .contact-fil:not(
 @media (max-width: 760px) {
   .tete-spe--plein .separation-monde .mention-ia { top: calc(var(--entete-h) + 112px); bottom: auto; }
 }
+
+/* v3 : accueil plus court (13 écrans en v2) : plein écran resserré. */
+.alsace, .cave { --fx-longueur: 200svh; }
+
+/* ================= v3 ================= */
+/* Accueil : chiasme « Savoir faire & faire savoir », un fil qui a de la matière croise les mots. */
+.hero-texte { position: relative; }
+.hero-titre .chi-et { color: var(--rouge); }
+.hero-titre .chi-mot { display: inline-block; }
+.hero-titre.est-libre .ligne-masque { overflow: visible; }
+.chiasme-fil { position: absolute; z-index: 1; left: 0; top: 0; width: 1px; height: 1px; overflow: visible; pointer-events: none; }
+.chiasme-fil path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.chiasme-fil-trait { stroke: var(--rouge); stroke-width: 4; }
+.chiasme-fil-ombre { stroke: rgb(27 25 22 / .18); stroke-width: 5; transform: translate(2px, 4px); }
+.hero-titre { position: relative; z-index: 2; }
+.hero-tel { font-weight: 600; color: var(--gris); }
+.hero-tel a { color: var(--texte); font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--rouge); white-space: nowrap; display: inline-flex; align-items: center; min-height: 44px; }
+.hero-signature { display: flex; align-items: center; gap: 14px; margin: 18px 0 0; font-size: .95rem; line-height: 1.4; }
+.hero-medaillon { flex: none; width: 56px; height: 56px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 2px var(--fond), 0 0 0 4px var(--rouge); }
+.hero-medaillon img { width: 100%; height: 100%; object-fit: cover; object-position: 46% 38%; }
+.hero-signature .hero-info { font-size: .9rem; color: var(--gris); font-weight: 600; }
+.hero-intro { color: #4A443D; }
+@media (max-width: 760px) and (max-height: 700px) { .hero-medaillon { display: none; } .hero-signature { margin-top: 10px; } }
+@media (max-height: 500px) and (min-width: 761px) { .hero-medaillon { display: none; } .hero-signature { margin-top: 6px; } }
+
+/* Filet : de vrais fils (épaisseur, ombre) ; dessin dans site.js. */
+
+/* Réseau sur fond encre : chiffres et index des dix secteurs. */
+.reseau h2 { font-size: clamp(2rem, 4.2vw, 3.8rem); }
+.reseau-texte { max-width: 34em; color: #E3DACB; }
+.chiffres-liste li { border-top-color: rgb(241 234 221 / .6); }
+.chiffres-liste span { color: #CFC6B8; }
+.reseau-index { position: relative; }
+.reseau-index-titre { font-family: var(--police-texte); font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--rouge-nuit); margin-bottom: 18px; }
+.reseau-fil { position: absolute; inset: 40px 0 70px; width: 100%; height: calc(100% - 110px); pointer-events: none; opacity: .5; }
+.reseau-fil path { fill: none; stroke: var(--rouge-nuit); stroke-width: 1.5; }
+.secteurs-index { position: relative; list-style: none; margin: 0 0 28px; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 22px; }
+.secteurs-index a { display: inline-flex; align-items: flex-start; min-height: 44px; font-family: var(--police-titres); font-size: clamp(1.7rem, 3vw, 2.8rem); font-weight: 560; line-height: 1.15; color: var(--nuit-texte); text-decoration: none; font-variation-settings: 'SOFT' 100, 'opsz' 96; }
+.secteurs-index sup { margin-left: .12em; font-family: var(--police-texte); font-size: max(.75rem, .38em); font-weight: 700; color: var(--rouge-nuit); top: 0; }
+.secteurs-index a:hover, .secteurs-index a:focus-visible { color: var(--rouge-nuit); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.bouton--clair { background: var(--nuit-texte); color: #B3261B; border-color: var(--nuit-texte); }
+
+/* Un seul rouge d'action : sur fond sombre, le bouton passe en crème à texte rouge. */
+:is(.politique, .page-nuit, .reseau) .bouton:not(.bouton--contour) { background: var(--nuit-texte); color: #B3261B; }
+
+/* Méthode à plat : quatre nœuds sur un fil. */
+.methode h2 { font-size: clamp(2rem, 4.2vw, 3.8rem); }
+
+/* Fin de l'accueil : le numéro en grand. */
+.fin-appel { margin: 18px 0 0; color: var(--gris); font-weight: 600; }
+.numero--fin { font-size: clamp(1.9rem, 3.4vw, 3rem); vertical-align: middle; margin-left: .2em; }
+
+/* Spécialités : fin en deux images-boutons qui préremplissent le formulaire. */
+.fin.fin--choix { grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--ligne); }
+.fin-choix-tete { max-width: 46em; }
+.fin-choix { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(14px, 2.4vw, 28px); }
+@media (max-width: 640px) { .fin-choix { grid-template-columns: minmax(0, 1fr); } }
+.choix-image { position: relative; display: block; text-decoration: none; overflow: hidden; }
+.choix-image-media { aspect-ratio: 16 / 10; }
+.choix-image-texte { position: absolute; z-index: 2; left: 16px; bottom: 16px; padding: 10px 18px; background: var(--fond); color: var(--texte); font-family: var(--police-titres); font-weight: 600; font-size: clamp(1.3rem, 2.2vw, 2rem); line-height: 1.1; border-top: 3px solid var(--rouge); }
+.choix-image:hover .choix-image-texte, .choix-image:focus-visible .choix-image-texte { color: var(--rouge-texte); }
+
+/* Références : fin avec un nœud qui se dessine. */
+.autres-noeud { display: grid; place-items: center; }
+.autres-noeud svg { width: min(100%, 420px); height: auto; }
+.autres-noeud path { fill: none; stroke: var(--rouge-nuit); stroke-width: 5; stroke-linecap: round; }
+@media (max-width: 760px) and (max-height: 700px) { .hero-intro { display: none; } }
+@media (max-height: 500px) and (min-width: 761px) { .hero-tel { display: none; } }
+/* Menu plein écran sur fond encre : liens en crème (ils étaient de la couleur du fond sur téléphone). */
+[data-menu] { color: var(--nuit-texte); }
+[data-menu] .menu-lien[aria-current] { color: var(--rouge-nuit); }
+[data-menu] .bouton { background: var(--nuit-texte); color: #B3261B; }
+.menu-adresse { color: #CFC6B8; font-size: .95rem; line-height: 1.6; }
+.menu-adresse a { color: var(--nuit-texte); display: inline-flex; align-items: center; min-height: 44px; }
+/* Écran bas d'ordinateur (1000×560) : la phrase et le médaillon se retirent, l'information clé reste dans le premier écran. */
+@media (max-height: 640px) and (min-width: 761px) { .hero-intro, .hero-medaillon { display: none; } .hero-signature { margin-top: 8px; } }
+
+/* Accueil : le nœud de Red-Act est noué sur la bobine, sans disque blanc par-dessus (il reste l'objet d'ouverture de l'intro). */
+.hero-scene .filet-noeud { background: transparent; box-shadow: none; color: #9E1C14; }
+.hero-scene .filet-noeud svg { width: 54px; height: 54px; filter: drop-shadow(0 3px 4px rgb(27 25 22 / .35)); }

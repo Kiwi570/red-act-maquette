@@ -3,24 +3,48 @@
   "aRegarder": [
     {
       "niveau": "regarder",
-      "controle": "fluidité",
-      "detail": "3 % d'images de plus de 50 ms",
-      "etape": "fluidite",
+      "controle": "« à compléter » visible",
+      "detail": "1 fois hors du pied de page : remplacer par une phrase vraie qui oriente le visiteur (« Tarifs selon la saison, donnés à la réservation ») ou retirer l'élément, et le noter dans la fiche du README (sauf sens propre : « dossier à compléter »)",
+      "etape": "fichiers",
+      "page": "contact.html",
+      "lieux": [
+        ""
+      ]
+    },
+    {
+      "niveau": "regarder",
+      "controle": "numéro de version",
+      "detail": "?v=3 est celui de la dernière livraison : à changer avant de livrer",
+      "etape": "fichiers",
+      "lieux": [
+        ""
+      ]
+    },
+    {
+      "niveau": "regarder",
+      "controle": "retour arrière : changement brusque",
+      "detail": "à 82 ms (différence 20 %) (films/retour-arrière-1366.png)",
+      "etape": "films",
       "page": "/",
       "taille": "1366×768",
-      "mode": "défilement à la molette, processeur ralenti 4 fois",
+      "mode": "retour arrière",
       "lieux": [
-        "1366×768 défilement à la molette, processeur ralenti 4 fois"
+        "1366×768 retour arrière"
+      ]
+    },
+    {
+      "niveau": "regarder",
+      "controle": "rechargement au milieu de la page",
+      "detail": "écran différent à la même position après rechargement (4.5 %), voir comparaisons/rechargement-*.png",
+      "etape": "parcours",
+      "page": "/",
+      "taille": "1366×768",
+      "lieux": [
+        "1366×768"
       ]
     }
   ],
-  "nonLances": [
-    {
-      "controle": "Safari (WebKit)",
-      "raison": "WebKit ne peut pas s’installer ici : vérification à faire dans Safari sur le Mac (liste dans le rapport)",
-      "etape": "safari"
-    }
-  ],
+  "nonLances": [],
   "oks": {
     "vercel.json": 1,
     ".vercelignore": 1,
@@ -28,52 +52,35 @@
     "numéro de version": 1,
     "langues": 1,
     "grille wouahou": 7,
-    "mesures": 42,
-    "balayage": 3,
-    "films d’ouverture": 6,
-    "films de transition": 6,
-    "bords de l’écran": 4,
+    "mesures": 52,
+    "balayage": 1,
+    "films d’ouverture": 2,
+    "films de transition": 2,
     "intro accélérable et passable": 7,
     "menu": 1,
-    "clavier": 3,
-    "liens et boutons": 3,
-    "liens profonds": 16,
-    "liens vers la page en cours": 3,
-    "changements de hauteur": 3,
-    "mode calme": 6,
+    "clavier": 1,
+    "liens et boutons": 1,
+    "liens profonds": 14,
+    "liens vers la page en cours": 1,
+    "changements de hauteur": 1,
+    "mode calme": 2,
     "bouton du mode calme": 2,
     "parcours du projet": 2,
-    "tient dans l’écran": 10,
-    "fluidité": 6,
+    "fluidité": 2,
     "défilement selon l’appareil": 5,
-    "mouvement": 6,
-    "effets du plan": 10,
-    "souris immobile": 3,
-    "vitesse": 3,
-    "captures": 1
+    "mouvement": 2,
+    "effets du plan": 11,
+    "souris immobile": 2
   },
   "infos": [
-    "Numéro de version des fichiers : ?v=2",
-    "Journal v2 : 1 étape(s) notée(s), 4 min de travail pour 40 min de budget, 0 min d’attente de l’utilisateur.",
-    "Audit standard : étapes lourdes sur /, /contact, /specialites.",
+    "Numéro de version des fichiers : ?v=3",
+    "Journal v3 : 2 étape(s) notée(s), 35 min de travail pour 95 min de budget, 2 min d’attente de l’utilisateur.",
     "Accessibilité : axe-core 4.12.1 en plus des contrôles intégrés.",
-    "Ouverture / (1366×768) : 2777 ms depuis le premier octet",
-    "Ouverture /contact (1366×768) : 2839 ms depuis le premier octet",
-    "film de l'ouverture /contact 1366×768 : réussi à la tentative 2 (avant : cdpSession.send: Protocol error (Page.startScreencast): Not attached to an active page)",
-    "Ouverture /specialites (1366×768) : 2717 ms depuis le premier octet",
-    "Ouverture / (390×844) : 2753 ms depuis le premier octet",
-    "Ouverture /contact (390×844) : 2846 ms depuis le premier octet",
-    "Ouverture /specialites (390×844) : 2727 ms depuis le premier octet",
-    "Bords de l’écran : 337 images d’intro, 6 de voile et 91 de menu jugées (panneau immobile couvrant tout l’écran), barre de défilement classique de 15 px.",
-    "Tient dans l'écran /contact : aucune section épinglée ou plein écran.",
-    "Fluidité /contact 1366×768 (molette) : 0 % d'images lentes sur 179, tâche la plus longue 0 ms",
-    "Fluidité /specialites 1366×768 (molette) : 2 % d'images lentes sur 312, tâche la plus longue 56 ms",
-    "Fluidité / 390×844 (doigt) : 0 % d'images lentes sur 1452, tâche la plus longue 0 ms",
-    "Fluidité /contact 390×844 (doigt) : 0 % d'images lentes sur 1350, tâche la plus longue 0 ms",
-    "Fluidité /specialites 390×844 (doigt) : 0 % d'images lentes sur 1343, tâche la plus longue 0 ms",
-    "Vitesse / : 0.61 s de calcul au chargement (téléphone ralenti).",
-    "Vitesse /contact : 0.43 s de calcul au chargement (téléphone ralenti).",
-    "Vitesse /specialites : 0.38 s de calcul au chargement (téléphone ralenti)."
+    "Ouverture / (1366×768) : 2360 ms depuis le premier octet",
+    "Ouverture / (390×844) : 2322 ms depuis le premier octet",
+    "Tient dans l'écran / : aucune section épinglée ou plein écran.",
+    "Fluidité / 1366×768 (molette) : 3 % d'images lentes sur 348, tâche la plus longue 64 ms",
+    "Fluidité / 390×844 (doigt) : 0 % d'images lentes sur 1453, tâche la plus longue 0 ms"
   ],
   "grille": [
     {
@@ -96,19 +103,19 @@
     },
     {
       "cle": "fil",
-      "nom": "4. Un fil conducteur traverse le site",
+      "nom": "4. Quelque chose relie les sections et les pages",
       "statut": "présent",
       "detail": "sur les 5 page(s)"
     },
     {
       "cle": "typo",
-      "nom": "5. La typographie bouge aussi",
+      "nom": "5. Un titre fait l’événement sur chaque page",
       "statut": "présent",
       "detail": "sur les 5 page(s)"
     },
     {
       "cle": "scene",
-      "nom": "6. Les scènes épinglées sont des gestes du métier",
+      "nom": "6. La scène est un geste du métier",
       "statut": "présent",
       "detail": "geste du métier sur /metiers"
     },

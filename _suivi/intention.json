@@ -1,0 +1,31 @@
+{
+  "client": "Red-Act",
+  "note": "Direction choisie par l'utilisateur à la v1 (7 novembre 2026). Fichier écrit à la v3 pour le regard du directeur artistique.",
+  "directions": [
+    {
+      "nom": "Red, le réseau",
+      "choisie": true,
+      "idee": "Red veut dire réseau en espagnol, et le rouge du drapeau du logo devient un fil qui relie tout le site : les références sont des nœuds d'un filet, les métiers une roue, la rédaction une rature qui devient une phrase claire.",
+      "plan": "recit-lineaire",
+      "palette": { "fond": "#F4EEE3", "texte": "#1B1916", "accent": "#C8231E", "nuit": "#1B1916" },
+      "polices": { "titres": "Fraunces (axe SOFT animé)", "texte": "Inter Tight" },
+      "grille": {
+        "signature": "objet-manipulable : filet des vraies références à tirer à la main",
+        "familles": ["carrousel", "typo-geante", "plein-ecran", "trait-qui-se-dessine"],
+        "forme_voile": "trame (sept lanières tissées)"
+      },
+      "ancrage": [
+        "site: accueil, « Red » veut dire réseau en espagnol, « act » l'action",
+        "site: références, 90 clients nommés en 10 secteurs",
+        "photo: logo au drapeau rouge (logo.png)",
+        "photo: portrait de Stéphane Bourhis devant les Ponts couverts de Strasbourg",
+        "site: six métiers de l'écrit et du conseil, accroche « Savoir faire & faire savoir »"
+      ],
+      "invente": [
+        "le fil rouge comme matière (filet, nœuds, couture des titres, voile tissé)",
+        "les images Grok : bureau de rédaction, vignes, cave, tribune, table, rue",
+        "les phrases « brouillon → clair » de la page Métiers (exemples de style)"
+      ]
+    }
+  ]
+}

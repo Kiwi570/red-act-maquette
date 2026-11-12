@@ -3,9 +3,9 @@
    Effets du plan : intro (fil qui écrit Red-Act et se noue), filet, roue-metiers, titre-au-fil, titre-souple,
    fil conducteur (module de la bibliothèque), brouillon (Métiers), separation (Spécialités), filet-references,
    noeud-vous (Contact). Chaque effet propre porte data-effet="nom". */
-import { demarrer, boucle, etat, versObjet, quand } from './socle/index.js?v=2';
-import { init as filConducteur } from './modules/fil-conducteur.js?v=2';
-import { initPages } from './pages.js?v=2';
+import { demarrer, boucle, etat, versObjet, quand } from './socle/index.js?v=3';
+import { init as filConducteur } from './modules/fil-conducteur.js?v=3';
+import { initPages } from './pages.js?v=3';
 
 const gsap = window.gsap;
 const ST = () => window.ScrollTrigger;
@@ -37,7 +37,7 @@ export function creerFilet(scene, o = {}) {
   let deploye = etat.calme || etat.arrivee === 'retour';
   /* Filets des pages intérieures : ils se tendent quand la page est prête (le filet de l'accueil attend l'intro). */
   if (o.deploieAuPret) quandPret(() => { deploye = true; });
-  const police = '600 12.5px "Inter Tight", Arial, sans-serif';
+  const police = o.police || '600 12.5px "Inter Tight", Arial, sans-serif';
 
   /* Position de la bobine dans la photo (object-fit: cover et object-position lus une fois). */
   function placerAncre() {
@@ -78,7 +78,8 @@ export function creerFilet(scene, o = {}) {
         const rr = rayon * (0.86 + rnd() * 0.24);
         let x = ax + Math.cos(ang) * rr, y = ay + Math.sin(ang) * rr * 0.86;
         /* Zone laissée libre à gauche (titre de la page) sur grand écran. */
-        if (o.gaucheLibre && W > 760 && x < W * o.gaucheLibre) x = W * o.gaucheLibre + rnd() * 40;
+        /* v3 : le filet est resserré vers la droite au lieu d'être tassé contre la limite (colonne de nœuds écrasés). */
+        if (o.gaucheLibre && W > 760) { const g = W * o.gaucheLibre; x = g + Math.max(0, x) * (1 - o.gaucheLibre); }
         const visible = x > 30 && x < W - 30 && y > 30 && y < H - 30;
         const brut = a >= (o.anneauNoms || 1) && visible && iNom < noms.length && (o.tousNoms || rnd() > 0.15) ? noms[iNom++] : '';
         const [nom, secteur = ''] = brut.split('~');
@@ -127,12 +128,22 @@ export function creerFilet(scene, o = {}) {
 
   function dessiner() {
     ctx.clearRect(0, 0, W, H);
-    ctx.lineWidth = 1.3; ctx.strokeStyle = C.fil; ctx.globalAlpha = 0.8;
-    ctx.beginPath();
-    for (const [i, j] of liens) { const p = noeuds[i], q = noeuds[j]; ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); }
-    ctx.stroke();
+    /* Un vrai fil : il pend un peu entre deux nœuds, porte une ombre sur le papier et un reflet. */
+    const tracer = (dx, dy) => {
+      ctx.beginPath();
+      for (const [i, j] of liens) {
+        const p = noeuds[i], q = noeuds[j];
+        const L = Math.hypot(q.x - p.x, q.y - p.y), pend = Math.min(12, L * 0.07);
+        ctx.moveTo(p.x + dx, p.y + dy); ctx.quadraticCurveTo((p.x + q.x) / 2 + dx, (p.y + q.y) / 2 + pend + dy, q.x + dx, q.y + dy);
+      }
+      ctx.stroke();
+    };
+    ctx.lineCap = 'round';
+    ctx.globalAlpha = 1; ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(27,25,22,0.16)'; tracer(2, 3.5);
+    ctx.lineWidth = 2.2; ctx.strokeStyle = C.fil; tracer(0, 0);
+    ctx.lineWidth = 0.7; ctx.strokeStyle = 'rgba(255,236,226,0.45)'; tracer(-0.4, -0.6);
     if (survol) {
-      ctx.lineWidth = 2.6; ctx.globalAlpha = 1; ctx.beginPath();
+      ctx.lineWidth = 3.2; ctx.globalAlpha = 1; ctx.beginPath();
       for (const [i, j] of liens) { const p = noeuds[i], q = noeuds[j]; if (p === survol || q === survol || (survol.secteur && p.secteur === survol.secteur && q.secteur === survol.secteur)) { ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); } }
       ctx.stroke();
     }
@@ -141,9 +152,11 @@ export function creerFilet(scene, o = {}) {
     for (const n of noeuds) {
       if (n.fixe) continue;
       const allume = allumeDe(n);
-      ctx.fillStyle = n.nom ? C.halo : C.fil;
-      ctx.strokeStyle = C.fil; ctx.lineWidth = 2;
-      ctx.beginPath(); ctx.arc(n.x, n.y, n.nom ? (allume ? 5.5 : 4) : 3, 0, 6.2832); ctx.fill(); if (n.nom) ctx.stroke();
+      /* v3 : des nœuds de fil (rouge plein, ombre), plus des pastilles blanches. */
+      const r = n.nom ? (allume ? 5 : 4) : 2.6;
+      ctx.fillStyle = 'rgba(27,25,22,0.22)'; ctx.beginPath(); ctx.arc(n.x + 1.2, n.y + 2, r, 0, 6.2832); ctx.fill();
+      ctx.fillStyle = C.fil; ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, 6.2832); ctx.fill();
+      if (n.nom) { ctx.strokeStyle = 'rgba(120,20,14,0.85)'; ctx.lineWidth = 1.2; ctx.stroke(); }
     }
     ctx.font = police; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
     let k = -1;
@@ -160,7 +173,7 @@ export function creerFilet(scene, o = {}) {
       if (!libre(x, n.y, l)) { const autre = x === n.x + 10 ? n.x - 10 - l : n.x + 10; if (autre > 4 && autre + l < W - 4 && libre(autre, n.y, l)) x = autre; else if (n !== survol && !n.ajoute) continue; }
       poses.push({ x, y: n.y, l });
       ctx.globalAlpha = allume ? 1 : 0.35;
-      ctx.lineWidth = 4; ctx.strokeStyle = C.halo; ctx.strokeText(n.nom, x, n.y);
+      ctx.lineWidth = 6; ctx.strokeStyle = C.halo; ctx.strokeText(n.nom, x, n.y);
       ctx.fillStyle = n.ajoute || n === survol ? C.fil : C.encre; ctx.fillText(n.nom, x, n.y);
     }
     ctx.globalAlpha = 1;
@@ -250,7 +263,8 @@ function roue() {
   const anneau = $('[data-roue]', sec), cartes = $$('[data-roue-carte]', sec), etatEl = $('[data-roue-etat]', sec), scene = $('.roue-scene', sec);
   const n = cartes.length, pasA = 360 / n;
   let defil = 0, main = 0, vMain = 0, affiche = 0, prise = null, courante = -1, penche = 0, yAvant = scrollY;
-  ST().create({ trigger: sec, start: 'top top', end: 'bottom bottom', onUpdate: (s) => { defil = -s.progress * pasA * (n - 1); } });
+  let tDefil = 0;
+  ST().create({ trigger: sec, start: 'top top', end: 'bottom bottom', onUpdate: (s) => { defil = -s.progress * pasA * (n - 1); tDefil = performance.now(); } });
   const maj = () => {
     anneau.style.transform = `translateZ(calc(var(--carte-l) * -1.02)) rotateX(${penche.toFixed(2)}deg) rotateY(${affiche.toFixed(2)}deg)`;
     let face = 0, mieux = 999;
@@ -269,7 +283,9 @@ function roue() {
     if (!dt) { maj(); return; }
     if (!prise) {
       main += vMain * dt; vMain *= Math.exp(-3.2 * dt);
-      if (Math.abs(vMain) < 25) { const total = defil + main, cible = Math.round(total / pasA) * pasA; main += (cible - total) * Math.min(1, dt * 6); }
+      /* v3 : l'arrêt sur une carte n'a lieu qu'une fois le défilement posé ; avant, il compensait le défilement
+         et la roue restait sur la première carte pendant un défilement lent. */
+      if (Math.abs(vMain) < 25 && performance.now() - tDefil > 220) { const total = defil + main, cible = Math.round(total / pasA) * pasA; main += (cible - total) * Math.min(1, dt * 6); }
     }
     const cible = defil + main;
     affiche += (cible - affiche) * Math.min(1, dt * 9);
@@ -309,15 +325,15 @@ function titresAuFil() {
     caler(h);
     const tx = $('text', h);
     if (!gsap || etat.calme) { h.classList.add('est-ecrit'); return; }
-    gsap.timeline({ onComplete: () => { h.classList.add('est-ecrit'); gsap.set(tx, { clearProps: 'all' }); } })
-      .fromTo(tx, { strokeDasharray: 2400, strokeDashoffset: 2400, fillOpacity: 0 }, { strokeDashoffset: 0, duration: 1.1, ease: 'power2.inOut' })
-      .to(tx, { fillOpacity: 1, duration: 0.4, ease: 'power1.out' }, 0.75);
+    gsap.timeline({ onComplete: () => { h.classList.add('est-ecrit'); gsap.set(tx, { clearProps: 'strokeDasharray,strokeDashoffset,fillOpacity' }); } })
+      .fromTo(tx, { strokeDasharray: 2400, strokeDashoffset: 2400, fillOpacity: 0 }, { strokeDashoffset: 0, duration: 0.7, ease: 'power2.inOut' })
+      .to(tx, { fillOpacity: 1, duration: 0.25, ease: 'power1.out' }, 0.35);
   };
   titres.forEach(caler);
   if (document.fonts) document.fonts.ready.then(() => titres.forEach(caler));
   addEventListener('resize', () => titres.forEach(caler));
   if (etat.calme || etat.arrivee === 'retour') { titres.forEach((h) => h.classList.add('est-ecrit')); return; }
-  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { io.unobserve(e.target); quandPret(() => ecrire(e.target)); } }), { rootMargin: '0px 0px -15% 0px' });
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { io.unobserve(e.target); quandPret(() => ecrire(e.target)); } }), { rootMargin: '0px 0px -4% 0px' });
   titres.forEach((h) => io.observe(h));
 }
 let estPret = false;
@@ -367,12 +383,79 @@ function placerNoeudIntro() {
   }
 }
 
-let filetAccueil = null;
+/* ------------------------------------------------------------------------------------------------
+   Chiasme de l'accueil : la deuxième ligne arrive en « & savoir faire », puis un fil rouge entre, passe dans
+   le « & » et croise les deux mots, qui échangent leur place : « & faire savoir ». Le savoir-faire devient
+   faire-savoir. Au survol (ou au toucher), les mots se recroisent avec un ressort. Positions mesurées sans
+   transformation (offsetLeft), une fois les polices là ; rien n'est lu pendant le défilement.
+   ------------------------------------------------------------------------------------------------ */
+function creerChiasme() {
+  const h = $('[data-chiasme]');
+  const svg = $('.chiasme-fil');
+  if (!h || !svg || !gsap) return null;
+  const et = $('.chi-et', h), a = $('[data-chi="a"]', h), b = $('[data-chi="b"]', h);
+  const trait = $('.chiasme-fil-trait', svg), ombre = $('.chiasme-fil-ombre', svg);
+  const d = { a: 0, b: 0, em: 16 };
+  const pos = (el) => { let x = 0, y = 0, e = el; while (e && e !== h.offsetParent) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; } return { x, y, w: el.offsetWidth, h: el.offsetHeight }; };
+  const mesurer = () => {
+    const A = pos(a), B = pos(b), E = pos(et);
+    const ecart = B.x - (A.x + A.w);
+    d.a = B.w + ecart; d.b = -(A.w + ecart);
+    d.em = parseFloat(getComputedStyle(h).fontSize) || 16;
+    const mi = A.y + A.h * 0.58, bas = A.y + A.h * 1.3, haut = A.y - A.h * 0.32;
+    const x0 = Math.max(4, E.x - 70), xc = A.x + A.w + ecart / 2;
+    const chemin = `M ${x0} ${mi + A.h * 0.28} C ${E.x - 8} ${mi + A.h * 0.26} ${E.x + E.w * 0.15} ${mi - A.h * 0.05} ${E.x + E.w * 0.55} ${mi}`
+      + ` C ${E.x + E.w + 12} ${bas} ${xc - 14} ${bas} ${xc} ${mi}`
+      + ` C ${xc + 14} ${haut} ${B.x + B.w - 6} ${haut} ${B.x + B.w + 18} ${mi + A.h * 0.1}`
+      + ` Q ${B.x + B.w + 48} ${mi + A.h * 0.25} ${B.x + B.w + 40} ${A.y + A.h * 0.92}`;
+    trait.setAttribute('d', chemin); ombre.setAttribute('d', chemin);
+    return trait.getTotalLength();
+  };
+  let croise = false, joue = false;
+  const croiser = (vers, duree = 0.9, ressort = false) => {
+    croise = vers;
+    const ease = ressort ? 'elastic.out(1, 0.55)' : 'power3.inOut';
+    gsap.to(a, { x: vers ? d.a : 0, duration: duree, ease, overwrite: 'auto' });
+    gsap.to(b, { x: vers ? d.b : 0, duration: duree, ease, overwrite: 'auto' });
+    const arc = d.em * 0.1;
+    gsap.fromTo(a, { y: 0 }, { y: -arc, duration: duree / 2, yoyo: true, repeat: 1, ease: 'sine.inOut', overwrite: false });
+    gsap.fromTo(b, { y: 0 }, { y: arc, duration: duree / 2, yoyo: true, repeat: 1, ease: 'sine.inOut', overwrite: false });
+  };
+  const depart = () => { mesurer(); gsap.set(a, { x: d.a }); gsap.set(b, { x: d.b }); gsap.set([trait, ombre], { strokeDasharray: 4000, strokeDashoffset: 4000 }); croise = true; };
+  const jouer = () => {
+    const L = mesurer();
+    h.classList.add('est-libre');
+    gsap.fromTo([trait, ombre], { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: 1.1, ease: 'power2.inOut' });
+    gsap.delayedCall(0.35, () => croiser(false, 1.0));
+    joue = true;
+  };
+  const final = () => { const L = mesurer(); h.classList.add('est-libre'); gsap.set([a, b], { x: 0, y: 0 }); gsap.set([trait, ombre], { strokeDasharray: L, strokeDashoffset: 0 }); croise = false; joue = true; };
+  /* Le jeu : survol à la souris, toucher sur écran tactile. */
+  if (!etat.calme) {
+    if (souris) {
+      h.addEventListener('pointerenter', () => { if (joue) croiser(true, 0.8, true); });
+      h.addEventListener('pointerleave', () => { if (joue) croiser(false, 0.8, true); });
+    } else {
+      h.addEventListener('click', () => { if (joue) croiser(!croise, 0.8, true); });
+    }
+    /* Au défilement, le bout du fil se balance. */
+    if (ST()) ST().create({ trigger: h.closest('#debut'), start: 'top top', end: 'bottom top', scrub: 0.5, onUpdate: (st) => { svg.style.transform = `translateY(${(st.progress * 22).toFixed(1)}px) rotate(${(st.progress * 1.6).toFixed(2)}deg)`; } });
+  }
+  addEventListener('resize', () => { if (joue) { const L = mesurer(); gsap.set([trait, ombre], { strokeDasharray: L, strokeDashoffset: 0 }); if (!croise) gsap.set([a, b], { x: 0 }); } });
+  return { depart, jouer, final };
+}
+
+let filetAccueil = null, chiasme = null;
 
 demarrer({
   preparer() {
     const scene = $('.hero-scene');
-    if (scene) filetAccueil = creerFilet(scene, { ancreImage: [0.63, 0.31], ancreMobile: [0.345, 0.82] });
+    if (scene) filetAccueil = creerFilet(scene, {
+      ancreImage: [0.63, 0.31], ancreMobile: [0.5, 0.6], police: '600 13.5px "Inter Tight", Arial, sans-serif',
+      /* Dix noms à la fois sur ordinateur, six sur téléphone ; les autres apparaissent au survol ou quand on tire. */
+      etiquette: (n, k) => k < (innerWidth > 760 ? 10 : 6),
+    });
+    chiasme = creerChiasme();
     roue();
     titresAuFil();
     titresSouples();
@@ -389,25 +472,29 @@ demarrer({
   jouer() {
     if (!gsap) return null;
     placerNoeudIntro();
+    /* v3 : intro resserrée (le fil écrit plus vite, l'écran s'ouvre vers 1,5 s). */
     const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
-    tl.to('.intro-fil-entree', { strokeDashoffset: 0, duration: 0.22, ease: 'none' }, 0)
-      .to('.intro-red', { strokeDashoffset: 0, duration: 0.55 }, 0.12)
-      .to('.intro-red', { fillOpacity: 1, duration: 0.25 }, 0.5)
-      .to('.intro-act', { strokeDashoffset: 0, duration: 0.5 }, 0.55)
-      .to('.intro-act', { fillOpacity: 1, duration: 0.25 }, 0.9)
-      .fromTo('.intro-noeud', { opacity: 0, scale: 2.2, rotate: -90 }, { opacity: 1, scale: 1, rotate: 0, duration: 0.35, ease: 'back.out(2)' }, 0.85)
-      .fromTo('.ouverture-ligne', { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.3 }, 0.9)
-      .to('.intro-mot, .ouverture-ligne', { opacity: 0, duration: 0.2 }, 1.25);
-    versObjet(tl, { a: 1.25, duree: 0.45, ouverture: 0.7 });
-    if (filetAccueil) tl.call(() => filetAccueil.deployer(), null, 1.75);
+    tl.to('.intro-fil-entree', { strokeDashoffset: 0, duration: 0.18, ease: 'none' }, 0)
+      .to('.intro-red', { strokeDashoffset: 0, duration: 0.42 }, 0.08)
+      .to('.intro-red', { fillOpacity: 1, duration: 0.2 }, 0.36)
+      .to('.intro-act', { strokeDashoffset: 0, duration: 0.4 }, 0.4)
+      .to('.intro-act', { fillOpacity: 1, duration: 0.2 }, 0.68)
+      .fromTo('.intro-noeud', { opacity: 0, scale: 2.2, rotate: -90 }, { opacity: 1, scale: 1, rotate: 0, duration: 0.3, ease: 'back.out(2)' }, 0.64)
+      .fromTo('.ouverture-ligne', { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.25 }, 0.68)
+      .to('.intro-mot, .ouverture-ligne', { opacity: 0, duration: 0.18 }, 0.98);
+    versObjet(tl, { a: 0.98, duree: 0.42, ouverture: 0.62 });
+    if (filetAccueil) tl.call(() => filetAccueil.deployer(), null, 1.4);
+    if (chiasme) chiasme.depart();
     const lignes = $$('.hero-ligne'), suite = $$('.tete-suite');
-    if (lignes.length) tl.fromTo(lignes, { yPercent: 110, opacity: 1 }, { yPercent: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out' }, 1.75);
-    if (suite.length) tl.fromTo(suite, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.08, ease: 'power2.out' }, 1.85);
+    if (lignes.length) tl.fromTo(lignes, { yPercent: 110, opacity: 1 }, { yPercent: 0, opacity: 1, duration: 0.65, stagger: 0.1, ease: 'power3.out' }, 1.4);
+    if (suite.length) tl.fromTo(suite, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, stagger: 0.07, ease: 'power2.out' }, 1.5);
+    if (chiasme) tl.call(() => chiasme.jouer(), null, 1.95);
     return tl;
   },
   etatFinal() {
     if (filetAccueil) filetAccueil.etatFinal();
     if (!gsap) return;
+    if (chiasme) chiasme.final();
     gsap.set('.hero-ligne, .tete-suite', { clearProps: 'transform,opacity' });
   },
   arrivee() {
@@ -416,5 +503,6 @@ demarrer({
     const lignes = $$('.hero-ligne'), suite = $$('.tete-suite');
     if (lignes.length) gsap.fromTo(lignes, { yPercent: 110, opacity: 1 }, { yPercent: 0, opacity: 1, duration: 0.75, stagger: 0.1, ease: 'power3.out', delay: 0.1 });
     if (suite.length) gsap.fromTo(suite, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.08, delay: 0.25 });
+    if (chiasme) { chiasme.depart(); gsap.delayedCall(0.7, () => chiasme.jouer()); }
   },
 });

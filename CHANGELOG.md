@@ -2,6 +2,88 @@
 
 Chaque version ajoute sa partie en tête de ce fichier, construite en comparant l'archive précédente et la nouvelle, jamais de mémoire.
 
+## v3 — version optimale, après audit complet et analyse approfondie (12 novembre 2026)
+
+Construit en comparant l'archive v2 et la v3, fichier par fichier. Avant les corrections, la v2 a été analysée sous quatre angles :
+- un audit des formats, sur 13 tailles d'écran ;
+- le regard d'un directeur artistique extérieur sur l'accueil filmé ;
+- un regard neuf sur toutes les pages ;
+- un test « vrai visiteur », sur téléphone et sur ordinateur.
+
+**Correction importante : le menu sur téléphone**
+- Depuis la v1, les liens du menu plein écran s'écrivaient dans la couleur du fond (encre sur encre). Seuls « Accueil » et le bouton d'appel se voyaient.
+- Les liens sont maintenant en crème, et la page en cours en rouge clair.
+- Le menu donne aussi l'adresse et l'e-mail.
+
+**Accueil : reprise ciblée (le filet, la roue et le fil sont gardés)**
+- **Ouverture.**
+  - « Savoir faire & faire savoir » est en encre ; seul le « & » est rouge.
+  - La deuxième ligne arrive en « & savoir faire ». Un fil rouge, avec son épaisseur et son ombre, entre alors, passe dans le « & », sous « faire » et sur « savoir ». Les deux mots échangent leur place : le savoir-faire devient faire-savoir.
+  - Au survol, ou au toucher sur téléphone, les mots se recroisent avec un ressort. Au défilement, le bout du fil se balance.
+- **Premier écran.**
+  - Le numéro s'affiche à côté du bouton, et un médaillon du vrai portrait accompagne « Stéphane Bourhis, votre seul interlocuteur ».
+  - La phrase d'ouverture dit ce qui distingue Red-Act : un seul interlocuteur, six métiers, deux spécialités.
+- **Le filet.**
+  - Les fils pendent un peu entre les nœuds, avec une ombre et un reflet.
+  - Les pastilles blanches deviennent des nœuds rouges.
+  - Dix noms se lisent à la fois (six sur téléphone), en plus grand ; les autres apparaissent au survol ou quand on tire.
+  - Le disque blanc posé sur la bobine est retiré : le filet part de la vraie bobine de la photo.
+- **L'intro** est plus courte : le titre arrive vers 1,4 s au lieu de 1,75 s.
+- **La roue des métiers** tourne enfin au fil d'un défilement lent : elle restait sur la première carte, l'arrêt sur une carte compensant le défilement. Elle s'arrête désormais sur une carte une fois le défilement posé.
+- **Longueur.** L'accueil passe de 13,3 à 8,9 écrans sur ordinateur, et de 14,2 à 10,6 sur téléphone (mesure de l'aperçu filmé) :
+  - les sections « Le nom » (et ses mots géants) et « Depuis l'Alsace » sont retirées ;
+  - la roue des métiers est plus courte à faire défiler.
+- **Le réseau.**
+  - Il passe sur fond encre, avec l'explication du nom (« Red » veut dire réseau) et les quatre chiffres affichés directement.
+  - Un index des dix secteurs, avec leur nombre de références, mène chacun à la page Références déjà filtrée.
+  - Le mur de fiches façon enquête et le bandeau défilant de noms sont retirés.
+- **Les deux spécialités** ont de nouvelles images : le pupitre éclairé pour la tribune, le village alsacien dans les vignes pour la table.
+- **La méthode** passe sur fond crème, sans photo ; le fil de la marge descend par les quatre nœuds sans passer sur le texte.
+- **La fin** a un titre actif, « Faisons savoir ce que vous savez faire », le numéro en grand et la mention « Tarifs sur devis, après ce premier échange ».
+- **Le portrait** de Stéphane Bourhis est montré en entier, en paysage, avec les Ponts couverts. Il est légèrement réchauffé pour entrer dans la palette (original gardé dans `_suivi/originaux/`).
+
+**Métiers**
+- **La scène.** La feuille et la colonne montrent toujours le même métier : avant, la feuille avait un métier d'avance. Le métier change quand son titre passe le milieu de l'écran.
+- **La rature** se fait plus vite (0,75 s), et la phrase claire apparaît sans attendre.
+- **La feuille de l'ouverture** tient entière dans le premier écran, une ligne par jargon.
+- **La fin de page** n'a plus d'image en double : la table du métier « Conseil en communication » revenait. Elle mentionne les tarifs sur devis.
+
+**Spécialités**
+- La citation politique arrive ligne par ligne : plus de lettres orphelines pendant l'animation.
+- Le bloc « carte aux punaises » de la campagne est retiré.
+- Les textes repris du site actuel sont réécrits au présent, en phrases complètes.
+- La fin de page devient deux images-boutons, « La tribune » et « La table ». Chacune ouvre le formulaire avec ce choix déjà fait.
+- « Du chai à la table » est le seul plein écran du site. Ses mots ne sortent plus de l'écran.
+
+**Références**
+- **Le filet de l'ouverture** est resserré vers la droite. Avant, une colonne de nœuds se tassait contre le titre.
+- **Le bandeau de mots géants** est retiré.
+- **Le Passeport Alsacien.**
+  - Le carnet ne porte plus le logo de Red-Act : la vraie couverture est inconnue.
+  - Le chiffre n'est plus écrit deux fois.
+- **La fin de page.**
+  - « Et aussi » est retiré : sa phrase sur des clients non cités n'était pas vérifiable.
+  - La fin devient « Votre projet, le prochain nœud ? », avec un nœud qui se dessine.
+
+**Contact**
+- **Les horaires.** « Horaires : à compléter » devient « Rendez-vous sur demande, par téléphone ou par e-mail ».
+- **La carte** montre l'Alsace (Hoenheim, Strasbourg, Colmar, Mulhouse, le Rhin en gris) au lieu d'un Grand-Est approximatif.
+- **Le bandeau de mots géants** est retiré.
+- **Le formulaire.**
+  - L'étape « Vous » devient « Vous êtes… ».
+  - Le déroulé annonce « Tarifs sur devis, après un premier échange ».
+
+**Partout**
+- **Zone d'intervention.** Elle est écrite « Strasbourg et Alsace » partout : le Grand-Est n'est pas cité par le site actuel.
+- **Les bandeaux de mots géants qui défilent** passent de cinq à un : celui des supports, sur Métiers.
+- **Un seul rouge d'action.** Sur fond sombre, les boutons sont crème à texte rouge, au lieu de corail.
+- **Les titres écrits au fil** se remplissent plus vite, sans état gris prolongé.
+
+**Technique**
+- Numéro de version des fichiers passé à `?v=3`.
+- Outils d'audit mis à jour, avec le test « vrai visiteur » et l'aperçu filmé.
+- Les fichiers de travail (consignes et document Grok, relevé, regards) sont rangés dans `_suivi/`.
+
 ## v2 — de « pas mal » à « wouahou » (7 novembre 2026)
 
 Construit en comparant l'archive v1 et la v2, fichier par fichier.

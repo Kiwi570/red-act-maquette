@@ -1,0 +1,17 @@
+{
+ "id": "20261112-152611-complet-cible-partiel",
+ "date": "2026-11-12T15:27:28.901Z",
+ "niveau": "complet",
+ "pages": "/",
+ "etapes": [
+  "fichiers",
+  "grille",
+  "mesures"
+ ],
+ "version": "3",
+ "echecs": 0,
+ "aRegarder": 1,
+ "nonLances": 0,
+ "manquants": 0,
+ "statut": "complet"
+}

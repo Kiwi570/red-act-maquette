@@ -48,7 +48,7 @@ export default (c) => {
   <div class="conteneur politique-grille">
     <div>
       <p class="surtitre" data-anime>${c.t('specialites.politique.surtitre')}</p>
-      <h2 class="politique-titre" data-anime="lettres">${c.t('specialites.politique.titre')}</h2>
+      <h2 class="politique-titre" data-anime="lignes">${c.t('specialites.politique.titre')}</h2>
       <p data-anime>${c.t('specialites.politique.texte1')}</p>
       <p data-anime>${c.t('specialites.politique.texte2')}</p>
       <p data-anime>${c.lien('contact', { ancre: 'rendez-vous', params: 'besoin=politique', classe: 'bouton', texte: c.t('specialites.politique.action') })}</p>
@@ -58,9 +58,6 @@ export default (c) => {
   <div class="conteneur parcours">
     <svg class="parcours-fil" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true" data-fx="trace"><path d="M10 30 C 140 6, 230 54, 340 30 S 560 6, 670 30 S 880 54, 990 30"/></svg>
     <ol class="parcours-etapes" data-anime="cascade">${c.donnees.listes.etapesPolitique.map((e, i) => html`<li><span class="parcours-noeud" aria-hidden="true"></span><span class="parcours-num">0${i + 1}</span> ${e}</li>`)}</ol>
-  </div>
-  <div class="conteneur campagne">
-    ${c.media({ nom: 'grok/specialites-campagne', alt: c.s('specialites.politique.altCampagne'), cadrage: '30% 50%', classe: 'campagne-media', sizes: '(max-width: 760px) 100vw, 80vw', attrs: 'data-anime="rideau"' })}
   </div>
 </section>
 
@@ -93,12 +90,20 @@ export default (c) => {
   </div>
 </section>
 
-<section class="fin fin--simple conteneur" id="fin" data-fil="droite">
-  ${c.media({ nom: 'grok/accueil-rencontre', alt: c.s('accueil.methode.alt'), cadrage: '55% 55%', classe: 'fin-media', sizes: '(max-width: 760px) 100vw, 40vw', attrs: 'data-fx="zoom"' })}
-  <div>
+<section class="fin fin--choix conteneur" id="fin" data-fil="droite">
+  <div class="fin-choix-tete">
     <h2 class="titre-souple" data-axe data-anime="lignes">${c.t('specialites.fin.titre')}</h2>
     <p data-anime>${c.t('specialites.fin.texte')}</p>
-    <p class="fin-actions" data-anime>${c.lien('contact', { ancre: 'rendez-vous', classe: 'bouton', texte: c.t('specialites.fin.action'), attrs: 'data-survol="magnetique"' })}</p>
+  </div>
+  <div class="fin-choix" data-anime="cascade">
+    <a class="choix-image" href="${c.url('contact', 'rendez-vous', 'besoin=politique')}" data-libelle="${c.libelle('contact')}">
+      ${c.media({ nom: 'grok/specialites-ouverture-politique', alt: '', cadrage: '50% 40%', classe: 'choix-image-media', sizes: '(max-width: 760px) 100vw, 45vw', attrs: 'data-fx="zoom"' })}
+      <span class="choix-image-texte">${c.t('specialites.fin.tribune')} <span aria-hidden="true">→</span></span>
+    </a>
+    <a class="choix-image" href="${c.url('contact', 'rendez-vous', 'besoin=tourisme')}" data-libelle="${c.libelle('contact')}">
+      ${c.media({ nom: 'grok/specialites-hotellerie', alt: '', cadrage: '50% 60%', classe: 'choix-image-media', sizes: '(max-width: 760px) 100vw, 45vw', attrs: 'data-fx="zoom"' })}
+      <span class="choix-image-texte">${c.t('specialites.fin.table')} <span aria-hidden="true">→</span></span>
+    </a>
   </div>
 </section>
 

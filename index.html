@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="fr" data-v="2" data-curseur>
+<html lang="fr" data-v="3" data-curseur>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Red-Act : conseil en communication, rédaction et community management à Strasbourg</title>
-<meta name="description" content="Red-Act, conseil en communication indépendant fondé à Strasbourg en 2004 : rédaction, community management, conseil et formation, en Alsace et dans le Grand-Est.">
+<meta name="description" content="Red-Act, conseil en communication indépendant fondé à Strasbourg en 2004 : rédaction, community management, conseil et formation, à Strasbourg et en Alsace.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://red-act-maquette.vercel.app/">
 <style>:root{--fond:#F4EEE3;--texte:#1B1916;--voile-fond:#1B1916;--ouverture-fond:#F4EEE3;--menu-fond:#1B1916}:root { --entete-h: 72px; --barres-h: 0px; } html { background: var(--fond); color: var(--texte); scrollbar-gutter: stable; } body { margin: 0; background: var(--fond); } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime] { opacity: 0; } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime].vu { opacity: 1; } [data-voile] { position: fixed; inset: 0; z-index: 900; background: var(--voile-fond); transform: translateY(100%); visibility: hidden; pointer-events: none; } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) [data-voile] { transform: none; visibility: visible; } html.calme [data-voile], html.secours [data-voile] { visibility: hidden !important; } .ouverture-panneau { position: fixed; inset: 0; z-index: 850; display: none; place-content: center; justify-items: center; background: var(--ouverture-fond, var(--voile-fond)); color: var(--fond); text-align: center; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouverture-panneau { display: grid; } html.defilement-bloque, html.defilement-bloque body, html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie), html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) body, html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours), html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) body { overflow: hidden; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) { background-color: var(--ouverture-fond, var(--voile-fond)); } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) { background-color: var(--voile-fond); }</style>
@@ -41,14 +41,14 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 })();</script>
 <link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/polices/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/socle.css?v=2">
-<link rel="stylesheet" href="/assets/css/site.css?v=2">
-<link rel="modulepreload" href="/assets/js/site.js?v=2">
-<link rel="modulepreload" href="/assets/js/socle/index.js?v=2">
+<link rel="stylesheet" href="/assets/css/socle.css?v=3">
+<link rel="stylesheet" href="/assets/css/site.css?v=3">
+<link rel="modulepreload" href="/assets/js/site.js?v=3">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=3">
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
-<script type="module" src="/assets/js/site.js?v=2"></script>
+<script type="module" src="/assets/js/site.js?v=3"></script>
 <meta name="theme-color" content="#F4EEE3">
 <link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/assets/images/favicon-192.png" sizes="192x192" type="image/png">
@@ -57,7 +57,7 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 <meta property="og:site_name" content="Red-Act">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="Red-Act : conseil en communication, rédaction et community management à Strasbourg">
-<meta property="og:description" content="Red-Act, conseil en communication indépendant fondé à Strasbourg en 2004 : rédaction, community management, conseil et formation, en Alsace et dans le Grand-Est.">
+<meta property="og:description" content="Red-Act, conseil en communication indépendant fondé à Strasbourg en 2004 : rédaction, community management, conseil et formation, à Strasbourg et en Alsace.">
 <meta property="og:url" content="https://red-act-maquette.vercel.app/">
 <meta property="og:image" content="https://red-act-maquette.vercel.app/assets/partage/accueil-fr.jpg">
 <meta property="og:image:width" content="1200">
@@ -116,18 +116,24 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
   <p class="menu-sansjs-fermer"><a href="#menu-ferme">Fermer</a></p>
   <ul><li style="--i:0"><a href="/" class="menu-lien" data-libelle="Accueil" aria-current="page">Accueil</a></li><li style="--i:1"><a href="/metiers" class="menu-lien" data-libelle="Métiers">Métiers</a></li><li style="--i:2"><a href="/specialites" class="menu-lien" data-libelle="Spécialités">Spécialités</a></li><li style="--i:3"><a href="/references" class="menu-lien" data-libelle="Références">Références</a></li><li style="--i:4"><a href="/contact" class="menu-lien" data-libelle="Contact">Contact</a></li></ul>
   <p><a class="bouton" href="tel:+33388183544">Appeler 03 88 18 35 44</a></p>
+  <p class="menu-adresse">8, rue Anatole France, 67800 Hoenheim<br><a href="mailto:contact@red-act.com">contact@red-act.com</a></p>
   <p><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></p>
 </div>
 <main id="contenu" tabindex="-1">
 <div class="fil-racine" data-grille="fil">
 <section class="hero" id="debut" data-fil="gauche">
   <div class="hero-texte">
-    <p class="surtitre tete-suite" data-anime="gsap">Conseil en communication · Strasbourg</p>
-    <h1 class="hero-titre titre-souple" data-axe><span class="ligne-masque"><span class="hero-ligne" data-anime="gsap">Savoir faire</span></span><span class="ligne-masque"><span class="hero-ligne" data-anime="gsap">&amp; faire savoir</span></span></h1>
-    <p class="hero-intro tete-suite masque-ecran-tres-bas" data-anime="gsap">Une approche directe et personnalisée de la communication d&#39;influence et des réseaux : rédaction, community management, conseil et formation.</p>
+    <p class="surtitre tete-suite" data-anime="gsap">Conseil en communication · Hoenheim, Strasbourg</p>
+    <h1 class="hero-titre titre-souple" data-axe data-chiasme><span class="ligne-masque"><span class="hero-ligne" data-anime="gsap">Savoir faire</span></span><span class="ligne-masque"><span class="hero-ligne hero-ligne--chiasme" data-anime="gsap"><span class="chi-et">&amp;</span> <span class="chi-mot" data-chi="a">faire</span> <span class="chi-mot" data-chi="b">savoir</span></span></span></h1>
+    <svg class="chiasme-fil" aria-hidden="true" data-effet="chiasme" data-superpose data-audit-ignorer><path class="chiasme-fil-ombre" d="M0 0"/><path class="chiasme-fil-trait" d="M0 0"/></svg>
+    <p class="hero-intro tete-suite masque-ecran-tres-bas" data-anime="gsap">Un seul interlocuteur pour six métiers de la communication : rédaction, community management, conseil et formation, avec deux spécialités, la politique et la gastronomie.</p>
     <p class="hero-actions tete-suite" data-anime="gsap">
       <a href="/contact#rendez-vous" class="bouton" data-libelle="Contact" data-action-principale data-survol="magnetique">Prendre rendez-vous</a>
-      <span class="hero-info" data-info-cle>Indépendant depuis 2004 · Alsace et Grand-Est</span>
+      <span class="hero-tel">ou <a href="tel:+33388183544">03 88 18 35 44</a></span>
+    </p>
+    <p class="hero-signature tete-suite" data-anime="gsap">
+      <span class="hero-medaillon" aria-hidden="true"><img src="/assets/images/stephane-bourhis-480.webp" alt="" width="480" height="360" loading="eager" decoding="async"></span>
+      <span><strong>Stéphane Bourhis</strong>, votre seul interlocuteur<br><span class="hero-info" data-info-cle>Indépendant depuis 2004 · Strasbourg et Alsace</span></span>
     </p>
   </div>
   <div class="hero-scene" data-grille="manipuler">
@@ -141,36 +147,12 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
     <p class="filet-consigne" aria-hidden="true"><span class="sur-souris">Attrapez le filet</span><span class="sur-tactile">Touchez et tirez le filet</span></p>
   </div>
 </section>
-<section class="nom" id="nom" data-fil="droite">
-  <div class="conteneur nom-tete">
-    <p class="surtitre" data-anime>Le nom</p>
-    <h2 class="titre-souple" data-axe data-anime="lettres">Red, le réseau. Act, l&#39;action.</h2>
-    <p class="nom-texte" data-anime="mots">« Red » veut dire réseau en espagnol, « act » évoque l&#39;action en anglais. Red-Act met en mouvement l&#39;ensemble des métiers de la communication, de la mission ponctuelle à l&#39;accompagnement au long cours.</p>
-  </div>
-  <div class="mots-geants" data-fx="mots-geants" aria-hidden="true" data-ruban data-visuel data-audit-ignorer>
-    <p data-fx-rangee>Rédiger · Conseiller · Animer · Former · Auditer · Rédiger · Conseiller · Animer · Former · Auditer ·</p>
-    <p data-fx-rangee data-sens="-1" class="mots-geants--creux">Print · Web · Presse · Réseaux · Influence · Print · Web · Presse · Réseaux · Influence ·</p>
-  </div>
-</section>
-<section class="alsace" id="alsace" data-fx="plein-ecran" data-plein-ecran>
-  <div data-collant>
-    <figure class="media " data-grok style="--cadrage:50% 55%">
-  <picture><source media="(max-width: 760px) and (orientation: portrait)" srcset="/assets/images/grok/accueil-alsace-mobile-480.webp 480w, /assets/images/grok/accueil-alsace-mobile-657.webp 657w" sizes="100vw">
-    <img src="/assets/images/grok/accueil-alsace-1168.webp" srcset="/assets/images/grok/accueil-alsace-640.webp 640w, /assets/images/grok/accueil-alsace-960.webp 960w, /assets/images/grok/accueil-alsace-1168.webp 1168w" sizes="100vw" alt="Coteaux de vignes au lever du soleil au-dessus d&#39;un village" width="1168" height="784" loading="lazy" decoding="async">
-  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
-</figure>
-    <p class="alsace-mot alsace-mot--g" data-fx-ecarte="g" aria-hidden="true">Depuis</p>
-    <p class="alsace-mot alsace-mot--d" data-fx-ecarte="d" aria-hidden="true">l&#39;Alsace</p>
-    <h2 class="visuellement-cache">Depuis l&#39;Alsace</h2>
-    <p class="alsace-legende" data-fx-apres>À vos côtés, depuis l&#39;Alsace : Red-Act intervient à Strasbourg, en Alsace et dans le Grand-Est, et vous écoute avant de proposer.</p>
-  </div>
-</section>
 <section class="roue" id="metiers" data-scene data-fil="gauche">
   <div class="roue-collant" data-collant>
     <div class="conteneur roue-tete">
       <p class="surtitre">Six métiers</p>
       <h2 class="titre-souple" data-axe data-anime="lignes">Un seul interlocuteur, six métiers</h2>
-      <p class="roue-consigne masque-ecran-bas">Faites-la tourner à la main, aux flèches ou en faisant défiler.</p>
+      <p class="roue-consigne masque-ecran-bas">Faites tourner la roue : à la main, aux flèches ou en faisant défiler.</p>
     </div>
     <div class="roue-scene" role="region" aria-roledescription="carrousel" aria-label="Roue des six métiers">
       <span class="roue-fil" aria-hidden="true"></span>
@@ -260,9 +242,9 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
   </div>
   <div class="specialites-grille">
     <article class="spe spe--politique">
-      <figure class="media spe-media" data-grok data-fx="vitesse" data-fx-force="4" style="--cadrage:40% 50%">
+      <figure class="media spe-media" data-grok data-fx="vitesse" data-fx-force="4" style="--cadrage:50% 42%">
   <picture>
-    <img src="/assets/images/grok/specialite-politique-1168.webp" srcset="/assets/images/grok/specialite-politique-640.webp 640w, /assets/images/grok/specialite-politique-960.webp 960w, /assets/images/grok/specialite-politique-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 48vw" alt="Salle du conseil vide, pupitre et bancs de bois" width="1168" height="784" loading="lazy" decoding="async">
+    <img src="/assets/images/grok/specialites-ouverture-politique-784.webp" srcset="/assets/images/grok/specialites-ouverture-politique-480.webp 480w, /assets/images/grok/specialites-ouverture-politique-784.webp 784w" sizes="(max-width: 760px) 100vw, 48vw" alt="Pupitre éclairé dans une salle de réunion publique" width="784" height="1168" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
       <h3>Politique et institutionnel</h3>
@@ -270,9 +252,9 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
       <a href="/specialites#politique" class="lien-fleche" data-libelle="Spécialités">En savoir plus</a>
     </article>
     <article class="spe spe--tourisme">
-      <figure class="media spe-media" data-grok data-fx="vitesse" data-fx-force="4" style="--cadrage:55% 55%">
-  <picture>
-    <img src="/assets/images/grok/specialite-tourisme-1168.webp" srcset="/assets/images/grok/specialite-tourisme-640.webp 640w, /assets/images/grok/specialite-tourisme-960.webp 960w, /assets/images/grok/specialite-tourisme-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 48vw" alt="Table dressée dans une auberge boisée, verres à vin vides" width="1168" height="784" loading="lazy" decoding="async">
+      <figure class="media spe-media" data-grok data-fx="vitesse" data-fx-force="4" style="--cadrage:50% 60%">
+  <picture><source media="(max-width: 760px) and (orientation: portrait)" srcset="/assets/images/grok/accueil-alsace-mobile-480.webp 480w, /assets/images/grok/accueil-alsace-mobile-657.webp 657w" sizes="(max-width: 760px) 100vw, 48vw">
+    <img src="/assets/images/grok/accueil-alsace-1168.webp" srcset="/assets/images/grok/accueil-alsace-640.webp 640w, /assets/images/grok/accueil-alsace-960.webp 960w, /assets/images/grok/accueil-alsace-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 48vw" alt="Village alsacien dans les vignes au lever du soleil" width="1168" height="784" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
       <h3>Tourisme et gastronomie</h3>
@@ -283,26 +265,25 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 </section>
 <section class="reseau" id="reseau" data-fil="gauche">
   <div class="conteneur reseau-grille">
-    <div>
-      <p class="surtitre" data-anime>Le réseau</p>
+    <div class="reseau-tete">
+      <p class="surtitre" data-anime>Red, le réseau</p>
       <h2 class="titre-souple" data-axe data-anime="lignes">Ceux qui ont fait confiance à Red-Act</h2>
+      <p class="reseau-texte" data-anime>« Red » veut dire réseau en espagnol, « act » évoque l&#39;action en anglais. Red-Act met en mouvement l&#39;ensemble des métiers de la communication, de la mission ponctuelle à l&#39;accompagnement au long cours.</p>
       <ul class="chiffres-liste" data-anime="cascade">
         <li><strong class="chiffre">2004</strong> <span>année de création, à Strasbourg</span></li>
-        <li><strong class="chiffre" data-compteur="90">90</strong> <span>références nommées</span></li>
-        <li><strong class="chiffre" data-compteur="10">10</strong> <span>secteurs, des agences aux institutions</span></li>
+        <li><strong class="chiffre">90</strong> <span>références nommées</span></li>
+        <li><strong class="chiffre">10</strong> <span>secteurs, des agences aux institutions</span></li>
         <li><strong class="chiffre">12 000</strong> <span>exemplaires et plus : le « Passeport Alsacien », dont Red-Act a écrit les textes</span></li>
       </ul>
-      <p><a href="/references" class="bouton bouton--contour" data-libelle="Références" data-survol="magnetique">Parcourir le réseau</a></p>
     </div>
-    <figure class="media reseau-media" data-grok data-fx="parallaxe" style="--cadrage:40% 45%">
-  <picture>
-    <img src="/assets/images/grok/references-atelier-1168.webp" srcset="/assets/images/grok/references-atelier-640.webp 640w, /assets/images/grok/references-atelier-960.webp 960w, /assets/images/grok/references-atelier-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 45vw" alt="Mur de fiches vierges reliées par des fils rouges" width="1168" height="784" loading="lazy" decoding="async">
-  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
-</figure>
-  </div>
-  <div class="ruban-section">
-    <div class="ruban" id="ruban-noms" data-boucle-css data-ruban><p>ADVISA · ACTWEB · 2 EXVIA · Diatem · Swing Mobility · ABW · Ventana Medical Systems (Roche Group) · Création International · Dermovitalia · Made in Alsace · Cozy Magazine · Les Pros s&#39;animent · Opéra Construction · Sainte Maxime Immobilier · Groupe ICADE · Château de Pommard · Brasserie Météor · Domaine des Grands Vins de France · Château de Bissieux · Verte Vallée · Hostellerie du Haut Koenigsbourg · AB Corporate Aviation · MGM · Heuft France · Axal déménagements · Peugeot Strasbourg · Maison de l&#39;Alsace · Onac des Vosges · Électricité de Strasbourg · ADVISA · ACTWEB · 2 EXVIA · Diatem · Swing Mobility · ABW · Ventana Medical Systems (Roche Group) · Création International · Dermovitalia · Made in Alsace · Cozy Magazine · Les Pros s&#39;animent · Opéra Construction · Sainte Maxime Immobilier · Groupe ICADE · Château de Pommard · Brasserie Météor · Domaine des Grands Vins de France · Château de Bissieux · Verte Vallée · Hostellerie du Haut Koenigsbourg · AB Corporate Aviation · MGM · Heuft France · Axal déménagements · Peugeot Strasbourg · Maison de l&#39;Alsace · Onac des Vosges · Électricité de Strasbourg ·</p></div>
-    <button type="button" class="ruban-pause" data-pause-pour="ruban-noms" data-libelle-pause="Pause" data-libelle-lecture="Lecture"><span data-libelle-bouton>Pause</span></button>
+    <div class="reseau-index" data-visuel>
+      <h3 class="reseau-index-titre" data-anime>Dix secteurs, à parcourir</h3>
+      <svg class="reseau-fil" viewBox="0 0 600 400" preserveAspectRatio="none" aria-hidden="true" data-fx="trace"><path data-fx-trait d="M-10 40 C 120 10 200 120 320 80 S 520 20 610 110 M -10 200 C 140 160 240 260 360 220 S 520 170 610 250 M -10 340 C 160 300 260 390 380 350 S 540 320 610 380"/></svg>
+      <ul class="secteurs-index" data-anime="cascade">
+        <li><a href="/references?secteur=agences" aria-label="Voir les références du secteur Agences de communication et agences web">Agences<sup>18</sup></a></li><li><a href="/references?secteur=numerique" aria-label="Voir les références du secteur Entreprises des nouvelles technologies">Numérique<sup>9</sup></a></li><li><a href="/references?secteur=sante" aria-label="Voir les références du secteur Santé et cosmétiques">Santé<sup>3</sup></a></li><li><a href="/references?secteur=presse" aria-label="Voir les références du secteur Magazines et journaux">Presse<sup>4</sup></a></li><li><a href="/references?secteur=immobilier" aria-label="Voir les références du secteur Opérateurs immobiliers">Immobilier<sup>6</sup></a></li><li><a href="/references?secteur=vins" aria-label="Voir les références du secteur Vins et bière">Vins<sup>8</sup></a></li><li><a href="/references?secteur=gastronomie" aria-label="Voir les références du secteur Hôtellerie, restauration et gastronomie">Gastronomie<sup>22</sup></a></li><li><a href="/references?secteur=luxe" aria-label="Voir les références du secteur Luxe et affaires">Luxe<sup>2</sup></a></li><li><a href="/references?secteur=industrie" aria-label="Voir les références du secteur Industrie, commerce et services">Industrie<sup>8</sup></a></li><li><a href="/references?secteur=institutions" aria-label="Voir les références du secteur Institutions et collectivités">Institutions<sup>10</sup></a></li>
+      </ul>
+      <p><a href="/references" class="bouton bouton--clair" data-libelle="Références" data-survol="magnetique">Parcourir le réseau</a></p>
+    </div>
   </div>
 </section>
 <section class="stephane conteneur" id="stephane" data-fil="droite">
@@ -315,7 +296,7 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
     <p class="surtitre" data-anime>Qui écrit</p>
     <h2 class="titre-fil" data-titre-fil data-effet="titre-au-fil" data-grille="typo"><span class="visuellement-cache">Stéphane Bourhis</span><svg class="titre-fil-svg" aria-hidden="true" viewBox="0 0 900 140" preserveAspectRatio="xMinYMid meet"><text x="4" y="108">Stéphane Bourhis</text></svg></h2>
     <p class="stephane-role" data-anime>Conseil en communication, Red-Act</p>
-    <p data-anime>Fondée en août 2004 à Strasbourg, avec le soutien du Conseil régional d&#39;Alsace, l&#39;agence a choisi la communication print et digitale.</p>
+    <p data-anime>Stéphane Bourhis a fondé Red-Act en août 2004 à Strasbourg, avec le soutien du Conseil régional d&#39;Alsace, et a choisi la communication print et digitale.</p>
     <p data-anime>Stéphane Bourhis est chargé de cours à l&#39;Université de Strasbourg, membre et délégué régional de l&#39;APCIG, l&#39;Association professionnelle des chroniqueurs et informateurs de la gastronomie et du vin.</p>
     <p class="valeurs" data-anime>Imagination · Complicité · Professionnalisme</p>
     <figure class="alsacien" data-anime>
@@ -329,13 +310,8 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
     <div class="methode-tete">
       <p class="surtitre" data-anime>La méthode</p>
       <h2 class="titre-souple" data-axe data-anime="lignes">Quatre nœuds, un seul fil</h2>
-      <figure class="media methode-media" data-grok data-fx="zoom" style="--cadrage:55% 55%">
-  <picture>
-    <img src="/assets/images/grok/accueil-rencontre-1168.webp" srcset="/assets/images/grok/accueil-rencontre-640.webp 640w, /assets/images/grok/accueil-rencontre-960.webp 960w, /assets/images/grok/accueil-rencontre-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 40vw" alt="Deux cafés et un carnet sur une table de café" width="1168" height="784" loading="lazy" decoding="async">
-  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
-</figure>
     </div>
-    <ol class="etapes" data-anime="cascade">
+    <ol class="etapes" data-anime="cascade" data-visuel>
       <li class="etape">
         <span class="etape-noeud" data-fil-point="0.5 0.5" data-fil-boucle data-fil-sans-perle aria-hidden="true"></span>
         <h3><span class="etape-num">01</span> La rencontre</h3>
@@ -363,12 +339,13 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
   <div>
-    <h2 class="titre-souple" data-axe data-anime="lignes">Pour recevoir une documentation, ou pour faire connaissance</h2>
-    <p data-anime>Prenez rendez-vous, ou laissez vos coordonnées pour recevoir une documentation et parler de votre projet.</p>
+    <h2 class="titre-souple" data-axe data-anime="lignes">Faisons savoir ce que vous savez faire</h2>
+    <p data-anime>Un premier rendez-vous pour comprendre votre projet, ou une documentation pour faire connaissance. Tarifs sur devis, après ce premier échange.</p>
     <p class="fin-actions" data-anime>
       <a href="/contact#rendez-vous" class="bouton" data-libelle="Contact" data-survol="magnetique">Prendre rendez-vous</a>
       <a href="/contact?besoin=documentation#rendez-vous" class="bouton bouton--contour" data-libelle="Contact" data-survol="magnetique">Demander une documentation</a>
     </p>
+    <p class="fin-appel" data-anime>ou appelez le <a class="numero numero--fin" href="tel:+33388183544">03 88 18 35 44</a></p>
   </div>
 </section>
 </div>

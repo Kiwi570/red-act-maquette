@@ -20,10 +20,18 @@ export function installerOutils() {
     const texte = (el.innerText || el.getAttribute('alt') || el.getAttribute('aria-label') || '').trim().replace(/\s+/g, ' ').slice(0, 50);
     return parties.join(' > ') + (texte ? ` « ${texte} »` : '');
   };
+  const cacheVisuel = (el) => {
+    if (el.closest('.visuellement-cache, .sr-only')) return true;
+    const cs = getComputedStyle(el);
+    return /^rect\(0(px)?,? 0(px)?,? 0(px)?,? 0(px)?\)$/.test(cs.clip) || /^inset\(50%\)$/.test(cs.clipPath);
+  };
   const visible = (el) => {
     if (!el || !el.isConnected) return false;
     if (el.closest('[inert], [data-audit-ignorer]')) return false;
     if (el.checkVisibility && !el.checkVisibility({ opacityProperty: true, visibilityProperty: true })) return false;
+    /* Texte visuellement caché (lu par les lecteurs d'écran seulement) : rect(0 0 0 0) ou inset(50 %), quelle que soit sa boîte.
+       QD2A, 7 novembre 2026 : des libellés cachés dans des liens, à la boîte réelle débordant de la section, comptés « texte coupé ». */
+    if (cacheVisuel(el)) return false;
     const r = el.getBoundingClientRect();
     return r.width > 1 && r.height > 1;
   };
@@ -34,10 +42,22 @@ export function installerOutils() {
     }
     return false;
   };
+  /* Boîte du texte d'un élément, sans ses descendants visuellement cachés (libellé caché dans un lien : sa boîte réelle,
+     un mot par ligne dans 1 px de large, ferait croire à un texte coupé ou débordant). */
   const rectTexte = (el) => {
     const r = document.createRange();
     r.selectNodeContents(el);
-    return r.getBoundingClientRect();
+    if (!el.firstElementChild || ![...el.querySelectorAll('*')].some(cacheVisuel)) return r.getBoundingClientRect();
+    let g = Infinity, h = Infinity, d = -Infinity, b = -Infinity;
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    while (w.nextNode()) {
+      const n = w.currentNode;
+      if (!n.textContent.trim() || (n.parentElement !== el && cacheVisuel(n.parentElement))) continue;
+      const rn = document.createRange(); rn.selectNodeContents(n);
+      for (const q of rn.getClientRects()) { g = Math.min(g, q.left); h = Math.min(h, q.top); d = Math.max(d, q.right); b = Math.max(b, q.bottom); }
+    }
+    if (g === Infinity) return { left: 0, top: 0, right: 0, bottom: 0, width: 0, height: 0, x: 0, y: 0 };
+    return { left: g, top: h, right: d, bottom: b, width: d - g, height: b - h, x: g, y: h };
   };
   const elementsTexte = () => {
     const out = new Set();
@@ -70,7 +90,7 @@ export function installerOutils() {
     const a = avant[3];
     return [avant[0] * a + arriere[0] * (1 - a), avant[1] * a + arriere[1] * (1 - a), avant[2] * a + arriere[2] * (1 - a), 1];
   };
-  window.__audit = { sel, visible, fixe, rectTexte, elementsTexte, couleur, lum, ratio, melanger };
+  window.__audit = { sel, visible, cacheVisuel, fixe, rectTexte, elementsTexte, couleur, lum, ratio, melanger };
 }
 
 /* Fait défiler toute la page pour déclencher les apparitions, puis revient en haut. */
@@ -167,6 +187,7 @@ export function mesurer(o) {
   });
 
   /* 5a. Textes qui se chevauchent. */
+  const BLOC_TEXTE = 'h1, h2, h3, h4, h5, h6, p, li, dt, dd, blockquote, figcaption, label, button, a, [data-anime]';
   const blocs = textes.filter((el) => !A.fixe(el) && !el.closest('[data-superpose], [data-face="dos"], [data-menu], [data-ouverture], [data-voile], .visuellement-cache') && !dansGalerie(el))
     .map((el) => ({ el, r: A.rectTexte(el) })).filter((b) => b.r.width > 2 && b.r.height > 2);
   for (let i = 0; i < blocs.length; i++) {
@@ -175,7 +196,13 @@ export function mesurer(o) {
       if (a.el.contains(b.el) || b.el.contains(a.el)) continue;
       const x = Math.min(a.r.right, b.r.right) - Math.max(a.r.left, b.r.left);
       const y = Math.min(a.r.bottom, b.r.bottom) - Math.max(a.r.top, b.r.top);
-      if (x > 3 && y > 3) ajouter('textes qui se chevauchent', `avec ${A.sel(b.el)}`, a.el);
+      if (!(x > 3 && y > 3)) continue;
+      /* Morceaux d'un même titre (lettres, mots ou lignes découpés) : la boîte de la police (ascendantes et descendantes)
+         dépasse l'interligne serré d'un titre d'affichage, sans que les lettres se touchent (QD2A : la plupart des 133 échecs
+         du premier audit). Entre morceaux d'un même bloc, seul un vrai recouvrement compte : plus du tiers de la hauteur d'une ligne. */
+      const blocA = a.el.closest(BLOC_TEXTE), blocB = b.el.closest(BLOC_TEXTE);
+      if (blocA && blocA === blocB && y <= 0.33 * Math.min(a.r.height, b.r.height)) continue;
+      ajouter('textes qui se chevauchent', `avec ${A.sel(b.el)}`, a.el);
     }
   }
 
@@ -266,6 +293,23 @@ export function mesurer(o) {
     if (!mention || !A.visible(mention)) ajouter('mention « Illustration générée » absente', src.split('/').pop(), img);
     else if (parseFloat(getComputedStyle(mention).fontSize) < 11.95) ajouter('mention « Illustration générée » trop petite', '', mention);
   });
+
+  /* 10 bis. Beauté : une image notée 2 ou moins (ou faible) ne s'affiche pas en grand ; une 3 pas en très grand. */
+  if (o.imagesNotes && Object.keys(o.imagesNotes).length) {
+    const tel = vw < 700;
+    document.querySelectorAll('img').forEach((img) => {
+      if (!A.visible(img)) return;
+      const chemin = (img.currentSrc || img.src || '').split('?')[0].split('/assets/images/')[1];
+      const m = chemin && chemin.match(/^(.*?)(?:-mobile)?-\d+\.(?:webp|avif|jpe?g|png)$/);
+      const n = m && o.imagesNotes[decodeURIComponent(m[1])];
+      if (!n) return;
+      const r = img.getBoundingClientRect();
+      const part = (Math.min(r.width, vw) * Math.min(r.height, vh)) / (vw * vh);
+      const note = n.b != null ? `${n.b}/5` : 'faible';
+      if ((n.f || (n.b != null && n.b <= 2)) && part >= (tel ? 0.35 : 0.25)) ajouter('photo faible affichée en grand', `${m[1]} (${note}${n.f ? ', faible' : ''}, ${Math.round(part * 100)} % de l'écran) : en vignette, ou une meilleure image`, img);
+      else if (n.b === 3 && part >= (tel ? 0.5 : 0.4)) ajouter('photo moyenne affichée en très grand', `${m[1]} (3/5, ${Math.round(part * 100)} % de l'écran) : une image notée 4 ou 5 à cette taille`, img, 'regarder');
+    });
+  }
 
   /* 11. Langues : aucun texte d'une autre langue. */
   if (o.textesEtrangers && o.textesEtrangers.length) {

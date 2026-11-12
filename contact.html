@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" data-v="2" data-curseur>
+<html lang="fr" data-v="3" data-curseur>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -41,14 +41,14 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 })();</script>
 <link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/polices/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/socle.css?v=2">
-<link rel="stylesheet" href="/assets/css/site.css?v=2">
-<link rel="modulepreload" href="/assets/js/site.js?v=2">
-<link rel="modulepreload" href="/assets/js/socle/index.js?v=2">
+<link rel="stylesheet" href="/assets/css/socle.css?v=3">
+<link rel="stylesheet" href="/assets/css/site.css?v=3">
+<link rel="modulepreload" href="/assets/js/site.js?v=3">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=3">
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
-<script type="module" src="/assets/js/site.js?v=2"></script>
+<script type="module" src="/assets/js/site.js?v=3"></script>
 <meta name="theme-color" content="#F4EEE3">
 <link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/assets/images/favicon-192.png" sizes="192x192" type="image/png">
@@ -116,6 +116,7 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
   <p class="menu-sansjs-fermer"><a href="#menu-ferme">Fermer</a></p>
   <ul><li style="--i:0"><a href="/" class="menu-lien" data-libelle="Accueil">Accueil</a></li><li style="--i:1"><a href="/metiers" class="menu-lien" data-libelle="Métiers">Métiers</a></li><li style="--i:2"><a href="/specialites" class="menu-lien" data-libelle="Spécialités">Spécialités</a></li><li style="--i:3"><a href="/references" class="menu-lien" data-libelle="Références">Références</a></li><li style="--i:4"><a href="/contact" class="menu-lien" data-libelle="Contact" aria-current="page">Contact</a></li></ul>
   <p><a class="bouton" href="tel:+33388183544">Appeler 03 88 18 35 44</a></p>
+  <p class="menu-adresse">8, rue Anatole France, 67800 Hoenheim<br><a href="mailto:contact@red-act.com">contact@red-act.com</a></p>
   <p><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></p>
 </div>
 <main id="contenu" tabindex="-1">
@@ -145,13 +146,13 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
   <div class="rdv-tete">
     <p class="surtitre" data-anime>Rendez-vous</p>
     <h2 class="titre-fil" data-titre-fil data-effet="titre-au-fil" data-grille="typo"><span class="visuellement-cache">Demander un rendez-vous</span><svg class="titre-fil-svg" aria-hidden="true" viewBox="0 0 1500 140" preserveAspectRatio="xMinYMid meet"><text x="4" y="108">Demander un rendez-vous</text></svg></h2>
-    <p data-anime>Trois étapes : votre besoin, vous, vos coordonnées. Rien n&#39;est envoyé : c&#39;est une maquette.</p>
+    <p data-anime>Trois étapes : votre besoin, vous, vos coordonnées. Tarifs sur devis, après un premier échange. Rien n&#39;est envoyé : c&#39;est une maquette.</p>
   </div>
   <div class="rdv-grille">
     <form class="formulaire" data-formulaire data-etapes action="#" method="post" aria-describedby="rdv-etape">
       <ol class="etapes-barre" aria-hidden="true">
         <li data-etape-pastille="1" class="est-active"><span>1</span> Votre besoin</li>
-        <li data-etape-pastille="2"><span>2</span> Vous</li>
+        <li data-etape-pastille="2"><span>2</span> Vous êtes…</li>
         <li data-etape-pastille="3"><span>3</span> Vos coordonnées</li>
       </ol>
       <p class="visuellement-cache" id="rdv-etape" aria-live="polite" data-etape-annonce>Votre besoin</p>
@@ -198,30 +199,25 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
   </div>
 </section>
 <section class="acces" id="acces" data-fil="gauche">
-  <div class="mots-geants mots-geants--acces" data-fx="mots-geants" aria-hidden="true" data-ruban data-visuel data-audit-ignorer>
-    <p data-fx-rangee>Strasbourg · Hoenheim · Alsace · Grand-Est · Strasbourg · Hoenheim · Alsace · Grand-Est · Strasbourg · Hoenheim · Alsace · Grand-Est ·</p>
-  </div>
   <div class="conteneur acces-grille">
     <div>
       <p class="surtitre" data-anime>Accès</p>
       <h2 class="titre-souple" data-axe data-anime="lignes">À Hoenheim, aux portes de Strasbourg</h2>
-      <p data-anime>Red-Act intervient à Strasbourg, en Alsace et dans tout le Grand-Est.</p>
+      <p data-anime>Red-Act intervient à Strasbourg et en Alsace.</p>
       <p data-anime>8, rue Anatole France, 67800 Hoenheim<br><a href="tel:+33388183544">03 88 18 35 44</a><br><a href="mailto:contact@red-act.com">contact@red-act.com</a></p>
-      <p class="mention" data-anime>Horaires : à compléter</p>
+      <p class="mention" data-anime>Rendez-vous sur demande, par téléphone ou par e-mail.</p>
     </div>
     <figure class="carte" data-visuel>
-      <svg viewBox="0 0 600 520" role="img" aria-label="Carte schématique : Hoenheim au nord de Strasbourg, dans le Grand-Est" data-fx="trace">
-        <path class="carte-region" d="M120 40 L 330 30 L 420 70 L 470 60 L 520 120 L 500 220 L 470 330 L 455 470 L 380 500 L 330 430 L 250 400 L 160 420 L 90 360 L 60 250 L 80 140 Z"/>
-        <path class="carte-rhin" data-fx-trait d="M520 120 C 505 170 495 200 488 240 S 470 330 462 380 S 455 450 455 470"/>
-        <path class="carte-fil" data-fx-trait d="M168 150 C 240 170 300 200 362 214 M 205 228 C 260 230 320 222 362 214 M 362 214 C 380 260 400 300 410 330 M 410 330 C 420 380 430 410 438 430"/>
+      <svg viewBox="0 0 600 520" role="img" aria-label="Carte schématique : Hoenheim au nord de Strasbourg, en Alsace" data-fx="trace">
+        <path class="carte-region" d="M228 26 L 300 18 L 372 30 L 436 44 L 420 96 L 404 150 L 392 206 L 380 262 L 366 318 L 352 372 L 344 426 L 352 478 L 326 502 L 284 500 L 262 470 L 256 420 L 246 368 L 238 316 L 226 262 L 206 214 L 186 168 L 176 120 L 194 70 Z"/>
+        <path class="carte-rhin" data-fx-trait d="M446 40 C 432 100 418 150 408 206 S 386 318 372 372 S 356 450 362 500"/>
+        <path class="carte-fil" data-fx-trait d="M374 168 C 372 180 370 190 366 200 M 366 200 C 352 250 336 290 326 330 M 326 330 C 322 370 318 400 314 434"/>
         <g class="carte-villes">
-          <circle cx="168" cy="150" r="6"/><text x="150" y="138" text-anchor="end">Metz</text>
-          <circle cx="205" cy="228" r="6"/><text x="190" y="248" text-anchor="end">Nancy</text>
-          <circle cx="410" cy="330" r="6"/><text x="396" y="336" text-anchor="end">Colmar</text>
-          <circle cx="438" cy="430" r="6"/><text x="424" y="436" text-anchor="end">Mulhouse</text>
-          <circle cx="362" cy="214" r="8" class="carte-strasbourg"/><text x="346" y="240" text-anchor="end" class="carte-fort">Strasbourg</text>
-          <circle cx="370" cy="196" r="7" class="carte-hoenheim"/><text x="384" y="186" class="carte-fort carte-rouge">Hoenheim</text>
-          <text x="500" y="300" class="carte-rhin-nom" transform="rotate(80 500 300)">Rhin</text>
+          <circle cx="326" cy="330" r="6"/><text x="312" y="336" text-anchor="end">Colmar</text>
+          <circle cx="314" cy="434" r="6"/><text x="300" y="440" text-anchor="end">Mulhouse</text>
+          <circle cx="366" cy="200" r="8" class="carte-strasbourg"/><text x="350" y="222" text-anchor="end" class="carte-fort">Strasbourg</text>
+          <circle cx="374" cy="168" r="7" class="carte-hoenheim"/><text x="360" y="160" text-anchor="end" class="carte-fort carte-rouge">Hoenheim</text>
+          <text x="452" y="300" class="carte-rhin-nom" transform="rotate(80 452 300)">Rhin</text>
         </g>
       </svg>
       <figcaption>Carte schématique, non à l&#39;échelle</figcaption>

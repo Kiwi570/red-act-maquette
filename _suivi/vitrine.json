@@ -1,0 +1,230 @@
+{
+ "explication": "Vitrine du projet : des ouvertures de la bibliothèque à dépasser, jamais à imiter (ni leur idée, ni leur mise en page).",
+ "activite": [
+  "conseil"
+ ],
+ "metier": "conseil en communication",
+ "besoin": [
+  "rendez-vous"
+ ],
+ "ton": [
+  "chaleureux"
+ ],
+ "univers": [],
+ "ambiance": [],
+ "concept": [],
+ "depot": "red-act-maquette",
+ "ecartees": [],
+ "ouvertures": [
+  {
+   "rang": 1,
+   "id": "coupdefood-maquette/une",
+   "maquette": "coupdefood-maquette",
+   "client": "agence de relations presse et de communication culinaire",
+   "metier": "agence de relations presse culinaire",
+   "activite": [
+    "conseil",
+    "média"
+   ],
+   "pourquoi": [
+    "même métier",
+    "besoin rendez-vous",
+    "ambiance chaleureux",
+    "clair et sombre alternés (20 % sombre)",
+    "typo-geante",
+    "vitesse",
+    "webgl"
+   ],
+   "lumiere": "mixte",
+   "part_sombre": 20,
+   "note_section": 5,
+   "note_maquette": 87,
+   "titre": "La une",
+   "description": "Une de quotidien : filets qui se tracent, manchette « COUP DE FOOD » lettre à lettre (SplitText), photo qui se développe en trame WebGL, titre imprimé au rouleau, tampon rouge, sommaire « En bref » et fil de dépêches défilant accéléré par la vitesse de défilement et arrêté au survol ou au focus.",
+   "familles": [
+    "typo-geante",
+    "vitesse",
+    "webgl"
+   ],
+   "plan": null,
+   "module": "trame-photo",
+   "fiche": "sections/coupdefood-maquette/une.json",
+   "capture": "medias/coupdefood-maquette/une-p1440.jpg",
+   "video": "medias/coupdefood-maquette/une-p720.mp4",
+   "en_ligne": "https://coupdefood-maquette.vercel.app"
+  },
+  {
+   "rang": 2,
+   "id": "icc-maquette/hero",
+   "maquette": "icc-maquette",
+   "client": "institut de conseil et de formation à la transformation des systèmes (conseil, expéditions apprenantes, programme jeunes à l'ONU)",
+   "metier": "cabinet de conseil et de formation",
+   "activite": [
+    "conseil",
+    "formation"
+   ],
+   "pourquoi": [
+    "même activité",
+    "besoin rendez-vous",
+    "clair et sombre alternés (82 % sombre)",
+    "webgl",
+    "particules"
+   ],
+   "lumiere": "mixte",
+   "part_sombre": 82,
+   "note_section": 5,
+   "note_maquette": 91,
+   "titre": "Ouverture en constellation",
+   "description": "Ciel nocturne en WebGL (OGL) : des particules d'or dessinent l'arbre du logo puis s'ouvrent en constellation derrière le titre en serif fin ; carte « Vous êtes… » qui oriente vers trois publics. Repli 2D sans WebGL, image fixe en mode calme, bascule silencieuse si le contexte GPU est perdu.",
+   "familles": [
+    "webgl",
+    "particules"
+   ],
+   "plan": null,
+   "module": "constellation",
+   "fiche": "sections/icc-maquette/hero.json",
+   "capture": "medias/icc-maquette/hero-p1440.jpg",
+   "video": "medias/icc-maquette/hero-p720.mp4",
+   "en_ligne": "https://icc-maquette.vercel.app"
+  },
+  {
+   "rang": 3,
+   "id": "francis-gerardin-maquette/hero",
+   "maquette": "francis-gerardin-maquette",
+   "client": "animateur d'événements, formateur par l'improvisation et coach personnel à Strasbourg",
+   "metier": "animateur et formateur",
+   "activite": [
+    "conseil",
+    "formation",
+    "spectacle"
+   ],
+   "pourquoi": [
+    "même activité",
+    "besoin rendez-vous",
+    "style clair (14 % sombre)",
+    "lumiere-pointeur",
+    "webgl",
+    "masque"
+   ],
+   "lumiere": "clair",
+   "part_sombre": 14,
+   "note_section": 5,
+   "note_maquette": 87,
+   "titre": "Héros raturé et photo en trame",
+   "description": "Titre en lignes masquées, puis « Pour vous animer former coacher » rayés un à un au stylo rouge (DrawSVG) et remplacés par « accompagner » souligné à la main ; la photo naît d'une trame offset en WebGL (OGL) avec loupe sous le curseur et se dissout au défilement. Repli : l'image simple.",
+   "familles": [
+    "lumiere-pointeur",
+    "webgl",
+    "masque",
+    "trait-qui-se-dessine"
+   ],
+   "plan": null,
+   "module": "rature-au-stylo",
+   "fiche": "sections/francis-gerardin-maquette/hero.json",
+   "capture": "medias/francis-gerardin-maquette/hero-p1440.jpg",
+   "video": "medias/francis-gerardin-maquette/hero-p720.mp4",
+   "en_ligne": "https://francis-gerardin-maquette.vercel.app"
+  },
+  {
+   "rang": 4,
+   "id": "sequoia-studio-maquette/debut",
+   "maquette": "sequoia-studio-maquette",
+   "client": "galerie en ligne d'œuvres d'art mural en éditions limitées (impressions FineArt, caisses américaines, certificats d'authenticité)",
+   "metier": "galerie d'art en ligne",
+   "activite": [
+    "culture",
+    "commerce"
+   ],
+   "pourquoi": [
+    "style sombre (100 % sombre)",
+    "lumiere-pointeur",
+    "masque",
+    "curseur-vivant"
+   ],
+   "lumiere": "sombre",
+   "part_sombre": 100,
+   "note_section": 5,
+   "note_maquette": 87,
+   "titre": "Des œuvres originales prêtes à sublimer vos espaces.",
+   "description": "« Des œuvres originales prêtes à sublimer vos espaces » : une œuvre accrochée dans le noir, éclairée par un projecteur qui suit la souris",
+   "familles": [
+    "lumiere-pointeur",
+    "masque",
+    "curseur-vivant"
+   ],
+   "plan": "recit-lineaire",
+   "module": null,
+   "fiche": "sections/sequoia-studio-maquette/debut.json",
+   "capture": "medias/sequoia-studio-maquette/debut-p1440.jpg",
+   "video": null,
+   "en_ligne": "https://sequoia-studio-maquette.vercel.app"
+  },
+  {
+   "rang": 5,
+   "id": "nolanis-maquette/debut",
+   "maquette": "nolanis-maquette",
+   "client": "Agence de communication visuelle à Strasbourg : print et web, espaces publicitaires, publipostage, photo et vidéo, objets publicitaires, sauvegarde en ligne, formation photo",
+   "metier": "agence de communication visuelle",
+   "activite": [
+    "services-b2b",
+    "média"
+   ],
+   "pourquoi": [
+    "même métier",
+    "style clair (0 % sombre)",
+    "objet-manipulable",
+    "vitesse",
+    "webgl"
+   ],
+   "lumiere": "clair",
+   "part_sombre": 0,
+   "note_section": 5,
+   "note_maquette": 86,
+   "titre": "Votre agence de communication visuelle à Strasbourg",
+   "description": "Épreuve plein cadre de nuanciers et encres ; repère de calage à faire tourner (élan, doigt, clavier) : plus il tourne vite, plus la photo se décale en quatre couleurs, puis tout se cale ; gouttes d'encre quand on le lance fort",
+   "familles": [
+    "objet-manipulable",
+    "vitesse",
+    "webgl"
+   ],
+   "plan": "recit-lineaire",
+   "module": "objet-a-faire-tourner",
+   "fiche": "sections/nolanis-maquette/debut.json",
+   "capture": "medias/nolanis-maquette/debut-p1440.jpg",
+   "video": "medias/nolanis-maquette/debut-p720.mp4",
+   "en_ligne": "https://nolanis-maquette.vercel.app"
+  },
+  {
+   "rang": 6,
+   "id": "jardins-hacienda-maquette/debut",
+   "maquette": "jardins-hacienda-maquette",
+   "client": "restaurant et lieu de réception avec piscine à Moineville, près de Metz (carte, à emporter, agenda, mariages, fêtes privées)",
+   "metier": "restaurant et lieu de réception",
+   "activite": [
+    "restauration",
+    "tourisme"
+   ],
+   "pourquoi": [
+    "besoin rendez-vous",
+    "ambiance chaleureux",
+    "clair et sombre alternés (40 % sombre)",
+    "webgl"
+   ],
+   "lumiere": "mixte",
+   "part_sombre": 40,
+   "note_section": 5,
+   "note_maquette": 85,
+   "titre": "Les Jardins de l’Hacienda",
+   "description": "Salle au coin du feu (ou terrasse en été) sous une surface d'eau ou de braise en WebGL qui réagit au pointeur ; bascule « Voir l'été », prochain rendez-vous",
+   "familles": [
+    "webgl"
+   ],
+   "plan": null,
+   "module": null,
+   "fiche": "sections/jardins-hacienda-maquette/debut.json",
+   "capture": "medias/jardins-hacienda-maquette/debut-p1440.jpg",
+   "video": "medias/jardins-hacienda-maquette/debut-p720.mp4",
+   "en_ligne": "https://jardins-hacienda-maquette.vercel.app"
+  }
+ ]
+}

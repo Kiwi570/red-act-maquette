@@ -5,9 +5,9 @@
      2. data-iris-centre          objet d'ouverture de chaque page (une seule fois), et versObjet(…) dans assets/js
      3. data-forme sur le voile   forme du voile autre que « glisse » (donnees/site.json : formeVoile),
                                   ou data-grille="voile" sur une transition propre au projet
-     4. data-grille="fil"         fil conducteur, sur chaque page
-     5. data-grille="typo"        axe de police animé ou titre fabriqué par le métier, sur chaque page
-     6. data-grille="scene"       scène épinglée qui est une mécanique du métier (une galerie générique est signalée)
+     4. data-grille="fil"         ce qui relie les sections et les pages (fil, objet unique, lumière, carte, folio), sur chaque page
+     5. data-grille="typo"        titre fabriqué par le métier, axe de police animé ou titre joué avec l'image, sur chaque page
+     6. data-grille="scene"       scène (épinglée, horizontale ou en plongée) qui est un geste du métier (une galerie générique est signalée)
      7. data-grille="retour"      retour physique de l'action principale (panier, réservation, envoi, filtre)
    Un point écarté exprès se déclare dans _audit/config.json : { "grille": { "dispenses": { "fil": "raison" } } } ;
    il est rappelé dans le rapport au lieu d'échouer. Le goût (l'objet est-il bien celui du métier ? l'effet est-il
@@ -20,9 +20,9 @@ export const POINTS = [
   { cle: 'manipuler', nom: '1. L’effet signature se manipule' },
   { cle: 'intro', nom: '2. L’intro devient la page' },
   { cle: 'voile', nom: '3. La transition reprend le motif' },
-  { cle: 'fil', nom: '4. Un fil conducteur traverse le site' },
-  { cle: 'typo', nom: '5. La typographie bouge aussi' },
-  { cle: 'scene', nom: '6. Les scènes épinglées sont des gestes du métier' },
+  { cle: 'fil', nom: '4. Quelque chose relie les sections et les pages' },
+  { cle: 'typo', nom: '5. Un titre fait l’événement sur chaque page' },
+  { cle: 'scene', nom: '6. La scène est un geste du métier' },
   { cle: 'retour', nom: '7. L’action principale a un retour physique' },
 ];
 const CLES = POINTS.map((p) => p.cle);
@@ -92,10 +92,10 @@ export function controlesGrille(racine, pagesRel, { rapport: R, config = {}, ver
     manque('voile', 'regarder', 'grille : voile par défaut (point 3)', 'formeVoile « glisse » : la grille demande la forme du monde du client (iris, vague, rideau dans le socle, ou une forme propre). Si la glisse est voulue (page qu’on tourne, store qui descend), le déclarer dans config.json (grille.dispenses.voile)');
   }
 
-  /* 4. Fil conducteur, sur chaque page ; 5. typographie, sur chaque page. */
+  /* 4. Ce qui relie les sections, sur chaque page ; 5. titre qui fait l'événement, sur chaque page. */
   for (const [cle, nom, aide] of [
-    ['fil', 'fil conducteur absent (point 4)', 'élément du métier qui relie les sections au défilement (module fil-conducteur), marqué data-grille="fil"'],
-    ['typo', 'typographie qui ne bouge pas (point 5)', 'axe de police animé ou titre fabriqué par le métier (modules axes-au-defilement, titre-cousu, texte-grave-en-direct), marqué data-grille="typo"'],
+    ['fil', 'rien ne relie les sections (point 4)', 'élément du métier qui relie les sections et les pages (fil dans la marge, objet unique qui change, lumière qui passe, carte, folio, frise), marqué data-grille="fil"'],
+    ['typo', 'aucun titre ne fait l’événement (point 5)', 'titre fabriqué par le métier, axe de police animé ou titre joué avec l’image (modules axes-au-defilement, titre-cousu, texte-grave-en-direct), marqué data-grille="typo"'],
   ]) {
     const a = avec(cle), s = sans(cle);
     if (!a.length) {

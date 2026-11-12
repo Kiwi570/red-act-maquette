@@ -1,0 +1,85 @@
+{
+  "echecs": [],
+  "aRegarder": [
+    {
+      "niveau": "regarder",
+      "controle": "« à compléter » visible",
+      "detail": "1 fois hors du pied de page : remplacer par une phrase vraie qui oriente le visiteur (« Tarifs selon la saison, donnés à la réservation ») ou retirer l'élément, et le noter dans la fiche du README (sauf sens propre : « dossier à compléter »)",
+      "etape": "fichiers",
+      "page": "contact.html",
+      "lieux": [
+        ""
+      ]
+    },
+    {
+      "niveau": "regarder",
+      "controle": "numéro de version",
+      "detail": "?v=3 est celui de la dernière livraison : à changer avant de livrer",
+      "etape": "fichiers",
+      "lieux": [
+        ""
+      ]
+    },
+    {
+      "niveau": "regarder",
+      "controle": "retour arrière : changement brusque",
+      "detail": "à 73 ms (différence 20 %) (films/retour-arrière-1366.png)",
+      "etape": "films",
+      "page": "/",
+      "taille": "1366×768",
+      "mode": "retour arrière",
+      "lieux": [
+        "1366×768 retour arrière"
+      ]
+    },
+    {
+      "niveau": "regarder",
+      "controle": "retour avant : changement brusque",
+      "detail": "à 72 ms (différence 21 %) (films/retour-avant-1366.png)",
+      "etape": "films",
+      "page": "/metiers",
+      "taille": "1366×768",
+      "mode": "retour avant",
+      "lieux": [
+        "1366×768 retour avant"
+      ]
+    },
+    {
+      "niveau": "regarder",
+      "controle": "fluidité",
+      "detail": "7 % d'images de plus de 50 ms",
+      "etape": "fluidite",
+      "page": "/",
+      "taille": "1366×768",
+      "mode": "défilement à la molette, processeur ralenti 4 fois",
+      "lieux": [
+        "1366×768 défilement à la molette, processeur ralenti 4 fois"
+      ]
+    }
+  ],
+  "nonLances": [],
+  "oks": {
+    "vercel.json": 1,
+    ".vercelignore": 1,
+    "robots.txt": 1,
+    "numéro de version": 1,
+    "langues": 1,
+    "films d’ouverture": 2,
+    "films de transition": 2,
+    "fluidité": 2,
+    "défilement selon l’appareil": 5,
+    "mouvement": 2,
+    "effets du plan": 11,
+    "souris immobile": 2
+  },
+  "infos": [
+    "Numéro de version des fichiers : ?v=3",
+    "Journal v3 : 2 étape(s) notée(s), 35 min de travail pour 95 min de budget, 2 min d’attente de l’utilisateur.",
+    "Accessibilité : axe-core 4.12.1 en plus des contrôles intégrés.",
+    "Ouverture / (1366×768) : 2390 ms depuis le premier octet",
+    "Ouverture / (390×844) : 2391 ms depuis le premier octet",
+    "Tient dans l'écran / : aucune section épinglée ou plein écran.",
+    "Fluidité / 390×844 (doigt) : 0 % d'images lentes sur 1417, tâche la plus longue 0 ms"
+  ],
+  "grille": []
+}

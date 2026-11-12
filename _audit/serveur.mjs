@@ -24,9 +24,10 @@ function exclusions(racine) {
   } catch { return []; }
 }
 
-export function demarrerServeur(racine, { port = 0 } = {}) {
+export function demarrerServeur(racine, { port = 0, sansExclusions = false } = {}) {
   const vercel = lireVercel(racine);
-  const exclus = exclusions(racine);
+  /* sansExclusions : esquisses.mjs sert aussi _suivi/ et recu/ (photos du client), jamais mis en ligne. */
+  const exclus = sansExclusions ? [] : exclusions(racine);
   const entetes = [];
   for (const h of vercel.headers || []) {
     const motif = new RegExp('^' + h.source.replace(/\(\.\*\)/g, '.*').replace(/:(\w+)\*/g, '.*').replace(/:(\w+)/g, '[^/]+') + '$');

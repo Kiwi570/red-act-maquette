@@ -1,4 +1,4 @@
-# Red-Act — maquette v2
+# Red-Act — maquette v3
 
 Maquette du futur site de Red-Act (conseil en communication, rédaction et community management, Hoenheim près de Strasbourg).
 Direction artistique « Red, le réseau » : red veut dire réseau en espagnol, et le rouge du drapeau du logo devient un fil qui relie tout le site.
@@ -9,9 +9,9 @@ Adresse prévue : https://red-act-maquette.vercel.app
 
 | Page | Ouverture | Signature |
 |---|---|---|
-| Accueil | Titre à gauche, bureau du rédacteur et bobine de fil rouge à droite | Filet des vraies références à tirer à la main ; intro du fil qui écrit « Red » puis « Act » et se noue ; roue 3D des six métiers ; mots géants ; Alsace en plein écran ; titre « Stéphane Bourhis » écrit au fil |
+| Accueil | Chiasme « Savoir faire & faire savoir » croisé par un fil rouge, portrait et numéro dès le premier écran ; bureau du rédacteur et bobine à droite | Filet des vraies références à tirer à la main ; intro du fil qui écrit « Red » puis « Act » et se noue ; roue 3D des six métiers ; index des dix secteurs sur fond encre ; titre « Stéphane Bourhis » écrit au fil ; méthode en quatre nœuds |
 | Métiers | Très grand titre, bandeau de brouillons recouvert d'une feuille qui se raye | « Du brouillon au texte » : on raye soi-même le jargon (ou il se raye seul), la phrase claire s'écrit |
-| Spécialités | Écran scindé plein cadre, « La tribune » et « et la table » en grand, titre sur une carte qui suit la couture | Séparation à faire glisser ; parcours candidat → mandat tracé au fil ; cave en plein écran |
+| Spécialités | Écran scindé plein cadre, « La tribune » et « et la table » en grand, titre sur une carte qui suit la couture | Séparation à faire glisser ; parcours candidat → mandat tracé au fil ; cave en plein écran ; fin en deux images-boutons (tribune, table) |
 | Références (page sombre) | Grand filet de nuit avec les 90 noms | Filtres par secteur qui tirent les nœuds (sélection gardée dans l'adresse) ; liste complète lisible |
 | Contact | Carte de visite nouée par le fil rouge, posée sur la rue, numéro en très grand | Rendez-vous en trois étapes, simulé : la demande se plie, se noue et devient le nœud « Vous » du filet |
 | 404 | « Le fil est coupé » | |
@@ -47,8 +47,12 @@ Partout : un fil rouge court dans la marge et fait un nœud à chaque section ; 
 
 ## Pistes pour la suite
 
-- Remplacer le mur de fiches reliées par un fil rouge (utilisé deux fois, il évoque une enquête) par de vraies photos de Red-Act.
+- Images à régénérer avec Grok (ou à remplacer par de vraies photos) : « Audit en communication » (feuilles aux taches floues), « Concepteur-rédacteur » (liège et fil rouge, effet tableau d'enquête), la salle à bancs de la section politique de Spécialités. Le mur de fiches et la carte aux punaises ne sont plus affichés (fichiers gardés dans `assets/images/grok/`).
+- La vraie couverture du Passeport Alsacien, si Red-Act peut la fournir (le carnet est aujourd'hui dessiné, sans logo).
+- La page 404 pourrait devenir manipulable (renouer les deux bouts du fil pour revenir à l'accueil).
 - La phrase alsacienne « Uff Elsassich – Red-Act, ihre neue Partner. » est reprise telle qu'elle figure sur le site actuel : à faire relire par Red-Act.
+- Zone d'intervention écrite partout « Strasbourg et Alsace » (le Grand-Est n'est pas cité par le site actuel) : à confirmer par Red-Act.
+- Le portrait de Stéphane Bourhis est légèrement réchauffé pour entrer dans la palette (original dans `_suivi/originaux/`).
 
 ## À retirer à la mise en ligne définitive
 

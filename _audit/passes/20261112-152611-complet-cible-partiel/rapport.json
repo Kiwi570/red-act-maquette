@@ -1,0 +1,75 @@
+{
+  "echecs": [],
+  "aRegarder": [
+    {
+      "niveau": "regarder",
+      "controle": "« à compléter » visible",
+      "detail": "1 fois hors du pied de page : remplacer par une phrase vraie qui oriente le visiteur (« Tarifs selon la saison, donnés à la réservation ») ou retirer l'élément, et le noter dans la fiche du README (sauf sens propre : « dossier à compléter »)",
+      "etape": "fichiers",
+      "page": "contact.html",
+      "lieux": [
+        ""
+      ]
+    }
+  ],
+  "nonLances": [],
+  "oks": {
+    "vercel.json": 1,
+    ".vercelignore": 1,
+    "robots.txt": 1,
+    "numéro de version": 1,
+    "langues": 1,
+    "grille wouahou": 7,
+    "mesures": 52,
+    "balayage": 1
+  },
+  "infos": [
+    "Numéro de version des fichiers : ?v=3",
+    "Journal v3 : 2 étape(s) notée(s), 35 min de travail pour 95 min de budget, 2 min d’attente de l’utilisateur.",
+    "Accessibilité : axe-core 4.12.1 en plus des contrôles intégrés."
+  ],
+  "grille": [
+    {
+      "cle": "manipuler",
+      "nom": "1. L’effet signature se manipule",
+      "statut": "présent",
+      "detail": "accueil et 3 autre(s) page(s)"
+    },
+    {
+      "cle": "intro",
+      "nom": "2. L’intro devient la page",
+      "statut": "présent",
+      "detail": "objet d’ouverture sur 5 page(s), versObjet dans l’intro"
+    },
+    {
+      "cle": "voile",
+      "nom": "3. La transition reprend le motif",
+      "statut": "présent",
+      "detail": "voile en trame"
+    },
+    {
+      "cle": "fil",
+      "nom": "4. Quelque chose relie les sections et les pages",
+      "statut": "présent",
+      "detail": "sur les 5 page(s)"
+    },
+    {
+      "cle": "typo",
+      "nom": "5. Un titre fait l’événement sur chaque page",
+      "statut": "présent",
+      "detail": "sur les 5 page(s)"
+    },
+    {
+      "cle": "scene",
+      "nom": "6. La scène est un geste du métier",
+      "statut": "présent",
+      "detail": "geste du métier sur /metiers"
+    },
+    {
+      "cle": "retour",
+      "nom": "7. L’action principale a un retour physique",
+      "statut": "présent",
+      "detail": "sur /contact"
+    }
+  ]
+}

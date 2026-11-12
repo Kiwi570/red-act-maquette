@@ -1,7 +1,7 @@
 /* Contact : ouverture en carte de visite nouée par le fil rouge, posée sur la rue (numéro en très grand), demande de rendez-vous
    en trois étapes (besoin, profil, coordonnées) avec récapitulatif et petit filet : à l'envoi, la fiche se plie,
    un fil la noue et elle file jusqu'au filet, où elle devient le nœud « Vous » (retour physique de l'action).
-   Carte schématique du Grand-Est. */
+   Carte schématique de l'Alsace. */
 import { html } from '../../outils/gabarit.mjs';
 
 export const page = { cle: 'contact', fichier: 'contact', imagePartage: 'grok/contact-lettre-1168.webp' };
@@ -95,9 +95,6 @@ export default (c) => {
 </section>
 
 <section class="acces" id="acces" data-fil="gauche">
-  <div class="mots-geants mots-geants--acces" data-fx="mots-geants" aria-hidden="true" data-ruban data-visuel data-audit-ignorer>
-    <p data-fx-rangee>${c.t('contact.acces.mots')} ${c.t('contact.acces.mots')} ${c.t('contact.acces.mots')}</p>
-  </div>
   <div class="conteneur acces-grille">
     <div>
       <p class="surtitre" data-anime>${c.t('contact.acces.surtitre')}</p>
@@ -108,17 +105,15 @@ export default (c) => {
     </div>
     <figure class="carte" data-visuel>
       <svg viewBox="0 0 600 520" role="img" aria-label="${c.s('contact.acces.carte')}" data-fx="trace">
-        <path class="carte-region" d="M120 40 L 330 30 L 420 70 L 470 60 L 520 120 L 500 220 L 470 330 L 455 470 L 380 500 L 330 430 L 250 400 L 160 420 L 90 360 L 60 250 L 80 140 Z"/>
-        <path class="carte-rhin" data-fx-trait d="M520 120 C 505 170 495 200 488 240 S 470 330 462 380 S 455 450 455 470"/>
-        <path class="carte-fil" data-fx-trait d="M168 150 C 240 170 300 200 362 214 M 205 228 C 260 230 320 222 362 214 M 362 214 C 380 260 400 300 410 330 M 410 330 C 420 380 430 410 438 430"/>
+        <path class="carte-region" d="M228 26 L 300 18 L 372 30 L 436 44 L 420 96 L 404 150 L 392 206 L 380 262 L 366 318 L 352 372 L 344 426 L 352 478 L 326 502 L 284 500 L 262 470 L 256 420 L 246 368 L 238 316 L 226 262 L 206 214 L 186 168 L 176 120 L 194 70 Z"/>
+        <path class="carte-rhin" data-fx-trait d="M446 40 C 432 100 418 150 408 206 S 386 318 372 372 S 356 450 362 500"/>
+        <path class="carte-fil" data-fx-trait d="M374 168 C 372 180 370 190 366 200 M 366 200 C 352 250 336 290 326 330 M 326 330 C 322 370 318 400 314 434"/>
         <g class="carte-villes">
-          <circle cx="168" cy="150" r="6"/><text x="150" y="138" text-anchor="end">${c.s('contact.acces.metz')}</text>
-          <circle cx="205" cy="228" r="6"/><text x="190" y="248" text-anchor="end">${c.s('contact.acces.nancy')}</text>
-          <circle cx="410" cy="330" r="6"/><text x="396" y="336" text-anchor="end">${c.s('contact.acces.colmar')}</text>
-          <circle cx="438" cy="430" r="6"/><text x="424" y="436" text-anchor="end">${c.s('contact.acces.mulhouse')}</text>
-          <circle cx="362" cy="214" r="8" class="carte-strasbourg"/><text x="346" y="240" text-anchor="end" class="carte-fort">${c.s('contact.acces.strasbourg')}</text>
-          <circle cx="370" cy="196" r="7" class="carte-hoenheim"/><text x="384" y="186" class="carte-fort carte-rouge">${c.s('contact.acces.hoenheim')}</text>
-          <text x="500" y="300" class="carte-rhin-nom" transform="rotate(80 500 300)">${c.s('contact.acces.rhin')}</text>
+          <circle cx="326" cy="330" r="6"/><text x="312" y="336" text-anchor="end">${c.s('contact.acces.colmar')}</text>
+          <circle cx="314" cy="434" r="6"/><text x="300" y="440" text-anchor="end">${c.s('contact.acces.mulhouse')}</text>
+          <circle cx="366" cy="200" r="8" class="carte-strasbourg"/><text x="350" y="222" text-anchor="end" class="carte-fort">${c.s('contact.acces.strasbourg')}</text>
+          <circle cx="374" cy="168" r="7" class="carte-hoenheim"/><text x="360" y="160" text-anchor="end" class="carte-fort carte-rouge">${c.s('contact.acces.hoenheim')}</text>
+          <text x="452" y="300" class="carte-rhin-nom" transform="rotate(80 452 300)">${c.s('contact.acces.rhin')}</text>
         </g>
       </svg>
       <figcaption>${c.t('contact.acces.illustratif')}</figcaption>
