@@ -1,0 +1,196 @@
+{
+  "echecs": [
+    {
+      "niveau": "echec",
+      "controle": "texte coupé",
+      "detail": "coupé par section#metiers > div.epreuves-collant > div.epreuves-scene:nth-of-type(2) « Illustration générée 01 Rédacteur web Illustration »",
+      "etape": "mesures",
+      "page": "/",
+      "taille": "390×844",
+      "mode": "normal",
+      "selecteur": "ul.epreuves-liste > li.epreuve:nth-of-type(5) > a > strong.epreuve-nom « Audit en communication »",
+      "lieux": [
+        "390×844 normal",
+        "390×844 sansWebgl"
+      ]
+    },
+    {
+      "niveau": "echec",
+      "controle": "texte coupé",
+      "detail": "coupé par section#metiers > div.epreuves-collant > div.epreuves-scene:nth-of-type(2) « Illustration générée 01 Rédacteur web Illustration »",
+      "etape": "mesures",
+      "page": "/",
+      "taille": "375×667",
+      "mode": "normal",
+      "selecteur": "li.epreuve:nth-of-type(2) > a > figure.media.epreuve-media > figcaption.mention-ia « Illustration générée »",
+      "lieux": [
+        "375×667 normal",
+        "375×667 sansWebgl"
+      ]
+    },
+    {
+      "niveau": "echec",
+      "controle": "texte coupé",
+      "detail": "coupé par section#metiers > div.epreuves-collant « SIX MÉTIERS Un seul interlocuteur, six métiers Fai »",
+      "etape": "mesures",
+      "page": "/",
+      "taille": "375×667",
+      "mode": "normal",
+      "selecteur": "ul.epreuves-liste > li.epreuve:nth-of-type(2) > a > strong.epreuve-nom « Community manager »",
+      "lieux": [
+        "375×667 normal",
+        "375×667 sansWebgl"
+      ]
+    },
+    {
+      "niveau": "echec",
+      "controle": "texte coupé",
+      "detail": "coupé par section#metiers > div.epreuves-collant « SIX MÉTIERS Un seul interlocuteur, six métiers Fai »",
+      "etape": "mesures",
+      "page": "/",
+      "taille": "320×568",
+      "mode": "normal",
+      "selecteur": "ul.epreuves-liste > li.epreuve:nth-of-type(5) > a > span.epreuve-num:nth-of-type(1) « 05 »",
+      "lieux": [
+        "320×568 normal"
+      ]
+    },
+    {
+      "niveau": "echec",
+      "controle": "texte coupé",
+      "detail": "coupé par section#metiers > div.epreuves-collant « SIX MÉTIERS Un seul interlocuteur, six métiers Fai »",
+      "etape": "mesures",
+      "page": "/",
+      "taille": "320×568",
+      "mode": "normal",
+      "selecteur": "ul.epreuves-liste > li.epreuve:nth-of-type(5) > a > strong.epreuve-nom « Audit en communication »",
+      "lieux": [
+        "320×568 normal"
+      ]
+    },
+    {
+      "niveau": "echec",
+      "controle": "texte coupé",
+      "detail": "coupé par section#metiers > div.epreuves-collant > div.epreuves-scene:nth-of-type(2) « Illustration générée Rédacteur web Illustration gé »",
+      "etape": "mesures",
+      "page": "/",
+      "taille": "844×390",
+      "mode": "normal",
+      "selecteur": "ul.epreuves-liste > li.epreuve:nth-of-type(4) > a > strong.epreuve-nom « Conseil & formation »",
+      "lieux": [
+        "844×390 normal",
+        "844×390 sansWebgl"
+      ]
+    },
+    {
+      "niveau": "echec",
+      "controle": "texte coupé",
+      "detail": "coupé par section#metiers > div.epreuves-collant > div.epreuves-scene:nth-of-type(2) « Illustration générée 01 Rédacteur web Vos sites, b »",
+      "etape": "mesures",
+      "page": "/",
+      "taille": "768×1024",
+      "mode": "normal",
+      "selecteur": "ul.epreuves-liste > li.epreuve:nth-of-type(6) > a > strong.epreuve-nom « Conseil en communication »",
+      "lieux": [
+        "768×1024 normal",
+        "1024×768 normal",
+        "768×1024 sansWebgl",
+        "1024×768 sansWebgl"
+      ]
+    },
+    {
+      "niveau": "echec",
+      "controle": "texte coupé",
+      "detail": "coupé par section#metiers > div.epreuves-collant > div.epreuves-scene:nth-of-type(2) « Illustration générée 01 Rédacteur web Vos sites, b »",
+      "etape": "mesures",
+      "page": "/",
+      "taille": "1000×560",
+      "mode": "normal",
+      "selecteur": "ul.epreuves-liste > li.epreuve.est-face:nth-of-type(1) > a > span.epreuve-court:nth-of-type(2) « Vos sites, blogs et lettres d'information écrits p »",
+      "lieux": [
+        "1000×560 normal",
+        "1000×560 sansWebgl"
+      ]
+    },
+    {
+      "niveau": "echec",
+      "controle": "texte coupé",
+      "detail": "coupé par section#metiers > div.epreuves-collant > div.epreuves-scene:nth-of-type(2) « Illustration générée 01 Rédacteur web Vos sites, b »",
+      "etape": "mesures",
+      "page": "/",
+      "taille": "1000×560",
+      "mode": "normal",
+      "selecteur": "ul.epreuves-liste > li.epreuve:nth-of-type(2) > a > span.epreuve-court:nth-of-type(2) « Une stratégie éditoriale, des groupes animés, du b »",
+      "lieux": [
+        "1000×560 normal",
+        "1000×560 sansWebgl"
+      ]
+    },
+    {
+      "niveau": "echec",
+      "controle": "texte coupé",
+      "detail": "coupé par section#metiers > div.epreuves-collant > div.epreuves-scene:nth-of-type(2) « Illustration générée 01 Rédacteur web Vos sites, b »",
+      "etape": "mesures",
+      "page": "/",
+      "taille": "1000×560",
+      "mode": "normal",
+      "selecteur": "ul.epreuves-liste > li.epreuve:nth-of-type(4) > a > span.epreuve-court:nth-of-type(2) « Lancer ou refondre une campagne, former vos équipe »",
+      "lieux": [
+        "1000×560 normal",
+        "1000×560 sansWebgl"
+      ]
+    },
+    {
+      "niveau": "echec",
+      "controle": "texte coupé",
+      "detail": "coupé par section#metiers > div.epreuves-collant > div.epreuves-scene:nth-of-type(2) « Illustration générée 01 Rédacteur web Vos sites, b »",
+      "etape": "mesures",
+      "page": "/",
+      "taille": "1000×560",
+      "mode": "normal",
+      "selecteur": "ul.epreuves-liste > li.epreuve:nth-of-type(5) > a > span.epreuve-court:nth-of-type(2) « Vos outils répondent-ils encore à vos objectifs ? »",
+      "lieux": [
+        "1000×560 normal",
+        "1000×560 sansWebgl"
+      ]
+    },
+    {
+      "niveau": "echec",
+      "controle": "texte coupé",
+      "detail": "coupé par section#metiers > div.epreuves-collant > div.epreuves-scene:nth-of-type(2) « Illustration générée 01 Rédacteur web Vos sites, b »",
+      "etape": "mesures",
+      "page": "/",
+      "taille": "1000×560",
+      "mode": "normal",
+      "selecteur": "ul.epreuves-liste > li.epreuve:nth-of-type(6) > a > span.epreuve-court:nth-of-type(2) « Information, risques, opportunités, influence. »",
+      "lieux": [
+        "1000×560 normal"
+      ]
+    },
+    {
+      "niveau": "echec",
+      "controle": "texte coupé",
+      "detail": "coupé par section#metiers > div.epreuves-collant > div.epreuves-scene:nth-of-type(2) « Illustration générée 01 Rédacteur web Illustration »",
+      "etape": "mesures",
+      "page": "/",
+      "taille": "390×844",
+      "mode": "sansWebgl",
+      "selecteur": "ul.epreuves-liste > li.epreuve:nth-of-type(5) > a > span.epreuve-num:nth-of-type(1) « 05 »",
+      "lieux": [
+        "390×844 sansWebgl"
+      ]
+    }
+  ],
+  "aRegarder": [],
+  "nonLances": [],
+  "oks": {
+    "mesures": 104,
+    "balayage": 2
+  },
+  "infos": [
+    "Accessibilité : axe-core 4.12.1 en plus des contrôles intégrés.",
+    "Tient dans l'écran / : aucune section épinglée ou plein écran.",
+    "Tient dans l'écran /references : aucune section épinglée ou plein écran."
+  ],
+  "grille": []
+}

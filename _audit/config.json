@@ -9,7 +9,6 @@
   ],
   "effets": [
     "filet",
-    "roue-metiers",
     "titre-au-fil",
     "titre-souple",
     "feuille-brouillon",
@@ -18,7 +17,8 @@
     "filet-references",
     "noeud-vous",
     "carnet",
-    "chiasme"
+    "chiasme",
+    "epreuves-fil"
   ],
   "grille": {
     "dispenses": {}

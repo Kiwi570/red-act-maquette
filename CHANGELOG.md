@@ -2,6 +2,30 @@
 
 Chaque version ajoute sa partie en tête de ce fichier, construite en comparant l'archive précédente et la nouvelle, jamais de mémoire.
 
+## v4 — six métiers « épreuves au fil » et filet fluide (12 novembre 2026)
+
+Retours de l'utilisateur sur la v3 en ligne : la section des six métiers devait être plus fluide et plus aérée, et le filet des références « buggait un peu ».
+
+**Accueil : les six métiers suspendus à un fil, comme des épreuves qui sèchent** (à la place de la roue 3D)
+- **Le fil.** Un fil rouge pend en arc à travers la section. Les six cartes y sont accrochées par un nœud et suivent sa pente.
+- **Sur grand écran.** Les six cartes se lisent d'un coup, sans aucune déformation. La carte en cours est un peu plus grande et son nom passe en rouge.
+- **Le mouvement.** Au défilement, le fil glisse d'une carte à l'autre (01 à 06). On peut aussi l'attraper et le tirer, avec de l'élan, ou utiliser les flèches. Au clavier, la carte qui reçoit le focus vient au milieu.
+- **Le balancement.** Le fil se balance selon la vitesse du défilement, puis se calme.
+- **Sur téléphone, tablette et écran bas.** Le fil fait glisser une carte à la fois au centre. Une carte qui déborderait est cachée, jamais coupée. Sur écran bas, les cartes se réduisent à la hauteur disponible, avec une image carrée.
+- **La section** passe de 2,5 écrans à faire défiler à 1,7, avec de l'air sous le titre.
+- **Mode calme et sans JavaScript.** Les six épreuves s'affichent en grille.
+- **Une image remplacée.** Celle de « Concepteur-rédacteur » (liège et fil, effet tableau d'enquête) devient celle des papiers et de la bobine. Sur la page Métiers, la section des supports prend l'enveloppe nouée, pour ne pas montrer deux fois la même image.
+
+**Le filet (accueil, Références, Contact)**
+- **Le déploiement.** Il se déplie en douceur depuis son nœud, comme une forme qui grandit, en 1,25 s. Avant, tous les nœuds partaient du même point et se démêlaient en rebondissant.
+- **Les noms** apparaissent une fois le filet presque ouvert : ils ne s'empilent plus sur le nœud.
+- **Le mouvement.** Il est mieux amorti : moins d'oscillations après un geste. Les à-coups du défilement sont plus doux.
+- **Références.**
+  - Le filet est resserré en entier vers la droite, au lieu de tasser ses nœuds en colonne contre le titre.
+  - Son dessin est allégé (un seul trait par fil, moins de pixels à calculer) : il reste fluide avec ses 90 noms.
+
+**Technique** : numéro de version des fichiers passé à `?v=4`.
+
 ## v3 — version optimale, après audit complet et analyse approfondie (12 novembre 2026)
 
 Construit en comparant l'archive v2 et la v3, fichier par fichier. Avant les corrections, la v2 a été analysée sous quatre angles :

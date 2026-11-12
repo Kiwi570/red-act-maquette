@@ -5,7 +5,7 @@
   { "cle": "community-manager", "nom": "Community manager", "image": "grok/metier-community-manager", "alt": "Terrasse de café animée, téléphone posé face contre la table", "court": "Une stratégie éditoriale, des groupes animés, du bouche-à-oreille.",
     "texte": "Construire une stratégie éditoriale, créer et animer des groupes, modérer les échanges : pour gagner du bouche-à-oreille et de la visibilité auprès du grand public comme des passionnés.",
     "brouillon": "Activation de communautés à fort engagement", "clair": "Faire parler de vous, et en bien" },
-  { "cle": "concepteur-redacteur", "nom": "Concepteur-rédacteur", "image": "grok/metier-concepteur-redacteur", "alt": "Épreuves de mise en page épinglées au mur, reliées par un fil rouge", "court": "Le mot juste, à côté de la bonne image.",
+  { "cle": "concepteur-redacteur", "nom": "Concepteur-rédacteur", "image": "grok/metiers-print-digital", "alt": "Papiers, enveloppes et bobine de fil rouge sur une table", "court": "Le mot juste, à côté de la bonne image.",
     "texte": "Adapter vos contenus existants ou créer de nouvelles formules et de nouveaux messages, pensés pour accompagner vos visuels.",
     "brouillon": "Brand content différenciant à forte valeur ajoutée", "clair": "Le mot juste, à côté de la bonne image" },
   { "cle": "conseil-formation", "nom": "Conseil & formation", "image": "grok/metier-conseil-formation", "alt": "Salle de formation prête, chaises en demi-cercle et tableau de papier vierge", "court": "Lancer ou refondre une campagne, former vos équipes.",

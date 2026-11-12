@@ -3,7 +3,7 @@
    - Spécialités : séparation à faire glisser entre la tribune et la table (separation) ;
    - Références : grand filet de nuit, filtres par secteur gardés dans l'adresse (filet-references) ;
    - Contact : rendez-vous en trois étapes, récapitulatif, envoi qui file jusqu'au filet (noeud-vous). */
-import { etat, boucle } from './socle/index.js?v=3';
+import { etat, boucle } from './socle/index.js?v=4';
 
 const gsap = window.gsap;
 const ST = () => window.ScrollTrigger;
@@ -162,7 +162,7 @@ function references(creerFilet) {
   if (!scene) return;
   let secteur = new URLSearchParams(location.search).get('secteur') || '';
   const filet = creerFilet(scene, {
-    ancre: [0.7, 0.46], deploieAuPret: true, gaucheLibre: 0.47, anneaux: [8, 14, 20, 26, 30], portee: 0.62, anneauNoms: 1, tousNoms: true, graine: 11,
+    ancre: [0.7, 0.46], deploieAuPret: true, gaucheLibre: 0.47, matiere: false, dprMax: 1.25, anneaux: [8, 14, 20, 26, 30], portee: 0.62, anneauNoms: 1, tousNoms: true, graine: 11,
     allume: (n) => (secteur ? n.secteur === secteur : true),
     etiquette: (n, i) => (secteur ? n.secteur === secteur : i % 4 === 0),
   });

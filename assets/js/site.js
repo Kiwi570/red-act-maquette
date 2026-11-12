@@ -3,9 +3,9 @@
    Effets du plan : intro (fil qui écrit Red-Act et se noue), filet, roue-metiers, titre-au-fil, titre-souple,
    fil conducteur (module de la bibliothèque), brouillon (Métiers), separation (Spécialités), filet-references,
    noeud-vous (Contact). Chaque effet propre porte data-effet="nom". */
-import { demarrer, boucle, etat, versObjet, quand } from './socle/index.js?v=3';
-import { init as filConducteur } from './modules/fil-conducteur.js?v=3';
-import { initPages } from './pages.js?v=3';
+import { demarrer, boucle, etat, versObjet, quand } from './socle/index.js?v=4';
+import { init as filConducteur } from './modules/fil-conducteur.js?v=4';
+import { initPages } from './pages.js?v=4';
 
 const gsap = window.gsap;
 const ST = () => window.ScrollTrigger;
@@ -35,8 +35,12 @@ export function creerFilet(scene, o = {}) {
   let C = couleurs();
   let W = 0, H = 0, dpr = 1, ax = 0, ay = 0, noeuds = [], liens = [], prise = null, dernierY = scrollY, depuis = 0;
   let deploye = etat.calme || etat.arrivee === 'retour';
+  /* v3 : le filet se déplie en douceur depuis son nœud (cibles et longueurs de repos qui grandissent avec une courbe),
+     au lieu de partir de tous les nœuds empilés et de se démêler en rebondissant. */
+  let tDeploi = deploye ? -1e9 : null, tNow = 0, depVis = deploye ? 1 : 0;
+  const deployer = () => { if (!deploye) { deploye = true; tDeploi = tNow; } };
   /* Filets des pages intérieures : ils se tendent quand la page est prête (le filet de l'accueil attend l'intro). */
-  if (o.deploieAuPret) quandPret(() => { deploye = true; });
+  if (o.deploieAuPret) quandPret(deployer);
   const police = o.police || '600 12.5px "Inter Tight", Arial, sans-serif';
 
   /* Position de la bobine dans la photo (object-fit: cover et object-position lus une fois). */
@@ -57,7 +61,7 @@ export function creerFilet(scene, o = {}) {
     const r = scene.getBoundingClientRect();
     W = Math.round(r.width); H = Math.round(r.height);
     if (!W || !H) return;
-    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    dpr = Math.min(window.devicePixelRatio || 1, o.dprMax || 1.5);
     canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.font = police;
@@ -66,7 +70,17 @@ export function creerFilet(scene, o = {}) {
     const rnd = graine(o.graine || 7);
     const S = Math.max(W, H) * (o.portee || 0.62);
     const anneaux = o.anneaux || [6, 10, 14, 18];
-    noeuds = [{ x: ax, y: ay, rx: ax, ry: ay, vx: 0, vy: 0, fixe: true, anneau: 0, nom: '' }];
+    /* Zone laissée libre à gauche (titre de la page) sur grand écran : tout le filet est resserré à l'horizontale
+       et décalé vers la droite (avant, les nœuds de gauche se tassaient en colonne contre la limite). */
+    const ax0 = ax;
+    let kx = 1;
+    if (o.gaucheLibre && W > 760) {
+      const g = W * o.gaucheLibre;
+      kx = Math.min(1, (W * 1.12 - g) / (2 * S));
+      ax = Math.max(ax, g + S * kx);
+      if (noeudEl) noeudEl.style.left = ax + 'px';
+    }
+    noeuds = [{ x: ax, y: ay, rx: ax, ry: ay, ox: ax, oy: ay, vx: 0, vy: 0, fixe: true, anneau: 0, nom: '' }];
     liens = [];
     let iNom = 0;
     const parAnneau = [[0]];
@@ -76,10 +90,7 @@ export function creerFilet(scene, o = {}) {
       for (let i = 0; i < n; i++) {
         const ang = dec + (i / n) * Math.PI * 2 + (rnd() - 0.5) * 0.35;
         const rr = rayon * (0.86 + rnd() * 0.24);
-        let x = ax + Math.cos(ang) * rr, y = ay + Math.sin(ang) * rr * 0.86;
-        /* Zone laissée libre à gauche (titre de la page) sur grand écran. */
-        /* v3 : le filet est resserré vers la droite au lieu d'être tassé contre la limite (colonne de nœuds écrasés). */
-        if (o.gaucheLibre && W > 760) { const g = W * o.gaucheLibre; x = g + Math.max(0, x) * (1 - o.gaucheLibre); }
+        const x = ax + Math.cos(ang) * rr * kx, y = ay + Math.sin(ang) * rr * 0.86;
         const visible = x > 30 && x < W - 30 && y > 30 && y < H - 30;
         const brut = a >= (o.anneauNoms || 1) && visible && iNom < noms.length && (o.tousNoms || rnd() > 0.15) ? noms[iNom++] : '';
         const [nom, secteur = ''] = brut.split('~');
@@ -101,24 +112,38 @@ export function creerFilet(scene, o = {}) {
   }
 
   function pas(dt, t) {
+    tNow = t;
+    if (deploye && tDeploi === null) tDeploi = t;
     const vy = scrollY - dernierY; dernierY = scrollY;
-    const choc = Math.max(-40, Math.min(40, vy)) * 0.9;
+    const choc = Math.max(-30, Math.min(30, vy)) * 0.6;
+    const u = deploye ? Math.min(1, Math.max(0, (t - tDeploi) / 1.25)) : 0, dep = 1 - Math.pow(1 - u, 3);
+    depVis = dep;
+    /* Pendant le déploiement, le filet s'ouvre comme une forme qui grandit (positions posées, sans ressorts) :
+       aucun nœud ne se croise. La physique reprend ensuite, sans à-coup (vitesses nulles). */
+    if (deploye && u < 1) {
+      for (const n of noeuds) {
+        if (n.fixe || n === prise) continue;
+        n.x = ax + (n.rx - ax) * dep; n.y = ay + (n.ry - ay) * dep; n.vx = 0; n.vy = 0;
+      }
+      return;
+    }
     for (const n of noeuds) {
       if (n.fixe || n === prise) continue;
-      const bx = Math.sin(t * 0.7 + n.ph) * 2.2, by = Math.cos(t * 0.55 + n.ph) * 2.2;
-      const k = deploye ? 26 : 0;
-      let fx = (n.rx + bx - n.x) * k, fy = (n.ry + by - n.y) * k;
-      fy -= choc * n.anneau * 1.2;
+      const bx = Math.sin(t * 0.7 + n.ph) * 2 * dep, by = Math.cos(t * 0.55 + n.ph) * 2 * dep;
+      const k = deploye ? 30 : 0;
+      const cx = ax + (n.rx - ax) * dep, cy = ay + (n.ry - ay) * dep;
+      let fx = (cx + bx - n.x) * k, fy = (cy + by - n.y) * k;
+      fy -= choc * Math.min(n.anneau, 3);
       if (survol && n !== survol && survol.secteur && n.secteur === survol.secteur) { fx += (survol.x - n.x) * 3.5; fy += (survol.y - n.y) * 3.5; }
       n.vx += fx * dt; n.vy += fy * dt;
     }
-    for (const [i, j, L] of liens) {
-      const p = noeuds[i], q = noeuds[j];
-      const dx = q.x - p.x, dy = q.y - p.y, d = Math.hypot(dx, dy) || 1, f = (d - L) * 34 / d;
+    for (const [i, j, L0] of liens) {
+      const p = noeuds[i], q = noeuds[j], L = L0 * dep;
+      const dx = q.x - p.x, dy = q.y - p.y, d = Math.hypot(dx, dy) || 1, f = (d - L) * 28 / d;
       if (!p.fixe && p !== prise) { p.vx += dx * f * dt; p.vy += dy * f * dt; }
       if (!q.fixe && q !== prise) { q.vx -= dx * f * dt; q.vy -= dy * f * dt; }
     }
-    const amorti = Math.exp(-3.6 * dt);
+    const amorti = Math.exp(-(u < 1 ? 8 : 5.4) * dt);
     for (const n of noeuds) {
       if (n.fixe || n === prise) continue;
       n.vx *= amorti; n.vy *= amorti;
@@ -138,10 +163,13 @@ export function creerFilet(scene, o = {}) {
       }
       ctx.stroke();
     };
-    ctx.lineCap = 'round';
-    ctx.globalAlpha = 1; ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(27,25,22,0.16)'; tracer(2, 3.5);
-    ctx.lineWidth = 2.2; ctx.strokeStyle = C.fil; tracer(0, 0);
-    ctx.lineWidth = 0.7; ctx.strokeStyle = 'rgba(255,236,226,0.45)'; tracer(-0.4, -0.6);
+    ctx.lineCap = 'round'; ctx.globalAlpha = 1;
+    if (o.matiere === false) { ctx.lineWidth = 1.6; ctx.strokeStyle = C.fil; tracer(0, 0); }
+    else {
+      ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(27,25,22,0.16)'; tracer(2, 3.5);
+      ctx.lineWidth = 2.2; ctx.strokeStyle = C.fil; tracer(0, 0);
+      ctx.lineWidth = 0.7; ctx.strokeStyle = 'rgba(255,236,226,0.45)'; tracer(-0.4, -0.6);
+    }
     if (survol) {
       ctx.lineWidth = 3.2; ctx.globalAlpha = 1; ctx.beginPath();
       for (const [i, j] of liens) { const p = noeuds[i], q = noeuds[j]; if (p === survol || q === survol || (survol.secteur && p.secteur === survol.secteur && q.secteur === survol.secteur)) { ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); } }
@@ -159,6 +187,9 @@ export function creerFilet(scene, o = {}) {
       if (n.nom) { ctx.strokeStyle = 'rgba(120,20,14,0.85)'; ctx.lineWidth = 1.2; ctx.stroke(); }
     }
     ctx.font = police; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+    /* Les noms n'apparaissent qu'une fois le filet presque ouvert (avant, ils s'empilaient sur le nœud). */
+    if (depVis < 0.75) { ctx.globalAlpha = 1; return; }
+    const fondu = Math.min(1, (depVis - 0.75) * 4);
     let k = -1;
     const poses = [];
     const libre = (x, y, l) => poses.every((q) => x + l < q.x - 4 || x > q.x + q.l + 4 || Math.abs(y - q.y) > 15);
@@ -172,7 +203,7 @@ export function creerFilet(scene, o = {}) {
       let x = n.x + 10 + l < W - 8 ? n.x + 10 : n.x - 10 - l;
       if (!libre(x, n.y, l)) { const autre = x === n.x + 10 ? n.x - 10 - l : n.x + 10; if (autre > 4 && autre + l < W - 4 && libre(autre, n.y, l)) x = autre; else if (n !== survol && !n.ajoute) continue; }
       poses.push({ x, y: n.y, l });
-      ctx.globalAlpha = allume ? 1 : 0.35;
+      ctx.globalAlpha = (allume ? 1 : 0.35) * fondu;
       ctx.lineWidth = 6; ctx.strokeStyle = C.halo; ctx.strokeText(n.nom, x, n.y);
       ctx.fillStyle = n.ajoute || n === survol ? C.fil : C.encre; ctx.fillText(n.nom, x, n.y);
     }
@@ -233,8 +264,8 @@ export function creerFilet(scene, o = {}) {
   boucle(canvas, (dt, t) => { if (dt) pas(Math.min(dt, 1 / 30), t); dessiner(); }, { lourde: true });
 
   return {
-    deployer() { deploye = true; },
-    etatFinal() { deploye = true; for (const n of noeuds) { n.x = n.rx; n.y = n.ry; n.vx = n.vy = 0; } dessiner(); },
+    deployer,
+    etatFinal() { deploye = true; tDeploi = -1e9; depVis = 1; for (const n of noeuds) { n.x = n.rx; n.y = n.ry; n.vx = n.vy = 0; } dessiner(); },
     tirer(pred) { tire = pred; appliquerTirer(); },
     ajouter(nom) {
       const a = noeuds.length, ang = -Math.PI / 3, r = Math.min(W, H) * 0.3;
@@ -254,63 +285,99 @@ export function creerFilet(scene, o = {}) {
 }
 
 /* ------------------------------------------------------------------------------------------------
-   Roue 3D des six métiers : tourne au défilement, à la main (élan, arrêt sur une carte) et aux flèches.
-   Les cartes de dos ou de profil sont cachées et sortent de la tabulation.
+   Six métiers suspendus à un fil, comme des épreuves qui sèchent (v3, remplace la roue 3D).
+   Le fil pend en arc ; les six cartes y sont accrochées par un nœud et suivent sa pente. Au défilement, le fil
+   glisse d'une carte à l'autre ; on peut aussi l'attraper et le tirer (élan), ou utiliser les flèches.
+   Il se balance selon la vitesse du défilement. Tout est en 2D : aucune carte déformée, les six restent lisibles.
+   Mesures au chargement et au redimensionnement seulement ; arrêt sur une carte une fois le défilement posé.
    ------------------------------------------------------------------------------------------------ */
-function roue() {
-  const sec = $('.roue');
+function epreuves() {
+  const sec = $('.epreuves');
   if (!sec || etat.calme || !ST()) return;
-  const anneau = $('[data-roue]', sec), cartes = $$('[data-roue-carte]', sec), etatEl = $('[data-roue-etat]', sec), scene = $('.roue-scene', sec);
-  const n = cartes.length, pasA = 360 / n;
-  let defil = 0, main = 0, vMain = 0, affiche = 0, prise = null, courante = -1, penche = 0, yAvant = scrollY;
-  let tDefil = 0;
-  ST().create({ trigger: sec, start: 'top top', end: 'bottom bottom', onUpdate: (s) => { defil = -s.progress * pasA * (n - 1); tDefil = performance.now(); } });
-  const maj = () => {
-    anneau.style.transform = `translateZ(calc(var(--carte-l) * -1.02)) rotateX(${penche.toFixed(2)}deg) rotateY(${affiche.toFixed(2)}deg)`;
-    let face = 0, mieux = 999;
-    cartes.forEach((c, i) => {
-      let a = ((i * pasA + affiche) % 360 + 540) % 360 - 180;
-      const dos = Math.abs(a) > 75, cote = !dos && Math.abs(a) > 25;
-      if (c.classList.contains('est-dos') !== dos) c.classList.toggle('est-dos', dos);
-      if (c.classList.contains('est-cote') !== cote) c.classList.toggle('est-cote', cote);
-      const inerte = dos || cote;
-      if (c.inert !== inerte) { c.inert = inerte; c.setAttribute('aria-hidden', String(inerte)); }
-      if (Math.abs(a) < mieux) { mieux = Math.abs(a); face = i; }
-    });
-    if (face !== courante) { courante = face; etatEl.textContent = `0${face + 1} / 0${n}`; }
+  const scene = $('.epreuves-scene', sec), cartes = $$('[data-epreuve]', sec), etatEl = $('[data-epreuves-etat]', sec);
+  const trait = $('.epreuves-fil-trait', sec), ombre = $('.epreuves-fil-ombre', sec);
+  const n = cartes.length, milieu = (n - 1) / 2;
+  let W = 0, H = 0, L = 0, CH = 0, pas = 0, pan = 0, haut = 16, creux = 40, demi = 1, large = true;
+  let pos = 0, defil = 0, main = 0, vMain = 0, prise = null, courante = -1, tDefil = 0;
+  let bal = 0, vBal = 0, yAvant = scrollY;
+  const mesurer = () => {
+    scene.style.removeProperty('--ep-l');
+    W = scene.clientWidth; H = scene.clientHeight;
+    L = cartes[0].offsetWidth; CH = cartes[0].offsetHeight;
+    /* Les cartes tiennent toujours en hauteur : réduites si la scène est basse (écrans bas, tablettes). */
+    const place = H - haut - 46;
+    for (let k = 0; k < 3 && CH > place && place > 80; k++) { scene.style.setProperty('--ep-l', Math.max(132, Math.floor(L * place / CH)) + 'px'); L = cartes[0].offsetWidth; CH = cartes[0].offsetHeight; }
+    /* Les six côte à côte sur grand écran ; ailleurs, le fil glisse d'une carte à l'autre. */
+    large = W >= 1100 && innerHeight >= 640;
+    /* Sur grand écran, les six restent toujours dans l'écran : le fil glisse peu (pan), l'écart entre cartes en tient compte. */
+    pas = large ? Math.min((W - 48 - L) / ((n - 1) * 1.18), L * 1.45) : L * 1.12;
+    pan = large ? pas * 0.18 : pas;
+    /* Sur téléphone (le fil glisse d'une carte à l'autre), l'arc est plus ouvert : les voisines penchent peu. */
+    demi = large ? W / 2 : Math.max(W / 2, pas * 2.4);
+    creux = Math.max(10, Math.min(H - CH * 1.02 - haut - 8, H * 0.14, large ? 70 : 34));
   };
-  boucle(sec, (dt) => {
-    if (!dt) { maj(); return; }
-    if (!prise) {
-      main += vMain * dt; vMain *= Math.exp(-3.2 * dt);
-      /* v3 : l'arrêt sur une carte n'a lieu qu'une fois le défilement posé ; avant, il compensait le défilement
-         et la roue restait sur la première carte pendant un défilement lent. */
-      if (Math.abs(vMain) < 25 && performance.now() - tDefil > 220) { const total = defil + main, cible = Math.round(total / pasA) * pasA; main += (cible - total) * Math.min(1, dt * 6); }
+  const yFil = (x, c) => { const u = Math.max(-1.6, Math.min(1.6, (x - W / 2) / demi)); return haut + c * (1 - u * u); };
+  const poser = () => {
+    const c = creux * (1 + bal);
+    let face = 0, mieux = 99;
+    cartes.forEach((li, i) => {
+      const x = W / 2 + (i - milieu) * pas - (pos - milieu) * pan;
+      const y = yFil(x, c);
+      const pente = (-2 * c * ((x - W / 2) / demi)) / demi;
+      const d = Math.abs(i - pos);
+      const s = large ? 0.88 + 0.14 * Math.max(0, 1 - d) : 0.9 + 0.1 * Math.max(0, 1 - d);
+      const ang = Math.atan(pente) * 57.3 * (large ? 0.7 : 0.45) + bal * 18 * Math.sin(i * 1.7 + 0.6);
+      li.style.transform = `translate(${(x - L / 2).toFixed(1)}px, ${y.toFixed(1)}px) rotate(${ang.toFixed(2)}deg) scale(${s.toFixed(3)})`;
+      li.style.zIndex = String(10 - Math.round(d));
+      /* En glissement, une carte qui déborde de la scène est cachée (jamais coupée). */
+      if (!large) { const demiL = (L * s) / 2 + 6, dehors = x - demiL < 0 || x + demiL > W; if (li.classList.contains('est-dehors') !== dehors) li.classList.toggle('est-dehors', dehors); }
+      else if (li.classList.contains('est-dehors')) li.classList.remove('est-dehors');
+      if (d < mieux) { mieux = d; face = i; }
+    });
+    let chemin = '';
+    for (let x = -60; x <= W + 60; x += 24) chemin += (chemin ? ' L ' : 'M ') + x + ' ' + yFil(x, c).toFixed(1);
+    trait.setAttribute('d', chemin); ombre.setAttribute('d', chemin);
+    if (face !== courante) {
+      courante = face; etatEl.textContent = `0${face + 1} / 0${n}`;
+      cartes.forEach((li, i) => li.classList.toggle('est-face', i === face));
     }
-    const cible = defil + main;
-    affiche += (cible - affiche) * Math.min(1, dt * 9);
-    /* La roue penche selon la vitesse du défilement, puis se redresse. */
+  };
+  mesurer();
+  new ResizeObserver(() => { mesurer(); poser(); }).observe(scene);
+  ST().create({ trigger: sec, start: 'top top', end: 'bottom bottom', onUpdate: (st) => { defil = st.progress * (n - 1); tDefil = performance.now(); } });
+  boucle(sec, (dt) => {
+    if (!dt) { poser(); return; }
+    if (!prise) {
+      main += vMain * dt; vMain *= Math.exp(-3.4 * dt);
+      const total = defil + main;
+      if (total < 0) main -= total * Math.min(1, dt * 10);
+      if (total > n - 1) main -= (total - (n - 1)) * Math.min(1, dt * 10);
+      if (Math.abs(vMain) < 0.4 && performance.now() - tDefil > 220) { const t2 = defil + main; main += (Math.round(t2) - t2) * Math.min(1, dt * 6); }
+    }
+    const cible = Math.max(-0.3, Math.min(n - 0.7, defil + main));
+    pos += (cible - pos) * Math.min(1, dt * 8);
+    /* Le fil se balance selon la vitesse du défilement, puis se calme (ressort amorti). */
     const v = (scrollY - yAvant) / dt; yAvant = scrollY;
-    const vise = Math.max(-11, Math.min(11, -v * 0.008));
-    penche += (vise - penche) * Math.min(1, dt * 5);
-    maj();
+    vBal += (Math.max(-0.35, Math.min(0.35, v * 0.00025)) - bal) * 40 * dt - vBal * 7 * dt;
+    bal += vBal * dt;
+    poser();
   });
-  let x0 = 0, t0 = 0;
-  scene.addEventListener('pointerdown', (e) => { if (e.button > 0) return; prise = true; x0 = e.clientX; t0 = performance.now(); vMain = 0; if (e.pointerType !== 'touch') scene.setPointerCapture(e.pointerId); });
+  let x0 = 0, t0 = 0, depart = 0;
+  scene.addEventListener('pointerdown', (e) => { if (e.button > 0) return; prise = true; x0 = depart = e.clientX; t0 = performance.now(); vMain = 0; if (e.pointerType !== 'touch') scene.setPointerCapture(e.pointerId); });
   scene.addEventListener('pointermove', (e) => {
     if (!prise) return;
     const t = performance.now(), dx = e.clientX - x0, dt = Math.max(0.008, (t - t0) / 1000);
-    const d = dx * 0.32; main += d; vMain = d / dt; x0 = e.clientX; t0 = t;
+    const d = -dx / Math.max(40, pan); main += d; vMain = d / dt; x0 = e.clientX; t0 = t;
   });
-  const lacher = () => { prise = null; vMain = Math.max(-900, Math.min(900, vMain)); };
+  const lacher = () => { if (!prise) return; prise = null; vMain = Math.max(-6, Math.min(6, vMain)); };
   ['pointerup', 'pointercancel', 'lostpointercapture'].forEach((ev) => scene.addEventListener(ev, lacher));
-  /* Un glisser ne doit pas ouvrir le lien de la carte. */
-  let glisse = 0;
-  scene.addEventListener('pointerdown', (e) => { glisse = e.clientX; });
-  scene.addEventListener('click', (e) => { if (Math.abs(e.clientX - glisse) > 8) { e.preventDefault(); e.stopPropagation(); } }, true);
-  $('[data-roue-prec]', sec).addEventListener('click', () => { main += pasA; vMain = 0; });
-  $('[data-roue-suiv]', sec).addEventListener('click', () => { main -= pasA; vMain = 0; });
-  maj();
+  /* Un glisser n'ouvre pas le lien de la carte. */
+  scene.addEventListener('click', (e) => { if (Math.abs(e.clientX - depart) > 8) { e.preventDefault(); e.stopPropagation(); } }, true);
+  $('[data-epreuves-prec]', sec).addEventListener('click', () => { main -= 1; vMain = 0; });
+  $('[data-epreuves-suiv]', sec).addEventListener('click', () => { main += 1; vMain = 0; });
+  /* Au clavier, la carte qui reçoit le focus vient au milieu. */
+  cartes.forEach((li, i) => li.addEventListener('focusin', () => { main += i - Math.round(defil + main); vMain = 0; }));
+  poser();
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -456,7 +523,7 @@ demarrer({
       etiquette: (n, k) => k < (innerWidth > 760 ? 10 : 6),
     });
     chiasme = creerChiasme();
-    roue();
+    epreuves();
     titresAuFil();
     titresSouples();
     titresCousus();

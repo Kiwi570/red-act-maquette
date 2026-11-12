@@ -84,7 +84,7 @@ export default (c) => {
       <p data-anime>${c.t('metiers.supports.texte')}</p>
       <ul class="liste-fil" data-anime="cascade">${c.donnees.listes.supports.map((s) => html`<li>${s}</li>`)}</ul>
     </div>
-    ${c.media({ nom: 'grok/metiers-print-digital', alt: c.s('metiers.supports.alt'), cadrage: '55% 50%', classe: 'supports-media', sizes: '(max-width: 760px) 100vw, 45vw', attrs: 'data-fx="zoom"' })}
+    ${c.media({ nom: 'grok/contact-lettre', alt: c.s('accueil.fin.alt'), cadrage: '60% 50%', classe: 'supports-media', sizes: '(max-width: 760px) 100vw, 45vw', attrs: 'data-fx="zoom"' })}
   </div>
 </section>
 

@@ -1,21 +1,15 @@
 {
- "id": "20261112-153736-complet-cible-partiel",
- "date": "2026-11-12T15:43:39.948Z",
- "niveau": "complet",
+ "id": "20261112-162644-standard-cible-partiel",
+ "date": "2026-11-12T16:29:26.112Z",
+ "niveau": "standard",
  "pages": "/",
  "etapes": [
   "fichiers",
-  "grille",
-  "mesures",
-  "films",
-  "mouvement",
-  "ecran",
-  "fluidite",
   "parcours"
  ],
- "version": "3",
+ "version": "4",
  "echecs": 0,
- "aRegarder": 4,
+ "aRegarder": 1,
  "nonLances": 0,
  "manquants": 0,
  "statut": "complet"

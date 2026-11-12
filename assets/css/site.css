@@ -237,7 +237,7 @@ html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-titre-fil]:
 .calme .fic__trace { stroke-dashoffset: 0 !important; }
 .calme .fic__perle { fill: var(--couleur-accent); }
 /* Les sections plein écran et la roue restent au-dessus du fil (contexte d'empilement propre). */
-.fic > .alsace, .fic > .roue, .fic > .reseau, .fic > .methode, .fic > .hero { position: relative; z-index: 2; }
+.fic > .alsace, .fic > .roue, .fic > .epreuves, .fic > .reseau, .fic > .methode, .fic > .hero { position: relative; z-index: 2; }
 
 /* ---------- Boost : le fil coud les titres (point rouge qui traverse à l'arrivée) ---------- */
 h2.titre-souple::after { content: ''; display: block; width: min(4.2em, 100%); height: 3px; margin-top: .3em; background: repeating-linear-gradient(90deg, var(--rouge) 0 14px, transparent 14px 22px); transform-origin: 0 50%; }
@@ -766,3 +766,54 @@ html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) .contact-fil:not(
 /* Accueil : le nœud de Red-Act est noué sur la bobine, sans disque blanc par-dessus (il reste l'objet d'ouverture de l'intro). */
 .hero-scene .filet-noeud { background: transparent; box-shadow: none; color: #9E1C14; }
 .hero-scene .filet-noeud svg { width: 54px; height: 54px; filter: drop-shadow(0 3px 4px rgb(27 25 22 / .35)); }
+
+/* ---------- Six métiers suspendus au fil, comme des épreuves (v3, remplace la roue 3D) ---------- */
+html.js:not(.calme):not(.secours) .epreuves { height: 170svh; }
+.epreuves-collant { display: flex; flex-direction: column; padding-top: calc(var(--entete-h) + clamp(16px, 4vh, 48px)); padding-bottom: calc(14px + var(--barres-h)); }
+html.js:not(.calme):not(.secours) .epreuves-collant { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.epreuves-tete h2 { font-size: clamp(2rem, min(4.4vw, 7vh), 4rem); margin-bottom: .2em; }
+.epreuves-consigne { margin: 0; color: var(--gris); }
+.epreuves-scene { --ep-l: clamp(140px, min(12.4vw, 27vh), 210px); position: relative; flex: 1 1 auto; min-height: 0; margin-top: clamp(14px, 4vh, 44px); overflow: hidden; touch-action: pan-y; cursor: grab; user-select: none; }
+.epreuves-scene:active { cursor: grabbing; }
+.epreuves-fil { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.epreuves-fil path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.epreuves-fil-trait { stroke: var(--rouge); stroke-width: 2.4; }
+.epreuves-fil-ombre { stroke: rgb(27 25 22 / .14); stroke-width: 3; transform: translate(2px, 6px); }
+.epreuves-liste { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; }
+.epreuve { position: absolute; left: 0; top: 0; width: var(--ep-l); transform-origin: 50% 0; will-change: transform; }
+.epreuve-pince { position: absolute; z-index: 2; top: -6px; left: 50%; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--rouge); box-shadow: 0 0 0 3px #FBF7EF, 0 2px 5px rgb(27 25 22 / .3); }
+.epreuve a { display: flex; flex-direction: column; padding: 8px 8px 12px; background: #FBF7EF; color: var(--texte); text-decoration: none; box-shadow: 0 12px 28px rgb(27 25 22 / .13); transition: box-shadow .4s var(--courbe); }
+.epreuve.est-face a { box-shadow: 0 22px 48px rgb(27 25 22 / .2); }
+.epreuve-media { aspect-ratio: 4 / 5; border-radius: 0; }
+.epreuve-num { margin-top: 8px; font-size: .75rem; font-weight: 700; letter-spacing: .14em; color: var(--rouge-texte); }
+.epreuve-nom { font-family: var(--police-titres); font-weight: 600; font-size: clamp(1rem, .92rem + .4vw, 1.3rem); line-height: 1.12; margin-top: 2px; }
+.epreuve-court { font-size: .85rem; line-height: 1.35; color: var(--gris); margin-top: 4px; }
+.epreuve.est-face .epreuve-nom { color: var(--rouge-texte); }
+.epreuves-commandes { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; padding-top: 10px; }
+.epreuves-etat { min-width: 5.5em; text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+@media (max-width: 760px) {
+  .epreuves-scene { --ep-l: min(46vw, 27svh); margin-top: 18px; }
+  .epreuve-court { display: none; }
+}
+@media (max-height: 820px) and (min-width: 761px) { .epreuves-scene { --ep-l: clamp(130px, min(12vw, 25vh), 196px); } }
+@media (max-height: 500px) and (min-width: 761px) {
+  .epreuves-collant { padding-top: calc(var(--entete-h) + 4px); padding-bottom: 6px; }
+  .epreuves-tete h2 { font-size: 1.35rem; margin: 0; }
+  .epreuves-tete h2::after, .epreuves-tete .surtitre { display: none; }
+  .epreuves-scene { --ep-l: 31svh; margin-top: 4px; }
+  .epreuve-num, .epreuve-court { display: none; }
+  .epreuve-nom { font-size: .95rem; }
+  .epreuves-commandes { padding-top: 2px; }
+}
+/* Mode calme et sans JavaScript : les six épreuves en grille, sans fil. */
+:is(html.calme, html.secours, html:not(.js)) .epreuves { padding-block: 64px; }
+:is(html.calme, html.secours, html:not(.js)) .epreuves-collant { padding-top: 0; }
+:is(html.calme, html.secours, html:not(.js)) .epreuves-scene { overflow: visible; cursor: auto; padding-inline: var(--gouttiere); }
+:is(html.calme, html.secours, html:not(.js)) .epreuves-fil { display: none; }
+:is(html.calme, html.secours, html:not(.js)) .epreuves-liste { position: static; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(190px, 100%), 1fr)); gap: 28px 20px; max-width: var(--largeur); margin-inline: auto; padding-top: 10px; }
+:is(html.calme, html.secours, html:not(.js)) .epreuve { position: relative; width: auto; transform: none !important; }
+:is(html.calme, html.secours, html:not(.js)) :is([data-epreuves-prec], [data-epreuves-suiv], .epreuves-etat) { display: none; }
+
+.epreuve.est-dehors { visibility: hidden; }
+/* Écrans bas (portable 1000×560, petit téléphone) : l'épreuve garde son image carrée et son nom. */
+@media (max-height: 700px) { .epreuve-media { aspect-ratio: 1 / 1; } .epreuve-num, .epreuve-court { display: none; } }

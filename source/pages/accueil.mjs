@@ -1,7 +1,7 @@
 /* Accueil de Red-Act, direction « Red, le réseau ».
    Grille wouahou : filet des références à tirer (manipuler), intro du fil qui écrit Red-Act et se noue (versObjet),
    voile en lanières tissées (trame), fil rouge en marge (fil), titres en Fraunces dont l'axe SOFT s'anime et
-   titre « Stéphane Bourhis » écrit au fil (typo), chiasme « Savoir faire & faire savoir » croisé par le fil, roue 3D des six métiers,
+   titre « Stéphane Bourhis » écrit au fil (typo), chiasme « Savoir faire & faire savoir » croisé par le fil, six métiers suspendus au fil comme des épreuves,
    index des dix secteurs. v3 : sections « Le nom » et « Depuis l'Alsace » retirées (accueil de 13 à 9 écrans). */
 import { html, brut } from '../../outils/gabarit.mjs';
 
@@ -47,30 +47,31 @@ export default (c) => {
   </div>
 </section>
 
-<section class="roue" id="metiers" data-scene data-fil="gauche">
-  <div class="roue-collant" data-collant>
-    <div class="conteneur roue-tete">
+<section class="epreuves" id="metiers" data-scene data-fil="gauche">
+  <div class="epreuves-collant" data-collant>
+    <div class="conteneur epreuves-tete">
       <p class="surtitre">${c.t('accueil.metiers.surtitre')}</p>
       <h2 class="titre-souple" data-axe data-anime="lignes">${c.t('accueil.metiers.titre')}</h2>
-      <p class="roue-consigne masque-ecran-bas">${c.t('accueil.metiers.texte')}</p>
+      <p class="epreuves-consigne masque-ecran-bas">${c.t('accueil.metiers.texte')}</p>
     </div>
-    <div class="roue-scene" role="region" aria-roledescription="carrousel" aria-label="${c.s('accueil.metiers.region')}">
-      <span class="roue-fil" aria-hidden="true"></span>
-      <ul class="roue-anneau" data-roue data-effet="roue-metiers">
-        ${metiers.map((m, i) => html`<li class="roue-carte" style="--i:${i}" data-roue-carte>
+    <div class="epreuves-scene" role="region" aria-roledescription="carrousel" aria-label="${c.s('accueil.metiers.region')}">
+      <svg class="epreuves-fil" aria-hidden="true" data-audit-ignorer><path class="epreuves-fil-ombre" d="M0 0"/><path class="epreuves-fil-trait" d="M0 0"/></svg>
+      <ul class="epreuves-liste" data-epreuves data-effet="epreuves-fil">
+        ${metiers.map((m, i) => html`<li class="epreuve" style="--i:${i}" data-epreuve>
+          <span class="epreuve-pince" aria-hidden="true"></span>
           <a href="${c.url('metiers', m.cle)}" data-libelle="${c.libelle('metiers')}">
-            ${c.media({ nom: m.image, alt: '', classe: 'roue-media', sizes: '(max-width: 760px) 60vw, 280px' })}
-            <span class="roue-num" aria-hidden="true">0${i + 1}</span>
-            <strong class="roue-nom">${m.nom}</strong>
-            <span class="roue-court">${m.court}</span>
+            ${c.media({ nom: m.image, alt: '', classe: 'epreuve-media', sizes: '(max-width: 760px) 46vw, 220px' })}
+            <span class="epreuve-num" aria-hidden="true">0${i + 1}</span>
+            <strong class="epreuve-nom">${m.nom}</strong>
+            <span class="epreuve-court">${m.court}</span>
           </a>
         </li>`)}
       </ul>
     </div>
-    <div class="roue-commandes">
-      <button type="button" class="rond" data-roue-prec aria-label="${c.s('accueil.metiers.precedent')}"><span aria-hidden="true">←</span></button>
-      <span class="roue-etat" data-roue-etat aria-live="polite">01 / 06</span>
-      <button type="button" class="rond" data-roue-suiv aria-label="${c.s('accueil.metiers.suivant')}"><span aria-hidden="true">→</span></button>
+    <div class="epreuves-commandes">
+      <button type="button" class="rond" data-epreuves-prec aria-label="${c.s('accueil.metiers.precedent')}"><span aria-hidden="true">←</span></button>
+      <span class="epreuves-etat" data-epreuves-etat aria-live="polite">01 / 06</span>
+      <button type="button" class="rond" data-epreuves-suiv aria-label="${c.s('accueil.metiers.suivant')}"><span aria-hidden="true">→</span></button>
       ${c.lien('metiers', { classe: 'lien-fleche', texte: c.t('accueil.metiers.tout') })}
     </div>
   </div>

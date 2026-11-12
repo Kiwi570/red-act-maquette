@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" data-v="3" data-curseur>
+<html lang="fr" data-v="4" data-curseur>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -41,14 +41,14 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 })();</script>
 <link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/polices/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/socle.css?v=3">
-<link rel="stylesheet" href="/assets/css/site.css?v=3">
-<link rel="modulepreload" href="/assets/js/site.js?v=3">
-<link rel="modulepreload" href="/assets/js/socle/index.js?v=3">
+<link rel="stylesheet" href="/assets/css/socle.css?v=4">
+<link rel="stylesheet" href="/assets/css/site.css?v=4">
+<link rel="modulepreload" href="/assets/js/site.js?v=4">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=4">
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
-<script type="module" src="/assets/js/site.js?v=3"></script>
+<script type="module" src="/assets/js/site.js?v=4"></script>
 <meta name="theme-color" content="#F4EEE3">
 <link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/assets/images/favicon-192.png" sizes="192x192" type="image/png">
@@ -147,89 +147,95 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
     <p class="filet-consigne" aria-hidden="true"><span class="sur-souris">Attrapez le filet</span><span class="sur-tactile">Touchez et tirez le filet</span></p>
   </div>
 </section>
-<section class="roue" id="metiers" data-scene data-fil="gauche">
-  <div class="roue-collant" data-collant>
-    <div class="conteneur roue-tete">
+<section class="epreuves" id="metiers" data-scene data-fil="gauche">
+  <div class="epreuves-collant" data-collant>
+    <div class="conteneur epreuves-tete">
       <p class="surtitre">Six métiers</p>
       <h2 class="titre-souple" data-axe data-anime="lignes">Un seul interlocuteur, six métiers</h2>
-      <p class="roue-consigne masque-ecran-bas">Faites tourner la roue : à la main, aux flèches ou en faisant défiler.</p>
+      <p class="epreuves-consigne masque-ecran-bas">Faites glisser le fil : à la main, aux flèches ou en faisant défiler.</p>
     </div>
-    <div class="roue-scene" role="region" aria-roledescription="carrousel" aria-label="Roue des six métiers">
-      <span class="roue-fil" aria-hidden="true"></span>
-      <ul class="roue-anneau" data-roue data-effet="roue-metiers">
-        <li class="roue-carte" style="--i:0" data-roue-carte>
+    <div class="epreuves-scene" role="region" aria-roledescription="carrousel" aria-label="Les six métiers, suspendus à un fil">
+      <svg class="epreuves-fil" aria-hidden="true" data-audit-ignorer><path class="epreuves-fil-ombre" d="M0 0"/><path class="epreuves-fil-trait" d="M0 0"/></svg>
+      <ul class="epreuves-liste" data-epreuves data-effet="epreuves-fil">
+        <li class="epreuve" style="--i:0" data-epreuve>
+          <span class="epreuve-pince" aria-hidden="true"></span>
           <a href="/metiers#redacteur-web" data-libelle="Métiers">
-            <figure class="media roue-media" data-grok style="--cadrage:50% 50%">
+            <figure class="media epreuve-media" data-grok style="--cadrage:50% 50%">
   <picture>
-    <img src="/assets/images/grok/metier-redacteur-web-784.webp" srcset="/assets/images/grok/metier-redacteur-web-480.webp 480w, /assets/images/grok/metier-redacteur-web-784.webp 784w" sizes="(max-width: 760px) 60vw, 280px" alt="" width="784" height="1168" loading="lazy" decoding="async">
+    <img src="/assets/images/grok/metier-redacteur-web-784.webp" srcset="/assets/images/grok/metier-redacteur-web-480.webp 480w, /assets/images/grok/metier-redacteur-web-784.webp 784w" sizes="(max-width: 760px) 46vw, 220px" alt="" width="784" height="1168" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-            <span class="roue-num" aria-hidden="true">01</span>
-            <strong class="roue-nom">Rédacteur web</strong>
-            <span class="roue-court">Vos sites, blogs et lettres d&#39;information écrits pour être lus.</span>
+            <span class="epreuve-num" aria-hidden="true">01</span>
+            <strong class="epreuve-nom">Rédacteur web</strong>
+            <span class="epreuve-court">Vos sites, blogs et lettres d&#39;information écrits pour être lus.</span>
           </a>
-        </li><li class="roue-carte" style="--i:1" data-roue-carte>
+        </li><li class="epreuve" style="--i:1" data-epreuve>
+          <span class="epreuve-pince" aria-hidden="true"></span>
           <a href="/metiers#community-manager" data-libelle="Métiers">
-            <figure class="media roue-media" data-grok style="--cadrage:50% 50%">
+            <figure class="media epreuve-media" data-grok style="--cadrage:50% 50%">
   <picture>
-    <img src="/assets/images/grok/metier-community-manager-784.webp" srcset="/assets/images/grok/metier-community-manager-480.webp 480w, /assets/images/grok/metier-community-manager-784.webp 784w" sizes="(max-width: 760px) 60vw, 280px" alt="" width="784" height="1168" loading="lazy" decoding="async">
+    <img src="/assets/images/grok/metier-community-manager-784.webp" srcset="/assets/images/grok/metier-community-manager-480.webp 480w, /assets/images/grok/metier-community-manager-784.webp 784w" sizes="(max-width: 760px) 46vw, 220px" alt="" width="784" height="1168" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-            <span class="roue-num" aria-hidden="true">02</span>
-            <strong class="roue-nom">Community manager</strong>
-            <span class="roue-court">Une stratégie éditoriale, des groupes animés, du bouche-à-oreille.</span>
+            <span class="epreuve-num" aria-hidden="true">02</span>
+            <strong class="epreuve-nom">Community manager</strong>
+            <span class="epreuve-court">Une stratégie éditoriale, des groupes animés, du bouche-à-oreille.</span>
           </a>
-        </li><li class="roue-carte" style="--i:2" data-roue-carte>
+        </li><li class="epreuve" style="--i:2" data-epreuve>
+          <span class="epreuve-pince" aria-hidden="true"></span>
           <a href="/metiers#concepteur-redacteur" data-libelle="Métiers">
-            <figure class="media roue-media" data-grok style="--cadrage:50% 50%">
+            <figure class="media epreuve-media" data-grok style="--cadrage:50% 50%">
   <picture>
-    <img src="/assets/images/grok/metier-concepteur-redacteur-784.webp" srcset="/assets/images/grok/metier-concepteur-redacteur-480.webp 480w, /assets/images/grok/metier-concepteur-redacteur-784.webp 784w" sizes="(max-width: 760px) 60vw, 280px" alt="" width="784" height="1168" loading="lazy" decoding="async">
+    <img src="/assets/images/grok/metiers-print-digital-1168.webp" srcset="/assets/images/grok/metiers-print-digital-640.webp 640w, /assets/images/grok/metiers-print-digital-960.webp 960w, /assets/images/grok/metiers-print-digital-1168.webp 1168w" sizes="(max-width: 760px) 46vw, 220px" alt="" width="1168" height="784" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-            <span class="roue-num" aria-hidden="true">03</span>
-            <strong class="roue-nom">Concepteur-rédacteur</strong>
-            <span class="roue-court">Le mot juste, à côté de la bonne image.</span>
+            <span class="epreuve-num" aria-hidden="true">03</span>
+            <strong class="epreuve-nom">Concepteur-rédacteur</strong>
+            <span class="epreuve-court">Le mot juste, à côté de la bonne image.</span>
           </a>
-        </li><li class="roue-carte" style="--i:3" data-roue-carte>
+        </li><li class="epreuve" style="--i:3" data-epreuve>
+          <span class="epreuve-pince" aria-hidden="true"></span>
           <a href="/metiers#conseil-formation" data-libelle="Métiers">
-            <figure class="media roue-media" data-grok style="--cadrage:50% 50%">
+            <figure class="media epreuve-media" data-grok style="--cadrage:50% 50%">
   <picture>
-    <img src="/assets/images/grok/metier-conseil-formation-784.webp" srcset="/assets/images/grok/metier-conseil-formation-480.webp 480w, /assets/images/grok/metier-conseil-formation-784.webp 784w" sizes="(max-width: 760px) 60vw, 280px" alt="" width="784" height="1168" loading="lazy" decoding="async">
+    <img src="/assets/images/grok/metier-conseil-formation-784.webp" srcset="/assets/images/grok/metier-conseil-formation-480.webp 480w, /assets/images/grok/metier-conseil-formation-784.webp 784w" sizes="(max-width: 760px) 46vw, 220px" alt="" width="784" height="1168" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-            <span class="roue-num" aria-hidden="true">04</span>
-            <strong class="roue-nom">Conseil &amp; formation</strong>
-            <span class="roue-court">Lancer ou refondre une campagne, former vos équipes.</span>
+            <span class="epreuve-num" aria-hidden="true">04</span>
+            <strong class="epreuve-nom">Conseil &amp; formation</strong>
+            <span class="epreuve-court">Lancer ou refondre une campagne, former vos équipes.</span>
           </a>
-        </li><li class="roue-carte" style="--i:4" data-roue-carte>
+        </li><li class="epreuve" style="--i:4" data-epreuve>
+          <span class="epreuve-pince" aria-hidden="true"></span>
           <a href="/metiers#audit" data-libelle="Métiers">
-            <figure class="media roue-media" data-grok style="--cadrage:50% 50%">
+            <figure class="media epreuve-media" data-grok style="--cadrage:50% 50%">
   <picture>
-    <img src="/assets/images/grok/metier-audit-784.webp" srcset="/assets/images/grok/metier-audit-480.webp 480w, /assets/images/grok/metier-audit-784.webp 784w" sizes="(max-width: 760px) 60vw, 280px" alt="" width="784" height="1168" loading="lazy" decoding="async">
+    <img src="/assets/images/grok/metier-audit-784.webp" srcset="/assets/images/grok/metier-audit-480.webp 480w, /assets/images/grok/metier-audit-784.webp 784w" sizes="(max-width: 760px) 46vw, 220px" alt="" width="784" height="1168" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-            <span class="roue-num" aria-hidden="true">05</span>
-            <strong class="roue-nom">Audit en communication</strong>
-            <span class="roue-court">Vos outils répondent-ils encore à vos objectifs ?</span>
+            <span class="epreuve-num" aria-hidden="true">05</span>
+            <strong class="epreuve-nom">Audit en communication</strong>
+            <span class="epreuve-court">Vos outils répondent-ils encore à vos objectifs ?</span>
           </a>
-        </li><li class="roue-carte" style="--i:5" data-roue-carte>
+        </li><li class="epreuve" style="--i:5" data-epreuve>
+          <span class="epreuve-pince" aria-hidden="true"></span>
           <a href="/metiers#conseil-communication" data-libelle="Métiers">
-            <figure class="media roue-media" data-grok style="--cadrage:50% 50%">
+            <figure class="media epreuve-media" data-grok style="--cadrage:50% 50%">
   <picture>
-    <img src="/assets/images/grok/metier-conseil-communication-784.webp" srcset="/assets/images/grok/metier-conseil-communication-480.webp 480w, /assets/images/grok/metier-conseil-communication-784.webp 784w" sizes="(max-width: 760px) 60vw, 280px" alt="" width="784" height="1168" loading="lazy" decoding="async">
+    <img src="/assets/images/grok/metier-conseil-communication-784.webp" srcset="/assets/images/grok/metier-conseil-communication-480.webp 480w, /assets/images/grok/metier-conseil-communication-784.webp 784w" sizes="(max-width: 760px) 46vw, 220px" alt="" width="784" height="1168" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-            <span class="roue-num" aria-hidden="true">06</span>
-            <strong class="roue-nom">Conseil en communication</strong>
-            <span class="roue-court">Information, risques, opportunités, influence.</span>
+            <span class="epreuve-num" aria-hidden="true">06</span>
+            <strong class="epreuve-nom">Conseil en communication</strong>
+            <span class="epreuve-court">Information, risques, opportunités, influence.</span>
           </a>
         </li>
       </ul>
     </div>
-    <div class="roue-commandes">
-      <button type="button" class="rond" data-roue-prec aria-label="Métier précédent"><span aria-hidden="true">←</span></button>
-      <span class="roue-etat" data-roue-etat aria-live="polite">01 / 06</span>
-      <button type="button" class="rond" data-roue-suiv aria-label="Métier suivant"><span aria-hidden="true">→</span></button>
+    <div class="epreuves-commandes">
+      <button type="button" class="rond" data-epreuves-prec aria-label="Métier précédent"><span aria-hidden="true">←</span></button>
+      <span class="epreuves-etat" data-epreuves-etat aria-live="polite">01 / 06</span>
+      <button type="button" class="rond" data-epreuves-suiv aria-label="Métier suivant"><span aria-hidden="true">→</span></button>
       <a href="/metiers" class="lien-fleche" data-libelle="Métiers">Les six métiers en détail</a>
     </div>
   </div>

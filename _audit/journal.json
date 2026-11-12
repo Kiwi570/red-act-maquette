@@ -246,6 +246,61 @@
         "formats": "0 échec sur 13 tailles",
         "regardDA_v3": "REFAIRE 3,25/5 (deuxième REFAIRE : décision laissée à l utilisateur)"
       }
+    },
+    {
+      "version": 4,
+      "skill": "v10.10",
+      "perimetre": [
+        "accueil",
+        "metiers",
+        "specialites",
+        "references",
+        "contact",
+        "404"
+      ],
+      "etapes": [
+        {
+          "etape": "six métiers en épreuves au fil, filet fluide",
+          "budget": 40,
+          "debut": "2026-11-12T16:53:00+01:00",
+          "fin": "2026-11-12T17:06:00+01:00"
+        },
+        {
+          "etape": "audit standard et corrections",
+          "budget": 25,
+          "debut": "2026-11-12T17:06:19+01:00",
+          "fin": "2026-11-12T17:29:34+01:00"
+        },
+        {
+          "etape": "livraison",
+          "budget": 5,
+          "debut": "2026-11-12T17:29:34+01:00",
+          "fin": "2026-11-12T17:29:34+01:00"
+        }
+      ],
+      "attentes": [
+        {
+          "objet": "choix de la refonte des six métiers",
+          "debut": "2026-11-12T16:52:30+01:00",
+          "fin": "2026-11-12T16:54:30+01:00"
+        }
+      ],
+      "allersRetours": 1,
+      "modules": [],
+      "audit": {
+        "niveau": "standard (plus formats 13 tailles sur l'accueil et Références)",
+        "echecsPremierPassage": 13,
+        "relances": 3,
+        "corrections": [
+          "Épreuves coupées par la scène (téléphone, tablette, écrans bas) : carte cachée quand elle déborde, taille réduite à la hauteur, image carrée sur écran bas",
+          "Parcours du projet : le test des flèches visait encore la roue retirée (contrôle non lancé) ; il teste maintenant les épreuves au fil"
+        ]
+      },
+      "effetsRetires": [
+        "roue 3D des métiers"
+      ],
+      "grilleDispenses": {},
+      "notes": "Retours de l'utilisateur sur la v3 en ligne : section des six métiers à rendre plus fluide et plus aérée (choix : épreuves au fil) ; animation du filet de Références qui bugge (tassement, rebonds, dessin lourd)."
     }
   ]
 }

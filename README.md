@@ -1,4 +1,4 @@
-# Red-Act — maquette v3
+# Red-Act — maquette v4
 
 Maquette du futur site de Red-Act (conseil en communication, rédaction et community management, Hoenheim près de Strasbourg).
 Direction artistique « Red, le réseau » : red veut dire réseau en espagnol, et le rouge du drapeau du logo devient un fil qui relie tout le site.
@@ -9,7 +9,7 @@ Adresse prévue : https://red-act-maquette.vercel.app
 
 | Page | Ouverture | Signature |
 |---|---|---|
-| Accueil | Chiasme « Savoir faire & faire savoir » croisé par un fil rouge, portrait et numéro dès le premier écran ; bureau du rédacteur et bobine à droite | Filet des vraies références à tirer à la main ; intro du fil qui écrit « Red » puis « Act » et se noue ; roue 3D des six métiers ; index des dix secteurs sur fond encre ; titre « Stéphane Bourhis » écrit au fil ; méthode en quatre nœuds |
+| Accueil | Chiasme « Savoir faire & faire savoir » croisé par un fil rouge, portrait et numéro dès le premier écran ; bureau du rédacteur et bobine à droite | Filet des vraies références à tirer à la main ; intro du fil qui écrit « Red » puis « Act » et se noue ; six métiers suspendus à un fil comme des épreuves ; index des dix secteurs sur fond encre ; titre « Stéphane Bourhis » écrit au fil ; méthode en quatre nœuds |
 | Métiers | Très grand titre, bandeau de brouillons recouvert d'une feuille qui se raye | « Du brouillon au texte » : on raye soi-même le jargon (ou il se raye seul), la phrase claire s'écrit |
 | Spécialités | Écran scindé plein cadre, « La tribune » et « et la table » en grand, titre sur une carte qui suit la couture | Séparation à faire glisser ; parcours candidat → mandat tracé au fil ; cave en plein écran ; fin en deux images-boutons (tribune, table) |
 | Références (page sombre) | Grand filet de nuit avec les 90 noms | Filtres par secteur qui tirent les nœuds (sélection gardée dans l'adresse) ; liste complète lisible |

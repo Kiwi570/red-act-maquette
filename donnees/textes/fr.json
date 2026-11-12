@@ -95,10 +95,10 @@
     "metiers": {
       "surtitre": "Six métiers",
       "titre": "Un seul interlocuteur, six métiers",
-      "texte": "Faites tourner la roue : à la main, aux flèches ou en faisant défiler.",
+      "texte": "Faites glisser le fil : à la main, aux flèches ou en faisant défiler.",
       "precedent": "Métier précédent",
       "suivant": "Métier suivant",
-      "region": "Roue des six métiers",
+      "region": "Les six métiers, suspendus à un fil",
       "voir": "Découvrir",
       "tout": "Les six métiers en détail"
     },

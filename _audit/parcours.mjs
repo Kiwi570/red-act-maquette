@@ -1,5 +1,5 @@
 /* Parcours propres à Red-Act : filtres des références (sélection dans l'adresse), rendez-vous en trois étapes
-   (choix prérempli, envoi qui devient le nœud « Vous »), roue des métiers (flèches), séparation des Spécialités (clavier).
+   (choix prérempli, envoi qui devient le nœud « Vous »), six métiers en épreuves au fil (flèches), séparation des Spécialités (clavier).
    Chaque problème s'ajoute au rapport : R.echec(controle, detail, { page, taille, selecteur }). */
 export default async function ({ contexte, attendrePret, attendre, BASE, R, T }) {
   for (const nomTaille of ['390×844', '1366×768']) {
@@ -68,18 +68,18 @@ export default async function ({ contexte, attendrePret, attendre, BASE, R, T })
       } finally { await ctx.close(); }
     }
 
-    /* Accueil : les flèches font tourner la roue des métiers. */
+    /* Accueil : les flèches font glisser le fil des six métiers. */
     {
       const { ctx, page } = await contexte({ taille });
       try {
         await page.goto(BASE + '/#metiers', { waitUntil: 'load' });
         await attendrePret(page);
         await attendre(600);
-        const avant = await page.textContent('[data-roue-etat]');
-        await page.locator('[data-roue-suiv]').click();
+        const avant = await page.textContent('[data-epreuves-etat]');
+        await page.locator('[data-epreuves-suiv]').click();
         await attendre(900);
-        const apres = await page.textContent('[data-roue-etat]');
-        if (avant === apres) R.echec('roue', `la flèche « suivant » ne change pas de métier (${avant})`, { page: '/', taille: nomTaille });
+        const apres = await page.textContent('[data-epreuves-etat]');
+        if (avant === apres) R.echec('épreuves', `la flèche « suivant » ne change pas de métier (${avant})`, { page: '/', taille: nomTaille });
       } finally { await ctx.close(); }
     }
 
