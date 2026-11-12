@@ -347,6 +347,50 @@
       "effetsRetires": [],
       "grilleDispenses": {},
       "notes": "Retour de l'utilisateur sur la v4 : cartes un peu petites, textes beaucoup trop petits."
+    },
+    {
+      "version": 6,
+      "skill": "v10.10",
+      "perimetre": [
+        "accueil",
+        "metiers",
+        "specialites",
+        "references",
+        "contact",
+        "404"
+      ],
+      "etapes": [
+        {
+          "etape": "défilement des six métiers rendu calme et prévisible",
+          "budget": 15,
+          "debut": "2026-11-12T17:50:30+01:00",
+          "fin": "2026-11-12T17:56:00+01:00"
+        },
+        {
+          "etape": "audit complet ciblé de l'accueil",
+          "budget": 10,
+          "debut": "2026-11-12T17:56:00+01:00",
+          "fin": "2026-11-12T17:58:22+01:00"
+        },
+        {
+          "etape": "livraison",
+          "budget": 5,
+          "debut": "2026-11-12T17:58:22+01:00",
+          "fin": "2026-11-12T17:58:22+01:00"
+        }
+      ],
+      "attentes": [],
+      "allersRetours": 1,
+      "modules": [],
+      "audit": {
+        "niveau": "complet ciblé sur l'accueil (fichiers, mesures, écran, mouvement, parcours, films)",
+        "echecsPremierPassage": 0,
+        "relances": 0,
+        "corrections": []
+      },
+      "effetsRetires": [],
+      "grilleDispenses": {},
+      "notes": "Retour de l'utilisateur sur la v5 : le défilement des six métiers « bugge, fait n'importe quoi » (trop sensible, cartes qui apparaissent et disparaissent au bord, recalage automatique, balancement trop fort)."
     }
   ]
 }

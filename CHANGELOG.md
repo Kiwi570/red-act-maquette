@@ -2,6 +2,21 @@
 
 Chaque version ajoute sa partie en tête de ce fichier, construite en comparant l'archive précédente et la nouvelle, jamais de mémoire.
 
+## v6 — défilement des six métiers calme et prévisible (12 novembre 2026)
+
+Retour de l'utilisateur sur la v5 : « ça bug le scroll, ça fait n'importe quoi ».
+
+**Accueil : les six métiers**
+- **Les six cartes toujours visibles** sur ordinateur et tablette en largeur. Leur largeur s'adapte pour qu'elles tiennent côte à côte : environ 200 px sur un écran de 1440 px. Rien n'entre ni ne sort de l'écran pendant le défilement. Avant, sur un écran courant, une carte disparaissait d'un coup au bord.
+- **Défilement moins sensible** : la section se parcourt sur 1,2 écran de défilement au lieu de 0,7. Un coup de molette ne saute plus plusieurs cartes.
+- **Défilement continu** : le fil suit le défilement sans se recaler tout seul une fois arrêté. Il ne se pose sur une carte qu'après un geste à la main ou les flèches.
+- **Carte en cours** : elle se soulève légèrement, grandit un peu et son nom passe en rouge.
+- **Balancement** du fil trois fois plus discret, notamment avec un trackpad.
+- **Tailles de texte** proportionnelles à la carte : le nom fait environ 25 px sur un écran de 1440 px.
+- **Sur téléphone**, une carte s'efface doucement en approchant du bord au lieu de disparaître d'un coup.
+
+**Technique** : numéro de version des fichiers passé à `?v=6`.
+
 ## v5 — épreuves plus grandes et plus lisibles (12 novembre 2026)
 
 Retour de l'utilisateur sur la v4 : les cartes des six métiers étaient un peu petites, et leurs textes beaucoup trop petits.

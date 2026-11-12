@@ -768,7 +768,7 @@ html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) .contact-fil:not(
 .hero-scene .filet-noeud svg { width: 54px; height: 54px; filter: drop-shadow(0 3px 4px rgb(27 25 22 / .35)); }
 
 /* ---------- Six métiers suspendus au fil, comme des épreuves (v3, remplace la roue 3D) ---------- */
-html.js:not(.calme):not(.secours) .epreuves { height: 170svh; }
+html.js:not(.calme):not(.secours) .epreuves { height: 220svh; }
 .epreuves-collant { display: flex; flex-direction: column; padding-top: calc(var(--entete-h) + clamp(16px, 4vh, 48px)); padding-bottom: calc(14px + var(--barres-h)); }
 html.js:not(.calme):not(.secours) .epreuves-collant { position: sticky; top: 0; height: 100svh; overflow: hidden; }
 .epreuves-tete h2 { font-size: clamp(2rem, min(4.4vw, 7vh), 4rem); margin-bottom: .2em; }
@@ -786,8 +786,8 @@ html.js:not(.calme):not(.secours) .epreuves-collant { position: sticky; top: 0; 
 .epreuve.est-face a { box-shadow: 0 22px 48px rgb(27 25 22 / .2); }
 .epreuve-media { aspect-ratio: 4 / 5; border-radius: 0; }
 .epreuve-num { margin-top: 10px; font-size: .82rem; font-weight: 700; letter-spacing: .14em; color: var(--rouge-texte); }
-.epreuve-nom { font-family: var(--police-titres); font-weight: 600; font-size: clamp(1.2rem, 1rem + .7vw, 1.75rem); line-height: 1.1; margin-top: 3px; }
-.epreuve-court { font-size: clamp(.95rem, .88rem + .25vw, 1.08rem); line-height: 1.4; color: var(--gris); margin-top: 6px; }
+.epreuve-nom { font-family: var(--police-titres); font-weight: 600; font-size: clamp(1.1rem, calc(var(--ep-l) * .125), 1.75rem); line-height: 1.1; margin-top: 3px; }
+.epreuve-court { font-size: clamp(.92rem, calc(var(--ep-l) * .08), 1.08rem); line-height: 1.4; color: var(--gris); margin-top: 6px; }
 .epreuve.est-face .epreuve-nom { color: var(--rouge-texte); }
 .epreuves-commandes { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; padding-top: 10px; }
 .epreuves-etat { min-width: 5.5em; text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }

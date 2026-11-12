@@ -1,4 +1,4 @@
-# Red-Act — maquette v5
+# Red-Act — maquette v6
 
 Maquette du futur site de Red-Act (conseil en communication, rédaction et community management, Hoenheim près de Strasbourg).
 Direction artistique « Red, le réseau » : red veut dire réseau en espagnol, et le rouge du drapeau du logo devient un fil qui relie tout le site.

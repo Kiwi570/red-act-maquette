@@ -1,25 +1,15 @@
 # Rapport d’audit
 
-Projet : `red-act-maquette` · 12/11/2026 17:46:10 · 5 min · 1 page(s) · audit complet ciblé sur / (étapes : fichiers, mesures, ecran, mouvement, parcours)
+Projet : `red-act-maquette` · 12/11/2026 17:58:09 · 5 min · 1 page(s) · audit complet ciblé sur / (étapes : fichiers, mesures, ecran, mouvement, parcours, films)
 
 ## Résumé
 
 - Statut : **tout a tourné, aucun échec**
-- Passe : `20261112-164138-complet-cible-partiel` · version ?v=5
+- Passe : `20261112-165258-complet-cible-partiel` · version ?v=6
 - Échecs : **0**
-- À regarder : **2**
+- À regarder : **5**
 - Non lancé : **0**
-- Contrôles passés : vercel.json (1), .vercelignore (1), robots.txt (1), numéro de version (1), langues (1), mesures (52), balayage (1), intro accélérable et passable (7), menu (1), clavier (1), liens et boutons (1), liens profonds (14), liens vers la page en cours (1), changements de hauteur (1), mode calme (2), bouton du mode calme (2), parcours du projet (2), mouvement (2), effets du plan (11), souris immobile (2)
-
-## Passes de cette version (?v=5)
-
-Chaque passe garde son rapport dans `_audit/passes/` : une relance ciblée ne fait pas disparaître la preuve d’une passe plus large.
-
-| Passe | Niveau | Pages | Étapes | Échecs | À regarder | Non lancé | Statut |
-|---|---|---|---|---:|---:|---:|---|
-| 20261112-163321-complet-cible-partiel | complet | / | fichiers, mesures, ecran, mouvement, parcours | 2 | 2 | 0 | échecs |
-| 20261112-163817-complet-cible-partiel | complet | / | fichiers, mesures, ecran | 2 | 2 | 0 | échecs |
-| **20261112-164138-complet-cible-partiel** (celle-ci) | complet | / | fichiers, mesures, ecran, mouvement, parcours | 0 | 2 | 0 | complet |
+- Contrôles passés : vercel.json (1), .vercelignore (1), robots.txt (1), numéro de version (1), langues (1), mesures (52), balayage (1), films d’ouverture (2), films de transition (2), intro accélérable et passable (7), menu (1), clavier (1), liens et boutons (1), liens profonds (14), liens vers la page en cours (1), changements de hauteur (1), mode calme (2), bouton du mode calme (2), parcours du projet (2), mouvement (2), effets du plan (11), souris immobile (2)
 
 ## Échecs
 
@@ -33,7 +23,19 @@ Aucun.
 
 ### journal du projet (1)
 
-- **journal du projet** — aucune entrée pour la version 5 de donnees/site.json
+- **journal du projet** — aucune entrée pour la version 6 de donnees/site.json
+
+### retour arrière : changement brusque (1)
+
+- **retour arrière : changement brusque** — `/` — à 83 ms (différence 20 %) (films/retour-arrière-1366.png) _(1366×768 retour arrière)_
+
+### retour avant : changement brusque (1)
+
+- **retour avant : changement brusque** — `/metiers` — à 55 ms (différence 22 %) (films/retour-avant-1366.png) _(1366×768 retour avant)_
+
+### rechargement au milieu de la page (1)
+
+- **rechargement au milieu de la page** — `/` — écran différent à la même position après rechargement (4.1 %), voir comparaisons/rechargement-*.png _(1366×768)_
 
 ## Non lancé
 
@@ -42,8 +44,10 @@ Tout a été lancé.
 
 ## Repères
 
-- Numéro de version des fichiers : ?v=5
+- Numéro de version des fichiers : ?v=6
 - Accessibilité : axe-core 4.12.1 en plus des contrôles intégrés.
+- Ouverture / (1366×768) : 2363 ms depuis le premier octet
+- Ouverture / (390×844) : 2386 ms depuis le premier octet
 - Tient dans l'écran / : aucune section épinglée ou plein écran.
 
 ## Fichiers

@@ -3,7 +3,7 @@
    - Spécialités : séparation à faire glisser entre la tribune et la table (separation) ;
    - Références : grand filet de nuit, filtres par secteur gardés dans l'adresse (filet-references) ;
    - Contact : rendez-vous en trois étapes, récapitulatif, envoi qui file jusqu'au filet (noeud-vous). */
-import { etat, boucle } from './socle/index.js?v=5';
+import { etat, boucle } from './socle/index.js?v=6';
 
 const gsap = window.gsap;
 const ST = () => window.ScrollTrigger;

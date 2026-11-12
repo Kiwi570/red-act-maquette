@@ -10,7 +10,7 @@
 //   template[data-fil-objet]         dans la racine : SVG de l'objet au bout du fil (centré sur 0 0), sinon une tête ronde
 // Chaque élément accroché reçoit la classe est-atteinte quand le fil l'atteint.
 /* Copié de la bibliothèque (modules/fil-conducteur), relié au socle de la skill : pret() fournit GSAP, ScrollTrigger et le mode calme. */
-import { etat, rafraichir } from '../socle/index.js?v=5';
+import { etat, rafraichir } from '../socle/index.js?v=6';
 const pret = async () => ({ gsap: window.gsap, ScrollTrigger: window.ScrollTrigger, calme: etat.calme, rafraichir });
 
 const NS = 'http://www.w3.org/2000/svg';

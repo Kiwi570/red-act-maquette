@@ -3,9 +3,9 @@
    Effets du plan : intro (fil qui écrit Red-Act et se noue), filet, roue-metiers, titre-au-fil, titre-souple,
    fil conducteur (module de la bibliothèque), brouillon (Métiers), separation (Spécialités), filet-references,
    noeud-vous (Contact). Chaque effet propre porte data-effet="nom". */
-import { demarrer, boucle, etat, versObjet, quand } from './socle/index.js?v=5';
-import { init as filConducteur } from './modules/fil-conducteur.js?v=5';
-import { initPages } from './pages.js?v=5';
+import { demarrer, boucle, etat, versObjet, quand } from './socle/index.js?v=6';
+import { init as filConducteur } from './modules/fil-conducteur.js?v=6';
+import { initPages } from './pages.js?v=6';
 
 const gsap = window.gsap;
 const ST = () => window.ScrollTrigger;
@@ -297,49 +297,47 @@ function epreuves() {
   const scene = $('.epreuves-scene', sec), cartes = $$('[data-epreuve]', sec), etatEl = $('[data-epreuves-etat]', sec);
   const trait = $('.epreuves-fil-trait', sec), ombre = $('.epreuves-fil-ombre', sec);
   const n = cartes.length, milieu = (n - 1) / 2;
-  let W = 0, H = 0, L = 0, CH = 0, pas = 0, pan = 0, haut = 16, creux = 40, demi = 1, large = true, mode = 'tous', maxS = 0;
-  let pos = 0, defil = 0, main = 0, vMain = 0, prise = null, courante = -1, tDefil = 0;
+  let W = 0, H = 0, L = 0, CH = 0, pas = 0, pan = 0, haut = 16, creux = 40, demi = 1, tous = true;
+  let pos = 0, defil = 0, main = 0, vMain = 0, prise = null, manuel = false, courante = -1;
   let bal = 0, vBal = 0, yAvant = scrollY;
+  const hauteur = () => Math.max(...cartes.map((li) => li.offsetHeight));
   const mesurer = () => {
     scene.style.removeProperty('--ep-l'); scene.classList.remove('est-serre');
     W = scene.clientWidth; H = scene.clientHeight;
-    /* La plus haute des cartes compte (un nom sur deux lignes l'allonge). */
-    const hauteur = () => Math.max(...cartes.map((li) => li.offsetHeight));
+    /* v5.1 : sur ordinateur et tablette en largeur, les six épreuves tiennent TOUJOURS côte à côte (leur largeur
+       en dépend) : rien n'entre ni ne sort de l'écran pendant le défilement, seule la carte en cours change. */
+    tous = W >= 900 && innerHeight >= 520;
+    if (tous) { const Lmax = Math.floor((W - 56) / (n * 1.16)); if (cartes[0].offsetWidth > Lmax) scene.style.setProperty('--ep-l', Lmax + 'px'); }
     L = cartes[0].offsetWidth; CH = hauteur();
-    /* Les cartes tiennent toujours en hauteur : réduites si la scène est basse (écrans bas, tablettes). */
+    /* En hauteur : d'abord retirer la phrase courte des cartes, puis seulement les réduire. */
     const place = H - haut - 46;
-    /* D'abord retirer la phrase courte des cartes, puis seulement réduire leur largeur. */
     if (CH > place) { scene.classList.add('est-serre'); CH = hauteur(); }
-    for (let k = 0; k < 3 && CH > place && place > 80; k++) { scene.style.setProperty('--ep-l', Math.max(132, Math.floor(L * place / CH)) + 'px'); L = cartes[0].offsetWidth; CH = hauteur(); }
-    /* Trois façons de suspendre les épreuves, selon la place :
-       « tous » : les six tiennent côte à côte (très grand écran), le fil glisse à peine ;
-       « bande » : ordinateur et tablette, le fil ne glisse que de ce qui dépasse, les cartes remplissent la largeur ;
-       « centre » : téléphone, la carte en cours est au centre. */
-    const pasTous = (W - 48 - L) / ((n - 1) * 1.18);
-    mode = pasTous >= L * 1.1 && innerHeight >= 640 ? 'tous' : W >= L * 2.9 ? 'bande' : 'centre';
-    large = mode !== 'centre';
-    pas = mode === 'tous' ? Math.min(pasTous, L * 1.45) : L * (mode === 'bande' ? 1.14 : 1.12);
-    pan = mode === 'tous' ? pas * 0.18 : pas;
-    maxS = mode === 'bande' ? Math.max(0, ((n - 1) * pas + L) / 2 + 40 - W / 2) : Infinity;
-    demi = mode === 'centre' ? Math.max(W / 2, pas * 2.4) : W / 2;
-    creux = Math.max(10, Math.min(H - CH * 1.02 - haut - 8, H * 0.12, large ? 60 : 34));
+    for (let k = 0; k < 3 && CH > place && place > 80; k++) { scene.style.setProperty('--ep-l', Math.max(tous ? 112 : 132, Math.floor(L * place / CH)) + 'px'); L = cartes[0].offsetWidth; CH = hauteur(); }
+    if (tous) { pas = (W - 56 - L) / ((n - 1) * 1.05); pan = pas * 0.05; demi = W / 2; }
+    else { pas = L * 1.12; pan = pas; demi = Math.max(W / 2, pas * 2.4); }
+    creux = Math.max(10, Math.min(H - CH * 1.03 - haut - 8, H * 0.12, tous ? 56 : 30));
   };
   const yFil = (x, c) => { const u = Math.max(-1.6, Math.min(1.6, (x - W / 2) / demi)); return haut + c * (1 - u * u); };
   const poser = () => {
     const c = creux * (1 + bal);
     let face = 0, mieux = 99;
     cartes.forEach((li, i) => {
-      const decal = mode === 'bande' ? Math.max(-maxS, Math.min(maxS, (pos - milieu) * pas)) : (pos - milieu) * pan;
-      const x = W / 2 + (i - milieu) * pas - decal;
-      const y = yFil(x, c);
+      const x = W / 2 + (i - milieu) * pas - (pos - milieu) * pan;
+      const d = Math.abs(i - pos), proche = Math.max(0, 1 - d);
+      const y = yFil(x, c) - proche * 8;
       const pente = (-2 * c * ((x - W / 2) / demi)) / demi;
-      const d = Math.abs(i - pos);
-      const s = large ? 0.93 + 0.09 * Math.max(0, 1 - d) : 0.92 + 0.08 * Math.max(0, 1 - d);
-      const ang = Math.atan(pente) * 57.3 * (large ? 0.6 : 0.45) + bal * 18 * Math.sin(i * 1.7 + 0.6);
+      const s = tous ? 0.94 + 0.08 * proche : 0.93 + 0.07 * proche;
+      const ang = Math.atan(pente) * 57.3 * (tous ? 0.55 : 0.4) + bal * 10 * Math.sin(i * 1.7 + 0.6);
       li.style.transform = `translate(${(x - L / 2).toFixed(1)}px, ${y.toFixed(1)}px) rotate(${ang.toFixed(2)}deg) scale(${s.toFixed(3)})`;
       li.style.zIndex = String(10 - Math.round(d));
-      /* En glissement, une carte qui déborde de la scène est cachée (jamais coupée). */
-      { const ar = Math.abs(ang) / 57.3, demiL = (L * s / 2) * Math.cos(ar) + CH * s * Math.sin(ar) + 8, dehors = x - demiL < 0 || x + demiL > W; if (li.classList.contains('est-dehors') !== dehors) li.classList.toggle('est-dehors', dehors); }
+      /* Téléphone : une carte s'efface en approchant du bord et n'est jamais coupée (cachée dès qu'elle déborde). */
+      if (!tous) {
+        const ar = Math.abs(ang) / 57.3, demiL = (L * s / 2) * Math.cos(ar) + CH * s * Math.sin(ar) + 6;
+        const marge = Math.min(x - demiL, W - (x + demiL));
+        const dehors = marge < 0;
+        if (li.classList.contains('est-dehors') !== dehors) li.classList.toggle('est-dehors', dehors);
+        li.style.opacity = dehors ? '0' : Math.min(1, marge / 36).toFixed(2);
+      } else if (li.classList.contains('est-dehors') || li.style.opacity) { li.classList.remove('est-dehors'); li.style.removeProperty('opacity'); }
       if (d < mieux) { mieux = d; face = i; }
     });
     let chemin = '';
@@ -352,21 +350,21 @@ function epreuves() {
   };
   mesurer();
   new ResizeObserver(() => { mesurer(); poser(); }).observe(scene);
-  ST().create({ trigger: sec, start: 'top top', end: 'bottom bottom', onUpdate: (st) => { defil = st.progress * (n - 1); tDefil = performance.now(); } });
+  /* Le défilement mène le fil de façon continue (aucun recalage automatique pendant ou après le défilement). */
+  ST().create({ trigger: sec, start: 'top top', end: 'bottom bottom', onUpdate: (st) => { defil = st.progress * (n - 1); } });
   boucle(sec, (dt) => {
     if (!dt) { poser(); return; }
     if (!prise) {
-      main += vMain * dt; vMain *= Math.exp(-3.4 * dt);
-      const total = defil + main;
-      if (total < 0) main -= total * Math.min(1, dt * 10);
-      if (total > n - 1) main -= (total - (n - 1)) * Math.min(1, dt * 10);
-      if (Math.abs(vMain) < 0.4 && performance.now() - tDefil > 220) { const t2 = defil + main; main += (Math.round(t2) - t2) * Math.min(1, dt * 6); }
+      main += vMain * dt; vMain *= Math.exp(-4 * dt);
+      /* Après un geste à la main (tirer, flèches), le fil se pose sur la carte la plus proche, une fois. */
+      if (manuel && Math.abs(vMain) < 0.3) { const t2 = defil + main, cible2 = Math.round(t2); main += (cible2 - t2) * Math.min(1, dt * 7); if (Math.abs(cible2 - t2) < 0.01) manuel = false; }
     }
-    const cible = Math.max(-0.3, Math.min(n - 0.7, defil + main));
-    pos += (cible - pos) * Math.min(1, dt * 8);
-    /* Le fil se balance selon la vitesse du défilement, puis se calme (ressort amorti). */
+    main = Math.max(-defil, Math.min(n - 1 - defil, main));
+    const cible = defil + main;
+    pos += (cible - pos) * Math.min(1, dt * 6);
+    /* Il se balance un peu selon la vitesse du défilement, puis se calme (ressort amorti). */
     const v = (scrollY - yAvant) / dt; yAvant = scrollY;
-    vBal += (Math.max(-0.35, Math.min(0.35, v * 0.00025)) - bal) * 40 * dt - vBal * 7 * dt;
+    vBal += (Math.max(-0.12, Math.min(0.12, v * 0.0001)) - bal) * 30 * dt - vBal * 8 * dt;
     bal += vBal * dt;
     poser();
   });
@@ -375,16 +373,17 @@ function epreuves() {
   scene.addEventListener('pointermove', (e) => {
     if (!prise) return;
     const t = performance.now(), dx = e.clientX - x0, dt = Math.max(0.008, (t - t0) / 1000);
-    const d = -dx / Math.max(40, pan); main += d; vMain = d / dt; x0 = e.clientX; t0 = t;
+    const d = -dx / Math.max(60, tous ? pas : pan); main += d; vMain = d / dt; x0 = e.clientX; t0 = t;
   });
-  const lacher = () => { if (!prise) return; prise = null; vMain = Math.max(-6, Math.min(6, vMain)); };
+  const lacher = () => { if (!prise) return; prise = null; manuel = true; vMain = Math.max(-5, Math.min(5, vMain)); };
   ['pointerup', 'pointercancel', 'lostpointercapture'].forEach((ev) => scene.addEventListener(ev, lacher));
   /* Un glisser n'ouvre pas le lien de la carte. */
   scene.addEventListener('click', (e) => { if (Math.abs(e.clientX - depart) > 8) { e.preventDefault(); e.stopPropagation(); } }, true);
-  $('[data-epreuves-prec]', sec).addEventListener('click', () => { main -= 1; vMain = 0; });
-  $('[data-epreuves-suiv]', sec).addEventListener('click', () => { main += 1; vMain = 0; });
-  /* Au clavier, la carte qui reçoit le focus vient au milieu. */
-  cartes.forEach((li, i) => li.addEventListener('focusin', () => { main += i - Math.round(defil + main); vMain = 0; }));
+  const aller = (k) => { main = Math.round(defil + main) + k - defil; vMain = 0; manuel = true; };
+  $('[data-epreuves-prec]', sec).addEventListener('click', () => aller(-1));
+  $('[data-epreuves-suiv]', sec).addEventListener('click', () => aller(1));
+  /* Au clavier, la carte qui reçoit le focus devient la carte en cours. */
+  cartes.forEach((li, i) => li.addEventListener('focusin', () => { main = i - defil; vMain = 0; manuel = true; }));
   poser();
 }
 
